@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Aluno</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+        <div class="card-header bg-warning">
+            <h3 class="mb-0">Editar Aluno</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form th:action="@{/editar/{id}(id=${aluno.id})}" th:object="${aluno}" method="post">
+
+                <!-- ID (somente leitura) -->
+                <div class="mb-3">
+                    <label for="id" class="form-label">ID</label>
+                    <input type="text"
+                           id="id"
+                           th:field="*{id}"
+                           class="form-control"
+                           readonly>
+                </div>
+
+                <!-- Nome -->
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome do Aluno</label>
+                    <input type="text"
+                           id="nome"
+                           th:field="*{nome}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <!-- Prontuário -->
+                <div class="mb-3">
+                    <label for="prontuario" class="form-label">Prontuário</label>
+                    <input type="text"
+                           id="prontuario"
+                           th:field="*{prontuario}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <!-- Prontuário -->
+                <div class="mb-3">
+                    <label for="prontuario" class="form-label">Curso</label>
+                    <input type="text"
+                           id="curso"
+                           th:field="*{curso}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a th:href="@{/}" class="btn btn-secondary">
+                        Voltar
+                    </a>
+
+                    <button type="submit" class="btn btn-success">
+                        Salvar Alterações
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
