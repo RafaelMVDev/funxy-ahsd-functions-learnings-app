@@ -9,6 +9,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Long id;
 
     @Column(name="email")
@@ -18,7 +19,7 @@ public class Usuario {
     private String nome;
 
     @Column(name="senha_hash")
-    private String senhaHash;
+    private String senha;
 
     @Column(name="sequencia")
     private Integer sequencia;
@@ -35,7 +36,7 @@ public class Usuario {
     public Usuario(String nome, String email, String senhaHash, Integer sequencia, Long moedas, Long xp) {
         this.nome = nome;
         this.email = email;
-        this.senhaHash = senhaHash;
+        this.senha = senhaHash;
         this.sequencia = sequencia;
         this.moedas = moedas;
         this.xp = xp;
@@ -65,12 +66,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getSenhaHash() {
-        return senhaHash;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setSenhaHash(String senhaHash) {
-        this.senhaHash = senhaHash;
+    public void setSenha(String senhaHash) {
+        this.senha = senhaHash;
     }
 
     public Integer getSequencia() {
