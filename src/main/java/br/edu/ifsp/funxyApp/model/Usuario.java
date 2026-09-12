@@ -1,7 +1,7 @@
 package br.edu.ifsp.funxyApp.model;
 import jakarta.persistence.*;
 
-import java.math.BigInteger;
+
 
 @Entity
 @Table(name = "usuario")
