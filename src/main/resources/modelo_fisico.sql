@@ -28,10 +28,11 @@ CREATE TABLE Itens (
 );
 
 CREATE TABLE Inventario (
+    id_inventario BIGINT PRIMARY KEY
     id_item BIGINT,
     equipado BOOLEAN,
     id_usuario BIGINT,
-    PRIMARY KEY (id_item, id_usuario)
+
 );
 
 CREATE TABLE Item_Passe_Batalha (
