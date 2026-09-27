@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bxgvph4mis75c"]
+
+[ext_resource type="Script" uid="uid://bdsxbg56voxrk" path="res://verificar_email.gd" id="1_4elkm"]
+
+[sub_resource type="Gradient" id="Gradient_7lwwn"]
+colors = PackedColorArray(0.078431375, 0.09803922, 0.3019608, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_061fx"]
+gradient = SubResource("Gradient_7lwwn")
+width = 360
+height = 640
+fill_from = Vector2(0.5173913, 0)
+fill_to = Vector2(0.51304346, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2shv"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qed5g"]
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8ori"]
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="VerificarEmail" type="Control" unique_id=860566211]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4elkm")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=324455769]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_061fx")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=71292277]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d2shv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1113024972]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=632420052]
+layout_mode = 2
+text = "Enviamos um código de
+verificação para seu Email"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer" unique_id=1605051518]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_qed5g")
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1632117499]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_q8ori")
+text = "Enviar"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
