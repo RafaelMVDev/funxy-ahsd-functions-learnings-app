@@ -82,7 +82,7 @@ alignment = 1
 
 [node name="Label_EmailUsuario" type="Label" parent="PanelContainer/VBoxContainer" unique_id=524522661]
 layout_mode = 2
-text = "Nome de Usuário / Email"
+text = "Email"
 
 [node name="LineEdit_EmailUsuario" type="LineEdit" parent="PanelContainer/VBoxContainer" unique_id=1549777343]
 layout_mode = 2
@@ -97,6 +97,7 @@ text = "Senha"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_3n56f")
+secret = true
 
 [node name="Label_Mensagem" type="Label" parent="PanelContainer/VBoxContainer" unique_id=25646311]
 layout_mode = 2
