@@ -52,13 +52,12 @@ offset_right = 150.0
 offset_bottom = 150.87999
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(180, 230)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_x2j0j")
 script = ExtResource("2_1ap6j")
 
 [node name="PlanoCartesiano" type="Node2D" parent="FundoCartesiano" unique_id=414384481]
-position = Vector2(-30, -80)
+position = Vector2(0, -3)
 script = ExtResource("2_yq54j")
 
 [node name="FundoEixos" type="Node2D" parent="FundoCartesiano/PlanoCartesiano" unique_id=1132876337]
