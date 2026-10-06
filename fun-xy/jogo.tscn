@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dxc46yilk6xh4"]
+
+[ext_resource type="Script" uid="uid://bnq1vyxlaqryy" path="res://jogo.gd" id="1_evvns"]
+[ext_resource type="Script" uid="uid://ctn0rl4l6g05j" path="res://fundo_cartesiano.gd" id="2_1ap6j"]
+[ext_resource type="Script" uid="uid://cyqspl2r62s0p" path="res://plano_cartesiano.gd" id="2_yq54j"]
+
+[sub_resource type="Gradient" id="Gradient_tlqyr"]
+colors = PackedColorArray(1, 1, 1, 1, 0.60784316, 0.38431373, 0.8509804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bkbay"]
+gradient = SubResource("Gradient_tlqyr")
+fill_from = Vector2(0.46521738, 1)
+fill_to = Vector2(0.49130434, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2j0j"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkbay"]
+bg_color = Color(1.1551381e-06, 0.83696663, 0.80000645, 1)
+
+[node name="jogo" type="Control" unique_id=1486048282]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_evvns")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1178007653]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2020393793]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bkbay")
+
+[node name="FundoCartesiano" type="PanelContainer" parent="." unique_id=1298824718]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.358
+anchor_right = 0.5
+anchor_bottom = 0.358
+offset_left = -150.0
+offset_top = -149.12001
+offset_right = 150.0
+offset_bottom = 150.87999
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180, 230)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_x2j0j")
+script = ExtResource("2_1ap6j")
+
+[node name="PlanoCartesiano" type="Node2D" parent="FundoCartesiano" unique_id=414384481]
+position = Vector2(-30, -80)
+script = ExtResource("2_yq54j")
+
+[node name="FundoEixos" type="Node2D" parent="FundoCartesiano/PlanoCartesiano" unique_id=1132876337]
+
+[node name="LinhaFuncao" type="Node2D" parent="FundoCartesiano/PlanoCartesiano" unique_id=1357489098]
+
+[node name="PontosContainer" type="Node2D" parent="FundoCartesiano/PlanoCartesiano" unique_id=1376816209]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FundoCartesiano" unique_id=1271066878]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NovoEixo" type="PanelContainer" parent="FundoCartesiano" unique_id=408469980]
+visible = false
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_bkbay")
