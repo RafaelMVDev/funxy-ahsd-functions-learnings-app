@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b217q64j6vrop" path="res://fundo_plano_cartesiano.gd" id="1_gpm53"]
 [ext_resource type="Script" uid="uid://cp3qohxsj4sxs" path="res://malha_plano_cartesiano.gd" id="2_bq6yp"]
+[ext_resource type="Script" uid="uid://cm5n25siilx6t" path="res://grafico.gd" id="3_bq6yp"]
 
 [sub_resource type="Gradient" id="Gradient_g5kuq"]
 colors = PackedColorArray(0.33333334, 0.7647059, 1, 1, 1, 1, 1, 1)
@@ -18,6 +19,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
 [node name="FundoAzul" type="TextureRect" parent="." unique_id=218444167]
 layout_mode = 1
@@ -32,13 +35,32 @@ metadata/_edit_use_anchors_ = true
 [node name="FundoPlanoCartesiano" type="PanelContainer" parent="." unique_id=1759844400]
 custom_minimum_size = Vector2(300, 300)
 custom_maximum_size = Vector2(300, 300)
-layout_mode = 0
-offset_left = 30.0
-offset_top = 30.0
-offset_right = 330.0
-offset_bottom = 330.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.047000002
+anchor_right = 0.083000004
+anchor_bottom = 0.047000002
+offset_left = 0.11999893
+offset_top = -0.08000183
+offset_right = 300.12
+offset_bottom = 299.91998
 offset_transform_enabled = true
 script = ExtResource("1_gpm53")
 
 [node name="MalhaPlanoCartesiano" type="Node2D" parent="FundoPlanoCartesiano" unique_id=245684022]
 script = ExtResource("2_bq6yp")
+
+[node name="Grafico" type="Node2D" parent="FundoPlanoCartesiano" unique_id=1944659863]
+script = ExtResource("3_bq6yp")
+
+[node name="Line2D" type="Line2D" parent="FundoPlanoCartesiano/Grafico" unique_id=94706968]
+width = 3.0
+default_color = Color(0.9999998, 0.039333317, 0.44989616, 1)
+
+[node name="FuncaoMatematica" type="StaticBody2D" parent="FundoPlanoCartesiano" unique_id=990932833]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="FundoPlanoCartesiano/FuncaoMatematica" unique_id=2061778781]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FundoPlanoCartesiano/FuncaoMatematica" unique_id=850972078]

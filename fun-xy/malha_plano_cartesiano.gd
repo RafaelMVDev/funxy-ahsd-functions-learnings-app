@@ -5,23 +5,21 @@ extends Node2D
 @export var alcance_x: Vector2 = Vector2(-5, 5)
 @export var alcance_y: Vector2 = Vector2(-5, 5)
 @export var passo_grid: float = 1.0
-@export var tamanho_tela: Vector2 
+var tamanho_tela: Vector2
+var ponto_central: Vector2
 
 @export var cor_grade: Color = Color(1.0, 1.0, 1.0, 0.4) 
 @export var cor_eixos: Color = Color.WHITE      
 
-var ponto_central: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var pai = get_parent()
+	tamanho_tela = pai.size
+	ponto_central = tamanho_tela/2 
 	queue_redraw()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func inicializar_tamanho(tamanho_fundo_plano_cateriano: Vector2):
-	tamanho_tela = tamanho_fundo_plano_cateriano
-	ponto_central = tamanho_fundo_plano_cateriano/2.0
-	print("O ponto central é: ", ponto_central)
 
 func math_para_tela(ponto_math: Vector2) -> Vector2:
 	var escala_x = tamanho_tela.x / (alcance_x.y - alcance_x.x)
@@ -65,5 +63,7 @@ func desenhar_malha():
 func _draw() -> void:
 	desenhar_malha()
 	draw_circle(ponto_central, raio, cor_ponto)
+	
+	
 
 	
