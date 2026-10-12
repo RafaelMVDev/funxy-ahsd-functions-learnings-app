@@ -1,4 +1,4 @@
-package br.edu.ifsp.funxy.model;
+package br.edu.ifsp.funxyApp.model;
 
 import br.edu.ifsp.funxyApp.model.enums.TipoItem;
 import br.edu.ifsp.funxyApp.model.enums.EstiloItem;

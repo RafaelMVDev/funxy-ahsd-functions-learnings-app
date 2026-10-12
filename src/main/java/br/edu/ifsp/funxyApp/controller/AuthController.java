@@ -18,7 +18,7 @@ public class AuthController {
 
     public AuthController(AuthService authService) {
         this.authService = authService;
-    }
+    } // Injeção de dependência aqui, authService é passado na inicialização do controller ( também tem conceito de IoC), o Spring faz isso automaticamente
 
     @PostMapping("/login")
     public LoginResponse login(@RequestBody LoginRequest request) {

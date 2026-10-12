@@ -31,11 +31,12 @@ public class AuthService {
                         new BadCredentialsException("E-mail ou senha inválidos"));
 
         if (!passwordEncoder.matches(
-                request.senha(), usuario.getSenhaHash())) {
+                request.senha(), usuario.getSenha())) {
             throw new BadCredentialsException("E-mail ou senha inválidos");
         }
 
-        String token = tokenService.criarToken(usuario);
-        return new LoginResponse(token, usuario.getNome());
+        String refreshToken = tokenService.criarRefreshToken(usuario);
+        String acessToken = tokenService.criarAcessToken(usuario);
+        return new LoginResponse(acessToken,refreshToken, usuario.getNome());
     }
 }
