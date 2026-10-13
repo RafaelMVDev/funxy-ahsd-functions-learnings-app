@@ -2,10 +2,8 @@ package br.edu.ifsp.funxyApp.model;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "atividade_pratica")
-public class AtividadePratica extends Atividade {
-
-    private Float dificuldade;
+@Table(name = "Atividades_pratica")
+public class AtividadePratica extends Atividades {
 
     @Column(name = "media_movimentos")
     private Integer mediaMovimentos;
@@ -13,19 +11,19 @@ public class AtividadePratica extends Atividade {
     @Column(name = "malha_pontos")
     private String malhaPontos;
 
-    @Column(name = "pontuacao_maxima")
-    private Integer pontuacaoMaxima;
+    @Column(name = "coordenadas_chegada")
+    private String coordenadasChegada;
+
+    /*@Column(name = "pontuacao_maxima")
+    private Integer pontuacaoMaxima;* colocar pontuação máxima? */
 
     public AtividadePratica() {
     }
 
-    public Float getDificuldade() {
-        return dificuldade;
-    }
 
-    public void setDificuldade(Float dificuldade) {
-        this.dificuldade = dificuldade;
-    }
+    public String getCoordenadaChegada(){ return coordenadasChegada;}
+
+    public void setCoordenadaChegada(String coordenadasChegada){ this.coordenadasChegada = coordenadasChegada; }
 
     public Integer getMediaMovimentos() {
         return mediaMovimentos;
@@ -42,7 +40,7 @@ public class AtividadePratica extends Atividade {
     public void setMalhaPontos(String malhaPontos) {
         this.malhaPontos = malhaPontos;
     }
-
+    /*
     public Integer getPontuacaoMaxima() {
         return pontuacaoMaxima;
     }
@@ -50,4 +48,6 @@ public class AtividadePratica extends Atividade {
     public void setPontuacaoMaxima(Integer pontuacaoMaxima) {
         this.pontuacaoMaxima = pontuacaoMaxima;
     }
+    */
+
 }

@@ -1,7 +1,7 @@
 package br.edu.ifsp.funxyApp.model;
 import jakarta.persistence.*;
 
-import br.edu.ifsp.funxy.model.Item;
+import br.edu.ifsp.funxyApp.model.Item;
 @Entity
 @Table(name = "item_loja")
 public class ItemLoja extends Item{

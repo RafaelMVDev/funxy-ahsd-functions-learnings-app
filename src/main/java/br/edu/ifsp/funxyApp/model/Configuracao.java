@@ -9,8 +9,7 @@ public class Configuracao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_config")
-    private long id;
-
+    private Long id;
 
     @OneToOne
     @JoinColumn(name="id_usuario")
@@ -21,7 +20,7 @@ public class Configuracao {
 
     private String idioma;
 
-    private Boolean notificacoes;
+    private Boolean notificacao;
     public Configuracao(){
 
     }
@@ -58,11 +57,11 @@ public class Configuracao {
         this.idioma = idioma;
     }
 
-    public Boolean getNotificacoes() {
-        return notificacoes;
+    public Boolean getNotificacao() {
+        return notificacao;
     }
 
-    public void setNotificacoes(Boolean notificacoes) {
-        this.notificacoes = notificacoes;
+    public void setNotificacao(Boolean notificacao) {
+        this.notificacao = notificacao;
     }
 }

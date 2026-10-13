@@ -3,8 +3,8 @@ package br.edu.ifsp.funxyApp.model;
 import br.edu.ifsp.funxyApp.model.enums.TipoConquista;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "conquista")
-public class Conquista {
+@Table(name = "conquistas")
+public class Conquistas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class Conquista {
 
     private String descricao;
 
-    public Conquista() {
+    public Conquistas() {
     }
 
     public Long getId() {

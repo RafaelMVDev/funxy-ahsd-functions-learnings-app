@@ -3,11 +3,12 @@ package br.edu.ifsp.funxyApp.model;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "conquista_usuario")
-public class ConquistaUsuario {
+@Table(name = "conquista_usuario_acessa")
+public class ConquistaUsuarioAcessa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_conquista_usuario")
     private Long id;
 
     @ManyToOne
@@ -16,11 +17,11 @@ public class ConquistaUsuario {
 
     @ManyToOne
     @JoinColumn(name = "id_conquista")
-    private Conquista conquista;
+    private Conquistas conquistas;
 
     private LocalDateTime data;
 
-    public ConquistaUsuario() {
+    public ConquistaUsuarioAcessa() {
     }
 
     public Long getId() {
@@ -35,12 +36,12 @@ public class ConquistaUsuario {
         this.usuario = usuario;
     }
 
-    public Conquista getConquista() {
-        return conquista;
+    public Conquistas getConquista() {
+        return conquistas;
     }
 
-    public void setConquista(Conquista conquista) {
-        this.conquista = conquista;
+    public void setConquista(Conquistas conquistas) {
+        this.conquistas = conquistas;
     }
 
     public LocalDateTime getData() {

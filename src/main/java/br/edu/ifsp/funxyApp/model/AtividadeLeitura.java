@@ -2,10 +2,10 @@ package br.edu.ifsp.funxyApp.model;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "atividade_leitura")
-public class AtividadeLeitura extends Atividade {
+@Table(name = "Atividades_leitura")
+public class AtividadeLeitura extends Atividades {
 
-    private String texto;
+    private String textos;
 
     private String imagens;
 
@@ -13,11 +13,11 @@ public class AtividadeLeitura extends Atividade {
     }
 
     public String getTexto() {
-        return texto;
+        return textos;
     }
 
     public void setTexto(String texto) {
-        this.texto = texto;
+        this.textos = texto;
     }
 
     public String getImagens() {

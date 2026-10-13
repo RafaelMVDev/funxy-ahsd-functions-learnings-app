@@ -2,9 +2,9 @@ package br.edu.ifsp.funxyApp.model;
 import br.edu.ifsp.funxyApp.model.enums.TipoAtividade;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "atividade")
+@Table(name = "Atividades")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Atividade {
+public class Atividades {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,12 +25,12 @@ public class Atividade {
     private String titulo;
 
     @Column(name = "id_trilha")
-    private Integer idTrilha;
+    private Long idTrilha;
 
     @Enumerated(EnumType.STRING)
     private TipoAtividade tipo;
 
-    public Atividade() {
+    public Atividades() {
     }
 
     public Long getId() {
@@ -81,11 +81,11 @@ public class Atividade {
         this.titulo = titulo;
     }
 
-    public Integer getIdTrilha() {
+    public Long getIdTrilha() {
         return idTrilha;
     }
 
-    public void setIdTrilha(Integer idTrilha) {
+    public void setIdTrilha(Long idTrilha) {
         this.idTrilha = idTrilha;
     }
 
