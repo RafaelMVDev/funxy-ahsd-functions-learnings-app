@@ -238,3 +238,10 @@ CREATE INDEX idx_progresso_atividade
 
 CREATE INDEX idx_sessoes_usuario
     ON Sessoes (id_usuario);
+
+-- DADOS MOCK
+INSERT INTO Usuario (email, senha_hash,nome)
+VALUES ( 'admin@email.com', '$2a$10$rfUqfWJG6QypSIYrnLsM8ORUSbbOHpAfB0rbbEfr6cppOVajq4xSG','Rafael MV');
+
+-- Usuario: admin@email.com
+-- senha: 123456

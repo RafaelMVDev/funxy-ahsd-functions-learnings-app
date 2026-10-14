@@ -16,21 +16,31 @@ import org.springframework.security.web.SecurityFilterChain;
 // Para injeção de dependencia: Sempre q um bean precisar de um PasswordEncoder, vai passar esses
 @Configuration
 public class ConfigSeguranca{
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.disable()) // Desativa CSRF já que é uma API REST
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // API REST não guarda sessão
+                .csrf(csrf -> csrf.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll() // Libera rotas de login/registro (ajuste conforme seu endpoint)
-                        .requestMatchers("/h2-console/**").permitAll() // Se estiver usando o H2 Console
-                        .anyRequest().authenticated() // O resto exige autenticação (via token)
+                        .anyRequest().permitAll() // Libera TUDO temporariamente para testes
                 )
-                // Se estiver usando H2 Database, pode precisar disso para o console carregar:
                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))
                 .build();
     }
+    /*
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(csrf -> csrf.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/auth/login", "/auth/**").permitAll() // Libera explicitamente as rotas de auth
+                        .requestMatchers("/h2-console/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
+                .build();
+    } */
 
     @Bean
     public PasswordEncoder passwordEncoder() {

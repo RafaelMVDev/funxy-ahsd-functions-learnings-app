@@ -26,17 +26,23 @@ public class AuthService {
     }
 
     public LoginResponse login(LoginRequest request) {
+        System.out.println("Recebendo login no service");
+        System.out.println(request.email());
         Usuario usuario = usuarios.findByEmail(request.email())
                 .orElseThrow(() ->
-                        new BadCredentialsException("E-mail ou senha inválidos"));
 
+                        new BadCredentialsException("E-mail ou senha inválidos"));
+        System.out.println(usuario);
+        System.out.println(request.senha());
+        System.out.println(usuario.getSenha());
         if (!passwordEncoder.matches(
                 request.senha(), usuario.getSenha())) {
             throw new BadCredentialsException("E-mail ou senha inválidos");
         }
-
+        System.out.println("RETORNANDO121312312!!!!!!!!!!!!!!!!!!");
         String refreshToken = tokenService.criarRefreshToken(usuario);
         String acessToken = tokenService.criarAcessToken(usuario);
+        System.out.println("RETORNANDO!!!!!!!!!!!!!!!!!!");
         return new LoginResponse(acessToken,refreshToken, usuario.getNome());
     }
 }
