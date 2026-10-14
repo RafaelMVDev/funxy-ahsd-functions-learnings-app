@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "itens")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Item {
+public class Itens {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +16,7 @@ public class Item {
     private Long id;
 
     private String descricao;
-
-    private String imagem;
-
+    @Column(name = "meta_dados")
     private String metadados;
 
     @Enumerated(EnumType.STRING)
@@ -27,7 +25,7 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private EstiloItem estilo;
 
-    public Item() {
+    public Itens() {
     }
 
     public Long getId() {
@@ -44,14 +42,6 @@ public class Item {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
     }
 
     public String getMetadados() {

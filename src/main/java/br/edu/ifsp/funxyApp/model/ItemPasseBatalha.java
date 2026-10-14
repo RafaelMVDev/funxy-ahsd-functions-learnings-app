@@ -1,10 +1,10 @@
 package br.edu.ifsp.funxyApp.model;
 
 import jakarta.persistence.*;
-import br.edu.ifsp.funxyApp.model.Item;
+
 @Entity
 @Table(name = "item_passe_batalha")
-public class ItemPasseBatalha extends Item {
+public class ItemPasseBatalha extends Itens {
 
     @Column(name= "xp_necessario")
     private long xpNecessario;

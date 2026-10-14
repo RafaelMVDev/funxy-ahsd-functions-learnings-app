@@ -1,13 +1,13 @@
 package br.edu.ifsp.funxyApp.model;
 
 import jakarta.persistence.*;
-import br.edu.ifsp.funxyApp.model.Item;
 
 @Entity
 @Table(name = "inventario")
 public class Inventario {
 
     @Id
+    @Column(name="id_inventario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -17,7 +17,7 @@ public class Inventario {
 
     @ManyToOne
     @JoinColumn(name = "id_item")
-    private Item item;
+    private Itens itens;
 
     private Boolean equipado;
 
@@ -36,12 +36,12 @@ public class Inventario {
         this.usuario = usuario;
     }
 
-    public Item getItem() {
-        return item;
+    public Itens getItem() {
+        return itens;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItem(Itens itens) {
+        this.itens = itens;
     }
 
     public Boolean getEquipado() {

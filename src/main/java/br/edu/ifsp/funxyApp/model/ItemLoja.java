@@ -1,21 +1,20 @@
 package br.edu.ifsp.funxyApp.model;
 import jakarta.persistence.*;
 
-import br.edu.ifsp.funxyApp.model.Item;
 @Entity
 @Table(name = "item_loja")
-public class ItemLoja extends Item{
+public class ItemLoja extends Itens {
 
-    private Integer valor;
+    private Long valor;
 
     public ItemLoja() {
     }
 
-    public Integer getValor() {
+    public Long getValor() {
         return valor;
     }
 
-    public void setValor(Integer valor) {
+    public void setValor(Long valor) {
         this.valor = valor;
     }
 }
