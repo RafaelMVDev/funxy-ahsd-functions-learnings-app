@@ -1,6 +1,7 @@
 package br.edu.ifsp.funxyApp.service;
 
-import br.edu.ifsp.funxyApp.dto.*;
+import br.edu.ifsp.funxyApp.dto.auth.LoginRequestDto;
+import br.edu.ifsp.funxyApp.dto.auth.LoginResponseDto;
 import br.edu.ifsp.funxyApp.model.Usuario;
 import br.edu.ifsp.funxyApp.repository.UsuarioRepository;
 import br.edu.ifsp.funxyApp.security.TokenService;
@@ -17,7 +18,7 @@ public class AuthService {
 
     public AuthService(
             UsuarioRepository usuarios,
-            PasswordEncoder passwordEncoder,
+            PasswordEncoder passwordEncoder, // Injetado através de setup em ConfigSeguranca
             TokenService tokenService
     ) {
         this.usuarios = usuarios;
@@ -25,24 +26,23 @@ public class AuthService {
         this.tokenService = tokenService;
     }
 
-    public LoginResponse login(LoginRequest request) {
+    public LoginResponseDto login(LoginRequestDto request) {
         System.out.println("Recebendo login no service");
-        System.out.println(request.email());
+
+        // -- Checando se o usuário existe no bdd
         Usuario usuario = usuarios.findByEmail(request.email())
                 .orElseThrow(() ->
-
-                        new BadCredentialsException("E-mail ou senha inválidos"));
-        System.out.println(usuario);
-        System.out.println(request.senha());
-        System.out.println(usuario.getSenha());
+                        new BadCredentialsException("E-mail ou senha inválidos")
+                );
+        // -- Se existir compara a senha com a presente no banco
         if (!passwordEncoder.matches(
                 request.senha(), usuario.getSenha())) {
             throw new BadCredentialsException("E-mail ou senha inválidos");
         }
-        System.out.println("RETORNANDO121312312!!!!!!!!!!!!!!!!!!");
-        String refreshToken = tokenService.criarRefreshToken(usuario);
+
+        String refreshToken = tokenService.criarRefreshToken(usuario); // Colocar no bdd o refresh token, mas primeiro
         String acessToken = tokenService.criarAcessToken(usuario);
         System.out.println("RETORNANDO!!!!!!!!!!!!!!!!!!");
-        return new LoginResponse(acessToken,refreshToken, usuario.getNome());
+        return new LoginResponseDto(acessToken,refreshToken, usuario.getNome());
     }
 }

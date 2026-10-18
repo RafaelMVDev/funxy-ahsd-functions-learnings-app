@@ -18,7 +18,7 @@ public class TokenService {
 
     private static final String ISSUER = "funxy-learning-app"; // q isso
     private static final Duration DURACAO_ACESS_TOKEN = Duration.ofHours(2); // token dura 2 horas até expirar
-    private static final Duration DURACAO_REFRESH_TOKEN = Duration.ofHours(720); // token dura 720 horas até expirar
+    private static final Duration DURACAO_REFRESH_TOKEN = Duration.ofHours(720); // token dura 720 horas até expirar ( + ou - 1 mês )
 
 
     private final Algorithm algoritmo;
@@ -26,7 +26,7 @@ public class TokenService {
     private final JWTVerifier verificadorRefreshToken;
 
 
-    public TokenService(@Value("${app.jwt.secret}") String segredoBase64) {
+    public TokenService(@Value("${app.jwt.secret}") String segredoBase64) { //@Value aqui pega a variavél no application.properties
         byte[] segredo = Base64.getDecoder().decode(segredoBase64);
 
         if (segredo.length < 32) {
