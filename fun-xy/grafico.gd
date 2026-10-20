@@ -4,18 +4,17 @@ extends Node2D
 @onready var posicao_pai = get_parent().global_position
 
 var comeco_x: float #Posição em pixels do máximo negativo de x
-
+#0.0
 var fim_x: float #Posição em pixels do máximo positivo de x
-
+#300
 var limite_y: float #Posição em pixels do máximo nagativo de y
-
+#300
 var topo_y: float #Posição em pixels do máximo positivo de y
-
+#0.0
 var ponto_central: Vector2
-
-var unidade: float
-
+#(150.0, 150.0)
 var escala_pixel: float
+#30
 
 func _ready() -> void:
 	var PlanoCartesiano = get_parent()
@@ -27,16 +26,11 @@ func _ready() -> void:
 	ponto_central = PlanoCartesiano.ponto_central
 	escala_pixel = PlanoCartesiano.size.x / (Malha.alcance_x.y - Malha.alcance_x.x)
 	desenhar_função()
-	print(comeco_x)
-	print(fim_x)
-	print(limite_y)
-	print(topo_y)
-	print(ponto_central)
-	print(ponto_central)
-	print(escala_pixel)
 	
 func calcular_funcao(valor_x): #Depois precisa do argumento "variável"
-	var fx = - 2*escala_pixel + (ponto_central.y + (ponto_central.x - valor_x))
+	#var fx = - 2*escala_pixel + (ponto_central.y + (ponto_central.x - valor_x))
+	var fx = valor_x
+
 	#var fx = ponto_central.y + (ponto_central.x - valor_x)
 	return fx
 	
