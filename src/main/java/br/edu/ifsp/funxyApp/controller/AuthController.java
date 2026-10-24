@@ -28,7 +28,7 @@ public class AuthController {
     public LoginResponseDto login(@RequestBody LoginRequestDto request) {
 
         System.out.println("RECEBENDO REQUISIÇÃO");
-    return authService.login(request);
+            return authService.login(request);
     }
 
 
@@ -36,6 +36,7 @@ public class AuthController {
     @PostMapping("/registro")
     public RegistroResponseDto login(@RequestBody RegistroRequestDto request) {
 
+        return authService.register(request);
 
     }
 

@@ -1,7 +1,7 @@
 package br.edu.ifsp.funxyApp.service;
 
-import br.edu.ifsp.funxyApp.dto.auth.LoginRequestDto;
-import br.edu.ifsp.funxyApp.dto.auth.LoginResponseDto;
+import br.edu.ifsp.funxyApp.dto.auth.*;
+
 import br.edu.ifsp.funxyApp.model.Usuario;
 import br.edu.ifsp.funxyApp.repository.UsuarioRepository;
 import br.edu.ifsp.funxyApp.security.TokenService;
@@ -44,5 +44,23 @@ public class AuthService {
         String acessToken = tokenService.criarAcessToken(usuario);
         System.out.println("RETORNANDO!!!!!!!!!!!!!!!!!!");
         return new LoginResponseDto(acessToken,refreshToken, usuario.getNome());
+    }
+
+    // Registro
+    public RegistroResponseDto register(RegistroRequestDto request){
+        String nome = request.nome();
+        String email = request.email();
+        String senha = request.senha();
+
+        if (usuarios.findByEmail(email).isPresent()){
+            return new RegistroResponseDto("e-mail em uso!");
+        }
+
+        if (usuarios.findByNome(nome).isPresent()){
+            return new RegistroResponseDto("nome em uso!");
+        }
+
+        Usuario usuarioNovo = Usuario();
+        return new RegistroResponseDto("Conta criada!");
     }
 }

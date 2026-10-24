@@ -12,9 +12,7 @@ public record RegistroRequestDto(
         if (email != null) {
             email = email.trim().toLowerCase();
         }
-        if (senha != null){
-            senha = senha.trim();
-        }
+
         if (nome != null){
             nome = nome.trim();
         }
