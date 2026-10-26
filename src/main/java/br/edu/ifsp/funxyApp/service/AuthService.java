@@ -60,7 +60,12 @@ public class AuthService {
             return new RegistroResponseDto("nome em uso!");
         }
 
-        Usuario usuarioNovo = Usuario();
+        // Registrando o usuário no BDD
+        Usuario usuarioNovo = new Usuario();
+        usuarioNovo.setNome(nome);
+        usuarioNovo.setEmail(email);
+        usuarioNovo.setSenha(passwordEncoder.encode(senha));
+
         return new RegistroResponseDto("Conta criada!");
     }
 }

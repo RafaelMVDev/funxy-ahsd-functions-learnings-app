@@ -6,6 +6,7 @@ import br.edu.ifsp.funxyApp.dto.auth.LoginResponseDto;
 import br.edu.ifsp.funxyApp.dto.auth.RegistroRequestDto;
 import br.edu.ifsp.funxyApp.dto.auth.RegistroResponseDto;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -34,7 +35,7 @@ public class AuthController {
 
     // ===== REGSITRO ======
     @PostMapping("/registro")
-    public RegistroResponseDto login(@RequestBody RegistroRequestDto request) {
+    public RegistroResponseDto login(@Valid @RequestBody RegistroRequestDto request) {
 
         return authService.register(request);
 

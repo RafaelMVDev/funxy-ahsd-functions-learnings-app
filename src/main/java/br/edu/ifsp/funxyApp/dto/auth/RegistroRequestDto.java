@@ -1,19 +1,27 @@
 package br.edu.ifsp.funxyApp.dto.auth;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import java.util.Locale;
 
 public record RegistroRequestDto(
-        @NotBlank(message = "É necessario um nome para registro") String nome,
-        @NotBlank(message = "É necessario uma senha para registro") String senha,
-        @Email @NotBlank(message = "É necessario um email para registro") String email ) {
+        @NotBlank(message = "É necessário um nome para registro")
+        String nome,
 
-    // Validação de entrada no nivel de dto
+        @NotBlank(message = "É necessária uma senha para registro")
+        String senha,
+
+        @NotBlank(message = "É necessário um e-mail para registro")
+        @Email(message = "Formato de e-mail inválido")
+        String email
+) {
+    // Normalização dos dados de entrada
     public RegistroRequestDto {
         if (email != null) {
-            email = email.trim().toLowerCase();
+            email = email.trim().toLowerCase(Locale.ROOT);
         }
 
-        if (nome != null){
+        if (nome != null) {
             nome = nome.trim();
         }
     }
