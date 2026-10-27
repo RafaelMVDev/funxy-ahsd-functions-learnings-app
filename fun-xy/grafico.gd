@@ -10,7 +10,6 @@ var topo_y: float
 var ponto_central: Vector2
 var escala_pixel: float
 
-# Guardamos o alcance matemático do eixo X para usar no cálculo
 var alcance_x_min: float = -5.0
 var alcance_x_max: float = 5.0
 
@@ -23,7 +22,7 @@ func _ready() -> void:
 	topo_y = PlanoCartesiano.origem.y
 	ponto_central = PlanoCartesiano.ponto_central
 	
-	# Pega os valores reais da malha se existirem
+
 	if Malha:
 		alcance_x_min = Malha.alcance_x.x
 		alcance_x_max = Malha.alcance_x.y
@@ -31,11 +30,8 @@ func _ready() -> void:
 	else:
 		escala_pixel = 30.0
 
-	# Desenha uma função inicial de exemplo (opcional)
-	atualizar_grafico("x * x")
 	
 func atualizar_grafico(expressao_str: String):
-	# Usa o alcance da malha para definir o x_min e x_max do gráfico
 	var lista_de_pontos = calcular_pontos_funcao(expressao_str, alcance_x_min, alcance_x_max, 200)
 	
 	if not lista_de_pontos.is_empty():
@@ -55,13 +51,10 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 		var x_matematico = x_min + (i * passo_x)
 		var y_matematico = expr.execute([x_matematico])
 
-		# CONVERSÃO PARA PIXELS DO PLANO CARTESIANO:
-		# Transforma a coordenada matemática (x, y) em coordenadas de tela baseadas no ponto central
 		var pixel_x = ponto_central.x + (x_matematico * escala_pixel)
-		var pixel_y = ponto_central.y - (y_matematico * escala_pixel) # Invertido porque o Y do Godot cresce para baixo
+		var pixel_y = ponto_central.y - (y_matematico * escala_pixel) 
 		
-		# Opcional: filtrar pontos que fogem muito dos limites visuais do plano
-		if pixel_y >= topo_y - 200 and pixel_y <= limite_y + 200:
+		if pixel_y >= topo_y and pixel_y <= limite_y:
 			pontos.append(Vector2(pixel_x, pixel_y))
 		
 	return pontos
