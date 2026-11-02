@@ -37,11 +37,18 @@ func desenhar_malha():
 		x += passo_grid
 
 	var y = alcance_y.x
+	var linha = -5
 	while y <= alcance_y.y:
 		var inicio = math_para_tela(Vector2(alcance_x.x, y))
 		var fim = math_para_tela(Vector2(alcance_x.y, y))
+		draw_string(ThemeDB.fallback_font, Vector2(ponto_central.x + 3, ponto_central.y + 11), "0", HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
+		
+		if linha != 0:
+			draw_string(ThemeDB.fallback_font, Vector2(ponto_central.x + 2, inicio.y+3), str(linha), HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
+			draw_string(ThemeDB.fallback_font, Vector2(inicio.y-5, ponto_central.x + 11), str(-linha), HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
 		draw_line(inicio, fim, cor_grade, 1.0)
 		y += passo_grid
+		linha += 1
 
 	var inicio_eixo_x = math_para_tela(Vector2(alcance_x.x, 0))
 	var fim_eixo_x = math_para_tela(Vector2(alcance_x.y, 0))

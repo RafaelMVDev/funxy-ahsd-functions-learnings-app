@@ -2,20 +2,38 @@ extends Control
 
 @onready var VisorFuncao: TextEdit = $VisoresTeclado/VisorFuncao
 @onready var VisorDominio: TextEdit = $VisoresTeclado/VisorDominio
-@onready var vbox: VBoxContainer = $VisoresTeclado/VBoxContainer
+@onready var vboxFuncao: VBoxContainer = $VisoresTeclado/VBoxContainerFuncao
+@onready var vboxDominio: VBoxContainer = $VisoresTeclado/VBoxContainerDominio
 
+signal voltar_movimento()
 signal formula_enviada(expressao: String)
+signal dominio_enviado(dominiio: String)
 
 var visor_ativo: TextEdit = null
 
 func _ready() -> void:
-	VisorFuncao.focus_entered.connect(_on_visor_focado.bind(VisorFuncao))
-	VisorDominio.focus_entered.connect(_on_visor_focado.bind(VisorDominio))
-	for linha in vbox.get_children():
+	VisorFuncao.focus_entered.connect(_on_visor_funcao)
+	VisorDominio.focus_entered.connect(_on_visor_dominio)
+	for linha in vboxFuncao.get_children():
 		if linha is HBoxContainer:
 			for botao in linha.get_children():
 				if botao is Button:
 					botao.pressed.connect(_on_botao_pressionado.bind(botao))
+	for linha in vboxDominio.get_children():
+		if linha is HBoxContainer:
+			for botao in linha.get_children():
+				if botao is Button:
+					botao.pressed.connect(_on_botao_pressionado.bind(botao))
+
+func _on_visor_funcao():
+	_on_visor_focado(VisorFuncao)
+	vboxFuncao.visible = true
+	vboxDominio.visible = false
+	
+func _on_visor_dominio():
+	_on_visor_focado(VisorDominio)
+	vboxFuncao.visible = false
+	vboxDominio.visible = true
 
 func _on_visor_focado(node: TextEdit):
 	if visor_ativo != null and is_instance_valid(visor_ativo):
@@ -49,8 +67,13 @@ func _on_botao_pressionado(botao_clicado: Button) -> void:
 	elif texto_do_botao == "⌫":
 		print("reconhece o backspace")
 		_apagar_com_backspace()
+	elif texto_do_botao == "↩":
+		emit_signal("voltar_movimento")
 	elif texto_do_botao == "ok":
-		emit_signal("formula_enviada", visor_ativo.text) # Executa a conta
+		if visor_ativo == VisorFuncao:
+			emit_signal("formula_enviada", visor_ativo.text) 
+		else:
+			emit_signal("dominio_enviado", visor_ativo.text)
 	else:
 		_inserir_texto_no_cursor(texto_do_botao) # Adiciona o número ou operador no visor
 

@@ -81,10 +81,6 @@ script = ExtResource("2_bq6yp")
 [node name="Grafico" type="Node2D" parent="FundoPlanoCartesiano" unique_id=1944659863]
 script = ExtResource("3_bq6yp")
 
-[node name="Line2D" type="Line2D" parent="FundoPlanoCartesiano/Grafico" unique_id=94706968]
-width = 3.0
-default_color = Color(0.9999998, 0.039333317, 0.44989616, 1)
-
 [node name="FuncaoMatematica" type="StaticBody2D" parent="FundoPlanoCartesiano" unique_id=990932833]
 visible = false
 
@@ -128,17 +124,17 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_styles/focus = SubResource("StyleBoxFlat_27tq7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
+[node name="VBoxContainerFuncao" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
 custom_minimum_size = Vector2(300, 200)
 custom_maximum_size = Vector2(300, 200)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Linha1" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainer" unique_id=1174486339]
+[node name="Linha1" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao" unique_id=1174486339]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha1" unique_id=1916012218]
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1916012218]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
@@ -146,170 +142,360 @@ text = "x"
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha1" unique_id=1078667999]
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1078667999]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "+"
 expand_icon = true
 
-[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha1" unique_id=1174737345]
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1174737345]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "-"
 expand_icon = true
 
-[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha1" unique_id=1433566313]
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1433566313]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "7"
 expand_icon = true
 
-[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha1" unique_id=2020110775]
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=2020110775]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "8"
 expand_icon = true
 
-[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha1" unique_id=1331607929]
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1331607929]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "9"
 expand_icon = true
 
-[node name="Linha2" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainer" unique_id=1410628994]
+[node name="Linha2" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao" unique_id=1410628994]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha2" unique_id=207601754]
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=207601754]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "|  |"
 expand_icon = true
 
-[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha2" unique_id=45831493]
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=45831493]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "*"
 expand_icon = true
 
-[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha2" unique_id=493771104]
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=493771104]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "/"
 expand_icon = true
 
-[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha2" unique_id=1617515146]
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=1617515146]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "4"
 expand_icon = true
 
-[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha2" unique_id=11256809]
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=11256809]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "5"
 expand_icon = true
 
-[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha2" unique_id=1787501387]
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=1787501387]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "6"
 expand_icon = true
 
-[node name="Linha3" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainer" unique_id=120483738]
+[node name="Linha3" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao" unique_id=120483738]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha3" unique_id=413978932]
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=413978932]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "**"
 
-[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha3" unique_id=972244404]
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=972244404]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "("
 expand_icon = true
 
-[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha3" unique_id=1137849605]
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=1137849605]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = ")"
 expand_icon = true
 
-[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha3" unique_id=1746767166]
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=1746767166]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "1"
 expand_icon = true
 
-[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha3" unique_id=969948741]
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=969948741]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "2"
 expand_icon = true
 
-[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha3" unique_id=52338872]
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=52338872]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "3"
 expand_icon = true
 
-[node name="Linha4" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainer" unique_id=1098824237]
+[node name="Linha4" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao" unique_id=1098824237]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha4" unique_id=1724687683]
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=1724687683]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "del"
 
-[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha4" unique_id=792394701]
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=792394701]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "⌫"
 expand_icon = true
 
-[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha4" unique_id=1387342814]
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=1387342814]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
+text = "↩"
 expand_icon = true
 
-[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha4" unique_id=535163228]
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=535163228]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "."
 expand_icon = true
 
-[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha4" unique_id=1842357710]
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=1842357710]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "0"
 expand_icon = true
 
-[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainer/Linha4" unique_id=430525020]
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=430525020]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "ok"
+expand_icon = true
+
+[node name="VBoxContainerDominio" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1602529930]
+custom_minimum_size = Vector2(300, 200)
+custom_maximum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Linha1" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio" unique_id=1282905264]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1707563898]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "x"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=38919868]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "<"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1945481151]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = ">"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1896928148]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "7"
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=2103363147]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "8"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1902784741]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "9"
+expand_icon = true
+
+[node name="Linha2" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio" unique_id=336056481]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=555686591]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "R"
+expand_icon = true
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=1533555230]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "Z"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=430662753]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "N"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=57704876]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "4"
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=933581421]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "5"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=1919980239]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "6"
+expand_icon = true
+
+[node name="Linha3" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio" unique_id=55768577]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=1196996221]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "<="
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=1338798706]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = ">="
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=82167364]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = ")"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=689222502]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "1"
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=716566260]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "2"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=1366179876]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "3"
+expand_icon = true
+
+[node name="Linha4" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio" unique_id=1237108948]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=610428546]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "del"
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=386332545]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "⌫"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=577116778]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "↩"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=585000010]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "."
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=223143081]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "0"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=825235454]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
 layout_mode = 2

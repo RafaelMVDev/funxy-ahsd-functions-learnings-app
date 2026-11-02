@@ -8,7 +8,6 @@ var origem: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	print("Tamanho: ", tamanho)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
