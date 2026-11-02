@@ -239,9 +239,175 @@ CREATE INDEX idx_progresso_atividade
 CREATE INDEX idx_sessoes_usuario
     ON Sessoes (id_usuario);
 
+-- REGRAS DOS ENUMS
+-- =========================================================
+-- 1. REGRAS DOS ENUMS
+-- =========================================================
+
+ALTER TABLE Itens ADD CONSTRAINT ck_itens_tipo
+    CHECK (tipo IN ('passe', 'loja'));
+
+ALTER TABLE Itens ADD CONSTRAINT ck_itens_estilo
+    CHECK (estilo IN ('avatar', 'moldura'));
+
+ALTER TABLE Conquistas ADD CONSTRAINT ck_conquistas_tipo
+    CHECK (tipo IN ('sequencia', 'conclusao', 'rank', 'moeda'));
+
+ALTER TABLE Atividades ADD CONSTRAINT ck_atividades_tipo
+    CHECK (tipo IN ('pratica', 'leitura'));
+
+ALTER TABLE Configuracao ADD CONSTRAINT ck_configuracao_tema
+    CHECK (tema IN ('claro', 'escuro'));
 -- DADOS MOCK
 INSERT INTO Usuario (email, senha_hash,nome)
 VALUES ( 'admin@email.com', '$2a$10$rfUqfWJG6QypSIYrnLsM8ORUSbbOHpAfB0rbbEfr6cppOVajq4xSG','Rafael MV');
 
 -- Usuario: admin@email.com
 -- senha: 123456
+
+
+---- DADO USUARIO MOCK
+-- Sem início = não iniciada; só início = em andamento;
+-- início e conclusão = concluída.
+ALTER TABLE Progresso ALTER COLUMN datetime_inicio DROP NOT NULL;
+
+ALTER TABLE Progresso ADD CONSTRAINT ck_progresso_inicio
+    CHECK (datetime_conclusao IS NULL OR datetime_inicio IS NOT NULL);
+
+ALTER TABLE Progresso ADD COLUMN status VARCHAR(20) GENERATED ALWAYS AS (
+    CASE
+        WHEN datetime_inicio IS NULL THEN 'nao_iniciado'
+        WHEN datetime_conclusao IS NULL THEN 'em_andamento'
+        ELSE 'concluido'
+        END
+    );
+
+-- =========================================================
+-- 2. USUÁRIA DE TESTE E CONFIGURAÇÃO
+-- =========================================================
+
+SET AUTOCOMMIT FALSE;
+
+-- Login: lia@funxy.example
+-- Senha: FunxyDemo42!
+-- XP: 20 + 40 + 40 + 20 = 120 pelas quatro atividades concluídas.
+-- Moedas: 46 das atividades + 25 das conquistas - 30 da loja = 41.
+INSERT INTO Usuario (id_usuario, email, senha_hash, nome, sequencia, xp, moedas)
+VALUES (
+           -7100,
+           'lia@funxy.example',
+           '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
+           'Lia Funxy',
+           3, 120, 41
+       );
+
+INSERT INTO Configuracao (id_usuario, tema, idioma, notificacao)
+VALUES (-7100, 'escuro', 'pt-BR', TRUE);
+
+-- =========================================================
+-- 3. ATIVIDADES
+-- O schema original tem id_trilha, mas não tem a tabela Trilha.
+-- -7101: Função afim | -7102: Função quadrática
+-- =========================================================
+
+INSERT INTO Atividades
+(id_atividade, id_trilha, numero_atividade, titulo, tipo, descricao, xp_base, moeda_base)
+VALUES
+    (-7111, -7101, 1, 'O preço da corrida', 'leitura',
+     'Interprete f(x)=2x+3.', 20, 8),
+    (-7112, -7101, 2, 'Siga a reta', 'pratica',
+     'Percorra y=2x+3 até x=3.', 40, 15),
+    (-7113, -7101, 3, 'O zero da reta', 'pratica',
+     'Encontre o zero de y=4-x.', 40, 15),
+    (-7121, -7102, 1, 'Do quadrado à parábola', 'leitura',
+     'Compare entradas opostas em y=x².', 20, 8),
+    (-7122, -7102, 2, 'Espelho da parábola', 'pratica',
+     'Percorra y=x² de x=-2 até x=2.', 50, 20),
+    (-7123, -7102, 3, 'Localize o vértice', 'leitura',
+     'Encontre o mínimo de y=x²+1.', 20, 8);
+
+INSERT INTO Atividades_Leitura (id_atividade, textos) VALUES
+                                                          (-7111, '["A corrida custa 3 moedas mais 2 por km.","Com 4 km, f(4)=11 moedas."]'),
+                                                          (-7121, '["Se x=2, então x²=4.","Se x=-2, também temos x²=4."]'),
+                                                          (-7123, '["O menor valor de y=x²+1 é 1.","O vértice é (0,1)."]');
+
+INSERT INTO Atividades_Imagem (id_atividade, img_url)
+VALUES (-7111, '/mock/funxy/reta-tarifa.svg');
+
+INSERT INTO Atividades_Pratica
+(id_atividade, media_movimentos, malha_pontos, coordenadas_chegada)
+VALUES
+    (-7112, 3, '[[0,3],[1,5],[2,7],[3,9]]', '[3,9]'),
+    (-7113, 4, '[[0,4],[1,3],[2,2],[3,1],[4,0]]', '[4,0]'),
+    (-7122, 4, '[[-2,4],[-1,1],[0,0],[1,1],[2,4]]', '[2,4]');
+
+-- =========================================================
+-- 4. HISTÓRICO DA LIA: TRÊS DIAS CONSECUTIVOS
+-- =========================================================
+
+INSERT INTO Progresso
+(id_progresso, id_usuario, id_atividade, datetime_inicio, datetime_conclusao)
+VALUES
+    (-7131, -7100, -7111, (CURRENT_DATE-2)+TIME '18:00', (CURRENT_DATE-2)+TIME '18:04'),
+    (-7132, -7100, -7112, (CURRENT_DATE-2)+TIME '18:05', (CURRENT_DATE-2)+TIME '18:12'),
+    (-7133, -7100, -7113, (CURRENT_DATE-1)+TIME '18:00', (CURRENT_DATE-1)+TIME '18:09'),
+    (-7141, -7100, -7121, CURRENT_DATE, LOCALTIMESTAMP),
+    (-7142, -7100, -7122, LOCALTIMESTAMP, NULL),
+    (-7143, -7100, -7123, NULL, NULL);
+
+INSERT INTO Progresso_Leitura (id_progresso, pagina_atual) VALUES
+                                                               (-7131, 2),
+                                                               (-7141, 2);
+
+INSERT INTO Progresso_Pratica (id_progresso, posicao_atual, movimentos) VALUES
+                                                                            (-7132, '[3,9]', 3),
+                                                                            (-7133, '[4,0]', 4),
+                                                                            (-7142, '[0,0]', 2);
+
+-- =========================================================
+-- 5. CONQUISTAS: DUAS DESBLOQUEADAS, UMA AINDA NO CATÁLOGO
+-- =========================================================
+
+INSERT INTO Conquistas
+(id_conquista, nome, tipo, valor_condicao, descricao, moeda)
+VALUES
+    (-7151, 'Primeiro ponto', 'conclusao', 1, 'Conclua sua primeira atividade.', 10),
+    (-7152, 'Três dias no plano', 'sequencia', 3, 'Estude por três dias consecutivos.', 15),
+    (-7153, 'Dez passos à frente', 'conclusao', 10, 'Conclua dez atividades.', 30);
+
+INSERT INTO Conquista_Usuario_Acessa (id_usuario, id_conquista, data)
+SELECT id_usuario, -7151, datetime_conclusao
+FROM Progresso WHERE id_progresso = -7131
+UNION ALL
+SELECT id_usuario, -7152, datetime_conclusao
+FROM Progresso WHERE id_progresso = -7141;
+
+-- =========================================================
+-- 6. LOJA, PASSE E INVENTÁRIO
+-- =========================================================
+
+INSERT INTO Itens (id_item, tipo, estilo, descricao, meta_dados) VALUES
+                                                                     (-7161, 'loja', 'avatar', 'Raposa Cartesiana',
+                                                                      '{"slug":"raposa-cartesiana","animacao":"idle"}'),
+                                                                     (-7162, 'passe', 'moldura', 'Moldura da Parábola',
+                                                                      '{"slug":"moldura-parabola","cor":"#EE9248"}');
+
+INSERT INTO Item_Loja (id_item, valor)
+VALUES (-7161, 30);
+
+INSERT INTO Item_Passe_Batalha (id_item, xp_necessario)
+VALUES (-7162, 100);
+
+INSERT INTO Inventario (id_usuario, id_item, equipado) VALUES
+                                                           (-7100, -7161, TRUE),
+                                                           (-7100, -7162, FALSE);
+
+-- Sessão antiga já revogada; o login real deve criar uma nova sessão.
+INSERT INTO Sessoes
+(id_usuario, token_hash, criado_em, expira_em, revogado_em, nome_dispositivo)
+VALUES
+    (-7100, REPEAT('a', 64), CURRENT_DATE-2, CURRENT_DATE+28,
+     CURRENT_DATE-1, 'Android de teste');
+
+COMMIT;
+SET AUTOCOMMIT TRUE;

@@ -7,7 +7,8 @@ public record UsuarioInicialResponseDto(
         Perfil usuario,
         Preferencias configuracao,
         List<ItemInventario> inventario,
-        List<ConquistaDesbloqueada> conquistas
+        List<ConquistaDesbloqueada> conquistas,
+        List<TrilhaRealizada> trilhas
 ) {
 
     public record Perfil(
@@ -42,5 +43,20 @@ public record UsuarioInicialResponseDto(
             String tipo,
             Long valorCondicao,
             LocalDateTime desbloqueadaEm
+    ) {}
+
+    public record TrilhaRealizada(
+            Long trilhaId,
+            List<AtividadeRealizada> atividadesRealizadas
+    ) {}
+
+    public record AtividadeRealizada(
+            Long progressoId,
+            Long atividadeId,
+            Integer numeroAtividade,
+            String titulo,
+            String tipo,
+            LocalDateTime iniciadaEm,
+            LocalDateTime concluidaEm
     ) {}
 }
