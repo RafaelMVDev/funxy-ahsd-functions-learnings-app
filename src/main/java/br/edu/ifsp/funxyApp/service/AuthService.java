@@ -15,15 +15,18 @@ public class AuthService {
     private final UsuarioRepository usuarios;
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
+    private final UsuarioService usuarioService;
 
     public AuthService(
             UsuarioRepository usuarios,
             PasswordEncoder passwordEncoder, // Injetado através de setup em ConfigSeguranca
-            TokenService tokenService
+            TokenService tokenService,
+            UsuarioService usuarioService
     ) {
         this.usuarios = usuarios;
         this.passwordEncoder = passwordEncoder;
         this.tokenService = tokenService;
+        this.usuarioService = usuarioService;
     }
 
     public LoginResponseDto login(LoginRequestDto request) {
@@ -42,8 +45,9 @@ public class AuthService {
 
         String refreshToken = tokenService.criarRefreshToken(usuario); // Colocar no bdd o refresh token, mas primeiro
         String acessToken = tokenService.criarAcessToken(usuario);
+        UsuarioInicialResponseDto usuarioDados = usuarioService.carregar(usuario.getId());
         System.out.println("RETORNANDO!!!!!!!!!!!!!!!!!!");
-        return new LoginResponseDto(acessToken,refreshToken, usuario.getNome());
+        return new LoginResponseDto(acessToken,refreshToken,usuarioDados);
     }
 
     // Registro

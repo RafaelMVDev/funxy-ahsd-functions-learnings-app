@@ -1,6 +1,7 @@
 package br.edu.ifsp.funxyApp.service;
 
 import br.edu.ifsp.funxyApp.dto.auth.UsuarioInicialResponseDto;
+import br.edu.ifsp.funxyApp.model.Usuario;
 import br.edu.ifsp.funxyApp.repository.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -26,15 +27,21 @@ public class UsuarioService {
         this.inventarios = inventarios;
         this.conquistas = conquistas;
     }
-
     @Transactional(readOnly = true)
     public UsuarioInicialResponseDto carregar(Long usuarioId) {
-
-        var usuario = usuarios.findById(usuarioId)
+        Usuario usuario = usuarios.findById(usuarioId)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
                         "Usuário não encontrado."
                 ));
+
+        return carregar(usuario);
+    }
+
+
+    @Transactional(readOnly = true)
+    public UsuarioInicialResponseDto carregar(Usuario usuario) {
+
 
         var perfil = new UsuarioInicialResponseDto.Perfil(
                 usuario.getId(),
@@ -45,6 +52,7 @@ public class UsuarioService {
                 usuario.getXp()
         );
 
+        Long usuarioId = usuario.getId();
         var configuracao = configuracoes.findByUsuario_Id(usuarioId)
                 .map(config -> new UsuarioInicialResponseDto.Preferencias(
                         nomeEnum(config.getTema()),
