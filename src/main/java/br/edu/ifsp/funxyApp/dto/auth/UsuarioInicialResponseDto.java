@@ -1,5 +1,7 @@
 package br.edu.ifsp.funxyApp.dto.auth;
 
+import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public record UsuarioInicialResponseDto(
         Preferencias configuracao,
         List<ItemInventario> inventario,
         List<ConquistaDesbloqueada> conquistas,
-        List<TrilhaRealizada> trilhas
+        List<TrilhaProgressoDto> trilhas
 ) {
 
     public record Perfil(

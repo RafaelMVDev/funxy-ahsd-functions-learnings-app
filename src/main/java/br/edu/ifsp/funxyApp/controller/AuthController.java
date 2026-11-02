@@ -35,7 +35,7 @@ public class AuthController {
 
     // ===== REGSITRO ======
     @PostMapping("/registro")
-    public RegistroResponseDto login(@Valid @RequestBody RegistroRequestDto request) {
+    public RegistroResponseDto registro(@Valid @RequestBody RegistroRequestDto request) {
 
         return authService.register(request);
 

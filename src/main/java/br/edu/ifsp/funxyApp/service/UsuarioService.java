@@ -1,6 +1,7 @@
 package br.edu.ifsp.funxyApp.service;
 
 import br.edu.ifsp.funxyApp.dto.auth.UsuarioInicialResponseDto;
+import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
 import br.edu.ifsp.funxyApp.model.Usuario;
 import br.edu.ifsp.funxyApp.repository.*;
 import org.springframework.http.HttpStatus;
@@ -17,17 +18,22 @@ public class UsuarioService {
     private final ConfiguracaoRepository configuracoes;
     private final InventarioRepository inventarios;
     private final ConquistaUsuarioAcessaRepository conquistas;
+    // Services
+
+    private final ProgressoUsuarioService progressoUsuarioService;
 
     public UsuarioService(
             UsuarioRepository usuarios,
             ConfiguracaoRepository configuracoes,
             InventarioRepository inventarios,
-            ConquistaUsuarioAcessaRepository conquistas
+            ConquistaUsuarioAcessaRepository conquistas,
+            ProgressoUsuarioService progressoUsuarioService
     ) {
         this.usuarios = usuarios;
         this.configuracoes = configuracoes;
         this.inventarios = inventarios;
         this.conquistas = conquistas;
+        this.progressoUsuarioService = progressoUsuarioService;
     }
     @Transactional(readOnly = true)
     public UsuarioInicialResponseDto carregar(Long usuarioId) {
@@ -96,8 +102,8 @@ public class UsuarioService {
                     );
                 })
                 .toList();
-        List<UsuarioInicialResponseDto.TrilhaRealizada> trilhas =
-                buscarTrilhasRealizadas(usuarioId);
+        List<TrilhaProgressoDto> trilhas =
+                progressoUsuarioService.buscarTrilhas(usuario.getId());
 
         return new UsuarioInicialResponseDto(
                 perfil,
