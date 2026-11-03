@@ -1,7 +1,7 @@
 extends Control
 
-@onready var VisorFuncao: TextEdit = $VisoresTeclado/VisorFuncao
-@onready var VisorDominio: TextEdit = $VisoresTeclado/VisorDominio
+@onready var VisorFuncao: LineEdit = $VisoresTeclado/VisorFuncao
+@onready var VisorDominio: LineEdit = $VisoresTeclado/VisorDominio
 @onready var vboxFuncao: VBoxContainer = $VisoresTeclado/VBoxContainerFuncao
 @onready var vboxDominio: VBoxContainer = $VisoresTeclado/VBoxContainerDominio
 
@@ -9,7 +9,7 @@ signal voltar_movimento()
 signal formula_enviada(expressao: String)
 signal dominio_enviado(dominiio: String)
 
-var visor_ativo: TextEdit = null
+var visor_ativo: LineEdit = null
 
 func _ready() -> void:
 	VisorFuncao.focus_entered.connect(_on_visor_funcao)
@@ -35,14 +35,14 @@ func _on_visor_dominio():
 	vboxFuncao.visible = false
 	vboxDominio.visible = true
 
-func _on_visor_focado(node: TextEdit):
+func _on_visor_focado(node: LineEdit):
 	if visor_ativo != null and is_instance_valid(visor_ativo):
 		_estilo_visor(visor_ativo, "normal")
 	visor_ativo = node
 	if visor_ativo != null:
 		_estilo_visor(visor_ativo, "focado")
 	
-func _estilo_visor(node: TextEdit, estilo: String):
+func _estilo_visor(node: LineEdit, estilo: String):
 	var stylebox_visor = node.get_theme_stylebox("normal")
 	var estilo_modificado = stylebox_visor.duplicate()
 	

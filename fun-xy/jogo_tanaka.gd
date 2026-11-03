@@ -2,6 +2,8 @@ extends Control
 
 @onready var teclado_matematico = $TecladoMatematico
 @onready var grafico = $FundoPlanoCartesiano/Grafico
+@onready var check_funcao = $TecladoMatematico/VisoresTeclado/VisorFuncao/ButtonFuncao
+@onready var check_dominio = $TecladoMatematico/VisoresTeclado/VisorDominio/ButtonDominio
 
 var quantidade_movimentos: int = 0
 var funcao_armazenada: String
@@ -12,24 +14,36 @@ func _ready() -> void:
 	teclado_matematico.formula_enviada.connect(_on_teclado_formula_enviada)
 	teclado_matematico.dominio_enviado.connect(_on_teclado_dominio_enviado)
 	teclado_matematico.voltar_movimento.connect(_voltar_movimento)
+	queue_redraw()
 	
 func _on_teclado_formula_enviada(expressao: String):
 	print("Pai recebeu a fórmula: ", expressao)
+	check_funcao.visible = true
 	funcao_armazenada = expressao
 	if dominio_armazenado:
 		grafico.atualizar_grafico(funcao_armazenada, dominio_armazenado)
-		quantidade_movimentos += 1
 		print(quantidade_movimentos)
-	#grafico.atualizar_grafico(expressao) Usar só quando tiver expressão e domínio
+		_resetar()
 	
 func _on_teclado_dominio_enviado(dominio: String):
 	dominio_armazenado = dominio
+	check_dominio.visible = true
 	if funcao_armazenada:
 		grafico.atualizar_grafico(funcao_armazenada, dominio_armazenado)
+		_resetar()
 	
 func _voltar_movimento():
 	if not linhas_desenhadas.is_empty():
-		linhas_desenhadas[-1].queue_free()
+		linhas_desenhadas.pop_back().queue_free()
+		
+func _resetar():
+	funcao_armazenada = ""
+	dominio_armazenado = ""
+	check_funcao.visible = false
+	check_dominio.visible = false
 	
 func _process(delta: float) -> void:
 	pass
+	
+func _draw() -> void:
+	draw_circle(Vector2(150,150), 5.0, Color.WHITE)

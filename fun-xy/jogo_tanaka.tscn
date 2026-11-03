@@ -7,36 +7,37 @@
 [ext_resource type="Script" uid="uid://dttu1xeydxab8" path="res://teclado_matematico.gd" id="4_77yt0"]
 
 [sub_resource type="Gradient" id="Gradient_g5kuq"]
-colors = PackedColorArray(0.078431375, 0.09803922, 0.3019608, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.5787627, 0.65114766, 0.9529992, 1, 0.1584723, 0.15847233, 0.1584723, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_x2j0j"]
 gradient = SubResource("Gradient_g5kuq")
 fill_from = Vector2(0.49565217, 1)
 fill_to = Vector2(0.8, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77yt0"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q688"]
+bg_color = Color(0.20784314, 0.22352941, 0.28627452, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27tq7"]
-bg_color = Color(1, 1, 1, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh7mu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixrit"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7ek1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj7yg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1rmc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4sgy"]
+bg_color = Color(0.21960784, 0.23529412, 0.3019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fd60"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="jogo_tanaka" type="Control" unique_id=1126857255]
 layout_mode = 3
@@ -75,11 +76,11 @@ offset_bottom = 299.91998
 offset_transform_enabled = true
 script = ExtResource("1_gpm53")
 
-[node name="MalhaPlanoCartesiano" type="Node2D" parent="FundoPlanoCartesiano" unique_id=245684022]
-script = ExtResource("2_bq6yp")
-
 [node name="Grafico" type="Node2D" parent="FundoPlanoCartesiano" unique_id=1944659863]
 script = ExtResource("3_bq6yp")
+
+[node name="MalhaPlanoCartesiano" type="Node2D" parent="FundoPlanoCartesiano" unique_id=245684022]
+script = ExtResource("2_bq6yp")
 
 [node name="FuncaoMatematica" type="StaticBody2D" parent="FundoPlanoCartesiano" unique_id=990932833]
 visible = false
@@ -111,18 +112,55 @@ offset_right = 150.0
 offset_bottom = 252.0
 grow_horizontal = 2
 
-[node name="VisorFuncao" type="TextEdit" parent="TecladoMatematico/VisoresTeclado" unique_id=1700292319]
-custom_minimum_size = Vector2(300, 27)
+[node name="VisorFuncao" type="LineEdit" parent="TecladoMatematico/VisoresTeclado" unique_id=239194384]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_styles/focus = SubResource("StyleBoxFlat_77yt0")
-caret_blink = true
+theme_override_styles/normal = SubResource("StyleBoxFlat_4q688")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fh7mu")
 
-[node name="VisorDominio" type="TextEdit" parent="TecladoMatematico/VisoresTeclado" unique_id=1269256097]
-custom_minimum_size = Vector2(0, 27)
+[node name="ButtonFuncao" type="Button" parent="TecladoMatematico/VisoresTeclado/VisorFuncao" unique_id=449414325]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ixrit")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d7ek1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jj7yg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n1rmc")
+button_mask = 0
+text = "✔ "
+
+[node name="VisorDominio" type="LineEdit" parent="TecladoMatematico/VisoresTeclado" unique_id=1330012592]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_styles/focus = SubResource("StyleBoxFlat_27tq7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4sgy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0fd60")
+
+[node name="ButtonDominio" type="Button" parent="TecladoMatematico/VisoresTeclado/VisorDominio" unique_id=562688416]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ixrit")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d7ek1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jj7yg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n1rmc")
+button_mask = 0
+text = "✔ "
 
 [node name="VBoxContainerFuncao" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
 custom_minimum_size = Vector2(300, 200)

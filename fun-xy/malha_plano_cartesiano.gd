@@ -16,6 +16,7 @@ func _ready() -> void:
 	tamanho_tela = pai.size
 	ponto_central = tamanho_tela/2 
 	queue_redraw()
+	
 func _process(delta: float) -> void:
 	pass
 

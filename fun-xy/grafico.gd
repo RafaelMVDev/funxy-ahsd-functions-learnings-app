@@ -1,6 +1,15 @@
 extends Node2D
 
 @onready var posicao_pai = get_parent().global_position
+@onready var jogo = get_parent().get_parent()
+
+
+var dados_fase_api = [ #Simulação
+	{ "tipo": "inicio", "x": -5.0, "y": -5.0, "largura": 0.4, "altura": 0.4 },
+	{ "tipo": "fim", "x": 5.0, "y": 3.0, "largura": 0.4, "altura": 0.4 },
+	{ "tipo": "obstaculo", "x": 2.0, "y": 3.0, "largura": 1.0, "altura": 1.5 },
+	{ "tipo": "obstaculo", "x": -3.0, "y": -1.0, "largura": 0.8, "altura": 2.0 }
+]
 
 var comeco_x: float 
 var fim_x: float 
@@ -11,13 +20,18 @@ var escala_pixel: float
 var alcance_x_min: float = -5.0
 var alcance_x_max: float = 5.0
 
+
 func _ready() -> void:
+	var movimentos = jogo.quantidade_movimentos
 	var PlanoCartesiano = get_parent()
 	var Malha = get_node("../MalhaPlanoCartesiano")
+	
+	movimentos += 1
 	comeco_x = PlanoCartesiano.origem.x
 	fim_x = comeco_x + PlanoCartesiano.size.x
 	limite_y = PlanoCartesiano.origem.y + PlanoCartesiano.size.y
 	topo_y = PlanoCartesiano.origem.y
+	
 	ponto_central = PlanoCartesiano.ponto_central
 	
 	if Malha:
@@ -26,7 +40,39 @@ func _ready() -> void:
 		escala_pixel = PlanoCartesiano.size.x / (alcance_x_max - alcance_x_min)
 	else:
 		escala_pixel = 30.0
+	carregar_fase(dados_fase_api)
 	
+func carregar_fase(colisoes_dados: Array):
+	for dados in colisoes_dados:
+		var colisor = Area2D.new()
+		var forma_retangulo = RectangleShape2D.new()
+		var visual = ColorRect.new()
+			#Ver quais shapes existem
+			#Verificar se a colisão está alinhada com o visual
+		forma_retangulo.size = Vector2(dados.largura * escala_pixel, dados.altura * escala_pixel)
+		visual.size = forma_retangulo.size
+		visual.position = -visual.size / 2.0
+		
+		var pixel_x = ponto_central.x + (dados.x * escala_pixel)
+		var pixel_y = ponto_central.y - (dados.y * escala_pixel)
+		
+		colisor.position = Vector2(pixel_x, pixel_y)
+		
+		if dados.tipo == "inicio":
+			visual.color = Color.YELLOW
+			colisor.add_to_group("inicio")
+			
+		elif dados.tipo == "fim":
+			visual.color = Color.GREEN
+			colisor.add_to_group("fim")
+			
+		else:
+			visual.color = Color.RED # Cor vermelha para destacar o obstáculo
+			colisor.add_to_group("obstaculos")
+		
+		colisor.add_child(visual)
+		add_child(colisor)
+		
 func atualizar_grafico(expressao_str: String, dominio_str: String):
 	var dominio = dominio_str
 	var x_min: float = alcance_x_min
@@ -54,30 +100,79 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 600) 
 	
 	if not lista_de_pontos.is_empty():
-		var nova_linha = Line2D.new()
-		nova_linha.points = PackedVector2Array(lista_de_pontos)
-		nova_linha.width = 2.0
-		add_child(nova_linha)
-		get_parent().get_parent().linhas_desenhadas.append(nova_linha)
+		if verificar_cruzamento(lista_de_pontos):
+			var nova_linha = Line2D.new()
+			nova_linha.points = PackedVector2Array(lista_de_pontos)
+			nova_linha.width = 2.0
+			add_child(nova_linha)
+			jogo.linhas_desenhadas.append(nova_linha)
+		else:
+			print("A linha não tem continuidade!")
 
 func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, passos: int) -> Array[Vector2]:
 	var pontos: Array[Vector2] = []
 	var expr = Expression.new()
+	var ponto: Vector2
+	var passo_x = (x_max - x_min) / passos
+	var primeiro_ponto = false
 	
 	var erro = expr.parse(expressao_str, ["x"])
 	if erro != OK:
 		print("Erro na expressão matemática: ", expr.get_error_text())
 		return pontos
 
-	var passo_x = (x_max - x_min) / passos
 	for i in range(passos + 1):
 		var x_matematico = x_min + (i * passo_x)
 		var y_matematico = expr.execute([x_matematico])
-
 		var pixel_x = ponto_central.x + (x_matematico * escala_pixel)
 		var pixel_y = ponto_central.y - (y_matematico * escala_pixel) 
 		
+		ponto = Vector2(pixel_x, pixel_y) 
+			
 		if pixel_y >= topo_y and pixel_y <= limite_y:
-			pontos.append(Vector2(pixel_x, pixel_y))
-		
+			#Verifica se está na primeira linha e no primeiro ponto dela
+			if jogo.linhas_desenhadas.is_empty() and primeiro_ponto == false:
+				primeiro_ponto = true
+				if not verificar_colisao(ponto, "inicio"):
+					print("não acertou o começo")
+					return pontos
+					#Colocar uma mensagem de que não atingiu o ponto inicial
+			if verificar_colisao(ponto, "fim"):
+				#funcão que cuida da conclusão da fase:
+				#mostra número de movimentos, xp e moedas obtidos, além de botão para voltar ao menu ou reiniciar a partida
+				print("ganhou")
+				return pontos
+				
+			elif verificar_colisao(ponto, "obstaculos"):
+				return pontos 
+			pontos.append(ponto)
 	return pontos
+
+func verificar_cruzamento(novos_pontos: Array[Vector2]) -> bool:
+	if jogo.linhas_desenhadas.is_empty():
+		return true
+		
+	var tolerancia = 1
+	var linha_antiga = jogo.linhas_desenhadas.back()
+	var pontos_antigos = linha_antiga.points
+		# Compara cada ponto novo com cada ponto antigo
+	for ponto_novo in novos_pontos:
+		for ponto_antigo in pontos_antigos:
+			if ponto_novo.distance_to(ponto_antigo) <= tolerancia:
+				return true # Achou um cruzamento! A linha é válida.
+					
+	return false # A nova linha não tocou em nenhuma linha anterior
+
+func verificar_colisao(ponto: Vector2, tipo: String) -> bool:
+	var colisores = get_tree().get_nodes_in_group(tipo)
+	
+	for colisor in colisores:
+		var visual = colisor.get_child(0) 
+		if visual and visual is ColorRect:
+			
+			var ponto_superior_esquerdo = colisor.position + visual.position
+			var rect_colisor = Rect2(ponto_superior_esquerdo, visual.size)
+			if rect_colisor.has_point(ponto):
+				return true
+				
+	return false
