@@ -22,7 +22,7 @@ func _draw() -> void:
 	
 	# 4. Exemplo de ponto no quadrante negativo (ex: x = -50, y = -50)
 	var ponto_cartesiano = Vector2(-50, -50)
-	
+
 	# Converte a coordenada para o espaço da tela
 	var ponto_tela = centro + Vector2(ponto_cartesiano.x, -ponto_cartesiano.y)
 	
