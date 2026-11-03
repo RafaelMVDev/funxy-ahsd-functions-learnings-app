@@ -5,16 +5,18 @@
 [ext_resource type="Script" uid="uid://cp3qohxsj4sxs" path="res://malha_plano_cartesiano.gd" id="2_bq6yp"]
 [ext_resource type="Script" uid="uid://cm5n25siilx6t" path="res://grafico.gd" id="3_bq6yp"]
 [ext_resource type="Script" uid="uid://dttu1xeydxab8" path="res://teclado_matematico.gd" id="4_77yt0"]
+[ext_resource type="PackedScene" uid="uid://bv4635aeugnm7" path="res://tela_vencedor.tscn" id="6_jj7yg"]
 
-[sub_resource type="Gradient" id="Gradient_g5kuq"]
+[sub_resource type="Gradient" id="Gradient_d7ek1"]
 colors = PackedColorArray(0.5787627, 0.65114766, 0.9529992, 1, 0.1584723, 0.15847233, 0.1584723, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_x2j0j"]
-gradient = SubResource("Gradient_g5kuq")
+gradient = SubResource("Gradient_d7ek1")
 fill_from = Vector2(0.49565217, 1)
 fill_to = Vector2(0.8, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q688"]
+content_margin_left = 10.0
 bg_color = Color(0.20784314, 0.22352941, 0.28627452, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh7mu"]
@@ -31,12 +33,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1rmc"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4sgy"]
-bg_color = Color(0.21960784, 0.23529412, 0.3019608, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fd60"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="jogo_tanaka" type="Control" unique_id=1126857255]
@@ -82,13 +78,6 @@ script = ExtResource("3_bq6yp")
 [node name="MalhaPlanoCartesiano" type="Node2D" parent="FundoPlanoCartesiano" unique_id=245684022]
 script = ExtResource("2_bq6yp")
 
-[node name="FuncaoMatematica" type="StaticBody2D" parent="FundoPlanoCartesiano" unique_id=990932833]
-visible = false
-
-[node name="Line2D" type="Line2D" parent="FundoPlanoCartesiano/FuncaoMatematica" unique_id=2061778781]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FundoPlanoCartesiano/FuncaoMatematica" unique_id=850972078]
-
 [node name="TecladoMatematico" type="Control" parent="." unique_id=1509695705]
 layout_mode = 1
 anchors_preset = 12
@@ -116,6 +105,7 @@ grow_horizontal = 2
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4q688")
 theme_override_styles/focus = SubResource("StyleBoxFlat_fh7mu")
+placeholder_text = "f(x) = "
 
 [node name="ButtonFuncao" type="Button" parent="TecladoMatematico/VisoresTeclado/VisorFuncao" unique_id=449414325]
 visible = false
@@ -137,12 +127,12 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_n1rmc")
 button_mask = 0
 text = "✔ "
 
-[node name="VisorDominio" type="LineEdit" parent="TecladoMatematico/VisoresTeclado" unique_id=1330012592]
+[node name="VisorDominio" type="LineEdit" parent="TecladoMatematico/VisoresTeclado" unique_id=1146101668]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_x4sgy")
-theme_override_styles/focus = SubResource("StyleBoxFlat_0fd60")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4q688")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fh7mu")
 
-[node name="ButtonDominio" type="Button" parent="TecladoMatematico/VisoresTeclado/VisorDominio" unique_id=562688416]
+[node name="ButtonDominio" type="Button" parent="TecladoMatematico/VisoresTeclado/VisorDominio" unique_id=507909020]
 visible = false
 layout_mode = 1
 anchors_preset = 6
@@ -539,3 +529,7 @@ custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "ok"
 expand_icon = true
+
+[node name="tela_vencedor" parent="." unique_id=1010098406 instance=ExtResource("6_jj7yg")]
+visible = false
+layout_mode = 1

@@ -7,7 +7,7 @@ extends Control
 
 signal voltar_movimento()
 signal formula_enviada(expressao: String)
-signal dominio_enviado(dominiio: String)
+signal dominio_enviado(dominio: String)
 
 var visor_ativo: LineEdit = null
 
@@ -61,6 +61,13 @@ func _estilo_visor(node: LineEdit, estilo: String):
 
 func _on_botao_pressionado(botao_clicado: Button) -> void:
 	var texto_do_botao: String = botao_clicado.text
+	if visor_ativo.get_child(0).visible == true:
+		visor_ativo.get_child(0).visible = false
+	
+	if visor_ativo == VisorFuncao:
+		get_parent().funcao_armazenada = ""
+	else:
+		get_parent().dominio_armazenado = ""
 
 	if texto_do_botao == "del":
 		visor_ativo.text = "" 

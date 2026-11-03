@@ -3,6 +3,7 @@ extends Node2D
 @onready var posicao_pai = get_parent().global_position
 @onready var jogo = get_parent().get_parent()
 
+signal vitoria()
 
 var dados_fase_api = [ #Simulação
 	{ "tipo": "inicio", "x": -5.0, "y": -5.0, "largura": 0.4, "altura": 0.4 },
@@ -20,13 +21,10 @@ var escala_pixel: float
 var alcance_x_min: float = -5.0
 var alcance_x_max: float = 5.0
 
-
 func _ready() -> void:
-	var movimentos = jogo.quantidade_movimentos
 	var PlanoCartesiano = get_parent()
 	var Malha = get_node("../MalhaPlanoCartesiano")
 	
-	movimentos += 1
 	comeco_x = PlanoCartesiano.origem.x
 	fim_x = comeco_x + PlanoCartesiano.size.x
 	limite_y = PlanoCartesiano.origem.y + PlanoCartesiano.size.y
@@ -47,8 +45,7 @@ func carregar_fase(colisoes_dados: Array):
 		var colisor = Area2D.new()
 		var forma_retangulo = RectangleShape2D.new()
 		var visual = ColorRect.new()
-			#Ver quais shapes existem
-			#Verificar se a colisão está alinhada com o visual
+			#Adicionar outros shapes existem
 		forma_retangulo.size = Vector2(dados.largura * escala_pixel, dados.altura * escala_pixel)
 		visual.size = forma_retangulo.size
 		visual.position = -visual.size / 2.0
@@ -67,13 +64,14 @@ func carregar_fase(colisoes_dados: Array):
 			colisor.add_to_group("fim")
 			
 		else:
-			visual.color = Color.RED # Cor vermelha para destacar o obstáculo
+			visual.color = Color.RED 
 			colisor.add_to_group("obstaculos")
 		
 		colisor.add_child(visual)
 		add_child(colisor)
 		
 func atualizar_grafico(expressao_str: String, dominio_str: String):
+	jogo.quantidade_movimentos += 1
 	var dominio = dominio_str
 	var x_min: float = alcance_x_min
 	var x_max: float = alcance_x_max
@@ -97,17 +95,25 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 				x_min = min_str.to_float()
 				x_max = x_min + 20.0 
 	
-	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 600) 
+	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 800) 
 	
 	if not lista_de_pontos.is_empty():
+		var nova_linha = Line2D.new()
+		nova_linha.points = PackedVector2Array(lista_de_pontos)
+		nova_linha.width = 3.0
+		if not jogo.linha_desconexa.is_empty():
+			jogo.linha_desconexa.pop_back().queue_free()
+		
 		if verificar_cruzamento(lista_de_pontos):
-			var nova_linha = Line2D.new()
-			nova_linha.points = PackedVector2Array(lista_de_pontos)
-			nova_linha.width = 2.0
-			add_child(nova_linha)
+			nova_linha.default_color = Color.GREEN
+			if not jogo.linhas_desenhadas.is_empty():
+				jogo.linhas_desenhadas.back().default_color = Color.WHITE
 			jogo.linhas_desenhadas.append(nova_linha)
 		else:
+			nova_linha.default_color = Color.ORANGE
+			jogo.linha_desconexa.append(nova_linha)
 			print("A linha não tem continuidade!")
+		add_child(nova_linha)
 
 func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, passos: int) -> Array[Vector2]:
 	var pontos: Array[Vector2] = []
@@ -137,10 +143,10 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 					print("não acertou o começo")
 					return pontos
 					#Colocar uma mensagem de que não atingiu o ponto inicial
-			if verificar_colisao(ponto, "fim"):
+			elif verificar_colisao(ponto, "fim"):
 				#funcão que cuida da conclusão da fase:
 				#mostra número de movimentos, xp e moedas obtidos, além de botão para voltar ao menu ou reiniciar a partida
-				print("ganhou")
+				emit_signal("vitoria")
 				return pontos
 				
 			elif verificar_colisao(ponto, "obstaculos"):
@@ -152,16 +158,16 @@ func verificar_cruzamento(novos_pontos: Array[Vector2]) -> bool:
 	if jogo.linhas_desenhadas.is_empty():
 		return true
 		
-	var tolerancia = 1
+	var tolerancia = 4
 	var linha_antiga = jogo.linhas_desenhadas.back()
 	var pontos_antigos = linha_antiga.points
-		# Compara cada ponto novo com cada ponto antigo
+	
 	for ponto_novo in novos_pontos:
 		for ponto_antigo in pontos_antigos:
 			if ponto_novo.distance_to(ponto_antigo) <= tolerancia:
-				return true # Achou um cruzamento! A linha é válida.
+				return true 
 					
-	return false # A nova linha não tocou em nenhuma linha anterior
+	return false 
 
 func verificar_colisao(ponto: Vector2, tipo: String) -> bool:
 	var colisores = get_tree().get_nodes_in_group(tipo)

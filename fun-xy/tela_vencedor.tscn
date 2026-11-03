@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://bv4635aeugnm7"]
+
+[ext_resource type="Script" uid="uid://c7bpv88k2rwg8" path="res://tela_vencedor.gd" id="1_2oale"]
+[ext_resource type="Texture2D" uid="uid://87a8qt1hk2jp" path="res://images/reset_icon.png" id="2_lkbu6"]
+[ext_resource type="Texture2D" uid="uid://gm5hq5rtim8i" path="res://images/home_icon.jpg" id="3_u8b4n"]
+
+[sub_resource type="Gradient" id="Gradient_g5kuq"]
+colors = PackedColorArray(0.5787627, 0.65114766, 0.9529992, 1, 0.1584723, 0.15847233, 0.1584723, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_divqw"]
+gradient = SubResource("Gradient_g5kuq")
+fill_from = Vector2(0.49565217, 1)
+fill_to = Vector2(0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.22693068, 0.2682502, 0.52659106, 1)
+
+[node name="tela_vencedor" type="Control" unique_id=1010098406]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2oale")
+
+[node name="FundoAzul" type="TextureRect" parent="." unique_id=2115571476]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_divqw")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1610555043]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3kxb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1773557977]
+layout_mode = 2
+theme_override_constants/separation = 23
+
+[node name="BoxMovimentos" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=103902694]
+layout_mode = 2
+
+[node name="Movimentos" type="Label" parent="PanelContainer/VBoxContainer/BoxMovimentos" unique_id=1774992081]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 23
+text = "Número de Movimentos"
+horizontal_alignment = 1
+
+[node name="DisplayMovimentos" type="Label" parent="PanelContainer/VBoxContainer/BoxMovimentos" unique_id=420178226]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 29
+horizontal_alignment = 1
+
+[node name="BoxPontuacao" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1972968216]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Pontuacao" type="Label" parent="PanelContainer/VBoxContainer/BoxPontuacao" unique_id=1019265030]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "Pontuação"
+horizontal_alignment = 1
+
+[node name="DisplayPontuacao" type="Label" parent="PanelContainer/VBoxContainer/BoxPontuacao" unique_id=996256280]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 45
+horizontal_alignment = 1
+
+[node name="BoxBotoes" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=876948693]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="PanelContainer/VBoxContainer/BoxBotoes" unique_id=659133987]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+icon = ExtResource("2_lkbu6")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HomeButton2" type="Button" parent="PanelContainer/VBoxContainer/BoxBotoes" unique_id=2015072745]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+icon = ExtResource("3_u8b4n")
+icon_alignment = 1
+expand_icon = true
