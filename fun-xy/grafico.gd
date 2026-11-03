@@ -12,10 +12,10 @@ var dados_fase_api = [ #Simulação
 	{ "tipo": "obstaculo", "x": -3.0, "y": -1.0, "largura": 0.8, "altura": 2.0 }
 ]
 
-var comeco_x: float 
-var fim_x: float 
-var limite_y: float 
-var topo_y: float 
+var comeco_x: float
+var fim_x: float
+var limite_y: float
+var topo_y: float
 var ponto_central: Vector2
 var escala_pixel: float
 var alcance_x_min: float = -5.0
@@ -24,12 +24,12 @@ var alcance_x_max: float = 5.0
 func _ready() -> void:
 	var PlanoCartesiano = get_parent()
 	var Malha = get_node("../MalhaPlanoCartesiano")
-	
+
 	comeco_x = PlanoCartesiano.origem.x
 	fim_x = comeco_x + PlanoCartesiano.size.x
 	limite_y = PlanoCartesiano.origem.y + PlanoCartesiano.size.y
 	topo_y = PlanoCartesiano.origem.y
-	
+
 	ponto_central = PlanoCartesiano.ponto_central
 	
 	if Malha:
@@ -39,7 +39,7 @@ func _ready() -> void:
 	else:
 		escala_pixel = 30.0
 	carregar_fase(dados_fase_api)
-	
+
 func carregar_fase(colisoes_dados: Array):
 	for dados in colisoes_dados:
 		var colisor = Area2D.new()
@@ -49,54 +49,54 @@ func carregar_fase(colisoes_dados: Array):
 		forma_retangulo.size = Vector2(dados.largura * escala_pixel, dados.altura * escala_pixel)
 		visual.size = forma_retangulo.size
 		visual.position = -visual.size / 2.0
-		
+
 		var pixel_x = ponto_central.x + (dados.x * escala_pixel)
 		var pixel_y = ponto_central.y - (dados.y * escala_pixel)
-		
+
 		colisor.position = Vector2(pixel_x, pixel_y)
-		
+
 		if dados.tipo == "inicio":
 			visual.color = Color.YELLOW
 			colisor.add_to_group("inicio")
-			
+
 		elif dados.tipo == "fim":
 			visual.color = Color.GREEN
 			colisor.add_to_group("fim")
-			
+
 		else:
 			visual.color = Color.RED 
 			colisor.add_to_group("obstaculos")
-		
+
 		colisor.add_child(visual)
 		add_child(colisor)
-		
+
 func atualizar_grafico(expressao_str: String, dominio_str: String):
 	jogo.quantidade_movimentos += 1
 	var dominio = dominio_str
 	var x_min: float = alcance_x_min
 	var x_max: float = alcance_x_max
-	
+
 	if "<" in dominio or "<=" in dominio:
 		var partes = dominio.split("x")
 		if partes.size() == 2:
 			var min_str = partes[0].replace("<=", "").replace("<", "")
 			if min_str.is_valid_float():
 				x_min = min_str.to_float()
-				
+
 			var max_str = partes[1].replace("<=", "").replace("<", "")
 			if max_str.is_valid_float():
 				x_max = max_str.to_float()
-				
+
 	elif ">" in dominio or ">=" in dominio:
 		var partes = dominio.split("x")
 		if partes.size() == 2:
 			var min_str = partes[1].replace(">=", "").replace(">", "")
 			if min_str.is_valid_float():
 				x_min = min_str.to_float()
-				x_max = x_min + 20.0 
-	
-	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 800) 
-	
+				x_max = x_min + 20.0
+
+	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 600)
+
 	if not lista_de_pontos.is_empty():
 		var nova_linha = Line2D.new()
 		nova_linha.points = PackedVector2Array(lista_de_pontos)
@@ -121,7 +121,7 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 	var ponto: Vector2
 	var passo_x = (x_max - x_min) / passos
 	var primeiro_ponto = false
-	
+
 	var erro = expr.parse(expressao_str, ["x"])
 	if erro != OK:
 		print("Erro na expressão matemática: ", expr.get_error_text())
@@ -131,10 +131,10 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 		var x_matematico = x_min + (i * passo_x)
 		var y_matematico = expr.execute([x_matematico])
 		var pixel_x = ponto_central.x + (x_matematico * escala_pixel)
-		var pixel_y = ponto_central.y - (y_matematico * escala_pixel) 
-		
-		ponto = Vector2(pixel_x, pixel_y) 
-			
+		var pixel_y = ponto_central.y - (y_matematico * escala_pixel)
+
+		ponto = Vector2(pixel_x, pixel_y)
+
 		if pixel_y >= topo_y and pixel_y <= limite_y:
 			#Verifica se está na primeira linha e no primeiro ponto dela
 			if jogo.linhas_desenhadas.is_empty() and primeiro_ponto == false:
@@ -148,37 +148,36 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 				#mostra número de movimentos, xp e moedas obtidos, além de botão para voltar ao menu ou reiniciar a partida
 				emit_signal("vitoria")
 				return pontos
-				
+
 			elif verificar_colisao(ponto, "obstaculos"):
-				return pontos 
+				return pontos
 			pontos.append(ponto)
 	return pontos
 
 func verificar_cruzamento(novos_pontos: Array[Vector2]) -> bool:
 	if jogo.linhas_desenhadas.is_empty():
 		return true
-		
-	var tolerancia = 4
+
+	var tolerancia = 1
 	var linha_antiga = jogo.linhas_desenhadas.back()
 	var pontos_antigos = linha_antiga.points
 	
 	for ponto_novo in novos_pontos:
 		for ponto_antigo in pontos_antigos:
 			if ponto_novo.distance_to(ponto_antigo) <= tolerancia:
-				return true 
-					
-	return false 
+				return true
+	return false
 
 func verificar_colisao(ponto: Vector2, tipo: String) -> bool:
 	var colisores = get_tree().get_nodes_in_group(tipo)
-	
+
 	for colisor in colisores:
-		var visual = colisor.get_child(0) 
+		var visual = colisor.get_child(0)
 		if visual and visual is ColorRect:
-			
+
 			var ponto_superior_esquerdo = colisor.position + visual.position
 			var rect_colisor = Rect2(ponto_superior_esquerdo, visual.size)
 			if rect_colisor.has_point(ponto):
 				return true
-				
+
 	return false

@@ -41,6 +41,7 @@ func _on_teclado_dominio_enviado(dominio: String):
 func _voltar_movimento():
 	if not linhas_desenhadas.is_empty():
 		linhas_desenhadas.pop_back().queue_free()
+		linhas_desenhadas.back().default_color = Color.GREEN
 		
 func _resetar():
 	funcao_armazenada = ""
