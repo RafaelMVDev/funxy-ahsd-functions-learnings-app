@@ -14,9 +14,9 @@ CREATE TABLE Usuario (
                          email VARCHAR(255) NOT NULL UNIQUE,
                          senha_hash VARCHAR(255) NOT NULL,
                          nome VARCHAR(255) UNIQUE NOT NULL,
-                         sequencia INT NOT NULL DEFAULT 0 CHECK (sequencia >= 0),
-                         xp BIGINT NOT NULL DEFAULT 0 CHECK (xp >= 0),
-                         moedas BIGINT NOT NULL DEFAULT 0 CHECK (moedas >= 0)
+                         sequencia INT DEFAULT 0 CHECK (sequencia >= 0),
+                         xp BIGINT DEFAULT 0 CHECK (xp >= 0),
+                         moedas BIGINT DEFAULT 0 CHECK (moedas >= 0)
 );
 
 CREATE TABLE Sessoes (

@@ -7,6 +7,7 @@ import br.edu.ifsp.funxyApp.dto.auth.RegistroRequestDto;
 import br.edu.ifsp.funxyApp.dto.auth.RegistroResponseDto;
 
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -35,6 +36,7 @@ public class AuthController {
 
     // ===== REGSITRO ======
     @PostMapping("/registro")
+    @ResponseStatus(HttpStatus.CREATED) // TODO: TAPA BURACO, DEIXAR MAIS SOFISTICADO DEPOIS
     public RegistroResponseDto registro(@Valid @RequestBody RegistroRequestDto request) {
 
         return authService.register(request);
