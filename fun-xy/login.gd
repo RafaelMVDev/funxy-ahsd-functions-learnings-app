@@ -6,7 +6,7 @@ extends Control
 @onready var http_request: HTTPRequest = $PanelContainer/VBoxContainer/HTTPRequest
 
 # Subsitua pela URL fornecida pelo seu colega (ou pelo Mocky)
-var url_api = "http://localhost:8080/api/login"
+var url_api = "http://localhost:8080/auth/login"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,14 +40,15 @@ func _on_login_response(result, response_code, headers, body):
 	# Converte o corpo da resposta de texto UTF-8 para JSON
 	var json = JSON.new()
 	var error = json.parse(body.get_string_from_utf8())
-	
+
 	if error == OK:
 		var resposta = json.get_data()
-		
+		print(response_code)
 		# Verifica o status retornado pela API provisória
-		if response_code == 200 and resposta.get("sucesso", false):
+		if response_code == 200:
 			label_mensagem.text = "Sucesso! Redirecionando..."
-			print("Token recebido: ", resposta.get("token"))
+			print("AcessToken recebido: ", resposta.get("acessToken"))
+			print("RefreshToken recebido: ", resposta.get("refreshToken"))
 			
 			# Transição para o menu principal
 			get_tree().change_scene_to_file("res://homepage.tscn")

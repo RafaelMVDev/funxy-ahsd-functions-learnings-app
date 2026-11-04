@@ -31,18 +31,22 @@ public class AuthService {
 
     public LoginResponseDto login(LoginRequestDto request) {
         System.out.println("Recebendo login no service");
-
+        System.out.println(request.email());
+        System.out.println(request.senha());
+        System.out.println(usuarios.findByEmail(request.email()));
         // -- Checando se o usuário existe no bdd
         Usuario usuario = usuarios.findByEmail(request.email())
                 .orElseThrow(() ->
                         new BadCredentialsException("E-mail ou senha inválidos")
                 );
+        System.out.println(request);
+        System.out.println("ACHOU EMAIL");
         // -- Se existir compara a senha com a presente no banco
         if (!passwordEncoder.matches(
                 request.senha(), usuario.getSenha())) {
             throw new BadCredentialsException("E-mail ou senha inválidos");
         }
-
+        System.out.println("SENHA NN BATEU");
         String refreshToken = tokenService.criarRefreshToken(usuario); // Colocar no bdd o refresh token, mas primeiro
         String acessToken = tokenService.criarAcessToken(usuario);
         UsuarioInicialResponseDto usuarioDados = usuarioService.carregar(usuario.getId());
@@ -69,6 +73,9 @@ public class AuthService {
         usuarioNovo.setNome(nome);
         usuarioNovo.setEmail(email);
         usuarioNovo.setSenha(passwordEncoder.encode(senha));
+
+        usuarios.save(usuarioNovo); // SALVANDO NO BANCO DE DADOS
+
 
         return new RegistroResponseDto("Conta criada!");
     }

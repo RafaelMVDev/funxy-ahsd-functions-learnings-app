@@ -7,7 +7,7 @@ extends Control
 @onready var http_request: HTTPRequest = $PanelContainer/VBoxContainer/HTTPRequest
 
 # Aponta para a nova rota da sua API Spring Boot
-var url_api = "http://localhost:8080/api/cadastro"
+var url_api = "http://localhost:8080/auth/registro"
 
 func _ready():
 	# Lembre-se: conectamos o sinal do HTTPRequest para ouvir a resposta do Java
@@ -44,6 +44,10 @@ func _on_button_pressed():
 	http_request.request(url_api, headers, HTTPClient.METHOD_POST, json_body)
 
 func _on_cadastro_response(result, response_code, headers, body):
+	print("result: ", result)
+	print("response_code: ", response_code)
+	print("headers: ", headers)
+	print("body: ", body)
 	var json = JSON.new()
 	var error = json.parse(body.get_string_from_utf8())
 	
@@ -51,7 +55,7 @@ func _on_cadastro_response(result, response_code, headers, body):
 		var resposta = json.get_data()
 		
 		# O Spring retorna 201 para recurso criado com sucesso
-		if response_code == 201 and resposta.get("sucesso", false):
+		if response_code == 201:
 			label_mensagem.text = "Conta criada com sucesso!"
 			
 			# Aguarda 1.5 segundos para o usuário ler a mensagem e troca para o Login
@@ -62,7 +66,3 @@ func _on_cadastro_response(result, response_code, headers, body):
 			label_mensagem.text = resposta.get("mensagem", "Erro ao cadastrar.")
 	else:
 		label_mensagem.text = "Falha de comunicação com o servidor."
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
