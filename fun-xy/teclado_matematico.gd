@@ -1,7 +1,7 @@
 extends Control
 
-@onready var VisorFuncao: LineEdit = $VisoresTeclado/VisorFuncao
-@onready var VisorDominio: LineEdit = $VisoresTeclado/VisorDominio
+@onready var VisorFuncao: LineEdit = $VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao
+@onready var VisorDominio: LineEdit = $VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorDominio
 @onready var vboxFuncao: VBoxContainer = $VisoresTeclado/VBoxContainerFuncao
 @onready var vboxDominio: VBoxContainer = $VisoresTeclado/VBoxContainerDominio
 
@@ -61,31 +61,36 @@ func _estilo_visor(node: LineEdit, estilo: String):
 
 func _on_botao_pressionado(botao_clicado: Button) -> void:
 	var texto_do_botao: String = botao_clicado.text
-	if visor_ativo.get_child(0).visible == true:
-		visor_ativo.get_child(0).visible = false
-	
-	if visor_ativo == VisorFuncao:
-		get_parent().funcao_armazenada = ""
-	else:
-		get_parent().dominio_armazenado = ""
-
-	if texto_do_botao == "del":
-		visor_ativo.text = "" 
-	elif texto_do_botao == "⌫":
-		print("reconhece o backspace")
-		_apagar_com_backspace()
-	elif texto_do_botao == "↩":
-		emit_signal("voltar_movimento")
-	elif texto_do_botao == "ok":
+	if visor_ativo:
+		visor_ativo.get_child(0).visible == false
+		
 		if visor_ativo == VisorFuncao:
-			emit_signal("formula_enviada", visor_ativo.text) 
+			get_parent().funcao_armazenada = ""
 		else:
-			emit_signal("dominio_enviado", visor_ativo.text)
-	else:
-		_inserir_texto_no_cursor(texto_do_botao) # Adiciona o número ou operador no visor
+			get_parent().dominio_armazenado = ""
+
+		if texto_do_botao == "del":
+			visor_ativo.text = "" 
+		elif texto_do_botao == "⌫":
+			print("reconhece o backspace")
+			visor_ativo.get_child(0).visible = false
+			_apagar_com_backspace()
+		elif texto_do_botao == "↩":
+			VisorFuncao.get_child(0).visible = false
+			VisorDominio.get_child(0).visible = false
+			emit_signal("voltar_movimento")
+		elif texto_do_botao == "ok":
+			visor_ativo.get_child(0).visible = true
+			if visor_ativo == VisorFuncao:
+				emit_signal("formula_enviada", visor_ativo.text) 
+			else:
+				emit_signal("dominio_enviado", visor_ativo.text)
+		else:
+			_inserir_texto_no_cursor(texto_do_botao) # Adiciona o número ou operador no visor
 
 func _apagar_com_backspace():
 	var coluna: int = visor_ativo.get_caret_column()
+	
 
 	if coluna > 0:
 		var texto: String = visor_ativo.text

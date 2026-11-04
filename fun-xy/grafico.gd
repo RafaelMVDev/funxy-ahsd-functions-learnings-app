@@ -4,6 +4,9 @@ extends Node2D
 @onready var jogo = get_parent().get_parent()
 @onready var funcoes_exibidas_1 = $PainelFuncoes/FuncoesListadas
 @onready var funcoes_exibidas = get_node("../../PainelFuncoes/FuncoesListadas")
+@onready var mensagem = get_node("../../TecladoMatematico/VisoresTeclado/Mensagem")
+@onready var check_funcao = get_node("../../TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao/ButtonFuncao")
+@onready var check_dominio = get_node("../../TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao/ButtonDominio")
 
 signal vitoria()
 
@@ -75,6 +78,8 @@ func carregar_fase(colisoes_dados: Array):
 func atualizar_grafico(expressao_str: String, dominio_str: String):
 	jogo.quantidade_movimentos += 1
 	jogo.lista_funcoes.append(expressao_str)
+	check_funcao.visible = false
+	check_dominio.visible = false
 	
 	var dominio = dominio_str
 	var x_min: float = alcance_x_min
@@ -99,7 +104,7 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 				x_min = min_str.to_float()
 				x_max = x_min + 20.0
 
-	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 600)
+	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 800)
 	
 
 	if not lista_de_pontos.is_empty():
@@ -117,7 +122,7 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 		else:
 			nova_linha.default_color = Color.ORANGE
 			jogo.linha_desconexa.append(nova_linha)
-			print("A linha não tem continuidade!")
+			mensagem.text = "A linha não tem continuidade"
 		add_child(nova_linha)
 		funcoes_exibidas.exibir_funcoes(expressao_str)
 		
@@ -131,7 +136,7 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 
 	var erro = expr.parse(expressao_str, ["x"])
 	if erro != OK:
-		print("Erro na expressão matemática: ", expr.get_error_text())
+		mensagem.text = "Erro na expressão matemática"
 		return pontos
 
 	for i in range(passos + 1):
@@ -147,12 +152,10 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 			if jogo.linhas_desenhadas.is_empty() and primeiro_ponto == false:
 				primeiro_ponto = true
 				if not verificar_colisao(ponto, "inicio"):
-					print("não acertou o começo")
+					mensagem.text = "Não acertou o ponto inicial"
 					return pontos
-					#Colocar uma mensagem de que não atingiu o ponto inicial
+					
 			elif verificar_colisao(ponto, "fim"):
-				#funcão que cuida da conclusão da fase:
-				#mostra número de movimentos, xp e moedas obtidos, além de botão para voltar ao menu ou reiniciar a partida
 				emit_signal("vitoria")
 				return pontos
 

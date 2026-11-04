@@ -13,7 +13,7 @@ func exibir_funcoes(expressao: String) -> void:
 	var label = Label.new()
 	var estilo = StyleBoxFlat.new()
 			
-	painel_individual.custom_minimum_size = Vector2(200, 25)
+	painel_individual.custom_minimum_size = Vector2(280, 25)
 	label.text = funcao
 	
 	estilo.bg_color = Color("#353949")

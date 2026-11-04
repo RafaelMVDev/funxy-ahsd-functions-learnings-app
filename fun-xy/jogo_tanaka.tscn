@@ -38,7 +38,11 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4sgy"]
 bg_color = Color(0.10608701, 0.42228755, 0.65966976, 1)
-border_color = Color(0.20784314, 0.22352941, 0.28627452, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -68,6 +72,17 @@ expand_margin_left = 10.0
 expand_margin_top = 5.0
 expand_margin_right = 10.0
 expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37g1n"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.26666668, 0.49803922, 0.7529412, 0.72156864)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="jogo_tanaka" type="Control" unique_id=1126857255]
 layout_mode = 3
@@ -118,30 +133,47 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -281.0
+offset_top = -301.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("4_77yt0")
 
 [node name="VisoresTeclado" type="VBoxContainer" parent="TecladoMatematico" unique_id=791431479]
 custom_minimum_size = Vector2(290, 250)
-custom_maximum_size = Vector2(-1, 250)
+custom_maximum_size = Vector2(-1, 300)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -150.0
 offset_right = 150.0
-offset_bottom = 252.0
+offset_bottom = 250.0
 grow_horizontal = 2
+theme_override_constants/separation = 5
 
-[node name="VisorFuncao" type="LineEdit" parent="TecladoMatematico/VisoresTeclado" unique_id=239194384]
+[node name="Mensagem" type="Label" parent="TecladoMatematico/VisoresTeclado" unique_id=776241644]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=2023383540]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/MarginContainer" unique_id=447548917]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer" unique_id=1757287893]
+layout_mode = 2
+
+[node name="VisorFuncao" type="LineEdit" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer" unique_id=239194384]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_4q688")
 theme_override_styles/focus = SubResource("StyleBoxFlat_fh7mu")
 placeholder_text = "f(x) = "
 
-[node name="ButtonFuncao" type="Button" parent="TecladoMatematico/VisoresTeclado/VisorFuncao" unique_id=449414325]
+[node name="ButtonFuncao" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao" unique_id=449414325]
 visible = false
 layout_mode = 1
 anchors_preset = 6
@@ -161,12 +193,14 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_n1rmc")
 button_mask = 0
 text = "✔ "
 
-[node name="VisorDominio" type="LineEdit" parent="TecladoMatematico/VisoresTeclado" unique_id=1146101668]
+[node name="VisorDominio" type="LineEdit" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1146101668]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_4q688")
 theme_override_styles/focus = SubResource("StyleBoxFlat_fh7mu")
 
-[node name="ButtonDominio" type="Button" parent="TecladoMatematico/VisoresTeclado/VisorDominio" unique_id=507909020]
+[node name="ButtonDominio" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorDominio" unique_id=507909020]
 visible = false
 layout_mode = 1
 anchors_preset = 6
@@ -186,11 +220,20 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_n1rmc")
 button_mask = 0
 text = "✔ "
 
-[node name="VBoxContainerFuncao" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
-custom_minimum_size = Vector2(300, 200)
-custom_maximum_size = Vector2(300, 200)
+[node name="BotaoFuncoesAntigas" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer" unique_id=686035013]
+custom_minimum_size = Vector2(40, 60)
 layout_mode = 2
-size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4sgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0n4v5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0fd60")
+text = "f(x)"
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainerFuncao" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, -1)
+layout_mode = 2
+size_flags_vertical = 0
 
 [node name="Linha1" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao" unique_id=1174486339]
 layout_mode = 2
@@ -564,28 +607,9 @@ layout_mode = 2
 text = "ok"
 expand_icon = true
 
-[node name="BotaoFuncoesAntigas" type="Button" parent="." unique_id=686035013]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.95
-anchor_top = 0.603125
-anchor_right = 0.9777778
-anchor_bottom = 0.61875
-offset_left = -30.0
-offset_top = -15.0
-offset_bottom = 20.609375
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_x4sgy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0n4v5")
-theme_override_styles/focus = SubResource("StyleBoxFlat_0fd60")
-text = "f(x)"
-metadata/_edit_use_anchors_ = true
-
-[node name="PainelFuncoes" type="PanelContainer" parent="." unique_id=315877986]
+[node name="PainelFuncoes1" type="PanelContainer" parent="." unique_id=315877986]
 visible = false
-custom_minimum_size = Vector2(280, 10)
+custom_minimum_size = Vector2(300, 0)
 custom_maximum_size = Vector2(280, 300)
 layout_mode = 1
 anchors_preset = -1
@@ -600,6 +624,27 @@ offset_bottom = 108.79999
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7kqr")
+
+[node name="PainelFuncoes" type="ScrollContainer" parent="." unique_id=1107101911]
+visible = false
+custom_minimum_size = Vector2(280, 0)
+custom_maximum_size = Vector2(-1, 300)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.54800004
+anchor_right = 0.5
+anchor_bottom = 0.54800004
+offset_left = -148.0
+offset_top = -39.72003
+offset_right = 148.0
+offset_bottom = 0.27996826
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_37g1n")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 5
+metadata/_edit_group_ = true
 
 [node name="FuncoesListadas" type="VBoxContainer" parent="PainelFuncoes" unique_id=491866157]
 custom_minimum_size = Vector2(260, 0)

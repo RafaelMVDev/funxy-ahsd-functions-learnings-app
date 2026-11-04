@@ -3,10 +3,10 @@ extends Control
 @onready var menu_vitoria = $tela_vencedor
 @onready var teclado_matematico = $TecladoMatematico
 @onready var grafico = $FundoPlanoCartesiano/Grafico
-@onready var check_funcao = $TecladoMatematico/VisoresTeclado/VisorFuncao/ButtonFuncao
-@onready var check_dominio = $TecladoMatematico/VisoresTeclado/VisorDominio/ButtonDominio
-@onready var botao_funcoes_antigas = $BotaoFuncoesAntigas
+@onready var check_funcao: Button = $TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao/ButtonFuncao
+@onready var check_dominio: Button = $TecladoMatematico/VisoresTeclado/MarginContaine/HBoxContainer/VBoxContainer/VisorDominio/ButtonDominio
 @onready var painel_funcoes = $PainelFuncoes
+@onready var botao_funcoes_antigas = $TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/BotaoFuncoesAntigas
 
 var quantidade_movimentos: int = 0
 var funcao_armazenada: String
@@ -28,7 +28,6 @@ func _on_exibir_funcoes_antigas():
 		
 func _on_teclado_formula_enviada(expressao: String):
 	print("Pai recebeu a fórmula: ", expressao)
-	check_funcao.visible = true
 	funcao_armazenada = expressao
 	if dominio_armazenado:
 		grafico.atualizar_grafico(funcao_armazenada, dominio_armazenado)
@@ -39,7 +38,6 @@ func _on_teclado_dominio_enviado(dominio: String):
 		dominio_armazenado = "-5<x<5"
 	else:
 		dominio_armazenado = dominio
-	check_dominio.visible = true
 	if funcao_armazenada:
 		grafico.atualizar_grafico(funcao_armazenada, dominio_armazenado)
 		_resetar()
@@ -53,8 +51,6 @@ func _voltar_movimento():
 func _resetar():
 	funcao_armazenada = ""
 	dominio_armazenado = ""
-	check_funcao.visible = false
-	check_dominio.visible = false
 
 func _carregar_menu_vitoria():
 	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos)
