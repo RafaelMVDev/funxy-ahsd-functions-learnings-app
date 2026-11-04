@@ -5,27 +5,33 @@ extends Control
 @onready var grafico = $FundoPlanoCartesiano/Grafico
 @onready var check_funcao = $TecladoMatematico/VisoresTeclado/VisorFuncao/ButtonFuncao
 @onready var check_dominio = $TecladoMatematico/VisoresTeclado/VisorDominio/ButtonDominio
+@onready var botao_funcoes_antigas = $BotaoFuncoesAntigas
+@onready var painel_funcoes = $PainelFuncoes
 
 var quantidade_movimentos: int = 0
 var funcao_armazenada: String
 var dominio_armazenado: String
 var linhas_desenhadas: Array[Line2D] = []
 var linha_desconexa: Array[Line2D] = []
+var lista_funcoes: Array[String] = []
 
 func _ready() -> void:
 	teclado_matematico.formula_enviada.connect(_on_teclado_formula_enviada)
 	teclado_matematico.dominio_enviado.connect(_on_teclado_dominio_enviado)
 	teclado_matematico.voltar_movimento.connect(_voltar_movimento)
 	grafico.vitoria.connect(_carregar_menu_vitoria)
+	botao_funcoes_antigas.pressed.connect(_on_exibir_funcoes_antigas)
 	queue_redraw()
 	
+func _on_exibir_funcoes_antigas():
+	painel_funcoes.visible = not painel_funcoes.visible
+		
 func _on_teclado_formula_enviada(expressao: String):
 	print("Pai recebeu a fórmula: ", expressao)
 	check_funcao.visible = true
 	funcao_armazenada = expressao
 	if dominio_armazenado:
 		grafico.atualizar_grafico(funcao_armazenada, dominio_armazenado)
-		print(quantidade_movimentos)
 		_resetar()
 	
 func _on_teclado_dominio_enviado(dominio: String):
@@ -41,7 +47,8 @@ func _on_teclado_dominio_enviado(dominio: String):
 func _voltar_movimento():
 	if not linhas_desenhadas.is_empty():
 		linhas_desenhadas.pop_back().queue_free()
-		linhas_desenhadas.back().default_color = Color.GREEN
+		if not linhas_desenhadas.is_empty():
+			linhas_desenhadas.back().default_color = Color.GREEN
 		
 func _resetar():
 	funcao_armazenada = ""

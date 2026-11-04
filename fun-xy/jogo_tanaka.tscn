@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cm5n25siilx6t" path="res://grafico.gd" id="3_bq6yp"]
 [ext_resource type="Script" uid="uid://dttu1xeydxab8" path="res://teclado_matematico.gd" id="4_77yt0"]
 [ext_resource type="PackedScene" uid="uid://bv4635aeugnm7" path="res://tela_vencedor.tscn" id="6_jj7yg"]
+[ext_resource type="Script" uid="uid://cs2681bhq6icd" path="res://funcoes_listadas.gd" id="7_d7ek1"]
 
 [sub_resource type="Gradient" id="Gradient_d7ek1"]
 colors = PackedColorArray(0.5787627, 0.65114766, 0.9529992, 1, 0.1584723, 0.15847233, 0.1584723, 1)
@@ -34,6 +35,39 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1rmc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4sgy"]
+bg_color = Color(0.10608701, 0.42228755, 0.65966976, 1)
+border_color = Color(0.20784314, 0.22352941, 0.28627452, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0n4v5"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fd60"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7kqr"]
+bg_color = Color(0.105882354, 0.42352942, 0.654902, 0.6627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.16470589, 0.17254902, 0.20392157, 1)
+corner_detail = 20
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
 
 [node name="jogo_tanaka" type="Control" unique_id=1126857255]
 layout_mode = 3
@@ -529,6 +563,50 @@ custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 text = "ok"
 expand_icon = true
+
+[node name="BotaoFuncoesAntigas" type="Button" parent="." unique_id=686035013]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.603125
+anchor_right = 0.9777778
+anchor_bottom = 0.61875
+offset_left = -30.0
+offset_top = -15.0
+offset_bottom = 20.609375
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4sgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0n4v5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0fd60")
+text = "f(x)"
+metadata/_edit_use_anchors_ = true
+
+[node name="PainelFuncoes" type="PanelContainer" parent="." unique_id=315877986]
+visible = false
+custom_minimum_size = Vector2(280, 10)
+custom_maximum_size = Vector2(280, 300)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.38000003
+anchor_right = 0.5
+anchor_bottom = 0.38000003
+offset_left = -141.0
+offset_top = 90.79999
+offset_right = 139.0
+offset_bottom = 108.79999
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7kqr")
+
+[node name="FuncoesListadas" type="VBoxContainer" parent="PainelFuncoes" unique_id=491866157]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 7
+script = ExtResource("7_d7ek1")
 
 [node name="tela_vencedor" parent="." unique_id=1010098406 instance=ExtResource("6_jj7yg")]
 visible = false

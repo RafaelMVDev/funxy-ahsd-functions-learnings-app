@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var posicao_pai = get_parent().global_position
 @onready var jogo = get_parent().get_parent()
+@onready var funcoes_exibidas_1 = $PainelFuncoes/FuncoesListadas
+@onready var funcoes_exibidas = get_node("../../PainelFuncoes/FuncoesListadas")
 
 signal vitoria()
 
@@ -72,6 +74,8 @@ func carregar_fase(colisoes_dados: Array):
 
 func atualizar_grafico(expressao_str: String, dominio_str: String):
 	jogo.quantidade_movimentos += 1
+	jogo.lista_funcoes.append(expressao_str)
+	
 	var dominio = dominio_str
 	var x_min: float = alcance_x_min
 	var x_max: float = alcance_x_max
@@ -96,6 +100,7 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 				x_max = x_min + 20.0
 
 	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 600)
+	
 
 	if not lista_de_pontos.is_empty():
 		var nova_linha = Line2D.new()
@@ -114,6 +119,8 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 			jogo.linha_desconexa.append(nova_linha)
 			print("A linha não tem continuidade!")
 		add_child(nova_linha)
+		funcoes_exibidas.exibir_funcoes(expressao_str)
+		
 
 func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, passos: int) -> Array[Vector2]:
 	var pontos: Array[Vector2] = []
