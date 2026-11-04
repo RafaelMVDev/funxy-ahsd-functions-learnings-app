@@ -5,6 +5,8 @@ import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
 import java.time.LocalDateTime;
 import java.util.List;
 
+//TODO: ATUALIZAR DTO PARA RETORNAR DADOS INICIAS DO JOGO ( TRILHA DE ATIVIDADES E CONQUISTAS BASE)
+//TODO: ADICIONAR DTO PARA RETORNAR DADOS BASE DO JOGO E ENDPOINT PARA ISSO!
 public record UsuarioInicialResponseDto(
         Perfil usuario,
         Preferencias configuracao,

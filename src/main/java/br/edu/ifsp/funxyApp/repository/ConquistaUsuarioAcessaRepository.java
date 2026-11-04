@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ConquistaUsuarioAcessaRepository extends JpaRepository<ConquistaUsuarioAcessa,Long> {
-    @EntityGraph(attributePaths = "conquistas")
+    @EntityGraph(attributePaths = "conquistas") // TIRAR ISSO PRA NN LEVAR INFORMAÇÕES DA CONQUISTA, SÓ O ID DELA TABOM
     List<ConquistaUsuarioAcessa> findByUsuario_IdOrderByDataDesc(
             Long usuarioId
     );
