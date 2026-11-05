@@ -1,9 +1,11 @@
 package br.edu.ifsp.funxyApp.security;
 
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.util.List;
 
@@ -19,30 +22,36 @@ import java.util.List;
 @Configuration
 public class ConfigSeguranca{
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { // tirando CSRF e setanto estado da sessão para stateless
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            TokenService tokenService
+    ) throws Exception {
+
         return http
                 .csrf(csrf -> csrf.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll() // Libera TUDO temporariamente para testes
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
-                .build();
-    }
-    /*
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(csrf -> csrf.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login", "/auth/**").permitAll() // Libera explicitamente as rotas de auth
-                        .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,
+                                "/auth/registro",
+                                "/auth/login",
+                                "/auth/refresh"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
-                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
+                .exceptionHandling(errors -> errors
+                        .authenticationEntryPoint((request, response, exception) ->
+                                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED)
+                        )
+                )
+                .addFilterBefore(
+                        new JwtFiltroAutenticacao(tokenService),
+                        UsernamePasswordAuthenticationFilter.class
+                )
                 .build();
-    } */
+    }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

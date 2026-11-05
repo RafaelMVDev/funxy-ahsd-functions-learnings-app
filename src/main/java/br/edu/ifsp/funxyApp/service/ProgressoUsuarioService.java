@@ -1,7 +1,7 @@
 package br.edu.ifsp.funxyApp.service;
 
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
-import br.edu.ifsp.funxyApp.model.Atividades;
+import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto.*;
 import br.edu.ifsp.funxyApp.model.Progresso;
 import br.edu.ifsp.funxyApp.model.ProgressoLeitura;
 import br.edu.ifsp.funxyApp.model.ProgressoPratica;
@@ -32,77 +32,58 @@ public class ProgressoUsuarioService {
 
     @Transactional(readOnly = true)
     public List<TrilhaProgressoDto> buscarTrilhas(Long usuarioId) {
-        Map<Long, List<TrilhaProgressoDto.Tentativa>> porTrilha =
-                new TreeMap<>(Comparator.nullsLast(Long::compareTo));
+        // Primeira chave: trilhaId. Segunda chave: atividadeId.
+        Map<Long, Map<Long, List<Tentativa>>> porTrilha = new TreeMap<>();
 
-        for (ProgressoLeitura leitura : leituras.findByUsuario_Id(usuarioId)) {
-            adicionarTentativa(
-                    porTrilha,
-                    leitura,
-                    "leitura",
-                    new TrilhaProgressoDto.Leitura(leitura.getPaginaAtual())
-            );
+        for (ProgressoLeitura p : leituras.findByUsuario_Id(usuarioId)) {
+            adicionarTentativa(porTrilha, p, new Leitura(p.getPaginaAtual()));
         }
 
-        for (ProgressoPratica pratica : praticas.findByUsuario_Id(usuarioId)) {
-            adicionarTentativa(
-                    porTrilha,
-                    pratica,
-                    "pratica",
-                    new TrilhaProgressoDto.Pratica(
-                            pratica.getPosicaoAtual(),
-                            pratica.getMovimentos()
-                    )
-            );
+        for (ProgressoPratica p : praticas.findByUsuario_Id(usuarioId)) {
+            adicionarTentativa(porTrilha, p,
+                    new Pratica(p.getPosicaoAtual(), p.getMovimentos()));
         }
+
+        Comparator<Tentativa> maisRecentePrimeiro = Comparator
+                .comparing(Tentativa::iniciadaEm)
+                .thenComparing(Tentativa::progressoId)
+                .reversed();
 
         List<TrilhaProgressoDto> resultado = new ArrayList<>();
 
-        porTrilha.forEach((trilhaId, tentativas) -> {
-            tentativas.sort(
-                    Comparator.comparing(TrilhaProgressoDto.Tentativa::numeroAtividade)
-                            .thenComparing(
-                                    TrilhaProgressoDto.Tentativa::iniciadaEm,
-                                    Comparator.reverseOrder()
-                            )
-                            .thenComparing(
-                                    TrilhaProgressoDto.Tentativa::progressoId,
-                                    Comparator.reverseOrder()
-                            )
-            );
+        porTrilha.forEach((trilhaId, porAtividade) -> {
+            List<AtividadeProgresso> atividades = new ArrayList<>();
 
-            resultado.add(new TrilhaProgressoDto(trilhaId, List.copyOf(tentativas)));
+            porAtividade.forEach((atividadeId, tentativas) -> {
+                tentativas.sort(maisRecentePrimeiro);
+                atividades.add(new TrilhaProgressoDto.AtividadeProgresso(atividadeId, tentativas));
+            });
+
+            resultado.add(new TrilhaProgressoDto(trilhaId, atividades));
         });
 
         return resultado;
     }
 
     private void adicionarTentativa(
-            Map<Long, List<TrilhaProgressoDto.Tentativa>> porTrilha,
+            Map<Long, Map<Long, List<Tentativa>>> porTrilha,
             Progresso progresso,
-            String tipo,
             TrilhaProgressoDto.ProgressoEspecifico progressoEspecifico
     ) {
-        Atividades atividade = progresso.getAtividade();
+        Long atividadeId = progresso.getAtividade().getId();
+        Long trilhaId = progresso.getAtividade().getIdTrilha();
 
-        String status = progresso.getDatetimeConclusao() == null
-                ? "em_andamento"
-                : "concluido";
-
-        TrilhaProgressoDto.Tentativa tentativa = new TrilhaProgressoDto.Tentativa(
+        Tentativa tentativa = new Tentativa(
                 progresso.getId(),
-                atividade.getId(),
-                atividade.getNumeroAtividade(),
-                atividade.getTitulo(),
-                tipo,
-                status,
+                progresso.getDatetimeConclusao() == null ? "em_andamento" : "concluido",
                 progresso.getDatetimeInicio(),
                 progresso.getDatetimeConclusao(),
                 progressoEspecifico
         );
 
-        porTrilha.computeIfAbsent(
-                atividade.getIdTrilha(), id -> new ArrayList<>()
-        ).add(tentativa);
+        porTrilha
+                .computeIfAbsent(trilhaId, id -> new TreeMap<>())
+                .computeIfAbsent(atividadeId, id -> new ArrayList<>())
+                .add(tentativa);
     }
 }

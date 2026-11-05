@@ -42,10 +42,6 @@ public record UsuarioInicialResponseDto(
 
     public record ConquistaDesbloqueada(
             Long conquistaId,
-            String nome,
-            String descricao,
-            String tipo,
-            Long valorCondicao,
             LocalDateTime desbloqueadaEm
     ) {}
 

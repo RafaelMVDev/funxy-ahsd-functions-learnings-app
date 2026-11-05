@@ -55,17 +55,17 @@ public class AuthService {
     }
 
     // Registro
-    public RegistroResponseDto register(RegistroRequestDto request){
+    public  RegistroResponseDto register(RegistroRequestDto request){
         String nome = request.nome();
         String email = request.email();
         String senha = request.senha();
 
         if (usuarios.findByEmail(email).isPresent()){
-            return new RegistroResponseDto("e-mail em uso!");
+            return new RegistroResponseDto(false,"e-mail em uso!");
         }
 
         if (usuarios.findByNome(nome).isPresent()){
-            return new RegistroResponseDto("nome em uso!");
+            return new RegistroResponseDto(false,"nome em uso!");
         }
 
         // Registrando o usuário no BDD
@@ -77,6 +77,6 @@ public class AuthService {
         usuarios.save(usuarioNovo); // SALVANDO NO BANCO DE DADOS
 
 
-        return new RegistroResponseDto("Conta criada!");
+        return new RegistroResponseDto(true,"Conta criada!");
     }
 }

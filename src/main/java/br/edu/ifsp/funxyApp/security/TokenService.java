@@ -52,6 +52,7 @@ public class TokenService {
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withSubject(usuario.getId().toString())
+                .withClaim("token_type","refresh")
                 .withJWTId(UUID.randomUUID().toString())  // Segurança: Evitar possibilidade 2 refresh tokens iguais no banco, caso usuário logue em mais de 1 dispositivo
                 .withIssuedAt(agora)
                 .withExpiresAt(agora.plus(DURACAO_REFRESH_TOKEN))
@@ -64,6 +65,7 @@ public class TokenService {
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withSubject(usuario.getId().toString())
+                .withClaim("token_type","acess")
                 .withIssuedAt(agora)
                 .withExpiresAt(agora.plus(DURACAO_ACESS_TOKEN))
                 .sign(algoritmo);

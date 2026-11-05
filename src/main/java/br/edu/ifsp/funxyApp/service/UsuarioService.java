@@ -3,11 +3,14 @@ package br.edu.ifsp.funxyApp.service;
 import br.edu.ifsp.funxyApp.dto.auth.UsuarioInicialResponseDto;
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
 import br.edu.ifsp.funxyApp.model.Usuario;
+import br.edu.ifsp.funxyApp.model.Configuracao;
 import br.edu.ifsp.funxyApp.repository.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
+import br.edu.ifsp.funxyApp.dto.jogo.NomeUsuarioDto;
+import br.edu.ifsp.funxyApp.dto.jogo.SalvarConfiguracaoRequestDto;
 
 import java.util.List;
 
@@ -86,21 +89,12 @@ public class UsuarioService {
                 })
                 .toList();
 
-        var desbloqueadas = conquistas
-                .findByUsuario_IdOrderByDataDesc(usuarioId)
+        var desbloqueadas = conquistas.findByUsuario_IdOrderByDataDesc(usuarioId)
                 .stream()
-                .map(registro -> {
-                    var conquista = registro.getConquista();
-
-                    return new UsuarioInicialResponseDto.ConquistaDesbloqueada(
-                            conquista.getId(),
-                            conquista.getNome(),
-                            conquista.getDescricao(),
-                            nomeEnum(conquista.getTipo()),
-                            conquista.getValorCondicao(),
-                            registro.getData()
-                    );
-                })
+                .map(registro -> new UsuarioInicialResponseDto.ConquistaDesbloqueada(
+                        registro.getConquista().getId(),
+                        registro.getData()
+                ))
                 .toList();
         List<TrilhaProgressoDto> trilhas =
                 progressoUsuarioService.buscarTrilhas(usuario.getId());
@@ -116,5 +110,54 @@ public class UsuarioService {
 
     private static String nomeEnum(Enum<?> valor) {
         return valor == null ? null : valor.name();
+    }
+
+    // ALTERAÇÃO DOS DADOS DO JOGADOR
+    @Transactional
+    public NomeUsuarioDto alterarNome(Long usuarioId, NomeUsuarioDto request) {
+        Usuario usuario = usuarios.findById(usuarioId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Usuário não encontrado."
+                ));
+
+        boolean nomeEmUso = usuarios.findByNome(request.nome())
+                .filter(outro -> !outro.getId().equals(usuarioId))
+                .isPresent();
+
+        if (nomeEmUso) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Nome em uso.");
+        }
+
+        usuario.setNome(request.nome());
+        usuarios.save(usuario);
+
+        return new NomeUsuarioDto(usuario.getNome());
+    }
+
+    @Transactional
+    public UsuarioInicialResponseDto.Preferencias salvarConfiguracao(
+            Long usuarioId,
+            SalvarConfiguracaoRequestDto request
+    ) {
+        Usuario usuario = usuarios.findById(usuarioId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Usuário não encontrado."
+                ));
+
+        Configuracao config = configuracoes.findByUsuario_Id(usuarioId)
+                .orElseGet(Configuracao::new);
+
+        config.setUsuario(usuario);
+        config.setTema(request.tema());
+        config.setIdioma(request.idioma().trim());
+        config.setNotificacao(request.notificacao());
+
+        configuracoes.save(config);
+
+        return new UsuarioInicialResponseDto.Preferencias(
+                nomeEnum(config.getTema()),
+                config.getIdioma(),
+                config.getNotificacao()
+        );
     }
 }
