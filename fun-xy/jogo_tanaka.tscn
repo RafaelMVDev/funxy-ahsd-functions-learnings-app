@@ -1,0 +1,658 @@
+[gd_scene format=3 uid="uid://bpg132c2wnqg"]
+
+[ext_resource type="Script" uid="uid://b217q64j6vrop" path="res://fundo_plano_cartesiano.gd" id="1_gpm53"]
+[ext_resource type="Script" uid="uid://s83i65kcb8gu" path="res://jogo_tanaka.gd" id="1_n1rmc"]
+[ext_resource type="Script" uid="uid://cp3qohxsj4sxs" path="res://malha_plano_cartesiano.gd" id="2_bq6yp"]
+[ext_resource type="Script" uid="uid://cm5n25siilx6t" path="res://grafico.gd" id="3_bq6yp"]
+[ext_resource type="Script" uid="uid://dttu1xeydxab8" path="res://teclado_matematico.gd" id="4_77yt0"]
+[ext_resource type="PackedScene" uid="uid://bv4635aeugnm7" path="res://tela_vencedor.tscn" id="6_jj7yg"]
+[ext_resource type="Script" uid="uid://cs2681bhq6icd" path="res://funcoes_listadas.gd" id="7_d7ek1"]
+
+[sub_resource type="Gradient" id="Gradient_d7ek1"]
+colors = PackedColorArray(0.5787627, 0.65114766, 0.9529992, 1, 0.1584723, 0.15847233, 0.1584723, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x2j0j"]
+gradient = SubResource("Gradient_d7ek1")
+fill_from = Vector2(0.49565217, 1)
+fill_to = Vector2(0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q688"]
+content_margin_left = 10.0
+bg_color = Color(0.20784314, 0.22352941, 0.28627452, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh7mu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixrit"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7ek1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj7yg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1rmc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4sgy"]
+bg_color = Color(0.10608701, 0.42228755, 0.65966976, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0n4v5"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fd60"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7kqr"]
+bg_color = Color(0.105882354, 0.42352942, 0.654902, 0.6627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.16470589, 0.17254902, 0.20392157, 1)
+corner_detail = 20
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37g1n"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.26666668, 0.49803922, 0.7529412, 0.72156864)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="jogo_tanaka" type="Control" unique_id=1126857255]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("1_n1rmc")
+
+[node name="FundoAzul" type="TextureRect" parent="." unique_id=218444167]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_x2j0j")
+metadata/_edit_use_anchors_ = true
+
+[node name="FundoPlanoCartesiano" type="PanelContainer" parent="." unique_id=1759844400]
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.047000002
+anchor_right = 0.083000004
+anchor_bottom = 0.047000002
+offset_left = 0.11999893
+offset_top = -0.08000183
+offset_right = 300.12
+offset_bottom = 299.91998
+offset_transform_enabled = true
+script = ExtResource("1_gpm53")
+
+[node name="Grafico" type="Node2D" parent="FundoPlanoCartesiano" unique_id=1944659863]
+script = ExtResource("3_bq6yp")
+
+[node name="MalhaPlanoCartesiano" type="Node2D" parent="FundoPlanoCartesiano" unique_id=245684022]
+script = ExtResource("2_bq6yp")
+
+[node name="TecladoMatematico" type="Control" parent="." unique_id=1509695705]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -301.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_77yt0")
+
+[node name="VisoresTeclado" type="VBoxContainer" parent="TecladoMatematico" unique_id=791431479]
+custom_minimum_size = Vector2(290, 250)
+custom_maximum_size = Vector2(-1, 300)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 250.0
+grow_horizontal = 2
+theme_override_constants/separation = 5
+
+[node name="Mensagem" type="Label" parent="TecladoMatematico/VisoresTeclado" unique_id=776241644]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=2023383540]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/MarginContainer" unique_id=447548917]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer" unique_id=1757287893]
+layout_mode = 2
+
+[node name="VisorFuncao" type="LineEdit" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer" unique_id=239194384]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4q688")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fh7mu")
+placeholder_text = "f(x) = "
+
+[node name="ButtonFuncao" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao" unique_id=449414325]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ixrit")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d7ek1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jj7yg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n1rmc")
+button_mask = 0
+text = "✔ "
+
+[node name="VisorDominio" type="LineEdit" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1146101668]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4q688")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fh7mu")
+
+[node name="ButtonDominio" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorDominio" unique_id=507909020]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ixrit")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d7ek1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jj7yg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n1rmc")
+button_mask = 0
+text = "✔ "
+
+[node name="BotaoFuncoesAntigas" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer" unique_id=686035013]
+custom_minimum_size = Vector2(40, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4sgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0n4v5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0fd60")
+text = "f(x)"
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainerFuncao" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, -1)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Linha1" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao" unique_id=1174486339]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1916012218]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "x"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1078667999]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "+"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1174737345]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "-"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1433566313]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "7"
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=2020110775]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "8"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha1" unique_id=1331607929]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "9"
+expand_icon = true
+
+[node name="Linha2" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao" unique_id=1410628994]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=207601754]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "|  |"
+expand_icon = true
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=45831493]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "*"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=493771104]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "/"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=1617515146]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "4"
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=11256809]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "5"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha2" unique_id=1787501387]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "6"
+expand_icon = true
+
+[node name="Linha3" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao" unique_id=120483738]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=413978932]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "**"
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=972244404]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "("
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=1137849605]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = ")"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=1746767166]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "1"
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=969948741]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "2"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha3" unique_id=52338872]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "3"
+expand_icon = true
+
+[node name="Linha4" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao" unique_id=1098824237]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=1724687683]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "del"
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=792394701]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "⌫"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=1387342814]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "↩"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=535163228]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "."
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=1842357710]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "0"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/Linha4" unique_id=430525020]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "ok"
+expand_icon = true
+
+[node name="VBoxContainerDominio" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1602529930]
+custom_minimum_size = Vector2(300, 200)
+custom_maximum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Linha1" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio" unique_id=1282905264]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1707563898]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "x"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=38919868]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "<"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1945481151]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = ">"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1896928148]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "7"
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=2103363147]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "8"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1902784741]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "9"
+expand_icon = true
+
+[node name="Linha2" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio" unique_id=336056481]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=555686591]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "R"
+expand_icon = true
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=1533555230]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "Z"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=430662753]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "N"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=57704876]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "4"
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=933581421]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "5"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha2" unique_id=1919980239]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "6"
+expand_icon = true
+
+[node name="Linha3" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio" unique_id=55768577]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=1196996221]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "<="
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=1338798706]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = ">="
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=82167364]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = ")"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=689222502]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "1"
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=716566260]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "2"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha3" unique_id=1366179876]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "3"
+expand_icon = true
+
+[node name="Linha4" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio" unique_id=1237108948]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=610428546]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "del"
+
+[node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=386332545]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "⌫"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=577116778]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "↩"
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=585000010]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "."
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=223143081]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "0"
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha4" unique_id=825235454]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+text = "ok"
+expand_icon = true
+
+[node name="PainelFuncoes1" type="PanelContainer" parent="." unique_id=315877986]
+visible = false
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(280, 300)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.38000003
+anchor_right = 0.5
+anchor_bottom = 0.38000003
+offset_left = -141.0
+offset_top = 90.79999
+offset_right = 139.0
+offset_bottom = 108.79999
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7kqr")
+
+[node name="PainelFuncoes" type="ScrollContainer" parent="." unique_id=1107101911]
+visible = false
+custom_minimum_size = Vector2(280, 0)
+custom_maximum_size = Vector2(-1, 300)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.54800004
+anchor_right = 0.5
+anchor_bottom = 0.54800004
+offset_left = -148.0
+offset_top = -39.72003
+offset_right = 148.0
+offset_bottom = 0.27996826
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_37g1n")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 5
+metadata/_edit_group_ = true
+
+[node name="FuncoesListadas" type="VBoxContainer" parent="PainelFuncoes" unique_id=491866157]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 7
+script = ExtResource("7_d7ek1")
+
+[node name="tela_vencedor" parent="." unique_id=1010098406 instance=ExtResource("6_jj7yg")]
+visible = false
+layout_mode = 1

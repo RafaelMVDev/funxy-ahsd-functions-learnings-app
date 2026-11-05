@@ -1,0 +1,68 @@
+extends Node2D
+
+@export var cor_ponto: Color = Color.RED
+@export var raio: float = 3.0
+@export var alcance_x: Vector2 = Vector2(-5, 5)
+@export var alcance_y: Vector2 = Vector2(-5, 5)
+@export var passo_grid: float = 1.0
+var tamanho_tela: Vector2
+var ponto_central: Vector2
+
+@export var cor_grade: Color = Color(1.0, 1.0, 1.0, 0.4) 
+@export var cor_eixos: Color = Color.WHITE      
+
+func _ready() -> void:
+	var pai = get_parent()
+	tamanho_tela = pai.size
+	ponto_central = tamanho_tela/2 
+	queue_redraw()
+	
+func _process(delta: float) -> void:
+	pass
+
+func math_para_tela(ponto_math: Vector2) -> Vector2:
+	var escala_x = tamanho_tela.x / (alcance_x.y - alcance_x.x)
+	var escala_y = tamanho_tela.y / (alcance_y.y - alcance_y.x)
+	
+	var px = ponto_central.x + (ponto_math.x * escala_x)
+	var py = ponto_central.y - (ponto_math.y * escala_y)
+	
+	return Vector2(px, py)
+
+func desenhar_malha():
+	var x = alcance_x.x
+	while x <= alcance_x.y:
+		var inicio = math_para_tela(Vector2(x, alcance_y.x))
+		var fim = math_para_tela(Vector2(x, alcance_y.y))
+		draw_line(inicio, fim, cor_grade, 1.0)
+		x += passo_grid
+
+	var y = alcance_y.x
+	var linha = -5
+	while y <= alcance_y.y:
+		var inicio = math_para_tela(Vector2(alcance_x.x, y))
+		var fim = math_para_tela(Vector2(alcance_x.y, y))
+		draw_string(ThemeDB.fallback_font, Vector2(ponto_central.x + 3, ponto_central.y + 11), "0", HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
+		
+		if linha != 0:
+			draw_string(ThemeDB.fallback_font, Vector2(ponto_central.x + 2, inicio.y+3), str(linha), HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
+			draw_string(ThemeDB.fallback_font, Vector2(inicio.y-5, ponto_central.x + 11), str(-linha), HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
+		draw_line(inicio, fim, cor_grade, 1.0)
+		y += passo_grid
+		linha += 1
+
+	var inicio_eixo_x = math_para_tela(Vector2(alcance_x.x, 0))
+	var fim_eixo_x = math_para_tela(Vector2(alcance_x.y, 0))
+	draw_line(inicio_eixo_x, fim_eixo_x, cor_eixos, 3.0)
+
+	var inicio_eixo_y = math_para_tela(Vector2(0, alcance_y.x))
+	var fim_eixo_y = math_para_tela(Vector2(0, alcance_y.y))
+	draw_line(inicio_eixo_y, fim_eixo_y, cor_eixos, 3.0)
+
+func _draw() -> void:
+	desenhar_malha()
+	draw_circle(ponto_central, raio, cor_ponto)
+	
+	
+
+	
