@@ -5,8 +5,8 @@ extends Node2D
 @onready var funcoes_exibidas_1 = $PainelFuncoes/FuncoesListadas
 @onready var funcoes_exibidas = get_node("../../PainelFuncoes/FuncoesListadas")
 @onready var mensagem = get_node("../../TecladoMatematico/VisoresTeclado/Mensagem")
-@onready var check_funcao = get_node("../../TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao/ButtonFuncao")
-@onready var check_dominio = get_node("../../TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao/ButtonDominio")
+@onready var check_funcao = %ButtonFuncao
+@onready var check_dominio = %ButtonDominio
 
 signal vitoria()
 
@@ -80,6 +80,7 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 	jogo.lista_funcoes.append(expressao_str)
 	check_funcao.visible = false
 	check_dominio.visible = false
+	mensagem.text = ""
 	
 	var dominio = dominio_str
 	var x_min: float = alcance_x_min

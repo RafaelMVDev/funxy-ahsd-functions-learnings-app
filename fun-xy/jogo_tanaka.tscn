@@ -60,19 +60,6 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7kqr"]
-bg_color = Color(0.105882354, 0.42352942, 0.654902, 0.6627451)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.16470589, 0.17254902, 0.20392157, 1)
-corner_detail = 20
-expand_margin_left = 10.0
-expand_margin_top = 5.0
-expand_margin_right = 10.0
-expand_margin_bottom = 5.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37g1n"]
 content_margin_left = 10.0
 content_margin_top = 5.0
@@ -166,6 +153,7 @@ size_flags_horizontal = 4
 layout_mode = 2
 
 [node name="VisorFuncao" type="LineEdit" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer" unique_id=239194384]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -174,6 +162,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_fh7mu")
 placeholder_text = "f(x) = "
 
 [node name="ButtonFuncao" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao" unique_id=449414325]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 6
@@ -194,6 +183,7 @@ button_mask = 0
 text = "✔ "
 
 [node name="VisorDominio" type="LineEdit" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1146101668]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -201,6 +191,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4q688")
 theme_override_styles/focus = SubResource("StyleBoxFlat_fh7mu")
 
 [node name="ButtonDominio" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorDominio" unique_id=507909020]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 6
@@ -607,28 +598,10 @@ layout_mode = 2
 text = "ok"
 expand_icon = true
 
-[node name="PainelFuncoes1" type="PanelContainer" parent="." unique_id=315877986]
-visible = false
-custom_minimum_size = Vector2(300, 0)
-custom_maximum_size = Vector2(280, 300)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.38000003
-anchor_right = 0.5
-anchor_bottom = 0.38000003
-offset_left = -141.0
-offset_top = 90.79999
-offset_right = 139.0
-offset_bottom = 108.79999
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7kqr")
-
 [node name="PainelFuncoes" type="ScrollContainer" parent="." unique_id=1107101911]
 visible = false
-custom_minimum_size = Vector2(280, 0)
-custom_maximum_size = Vector2(-1, 300)
+custom_minimum_size = Vector2(280, -1)
+custom_maximum_size = Vector2(-1, 200)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

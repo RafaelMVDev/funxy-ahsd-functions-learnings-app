@@ -3,8 +3,6 @@ extends Control
 @onready var menu_vitoria = $tela_vencedor
 @onready var teclado_matematico = $TecladoMatematico
 @onready var grafico = $FundoPlanoCartesiano/Grafico
-@onready var check_funcao: Button = $TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao/ButtonFuncao
-@onready var check_dominio: Button = $TecladoMatematico/VisoresTeclado/MarginContaine/HBoxContainer/VBoxContainer/VisorDominio/ButtonDominio
 @onready var painel_funcoes = $PainelFuncoes
 @onready var botao_funcoes_antigas = $TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/BotaoFuncoesAntigas
 

@@ -1,9 +1,11 @@
 extends Control
 
-@onready var VisorFuncao: LineEdit = $VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao
-@onready var VisorDominio: LineEdit = $VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorDominio
+@onready var VisorFuncao: LineEdit = %VisorFuncao
+@onready var VisorDominio: LineEdit = %VisorDominio
 @onready var vboxFuncao: VBoxContainer = $VisoresTeclado/VBoxContainerFuncao
 @onready var vboxDominio: VBoxContainer = $VisoresTeclado/VBoxContainerDominio
+@onready var check_funcao: Button = %ButtonFuncao
+@onready var check_dominio: Button = %ButtonDominio
 
 signal voltar_movimento()
 signal formula_enviada(expressao: String)
@@ -61,36 +63,34 @@ func _estilo_visor(node: LineEdit, estilo: String):
 
 func _on_botao_pressionado(botao_clicado: Button) -> void:
 	var texto_do_botao: String = botao_clicado.text
-	if visor_ativo:
-		visor_ativo.get_child(0).visible == false
-		
-		if visor_ativo == VisorFuncao:
-			get_parent().funcao_armazenada = ""
-		else:
-			get_parent().dominio_armazenado = ""
+	if visor_ativo.get_child(0).visible == true:
+		visor_ativo.get_child(0).visible = false
+	
+	if visor_ativo == VisorFuncao:
+		get_parent().funcao_armazenada = ""
+	else:
+		get_parent().dominio_armazenado = ""
 
-		if texto_do_botao == "del":
-			visor_ativo.text = "" 
-		elif texto_do_botao == "⌫":
-			print("reconhece o backspace")
-			visor_ativo.get_child(0).visible = false
-			_apagar_com_backspace()
-		elif texto_do_botao == "↩":
-			VisorFuncao.get_child(0).visible = false
-			VisorDominio.get_child(0).visible = false
-			emit_signal("voltar_movimento")
-		elif texto_do_botao == "ok":
-			visor_ativo.get_child(0).visible = true
-			if visor_ativo == VisorFuncao:
-				emit_signal("formula_enviada", visor_ativo.text) 
-			else:
-				emit_signal("dominio_enviado", visor_ativo.text)
+	if texto_do_botao == "del":
+		visor_ativo.text = "" 
+	elif texto_do_botao == "⌫":
+		print("reconhece o backspace")
+		visor_ativo.get_child(0).visible = false
+		_apagar_com_backspace()
+	elif texto_do_botao == "↩":
+		emit_signal("voltar_movimento")
+	elif texto_do_botao == "ok":
+		if visor_ativo == VisorFuncao:
+			check_funcao.visible = true
+			emit_signal("formula_enviada", visor_ativo.text) 
 		else:
-			_inserir_texto_no_cursor(texto_do_botao) # Adiciona o número ou operador no visor
+			check_dominio.visible = true
+			emit_signal("dominio_enviado", visor_ativo.text)
+	else:
+		_inserir_texto_no_cursor(texto_do_botao) # Adiciona o número ou operador no visor
 
 func _apagar_com_backspace():
 	var coluna: int = visor_ativo.get_caret_column()
-	
 
 	if coluna > 0:
 		var texto: String = visor_ativo.text
