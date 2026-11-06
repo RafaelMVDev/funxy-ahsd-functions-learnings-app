@@ -75,17 +75,10 @@ func carregar_fase(colisoes_dados: Array):
 		colisor.add_child(visual)
 		add_child(colisor)
 
-func atualizar_grafico(expressao_str: String, dominio_str: String):
-	jogo.quantidade_movimentos += 1
-	jogo.lista_funcoes.append(expressao_str)
-	check_funcao.visible = false
-	check_dominio.visible = false
-	mensagem.text = ""
-	
-	var dominio = dominio_str
+func definir_dominio(dominio: String) -> Array:
 	var x_min: float = alcance_x_min
 	var x_max: float = alcance_x_max
-
+	
 	if "<" in dominio or "<=" in dominio:
 		var partes = dominio.split("x")
 		if partes.size() == 2:
@@ -104,36 +97,74 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 			if min_str.is_valid_float():
 				x_min = min_str.to_float()
 				x_max = x_min + 20.0
+				
+	return [x_min, x_max]
+
+func atualizar_grafico(expressao_str: String, dominio_str: String):
+	jogo.quantidade_movimentos += 1
+	jogo.lista_funcoes.append(expressao_str)
+	check_funcao.visible = false
+	check_dominio.visible = false
+	mensagem.text = ""
+	
+	var dominio = dominio_str
+	var primeiro_ponto = false
+	
+	var limites = definir_dominio(dominio_str)
+	var x_min: float = limites[0]
+	var x_max: float = limites[1]
+	var acertou_comeco = false
 
 	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 800)
 	
-
 	if not lista_de_pontos.is_empty():
 		var nova_linha = Line2D.new()
 		nova_linha.points = PackedVector2Array(lista_de_pontos)
 		nova_linha.width = 3.0
+	
 		if not jogo.linha_desconexa.is_empty():
 			jogo.linha_desconexa.pop_back().queue_free()
 		
 		if verificar_cruzamento(lista_de_pontos):
-			nova_linha.default_color = Color.GREEN
-			if not jogo.linhas_desenhadas.is_empty():
-				jogo.linhas_desenhadas.back().default_color = Color.WHITE
-			jogo.linhas_desenhadas.append(nova_linha)
+			var acertou_inicio = false
+			var acertou_fim = false
+			
+			for ponto in lista_de_pontos:
+				if verificar_colisao(ponto, "inicio"):
+					acertou_inicio = true
+				if verificar_colisao(ponto, "fim"):
+					acertou_fim = true
+
+			if jogo.linhas_desenhadas.is_empty():
+				if acertou_inicio:
+					nova_linha.default_color = Color.GREEN
+					jogo.linhas_desenhadas.append(nova_linha)
+				else:
+					nova_linha.default_color = Color.ORANGE
+					jogo.linha_desconexa.append(nova_linha)
+					mensagem.text = "Não acertou o ponto inicial"
+			else:
+				nova_linha.default_color = Color.GREEN
+				jogo.linhas_desenhadas.back().default_color = Color.WHITE 
+				jogo.linhas_desenhadas.append(nova_linha)
+			
+			if acertou_fim and nova_linha in jogo.linhas_desenhadas:
+				emit_signal("vitoria")
+				
 		else:
 			nova_linha.default_color = Color.ORANGE
 			jogo.linha_desconexa.append(nova_linha)
 			mensagem.text = "A linha não tem continuidade"
+		
 		add_child(nova_linha)
 		funcoes_exibidas.exibir_funcoes(expressao_str)
-		
+		nova_linha.add_to_group("linhas")
 
 func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, passos: int) -> Array[Vector2]:
 	var pontos: Array[Vector2] = []
 	var expr = Expression.new()
 	var ponto: Vector2
 	var passo_x = (x_max - x_min) / passos
-	var primeiro_ponto = false
 
 	var erro = expr.parse(expressao_str, ["x"])
 	if erro != OK:
@@ -149,18 +180,7 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 		ponto = Vector2(pixel_x, pixel_y)
 
 		if pixel_y >= topo_y and pixel_y <= limite_y:
-			#Verifica se está na primeira linha e no primeiro ponto dela
-			if jogo.linhas_desenhadas.is_empty() and primeiro_ponto == false:
-				primeiro_ponto = true
-				if not verificar_colisao(ponto, "inicio"):
-					mensagem.text = "Não acertou o ponto inicial"
-					return pontos
-					
-			elif verificar_colisao(ponto, "fim"):
-				emit_signal("vitoria")
-				return pontos
-
-			elif verificar_colisao(ponto, "obstaculos"):
+			if verificar_colisao(ponto, "obstaculos"):
 				return pontos
 			pontos.append(ponto)
 	return pontos
@@ -169,7 +189,7 @@ func verificar_cruzamento(novos_pontos: Array[Vector2]) -> bool:
 	if jogo.linhas_desenhadas.is_empty():
 		return true
 
-	var tolerancia = 1
+	var tolerancia = 3
 	var linha_antiga = jogo.linhas_desenhadas.back()
 	var pontos_antigos = linha_antiga.points
 	

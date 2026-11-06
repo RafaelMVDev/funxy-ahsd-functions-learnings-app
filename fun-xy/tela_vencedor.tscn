@@ -91,6 +91,7 @@ theme_override_constants/separation = 25
 alignment = 1
 
 [node name="ResetButton" type="Button" parent="PanelContainer/VBoxContainer/BoxBotoes" unique_id=659133987]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 icon = ExtResource("2_lkbu6")
@@ -98,6 +99,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="HomeButton2" type="Button" parent="PanelContainer/VBoxContainer/BoxBotoes" unique_id=2015072745]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 icon = ExtResource("3_u8b4n")
