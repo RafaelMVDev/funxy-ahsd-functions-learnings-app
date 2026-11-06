@@ -17,7 +17,7 @@ func _ready() -> void:
 	ponto_central = tamanho_tela/2 
 	queue_redraw()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func math_para_tela(ponto_math: Vector2) -> Vector2:

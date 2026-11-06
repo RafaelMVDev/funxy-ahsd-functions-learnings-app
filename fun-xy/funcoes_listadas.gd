@@ -25,5 +25,5 @@ func exibir_funcoes(expressao: String) -> void:
 	painel_individual.add_to_group("painel_funcoes")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

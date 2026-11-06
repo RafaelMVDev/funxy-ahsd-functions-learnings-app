@@ -5,8 +5,11 @@
 [ext_resource type="Script" uid="uid://cp3qohxsj4sxs" path="res://malha_plano_cartesiano.gd" id="2_bq6yp"]
 [ext_resource type="Script" uid="uid://cm5n25siilx6t" path="res://grafico.gd" id="3_bq6yp"]
 [ext_resource type="Script" uid="uid://dttu1xeydxab8" path="res://teclado_matematico.gd" id="4_77yt0"]
+[ext_resource type="Script" uid="uid://b623ygvocnqj4" path="res://botao_mini_menu.gd" id="6_4q688"]
 [ext_resource type="PackedScene" uid="uid://bv4635aeugnm7" path="res://tela_vencedor.tscn" id="6_jj7yg"]
 [ext_resource type="Script" uid="uid://cs2681bhq6icd" path="res://funcoes_listadas.gd" id="7_d7ek1"]
+[ext_resource type="Script" uid="uid://crcv0olwje5ln" path="res://botao_resetar_partida.gd" id="9_x4sgy"]
+[ext_resource type="Script" uid="uid://d3udtt0pnud7r" path="res://botão_sair_da_partida.gd" id="10_0fd60"]
 
 [sub_resource type="Gradient" id="Gradient_d7ek1"]
 colors = PackedColorArray(0.5787627, 0.65114766, 0.9529992, 1, 0.1584723, 0.15847233, 0.1584723, 1)
@@ -43,10 +46,8 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 4
+corner_radius_top_right = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0n4v5"]
 corner_radius_top_left = 5
@@ -60,6 +61,15 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
+bg_color = Color(1.92523e-07, 0.35380283, 0.3010696, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37g1n"]
 content_margin_left = 10.0
 content_margin_top = 5.0
@@ -70,6 +80,23 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb775"]
+bg_color = Color(0, 0.3529412, 0.3019608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4btq"]
+bg_color = Color(0.60006106, 0.031150138, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="jogo_tanaka" type="Control" unique_id=1126857255]
 layout_mode = 3
@@ -151,6 +178,7 @@ size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer" unique_id=1757287893]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="VisorFuncao" type="LineEdit" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer" unique_id=239194384]
 unique_name_in_owner = true
@@ -211,14 +239,30 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_n1rmc")
 button_mask = 0
 text = "✔ "
 
-[node name="BotaoFuncoesAntigas" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer" unique_id=686035013]
-custom_minimum_size = Vector2(40, 60)
+[node name="Continaer_botoes_partida" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer" unique_id=1810125371]
+layout_mode = 2
+
+[node name="BotaoFuncoesAntigas" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/Continaer_botoes_partida" unique_id=686035013]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 32)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4sgy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0n4v5")
 theme_override_styles/focus = SubResource("StyleBoxFlat_0fd60")
 text = "f(x)"
 metadata/_edit_use_anchors_ = true
+
+[node name="BotaoMiniMenu" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/Continaer_botoes_partida" unique_id=421218508]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_p3kxb")
+text = "☰"
+script = ExtResource("6_4q688")
+
+[node name="GridContainer" type="GridContainer" parent="TecladoMatematico/VisoresTeclado/MarginContainer" unique_id=1991597048]
+visible = false
+layout_mode = 2
+columns = 2
 
 [node name="VBoxContainerFuncao" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
 custom_minimum_size = Vector2(300, 300)
@@ -620,6 +664,7 @@ vertical_scroll_mode = 5
 metadata/_edit_group_ = true
 
 [node name="FuncoesListadas" type="VBoxContainer" parent="PainelFuncoes" unique_id=491866157]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -629,3 +674,49 @@ script = ExtResource("7_d7ek1")
 [node name="tela_vencedor" parent="." unique_id=1010098406 instance=ExtResource("6_jj7yg")]
 visible = false
 layout_mode = 1
+
+[node name="MiniMenu" type="PanelContainer" parent="." unique_id=2106220667]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(60, 110)
+custom_maximum_size = Vector2(70, 110)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -30.0
+offset_right = -32.0
+offset_bottom = 80.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rb775")
+
+[node name="MarginContainer" type="MarginContainer" parent="MiniMenu" unique_id=470712376]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BotaoResetarPartida" type="Button" parent="MiniMenu/MarginContainer" unique_id=322209950]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 23
+text = "⭯"
+script = ExtResource("9_x4sgy")
+
+[node name="BotaoSairPartida" type="Button" parent="MiniMenu/MarginContainer" unique_id=105158319]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_b4btq")
+text = "X"
+script = ExtResource("10_0fd60")

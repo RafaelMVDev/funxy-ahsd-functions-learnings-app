@@ -7,5 +7,5 @@ var origem: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	print("Tamanho: ", tamanho)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

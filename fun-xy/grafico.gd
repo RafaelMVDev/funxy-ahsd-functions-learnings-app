@@ -2,8 +2,7 @@ extends Node2D
 
 @onready var posicao_pai = get_parent().global_position
 @onready var jogo = get_parent().get_parent()
-@onready var funcoes_exibidas_1 = $PainelFuncoes/FuncoesListadas
-@onready var funcoes_exibidas = get_node("../../PainelFuncoes/FuncoesListadas")
+@onready var funcoes_exibidas = %FuncoesListadas
 @onready var mensagem = get_node("../../TecladoMatematico/VisoresTeclado/Mensagem")
 @onready var check_funcao = %ButtonFuncao
 @onready var check_dominio = %ButtonDominio
@@ -107,13 +106,9 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 	check_dominio.visible = false
 	mensagem.text = ""
 	
-	var dominio = dominio_str
-	var primeiro_ponto = false
-	
 	var limites = definir_dominio(dominio_str)
 	var x_min: float = limites[0]
 	var x_max: float = limites[1]
-	var acertou_comeco = false
 
 	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 800)
 	
