@@ -8,7 +8,8 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "itens")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Itens {
+public class
+Itens {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

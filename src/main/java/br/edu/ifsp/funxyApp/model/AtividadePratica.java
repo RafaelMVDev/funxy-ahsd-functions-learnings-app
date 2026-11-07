@@ -8,11 +8,9 @@ public class AtividadePratica extends Atividades {
     @Column(name = "media_movimentos")
     private Integer mediaMovimentos;
 
-    @Column(name = "malha_pontos")
-    private String malhaPontos;
+    @Column(name = "colisoes_malha")
+    private String colisoesMalha;
 
-    @Column(name = "coordenadas_chegada")
-    private String coordenadasChegada;
 
     /*@Column(name = "pontuacao_maxima")
     private Integer pontuacaoMaxima;* colocar pontuação máxima? */
@@ -20,10 +18,6 @@ public class AtividadePratica extends Atividades {
     public AtividadePratica() {
     }
 
-
-    public String getCoordenadaChegada(){ return coordenadasChegada;}
-
-    public void setCoordenadaChegada(String coordenadasChegada){ this.coordenadasChegada = coordenadasChegada; }
 
     public Integer getMediaMovimentos() {
         return mediaMovimentos;
@@ -33,12 +27,12 @@ public class AtividadePratica extends Atividades {
         this.mediaMovimentos = mediaMovimentos;
     }
 
-    public String getMalhaPontos() {
-        return malhaPontos;
+    public String getColisoesMalha() {
+        return colisoesMalha;
     }
 
-    public void setMalhaPontos(String malhaPontos) {
-        this.malhaPontos = malhaPontos;
+    public void setColisoesMalhas(String colisoes) {
+        this.colisoesMalha = colisoes;
     }
     /*
     public Integer getPontuacaoMaxima() {

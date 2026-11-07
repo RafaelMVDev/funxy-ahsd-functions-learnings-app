@@ -1,6 +1,7 @@
 package br.edu.ifsp.funxyApp.model;
 import br.edu.ifsp.funxyApp.model.enums.TipoAtividade;
 import jakarta.persistence.*;
+import br.edu.ifsp.funxyApp.model.Trilha;
 @Entity
 @Table(name = "Atividades")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -24,8 +25,9 @@ public class Atividades {
 
     private String titulo;
 
-    @Column(name = "id_trilha")
-    private Long idTrilha;
+    @ManyToOne
+    @JoinColumn(name = "id_trilha",nullable = false)
+    private Trilha trilha;
 
     @Enumerated(EnumType.STRING)
     private TipoAtividade tipo;
@@ -82,11 +84,15 @@ public class Atividades {
     }
 
     public Long getIdTrilha() {
-        return idTrilha;
+        return trilha.getIdTrilha();
     }
 
-    public void setIdTrilha(Long idTrilha) {
-        this.idTrilha = idTrilha;
+    public Trilha getTrilha() {
+        return trilha;
+    }
+
+    public void setTrilha(Trilha trilha) {
+        this.trilha = trilha;
     }
 
     public TipoAtividade getTipo() {

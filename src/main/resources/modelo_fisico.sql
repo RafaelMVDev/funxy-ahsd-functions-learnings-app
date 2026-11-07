@@ -123,8 +123,7 @@ CREATE TABLE Atividades (
 CREATE TABLE Atividades_Pratica (
                                     id_atividade BIGINT PRIMARY KEY,
                                     media_movimentos INT CHECK (media_movimentos >= 0),
-                                    malha_pontos TEXT,
-                                    coordenadas_chegada TEXT,
+                                    colisoes TEXT DEFAULT '[]' NOT NULL,
 
                                     CONSTRAINT fk_atividade_pratica
                                         FOREIGN KEY (id_atividade)
@@ -218,6 +217,11 @@ CREATE TABLE Progresso_Leitura (
                                            ON DELETE CASCADE
 );
 
+
+CREATE TABLE Trilha (
+    id_trilha BIGINT PRIMARY KEY,
+    nome_trilha VARCHAR(100) NOT NULL UNIQUE,
+)
 /* Índices */
 
 CREATE INDEX idx_inventario_item
