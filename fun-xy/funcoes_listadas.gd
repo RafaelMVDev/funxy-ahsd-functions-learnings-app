@@ -16,7 +16,7 @@ func exibir_funcoes(expressao: String) -> void:
 	painel_individual.custom_minimum_size = Vector2(280, 25)
 	label.text = funcao
 	
-	estilo.bg_color = Color("#353949")
+	estilo.bg_color = Color("003b67ff")
 	estilo.bg_color.a = 1.0
 	
 	painel_individual.add_theme_stylebox_override("panel", estilo)

@@ -60,15 +60,15 @@ func carregar_fase(colisoes_dados: Array):
 		colisor.position = Vector2(pixel_x, pixel_y)
 
 		if dados.tipo == "inicio":
-			visual.color = Color.YELLOW
+			visual.color = Color("FFE52B")
 			colisor.add_to_group("inicio")
 
 		elif dados.tipo == "fim":
-			visual.color = Color.GREEN
+			visual.color = Color("32E875")
 			colisor.add_to_group("fim")
 
 		else:
-			visual.color = Color.RED 
+			visual.color = Color("f8001dff") 
 			colisor.add_to_group("obstaculos")
 
 		colisor.add_child(visual)
@@ -96,12 +96,17 @@ func definir_dominio(dominio: String) -> Array:
 			if min_str.is_valid_float():
 				x_min = min_str.to_float()
 				x_max = x_min + 20.0
-				
+	
+	elif "=" in dominio:
+		var partes = dominio.split("x")
+		#TERMINAR
+		
 	return [x_min, x_max]
 
 func atualizar_grafico(expressao_str: String, dominio_str: String):
 	jogo.quantidade_movimentos += 1
 	jogo.lista_funcoes.append(expressao_str)
+	
 	check_funcao.visible = false
 	check_dominio.visible = false
 	mensagem.text = ""
@@ -123,31 +128,48 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 		if verificar_cruzamento(lista_de_pontos):
 			var acertou_inicio = false
 			var acertou_fim = false
+			var acertou_obstaculo = false
 			
 			for ponto in lista_de_pontos:
 				if verificar_colisao(ponto, "inicio"):
 					acertou_inicio = true
 				if verificar_colisao(ponto, "fim"):
 					acertou_fim = true
-
+				if verificar_colisao(ponto, "obstaculos"):
+					acertou_obstaculo = true
+					
 			if jogo.linhas_desenhadas.is_empty():
-				if acertou_inicio:
-					nova_linha.default_color = Color.GREEN
-					jogo.linhas_desenhadas.append(nova_linha)
-				else:
-					nova_linha.default_color = Color.ORANGE
+				if not acertou_inicio:
+					nova_linha.default_color = Color("FFAA24")
 					jogo.linha_desconexa.append(nova_linha)
 					mensagem.text = "Não acertou o ponto inicial"
+				elif acertou_obstaculo:
+					nova_linha.default_color = Color("FFAA24")
+					jogo.linha_desconexa.append(nova_linha)
+					mensagem.text = "Colisão com um obstáculo"
+				else: 
+					nova_linha.default_color = Color.GREEN
+					jogo.linhas_desenhadas.append(nova_linha)
+					jogo.lista_dominios.append(dominio_str)
+					jogo.lista_funcoes_validas.append(expressao_str)
+				
 			else:
-				nova_linha.default_color = Color.GREEN
-				jogo.linhas_desenhadas.back().default_color = Color.WHITE 
-				jogo.linhas_desenhadas.append(nova_linha)
+				if acertou_obstaculo:
+					nova_linha.default_color = Color("FFAA24")
+					jogo.linha_desconexa.append(nova_linha)
+					mensagem.text = "Colisão com um obstáculo"
+				else:
+					nova_linha.default_color = Color.GREEN
+					jogo.linhas_desenhadas.back().default_color = Color.WHITE 
+					jogo.linhas_desenhadas.append(nova_linha)
+					jogo.lista_dominios.append(dominio_str)
+					jogo.lista_funcoes_validas.append(expressao_str)
 			
 			if acertou_fim and nova_linha in jogo.linhas_desenhadas:
 				emit_signal("vitoria")
 				
 		else:
-			nova_linha.default_color = Color.ORANGE
+			nova_linha.default_color = Color("FFAA24")
 			jogo.linha_desconexa.append(nova_linha)
 			mensagem.text = "A linha não tem continuidade"
 		
@@ -175,8 +197,6 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 		ponto = Vector2(pixel_x, pixel_y)
 
 		if pixel_y >= topo_y and pixel_y <= limite_y:
-			if verificar_colisao(ponto, "obstaculos"):
-				return pontos
 			pontos.append(ponto)
 	return pontos
 

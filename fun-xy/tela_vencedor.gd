@@ -1,6 +1,6 @@
 extends Control # ou CanvasLayer
 
-@onready var label_movimentos = $PanelContainer/VBoxContainer/BoxMovimentos/DisplayMovimentos
+@onready var label_movimentos = %DisplayMovimentos
 @onready var botao_reiniciar = %ResetButton
 @onready var botao_home = %HomeButton
 

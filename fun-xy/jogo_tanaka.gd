@@ -15,7 +15,9 @@ var funcao_armazenada: String   #Referente ao visor
 var dominio_armazenado: String  #Referente ao visor
 var linhas_desenhadas: Array[Line2D] = [] #Linhas válidas
 var linha_desconexa: Array[Line2D] = [] 
-var lista_funcoes: Array[String] = [] #Para enviar ah API, de modo a reconstruir o históricod e funções
+var lista_funcoes: Array[String] = [] #Para enviar a API, de modo a reconstruir o histórico de funções
+var lista_funcoes_validas: Array[String] = []
+var lista_dominios: Array[String] = []
 
 func _ready() -> void:
 	#O nó do aplicativo chama a função _iniciar_jogo
@@ -61,6 +63,8 @@ func _on_teclado_dominio_enviado(dominio: String):
 func _voltar_movimento():
 	if not linhas_desenhadas.is_empty():
 		linhas_desenhadas.pop_back().queue_free()
+		lista_dominios.pop_back()
+		lista_funcoes_validas.pop_back()
 		if not linhas_desenhadas.is_empty():
 			linhas_desenhadas.back().default_color = Color.GREEN
 		
@@ -70,15 +74,48 @@ func _resetar():
 
 func _carregar_vitoria():
 	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos) #E pontuação
-
-	#Enviar dados para a API: status: "completo", demais dados
+	#Varificar se há algum registro desse id com status "incompleto"
+	#Se sim, dará update para status = "compelto" e nos demais dados
+	#Se não, vai criar um novo histórico
 	#Marcar a data do final
-	
+	var dic_para_api = {
+			"trilhaId": 1, #Obtido da API quando a fase carrega
+			"atividadeId": 5, #Obtido da API quando a fase carrega
+			"tentativa": {
+			"status": "completo",
+			"progressoEspecifico": {
+				"listaFuncoes": lista_funcoes,
+				"listaFuncoesValidas": lista_funcoes_validas,
+				"listaDominios": lista_dominios,
+				"movimentos": quantidade_movimentos
+			}
+		}
+	}
+	print(dic_para_api)
+
 func sair_da_partida() -> void:
 	#Enviar dados para a API
-	#Status: "incompleto"
-	#voltar para a home
 	get_tree().change_scene_to_file("res://homepage.tscn")
+	#DADOS
+	# quantidade_movimentos
+	# lista_funcoes_validas
+	# lista_dominios
+	# lista_funcoes, para a exibição das funções anteriores
+	# status = "incompleto"
+	
+	var dic_para_api = {
+			"trilhaId": 1,
+			"atividadeId": 5,
+			"tentativa": {
+			"status": "em_andamento",
+			"progressoEspecifico": {
+				"listaFuncoes": lista_funcoes,
+				"listaFuncoesValidas": lista_funcoes_validas,
+				"listaDominios": lista_dominios,
+				"movimentos": quantidade_movimentos
+			}
+		}
+	}
 		
 	
 func _process(_delta: float) -> void:

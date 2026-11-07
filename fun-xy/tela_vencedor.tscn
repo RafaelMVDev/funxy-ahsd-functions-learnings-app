@@ -1,21 +1,62 @@
 [gd_scene format=3 uid="uid://bv4635aeugnm7"]
 
 [ext_resource type="Script" uid="uid://c7bpv88k2rwg8" path="res://tela_vencedor.gd" id="1_2oale"]
-[ext_resource type="Texture2D" uid="uid://87a8qt1hk2jp" path="res://images/reset_icon.png" id="2_lkbu6"]
-[ext_resource type="Texture2D" uid="uid://gm5hq5rtim8i" path="res://images/home_icon.jpg" id="3_u8b4n"]
+[ext_resource type="Texture2D" uid="uid://tei2a87n3gwl" path="res://images/icone_resetarV2.png" id="2_2oale"]
+[ext_resource type="Texture2D" uid="uid://duw45c7yftc0b" path="res://images/icone_para_home.png" id="3_lkbu6"]
 
-[sub_resource type="Gradient" id="Gradient_g5kuq"]
-colors = PackedColorArray(0.5787627, 0.65114766, 0.9529992, 1, 0.1584723, 0.15847233, 0.1584723, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4dqy"]
+bg_color = Color(1, 1, 1, 0.32156864)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_divqw"]
-gradient = SubResource("Gradient_g5kuq")
-fill_from = Vector2(0.49565217, 1)
-fill_to = Vector2(0.8, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb775"]
+bg_color = Color(0.24313726, 0.4745098, 0.90588236, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.07450981, 0.14901961, 0.3764706, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
 content_margin_top = 30.0
-content_margin_bottom = 30.0
-bg_color = Color(0.22693068, 0.2682502, 0.52659106, 1)
+content_margin_bottom = 0.0
+bg_color = Color(0.07450981, 0.14901961, 0.3764706, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t4ox"]
+bg_color = Color(0.18039216, 0.34901962, 0.7372549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4btq"]
+bg_color = Color(0.043137256, 0.19607843, 0.61960787, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixrit"]
+bg_color = Color(0.101960786, 0.3882353, 0.92156863, 1)
+border_width_top = 3
+border_color = Color(0.33333334, 0.6392157, 0.96862745, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rdld"]
+bg_color = Color(0.18039216, 0.34901962, 0.7372549, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="tela_vencedor" type="Control" unique_id=1010098406]
 layout_mode = 3
@@ -26,17 +67,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2oale")
 
-[node name="FundoAzul" type="TextureRect" parent="." unique_id=2115571476]
+[node name="PanelContainer3" type="PanelContainer" parent="." unique_id=973886920]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_divqw")
-metadata/_edit_use_anchors_ = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_d4dqy")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1610555043]
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1992731803]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
 anchors_preset = 8
@@ -44,29 +84,66 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rb775")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1610555043]
+custom_minimum_size = Vector2(280, 280)
+custom_maximum_size = Vector2(280, 280)
+propagate_maximum_size = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -140.0
+offset_right = 140.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p3kxb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1773557977]
+custom_maximum_size = Vector2(-1, 270)
+propagate_maximum_size = false
 layout_mode = 2
-theme_override_constants/separation = 23
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 19
+alignment = 1
 
-[node name="BoxMovimentos" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=103902694]
-layout_mode = 2
-
-[node name="Movimentos" type="Label" parent="PanelContainer/VBoxContainer/BoxMovimentos" unique_id=1774992081]
+[node name="DisplayPontuacao" type="Label" parent="PanelContainer/VBoxContainer" unique_id=996256280]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 23
-text = "Número de Movimentos"
+theme_override_font_sizes/font_size = 45
+text = "63"
 horizontal_alignment = 1
 
-[node name="DisplayMovimentos" type="Label" parent="PanelContainer/VBoxContainer/BoxMovimentos" unique_id=420178226]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1259814723]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 29
-horizontal_alignment = 1
+size_flags_horizontal = 4
+theme_override_constants/separation = 47
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=243506467]
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6t4ox")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1131172067]
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_6t4ox")
 
 [node name="BoxPontuacao" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1972968216]
 layout_mode = 2
@@ -76,32 +153,87 @@ theme_override_constants/separation = -4
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 28
-text = "Pontuação"
+text = "Movimentos"
 horizontal_alignment = 1
 
-[node name="DisplayPontuacao" type="Label" parent="PanelContainer/VBoxContainer/BoxPontuacao" unique_id=996256280]
+[node name="DisplayMovimentos" type="Label" parent="PanelContainer/VBoxContainer/BoxPontuacao" unique_id=420178226]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 41
+text = "3"
 horizontal_alignment = 1
 
-[node name="BoxBotoes" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=876948693]
+[node name="BoxBotoes" type="HBoxContainer" parent="PanelContainer/VBoxContainer/BoxPontuacao" unique_id=876948693]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="ResetButton" type="Button" parent="PanelContainer/VBoxContainer/BoxBotoes" unique_id=659133987]
+[node name="ResetButton" type="Button" parent="PanelContainer/VBoxContainer/BoxPontuacao/BoxBotoes" unique_id=659133987]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-icon = ExtResource("2_lkbu6")
+icon = ExtResource("2_2oale")
+flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="HomeButton" type="Button" parent="PanelContainer/VBoxContainer/BoxBotoes" unique_id=2015072745]
+[node name="HomeButton" type="Button" parent="PanelContainer/VBoxContainer/BoxPontuacao/BoxBotoes" unique_id=2015072745]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(100, 100)
+propagate_maximum_size = true
 layout_mode = 2
-icon = ExtResource("3_u8b4n")
+icon = ExtResource("3_lkbu6")
+flat = true
 icon_alignment = 1
 expand_icon = true
+
+[node name="PanelContainer4" type="PanelContainer" parent="." unique_id=1476539568]
+custom_minimum_size = Vector2(270, 58)
+custom_maximum_size = Vector2(270, -1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -184.0
+offset_right = 139.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4btq")
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer4" unique_id=832898571]
+custom_minimum_size = Vector2(262, 50)
+custom_maximum_size = Vector2(262, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ixrit")
+
+[node name="Movimentos" type="Label" parent="PanelContainer4/PanelContainer3" unique_id=1774992081]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 26
+text = "Pontuação"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="." unique_id=1554137716]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -34.0
+offset_right = 10.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+pivot_offset = Vector2(10, 10)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rdld")
