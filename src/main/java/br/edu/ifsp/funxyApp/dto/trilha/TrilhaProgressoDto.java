@@ -1,5 +1,7 @@
 package br.edu.ifsp.funxyApp.dto.trilha;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,7 +18,6 @@ public record TrilhaProgressoDto(
     public record Tentativa(
             Long progressoId,
             String status,
-            LocalDateTime iniciadaEm,
             LocalDateTime concluidaEm,
             ProgressoEspecifico progressoEspecifico
     ) {}
@@ -26,7 +27,9 @@ public record TrilhaProgressoDto(
     public record Leitura(Integer paginaAtual) implements ProgressoEspecifico {}
 
     public record Pratica(
-            String posicaoAtual,
+            ArrayNode listaFuncoes,
+            ArrayNode listaFuncoesValidas,
+            ArrayNode listaDominios,
             Integer movimentos
     ) implements ProgressoEspecifico {}
 }

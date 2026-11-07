@@ -19,6 +19,7 @@ public class Inventario {
     @JoinColumn(name = "id_item")
     private Itens itens;
 
+    @Column(name="equipado")
     private Boolean equipado;
 
     public Inventario() {

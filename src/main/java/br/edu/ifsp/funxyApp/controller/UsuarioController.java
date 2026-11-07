@@ -3,6 +3,7 @@ package br.edu.ifsp.funxyApp.controller;
 import br.edu.ifsp.funxyApp.dto.jogo.NomeUsuarioDto;
 import br.edu.ifsp.funxyApp.dto.jogo.SalvarConfiguracaoRequestDto;
 import br.edu.ifsp.funxyApp.dto.auth.UsuarioInicialResponseDto;
+import br.edu.ifsp.funxyApp.service.ProgressoUsuarioService;
 import br.edu.ifsp.funxyApp.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,8 +20,9 @@ public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioService usuarioService) {
+    public UsuarioController(UsuarioService usuarioService, ProgressoUsuarioService progressoUsuarioService) {
         this.usuarioService = usuarioService;
+
     }
 
     // GET /api/user/me

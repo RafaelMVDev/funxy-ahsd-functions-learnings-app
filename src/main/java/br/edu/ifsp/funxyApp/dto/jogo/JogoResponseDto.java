@@ -26,6 +26,13 @@ public record JogoResponseDto(
 
     public sealed interface ConteudoAtividade permits Leitura, Pratica {}
 
+    public record ColisaoMalha(
+            String tipo,
+            double x,
+            double y,
+            double largura,
+            double altura
+    ) {}
     public record Leitura(
             String textos,
             String imagens
@@ -33,8 +40,7 @@ public record JogoResponseDto(
 
     public record Pratica(
             Integer mediaMovimentos,
-            String malhaPontos,
-            String coordenadasChegada
+            String colisoesMalha
     ) implements ConteudoAtividade {}
 
     public record Conquista(

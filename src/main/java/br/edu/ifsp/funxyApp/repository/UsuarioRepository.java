@@ -1,7 +1,9 @@
 package br.edu.ifsp.funxyApp.repository;
 
 import br.edu.ifsp.funxyApp.model.Usuario;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,4 +18,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     boolean existsByEmail(String email);
 
     boolean existsByNome(String nome);
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    Optional<Usuario> findUsuarioById(Long id);
+
+
 }

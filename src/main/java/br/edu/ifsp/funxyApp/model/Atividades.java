@@ -21,8 +21,10 @@ public class Atividades {
     @Column(name = "numero_atividade")
     private Integer numeroAtividade;
 
+    @Column(name="descricao")
     private String descricao;
 
+    @Column(name="titulo")
     private String titulo;
 
     @ManyToOne
