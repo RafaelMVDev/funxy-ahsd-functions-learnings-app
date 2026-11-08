@@ -78,28 +78,17 @@ func definir_dominio(dominio: String) -> Array:
 	var x_min: float = alcance_x_min
 	var x_max: float = alcance_x_max
 	
-	if "<" in dominio or "<=" in dominio:
+	if "<" in dominio or "≤" in dominio:
 		var partes = dominio.split("x")
 		if partes.size() == 2:
-			var min_str = partes[0].replace("<=", "").replace("<", "")
+			var min_str = partes[0].replace("≤", "").replace("<", "")
 			if min_str.is_valid_float():
 				x_min = min_str.to_float()
 
-			var max_str = partes[1].replace("<=", "").replace("<", "")
+			var max_str = partes[1].replace("≤", "").replace("<", "")
 			if max_str.is_valid_float():
 				x_max = max_str.to_float()
 
-	elif ">" in dominio or ">=" in dominio:
-		var partes = dominio.split("x")
-		if partes.size() == 2:
-			var min_str = partes[1].replace(">=", "").replace(">", "")
-			if min_str.is_valid_float():
-				x_min = min_str.to_float()
-				x_max = x_min + 20.0
-	
-	elif "=" in dominio:
-		var partes = dominio.split("x")
-		#TERMINAR
 		
 	return [x_min, x_max]
 
@@ -177,15 +166,36 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 		funcoes_exibidas.exibir_funcoes(expressao_str)
 		nova_linha.add_to_group("linhas")
 
+func tratar_expressao(expressao: String) -> String:
+	var regex = RegEx.new()
+	var expressao_limpa: String
+	
+	expressao_limpa = expressao.replace("^", "**").replace("÷", "/")
+	
+	regex.compile("\\|([^|]+)\\|")
+	expressao_limpa = regex.sub(expressao_limpa, "abs($1)", true)
+	regex.compile("log\\(([^)]+)\\)")
+	expressao_limpa = regex.sub(expressao_limpa, "log($1) / log(10)", true)
+	
+	expressao_limpa = expressao_limpa.replace("ln(", "log(")
+	
+	return expressao_limpa
+
 func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, passos: int) -> Array[Vector2]:
 	var pontos: Array[Vector2] = []
 	var expr = Expression.new()
 	var ponto: Vector2
 	var passo_x = (x_max - x_min) / passos
-
+	
+	expressao_str = tratar_expressao(expressao_str)
+	
 	var erro = expr.parse(expressao_str, ["x"])
 	if erro != OK:
 		mensagem.text = "Erro na expressão matemática"
+		return pontos
+	
+	if "/0" in expressao_str:
+		mensagem.text = "Expressão inválida"
 		return pontos
 
 	for i in range(passos + 1):

@@ -16,11 +16,13 @@ var visor_ativo: LineEdit = null
 func _ready() -> void:
 	VisorFuncao.focus_entered.connect(_on_visor_funcao)
 	VisorDominio.focus_entered.connect(_on_visor_dominio)
-	for linha in vboxFuncao.get_children():
-		if linha is HBoxContainer:
-			for botao in linha.get_children():
-				if botao is Button:
-					botao.pressed.connect(_on_botao_pressionado.bind(botao))
+	for box in vboxFuncao.get_children():
+		if box is VBoxContainer:
+			for linha in box.get_children():
+				if linha is HBoxContainer:
+					for botao in linha.get_children():
+						if botao is Button:
+							botao.pressed.connect(_on_botao_pressionado.bind(botao))
 	for linha in vboxDominio.get_children():
 		if linha is HBoxContainer:
 			for botao in linha.get_children():
@@ -58,32 +60,39 @@ func _estilo_visor(node: LineEdit, estilo: String):
 
 func _on_botao_pressionado(botao_clicado: Button) -> void:
 	var texto_do_botao: String = botao_clicado.text
-	if visor_ativo:
-		if visor_ativo.get_child(0).visible == true:
-			visor_ativo.get_child(0).visible = false
-	
-		if visor_ativo == VisorFuncao:
-			get_parent().funcao_armazenada = ""
-		else:
-			get_parent().dominio_armazenado = ""
-
-		if texto_do_botao == "del":
-			visor_ativo.text = "" 
-		elif texto_do_botao == "⌫":
-			visor_ativo.get_child(0).visible = false
-			_apagar_com_backspace()
-		elif texto_do_botao == "↩":
-			emit_signal("voltar_movimento")
-		elif texto_do_botao == "ok":
+	if texto_do_botao == "⭢":
+		vboxFuncao.get_child(0).visible = false
+		vboxFuncao.get_child(1).visible = true
+	elif texto_do_botao == "⭠":
+		vboxFuncao.get_child(0).visible = true
+		vboxFuncao.get_child(1).visible = false
+	else:
+		if visor_ativo:
+			if visor_ativo.get_child(0).visible == true:
+				visor_ativo.get_child(0).visible = false
+		
 			if visor_ativo == VisorFuncao:
-				if visor_ativo.text:
-					check_funcao.visible = true
-					emit_signal("formula_enviada", visor_ativo.text) 
+				get_parent().funcao_armazenada = ""
 			else:
-				check_dominio.visible = true
-				emit_signal("dominio_enviado", visor_ativo.text)
-		else:
-			_inserir_texto_no_cursor(texto_do_botao) # Adiciona o número ou operador no visor
+				get_parent().dominio_armazenado = ""
+
+			if texto_do_botao == "del":
+				visor_ativo.text = "" 
+			elif texto_do_botao == "⌫":
+				visor_ativo.get_child(0).visible = false
+				_apagar_com_backspace()
+			elif texto_do_botao == "↩":
+				emit_signal("voltar_movimento")
+			elif texto_do_botao == "ok":
+				if visor_ativo == VisorFuncao:
+					if visor_ativo.text:
+						check_funcao.visible = true
+						emit_signal("formula_enviada", visor_ativo.text) 
+				else:
+					check_dominio.visible = true
+					emit_signal("dominio_enviado", visor_ativo.text)
+			else:
+				_inserir_texto_no_cursor(texto_do_botao) # Adiciona o número ou operador no visor
 
 func _apagar_com_backspace():
 	var coluna: int = visor_ativo.get_caret_column()
