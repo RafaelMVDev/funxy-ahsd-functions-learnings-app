@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c2rti82ym2qb5" path="res://images/icones/usuario.svg" id="8_4w4ko"]
 [ext_resource type="Texture2D" uid="uid://bi3q0qtsb18lu" path="res://images/icones/email.svg" id="9_uo0ke"]
 [ext_resource type="Texture2D" uid="uid://6gnxrxo1sjdo" path="res://images/icones/cadeado.svg" id="10_qcemb"]
-[ext_resource type="Texture2D" uid="uid://btik4k8ok5mug" path="res://images/icones/olho.svg" id="11_qcemb"]
+[ext_resource type="Texture2D" uid="uid://bk2s4bgpgclo4" path="res://images/olho-fechado.svg" id="11_qcemb"]
 
 [sub_resource type="Gradient" id="Gradient_bj1uy"]
 colors = PackedColorArray(0.020974653, 0.074406825, 0.22031772, 1, 0.03529412, 0.101960786, 0.2784314, 1)
@@ -202,17 +202,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -150.0
+offset_top = -234.0
 offset_right = 150.0
-offset_bottom = 150.0
+offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdspj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=843933400]
+custom_minimum_size = Vector2(240, 450)
+custom_maximum_size = Vector2(240, -1)
 layout_mode = 2
 theme_override_constants/separation = 16
-alignment = 1
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=506022072]
 layout_mode = 2
@@ -276,16 +277,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ye3j0")
 theme_override_styles/focus = SubResource("StyleBoxFlat_4so0t")
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer/LineEdit_Usuario" unique_id=548257604]
-custom_minimum_size = Vector2(25, 25)
 custom_maximum_size = Vector2(25, 25)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 7.0
-offset_top = -12.5
-offset_right = 32.0
-offset_bottom = 12.5
+offset_left = 9.0
+offset_top = -8.5
+offset_right = 26.0
+offset_bottom = 8.5
 grow_vertical = 2
 texture = ExtResource("8_4w4ko")
 expand_mode = 1
@@ -307,14 +307,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ye3j0")
 theme_override_styles/focus = SubResource("StyleBoxFlat_uo0ke")
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer2/LineEdit_Email" unique_id=1133120727]
-custom_minimum_size = Vector2(32, 25)
 custom_maximum_size = Vector2(32, 25)
 layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 35.0
-offset_bottom = 30.0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 27.0
+offset_bottom = 25.0
 texture = ExtResource("9_uo0ke")
+expand_mode = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=53347065]
 layout_mode = 2
@@ -334,30 +334,27 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_wt43o")
 secret = true
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer3/LineEdit_Senha" unique_id=1561578171]
-custom_minimum_size = Vector2(25, 27)
 custom_maximum_size = Vector2(25, 27)
 layout_mode = 0
-offset_left = 9.0
-offset_top = 4.0
-offset_right = 34.0
-offset_bottom = 31.0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 24.0
+offset_bottom = 26.0
 texture = ExtResource("10_qcemb")
 expand_mode = 1
 
 [node name="ButtonSenha" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer3/LineEdit_Senha" unique_id=1745496396]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(35, 37)
-custom_maximum_size = Vector2(35, 37)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = -17.5
-offset_right = -4.0
-offset_bottom = 19.5
+offset_left = -40.0
+offset_top = -14.5
+offset_right = -9.0
+offset_bottom = 20.5
 grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("11_qcemb")
@@ -372,6 +369,7 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer4" unique_id=784536909]
