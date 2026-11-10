@@ -61,11 +61,11 @@ public class AuthService {
         String senha = request.senha();
 
         if (usuarios.findByEmail(email).isPresent()){
-            return new RegistroResponseDto(false,"e-mail em uso!");
+            return new RegistroResponseDto(false,"E-mail em uso");
         }
 
         if (usuarios.findByNome(nome).isPresent()){
-            return new RegistroResponseDto(false,"nome em uso!");
+            return new RegistroResponseDto(false,"Nome em uso");
         }
 
         // Registrando o usuário no BDD
