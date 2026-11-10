@@ -60,7 +60,7 @@ func _on_cadastro_response(result, response_code, headers, body):
 	print("result: ", result)
 	print("response_code: ", response_code)
 	print("headers: ", headers)
-	print("body: ", body)
+	print("body: ", body.get_string_from_utf8())
 	var json = JSON.new()
 	var error = json.parse(body.get_string_from_utf8())
 	
