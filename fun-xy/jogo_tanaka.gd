@@ -151,8 +151,8 @@ func _carregar_vitoria():
 	"""
 	
 	"""Adicionado Morales: função para montar requisição para api e tratar resultado"""
-	var concluida = true
-	salvar_progresso_atividade_api(concluida)
+	var conclusao = true
+	salvar_progresso_atividade_api(conclusao)
 
 func sair_da_partida() -> void:
 	#Enviar dados para a API
@@ -178,8 +178,8 @@ func sair_da_partida() -> void:
 			#}
 		#}
 	#}
-	var concluida = false
-	salvar_progresso_atividade_api(concluida)
+	var conclusao = false
+	salvar_progresso_atividade_api(conclusao)
 	#FORMATO DO DICIONARIO QUE TA SENDO ENVIADO AQUI EMBAIXO
 	"""todo: ==== Adicionado(Morales) vvvvvvv: Novo formato de dicionario para api mais simplificado ===="""
 	"""var dic_para_api = {
@@ -211,7 +211,7 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 
 	var dados := {
 		"tentativaUuid": tentativa_uuid,
-		"status": concluida,
+		"concluida": concluida,
 		"listaFuncoes": lista_funcoes,
 		"listaFuncoesValidas": lista_funcoes_validas,
 		"listaDominios": lista_dominios,
@@ -220,7 +220,7 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 
 	# Inicia o POST com o token do jogador e o corpo em JSON.
 	salvando = true
-	http_salvamento.timeout = 15.0
+	http_salvamento.timeout = 15.0 # verificar timeout
 
 	var erro := http_salvamento.request(
 		rota_salvar,
@@ -256,6 +256,8 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 		return false
 
 	conclusao_confirmada = tentativa.get("atividadeConcluida", false)
+	print(conclusao_confirmada)
+	print(concluida)
 	if concluida and not conclusao_confirmada:
 		push_warning("A API recebeu o progresso, mas a fase ainda consta como aberta.")
 		return false

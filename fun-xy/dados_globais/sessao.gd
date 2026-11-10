@@ -4,11 +4,11 @@ extends Node
 const API_BASE_URL: String = "http://localhost:8080"
 
 # Preenchido pela tela de login após autenticar o jogador.
-var access_token: String = ""
+var access_token: String = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmdW54eS1sZWFybmluZy1hcHAiLCJzdWIiOiIxIiwidG9rZW5fdHlwZSI6ImFjY2VzcyIsImlhdCI6MTc5NDMzMzc3MiwiZXhwIjoxNzk0MzQwOTcyfQ.7OsWRHPD3vRueeuvNSXY4ImOzm7W9V0Sq5NYKxO3fsw"
 
 # Preenchido pela tela de trilhas quando o jogador escolhe uma atividade.
 # O valor 0 significa que nenhuma atividade foi selecionada.
-var atividade_id: int = 0
+var atividade_id :int = 0
 
 
 func cabecalhos_autenticados() -> PackedStringArray:

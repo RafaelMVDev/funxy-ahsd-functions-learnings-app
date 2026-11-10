@@ -65,7 +65,7 @@ public class TokenService {
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withSubject(usuario.getId().toString())
-                .withClaim("token_type","acess")
+                .withClaim("token_type","access")
                 .withIssuedAt(agora)
                 .withExpiresAt(agora.plus(DURACAO_ACESS_TOKEN))
                 .sign(algoritmo);
