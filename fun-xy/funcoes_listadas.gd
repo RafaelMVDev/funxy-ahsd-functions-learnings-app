@@ -16,13 +16,14 @@ func exibir_funcoes(expressao: String) -> void:
 	painel_individual.custom_minimum_size = Vector2(280, 25)
 	label.text = funcao
 	
-	estilo.bg_color = Color("#353949")
+	estilo.bg_color = Color("003b67ff")
 	estilo.bg_color.a = 1.0
 	
 	painel_individual.add_theme_stylebox_override("panel", estilo)
 	painel_individual.add_child(label)
 	add_child(painel_individual)
+	painel_individual.add_to_group("painel_funcoes")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

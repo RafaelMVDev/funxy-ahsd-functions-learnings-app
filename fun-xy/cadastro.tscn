@@ -1,45 +1,128 @@
 [gd_scene format=3 uid="uid://q8n0bovj5pip"]
 
 [ext_resource type="Script" uid="uid://bybnfsrmkov53" path="res://cadastro.gd" id="1_rdspj"]
+[ext_resource type="Texture2D" uid="uid://dlpeucl41i6be" path="res://images/icones/funcao-fx.svg" id="2_4so0t"]
+[ext_resource type="Texture2D" uid="uid://cvd2d26fhgg48" path="res://images/icones/grade.svg" id="3_wt43o"]
+[ext_resource type="Texture2D" uid="uid://dkiw2jjdrpgqv" path="res://img_fundo.png" id="4_uo0ke"]
+[ext_resource type="Texture2D" uid="uid://b7nkt5xi63bu3" path="res://images/icones/raios.svg" id="5_qcemb"]
+[ext_resource type="Texture2D" uid="uid://l84d711gqi2v" path="res://images/funxy-quadrada.svg" id="6_e2pea"]
+[ext_resource type="Texture2D" uid="uid://by7m3q8crwwf7" path="res://images/icon.png" id="7_wwuxm"]
+[ext_resource type="Texture2D" uid="uid://c2rti82ym2qb5" path="res://images/icones/usuario.svg" id="8_4w4ko"]
+[ext_resource type="Texture2D" uid="uid://bi3q0qtsb18lu" path="res://images/icones/email.svg" id="9_uo0ke"]
+[ext_resource type="Texture2D" uid="uid://6gnxrxo1sjdo" path="res://images/icones/cadeado.svg" id="10_qcemb"]
+[ext_resource type="Texture2D" uid="uid://bk2s4bgpgclo4" path="res://images/olho-fechado.svg" id="11_qcemb"]
 
 [sub_resource type="Gradient" id="Gradient_bj1uy"]
-colors = PackedColorArray(0.078431375, 0.09803922, 0.3019608, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.020974653, 0.074406825, 0.22031772, 1, 0.03529412, 0.101960786, 0.2784314, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_727ai"]
 gradient = SubResource("Gradient_bj1uy")
 width = 360
 height = 640
-fill_from = Vector2(0.5173913, 0)
-fill_to = Vector2(0.51304346, 1)
+fill_from = Vector2(0, 0.0042735045)
+fill_to = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdspj"]
 content_margin_left = 30.0
 content_margin_top = 30.0
 content_margin_right = 30.0
 content_margin_bottom = 30.0
-bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
+bg_color = Color(0.25490198, 0.5411765, 0.9764706, 0)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="Gradient" id="Gradient_ux1vq"]
+colors = PackedColorArray(0.34509805, 0.7294118, 0.99607843, 1, 0.34117648, 0.7137255, 0.99607843, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6t4ox"]
+gradient = SubResource("Gradient_ux1vq")
+fill_from = Vector2(1, 0.557971)
+fill_to = Vector2(0, 0.5217391)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b4btq"]
+texture = SubResource("GradientTexture2D_6t4ox")
+
+[sub_resource type="Gradient" id="Gradient_8c6if"]
+colors = PackedColorArray(0.32941177, 0.7254902, 1, 1, 0.34117648, 0.7137255, 0.99607843, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rb775"]
+gradient = SubResource("Gradient_8c6if")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3kxb"]
+texture = SubResource("GradientTexture2D_rb775")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ye3j0"]
+content_margin_left = 40.0
 content_margin_top = 6.0
 content_margin_bottom = 6.0
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4so0t"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo0ke"]
+bg_color = Color(1, 1, 1, 0.99215686)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wt43o"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3l645"]
 content_margin_top = 6.0
 content_margin_bottom = 6.0
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.1254902, 0.45882353, 0.95686275, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcemb"]
+bg_color = Color(0.1254902, 0.45882353, 0.95686275, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb775"]
+bg_color = Color(0.30390048, 0.567475, 0.98493856, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uo0ke"]
 
 [node name="Cadastro" type="Control" unique_id=1652294607]
 layout_mode = 3
@@ -59,6 +142,57 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_727ai")
 
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=1897128301]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -90.0
+offset_right = 123.0
+offset_bottom = -35.0
+grow_vertical = 0
+texture = ExtResource("2_4so0t")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=683026855]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -61.0
+offset_right = -23.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_wt43o")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect" unique_id=1123838648]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 9.0
+offset_right = -11.0
+offset_bottom = 101.0
+grow_horizontal = 0
+texture = ExtResource("4_uo0ke")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect" unique_id=802554925]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 103.0
+offset_right = 262.0
+offset_bottom = 154.0
+texture = ExtResource("5_qcemb")
+expand_mode = 1
+
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=442854161]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
@@ -68,55 +202,187 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -150.0
+offset_top = -234.0
 offset_right = 150.0
-offset_bottom = 150.0
+offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdspj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=843933400]
+custom_minimum_size = Vector2(240, 450)
+custom_maximum_size = Vector2(240, -1)
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=506022072]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer5" unique_id=1254913984]
+custom_minimum_size = Vector2(80, 70)
+custom_maximum_size = Vector2(80, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_e2pea")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer5" unique_id=1572987225]
+layout_mode = 2
+theme_override_font_sizes/font_size = 29
+text = "Cadastro"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer5" unique_id=1923313164]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
 alignment = 1
 
-[node name="Label_Usuario" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1637905890]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer5/HBoxContainer" unique_id=2126968288]
+custom_minimum_size = Vector2(90, 2)
+custom_maximum_size = Vector2(80, 90)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_b4btq")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer5/HBoxContainer" unique_id=2113579641]
+custom_minimum_size = Vector2(20, 0)
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("7_wwuxm")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer5/HBoxContainer" unique_id=971168880]
+custom_minimum_size = Vector2(90, 2)
+custom_maximum_size = Vector2(90, 2)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_p3kxb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=721705318]
+layout_mode = 2
+
+[node name="Label_Usuario" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=1637905890]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "Nome de Usuário"
 
-[node name="LineEdit_Usuario" type="LineEdit" parent="PanelContainer/VBoxContainer" unique_id=424462433]
+[node name="LineEdit_Usuario" type="LineEdit" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=424462433]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ye3j0")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4so0t")
 
-[node name="Label_Email" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1602179364]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer/LineEdit_Usuario" unique_id=548257604]
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -8.5
+offset_right = 26.0
+offset_bottom = 8.5
+grow_vertical = 2
+texture = ExtResource("8_4w4ko")
+expand_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1935958874]
 layout_mode = 2
+
+[node name="Label_Email" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1602179364]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "Email"
 
-[node name="LineEdit_Email" type="LineEdit" parent="PanelContainer/VBoxContainer" unique_id=744751130]
+[node name="LineEdit_Email" type="LineEdit" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=744751130]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ye3j0")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uo0ke")
 
-[node name="Label_Senha" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1857000594]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer2/LineEdit_Email" unique_id=1133120727]
+custom_maximum_size = Vector2(32, 25)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 27.0
+offset_bottom = 25.0
+texture = ExtResource("9_uo0ke")
+expand_mode = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=53347065]
 layout_mode = 2
+
+[node name="Label_Senha" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer3" unique_id=1857000594]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "Criar Senha"
 
-[node name="LineEdit_Senha" type="LineEdit" parent="PanelContainer/VBoxContainer" unique_id=871470104]
+[node name="LineEdit_Senha" type="LineEdit" parent="PanelContainer/VBoxContainer/VBoxContainer3" unique_id=871470104]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ye3j0")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wt43o")
 secret = true
 
-[node name="Label_Mensagem" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1192622767]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer3/LineEdit_Senha" unique_id=1561578171]
+custom_maximum_size = Vector2(25, 27)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 24.0
+offset_bottom = 26.0
+texture = ExtResource("10_qcemb")
+expand_mode = 1
+
+[node name="ButtonSenha" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer3/LineEdit_Senha" unique_id=1745496396]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -14.5
+offset_right = -9.0
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("11_qcemb")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1792484718]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=784536909]
+[node name="Label_Mensagem" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer4" unique_id=1192622767]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer4" unique_id=784536909]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_3l645")
-text = "Cadastrar"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qcemb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rb775")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uo0ke")
+text = "Cadastrar  ➔"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="PanelContainer/VBoxContainer" unique_id=150668803]
+unique_name_in_owner = true
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer3/LineEdit_Senha/ButtonSenha" to="." method="_esconder_exibir_senha"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer4/Button" to="." method="_on_button_pressed"]

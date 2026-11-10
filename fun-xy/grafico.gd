@@ -2,11 +2,10 @@ extends Node2D
 
 @onready var posicao_pai = get_parent().global_position
 @onready var jogo = get_parent().get_parent()
-@onready var funcoes_exibidas_1 = $PainelFuncoes/FuncoesListadas
-@onready var funcoes_exibidas = get_node("../../PainelFuncoes/FuncoesListadas")
+@onready var funcoes_exibidas = %FuncoesListadas
 @onready var mensagem = get_node("../../TecladoMatematico/VisoresTeclado/Mensagem")
-@onready var check_funcao = get_node("../../TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao/ButtonFuncao")
-@onready var check_dominio = get_node("../../TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/VisorFuncao/ButtonDominio")
+@onready var check_funcao = %ButtonFuncao
+@onready var check_dominio = %ButtonDominio
 
 signal vitoria()
 
@@ -61,82 +60,142 @@ func carregar_fase(colisoes_dados: Array):
 		colisor.position = Vector2(pixel_x, pixel_y)
 
 		if dados.tipo == "inicio":
-			visual.color = Color.YELLOW
+			visual.color = Color("FFE52B")
 			colisor.add_to_group("inicio")
 
 		elif dados.tipo == "fim":
-			visual.color = Color.GREEN
+			visual.color = Color("32E875")
 			colisor.add_to_group("fim")
 
 		else:
-			visual.color = Color.RED 
+			visual.color = Color("f8001dff") 
 			colisor.add_to_group("obstaculos")
 
 		colisor.add_child(visual)
 		add_child(colisor)
 
-func atualizar_grafico(expressao_str: String, dominio_str: String):
-	jogo.quantidade_movimentos += 1
-	jogo.lista_funcoes.append(expressao_str)
-	check_funcao.visible = false
-	check_dominio.visible = false
-	
-	var dominio = dominio_str
+func definir_dominio(dominio: String) -> Array:
 	var x_min: float = alcance_x_min
 	var x_max: float = alcance_x_max
-
-	if "<" in dominio or "<=" in dominio:
+	
+	if "<" in dominio or "≤" in dominio:
 		var partes = dominio.split("x")
 		if partes.size() == 2:
-			var min_str = partes[0].replace("<=", "").replace("<", "")
+			var min_str = partes[0].replace("≤", "").replace("<", "")
 			if min_str.is_valid_float():
 				x_min = min_str.to_float()
 
-			var max_str = partes[1].replace("<=", "").replace("<", "")
+			var max_str = partes[1].replace("≤", "").replace("<", "")
 			if max_str.is_valid_float():
 				x_max = max_str.to_float()
 
-	elif ">" in dominio or ">=" in dominio:
-		var partes = dominio.split("x")
-		if partes.size() == 2:
-			var min_str = partes[1].replace(">=", "").replace(">", "")
-			if min_str.is_valid_float():
-				x_min = min_str.to_float()
-				x_max = x_min + 20.0
+		
+	return [x_min, x_max]
+
+func atualizar_grafico(expressao_str: String, dominio_str: String):
+	jogo.quantidade_movimentos += 1
+	jogo.lista_funcoes.append(expressao_str)
+	
+	check_funcao.visible = false
+	check_dominio.visible = false
+	mensagem.text = ""
+	
+	var limites = definir_dominio(dominio_str)
+	var x_min: float = limites[0]
+	var x_max: float = limites[1]
 
 	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 800)
 	
-
 	if not lista_de_pontos.is_empty():
 		var nova_linha = Line2D.new()
 		nova_linha.points = PackedVector2Array(lista_de_pontos)
 		nova_linha.width = 3.0
+	
 		if not jogo.linha_desconexa.is_empty():
 			jogo.linha_desconexa.pop_back().queue_free()
 		
 		if verificar_cruzamento(lista_de_pontos):
-			nova_linha.default_color = Color.GREEN
-			if not jogo.linhas_desenhadas.is_empty():
-				jogo.linhas_desenhadas.back().default_color = Color.WHITE
-			jogo.linhas_desenhadas.append(nova_linha)
+			var acertou_inicio = false
+			var acertou_fim = false
+			var acertou_obstaculo = false
+			
+			for ponto in lista_de_pontos:
+				if verificar_colisao(ponto, "inicio"):
+					acertou_inicio = true
+				if verificar_colisao(ponto, "fim"):
+					acertou_fim = true
+				if verificar_colisao(ponto, "obstaculos"):
+					acertou_obstaculo = true
+					
+			if jogo.linhas_desenhadas.is_empty():
+				if not acertou_inicio:
+					nova_linha.default_color = Color("FFAA24")
+					jogo.linha_desconexa.append(nova_linha)
+					mensagem.text = "Não acertou o ponto inicial"
+				elif acertou_obstaculo:
+					nova_linha.default_color = Color("FFAA24")
+					jogo.linha_desconexa.append(nova_linha)
+					mensagem.text = "Colisão com um obstáculo"
+				else: 
+					nova_linha.default_color = Color.GREEN
+					jogo.linhas_desenhadas.append(nova_linha)
+					jogo.lista_dominios.append(dominio_str)
+					jogo.lista_funcoes_validas.append(expressao_str)
+				
+			else:
+				if acertou_obstaculo:
+					nova_linha.default_color = Color("FFAA24")
+					jogo.linha_desconexa.append(nova_linha)
+					mensagem.text = "Colisão com um obstáculo"
+				else:
+					nova_linha.default_color = Color.GREEN
+					jogo.linhas_desenhadas.back().default_color = Color.WHITE 
+					jogo.linhas_desenhadas.append(nova_linha)
+					jogo.lista_dominios.append(dominio_str)
+					jogo.lista_funcoes_validas.append(expressao_str)
+			
+			if acertou_fim and nova_linha in jogo.linhas_desenhadas:
+				emit_signal("vitoria")
+				
 		else:
-			nova_linha.default_color = Color.ORANGE
+			nova_linha.default_color = Color("FFAA24")
 			jogo.linha_desconexa.append(nova_linha)
 			mensagem.text = "A linha não tem continuidade"
+		
 		add_child(nova_linha)
 		funcoes_exibidas.exibir_funcoes(expressao_str)
-		
+		nova_linha.add_to_group("linhas")
+
+func tratar_expressao(expressao: String) -> String:
+	var regex = RegEx.new()
+	var expressao_limpa: String
+	
+	expressao_limpa = expressao.replace("^", "**").replace("÷", "/")
+	
+	regex.compile("\\|([^|]+)\\|")
+	expressao_limpa = regex.sub(expressao_limpa, "abs($1)", true)
+	regex.compile("log\\(([^)]+)\\)")
+	expressao_limpa = regex.sub(expressao_limpa, "log($1) / log(10)", true)
+	
+	expressao_limpa = expressao_limpa.replace("ln(", "log(")
+	
+	return expressao_limpa
 
 func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, passos: int) -> Array[Vector2]:
 	var pontos: Array[Vector2] = []
 	var expr = Expression.new()
 	var ponto: Vector2
 	var passo_x = (x_max - x_min) / passos
-	var primeiro_ponto = false
-
+	
+	expressao_str = tratar_expressao(expressao_str)
+	
 	var erro = expr.parse(expressao_str, ["x"])
 	if erro != OK:
 		mensagem.text = "Erro na expressão matemática"
+		return pontos
+	
+	if "/0" in expressao_str:
+		mensagem.text = "Expressão inválida"
 		return pontos
 
 	for i in range(passos + 1):
@@ -148,19 +207,6 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 		ponto = Vector2(pixel_x, pixel_y)
 
 		if pixel_y >= topo_y and pixel_y <= limite_y:
-			#Verifica se está na primeira linha e no primeiro ponto dela
-			if jogo.linhas_desenhadas.is_empty() and primeiro_ponto == false:
-				primeiro_ponto = true
-				if not verificar_colisao(ponto, "inicio"):
-					mensagem.text = "Não acertou o ponto inicial"
-					return pontos
-					
-			elif verificar_colisao(ponto, "fim"):
-				emit_signal("vitoria")
-				return pontos
-
-			elif verificar_colisao(ponto, "obstaculos"):
-				return pontos
 			pontos.append(ponto)
 	return pontos
 
@@ -168,7 +214,7 @@ func verificar_cruzamento(novos_pontos: Array[Vector2]) -> bool:
 	if jogo.linhas_desenhadas.is_empty():
 		return true
 
-	var tolerancia = 1
+	var tolerancia = 3
 	var linha_antiga = jogo.linhas_desenhadas.back()
 	var pontos_antigos = linha_antiga.points
 	

@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var cor_ponto: Color = Color.RED
 @export var raio: float = 3.0
 @export var alcance_x: Vector2 = Vector2(-5, 5)
 @export var alcance_y: Vector2 = Vector2(-5, 5)
@@ -8,8 +7,9 @@ extends Node2D
 var tamanho_tela: Vector2
 var ponto_central: Vector2
 
-@export var cor_grade: Color = Color(1.0, 1.0, 1.0, 0.4) 
-@export var cor_eixos: Color = Color.WHITE      
+@export var cor_grade: Color = Color(1.0, 1.0, 1.0, 0.4)
+@export var cor_eixos: Color = Color("0f3f73")      
+@export var cor_numeros: Color = Color.WHITE
 
 func _ready() -> void:
 	var pai = get_parent()
@@ -17,7 +17,7 @@ func _ready() -> void:
 	ponto_central = tamanho_tela/2 
 	queue_redraw()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func math_para_tela(ponto_math: Vector2) -> Vector2:
@@ -34,7 +34,8 @@ func desenhar_malha():
 	while x <= alcance_x.y:
 		var inicio = math_para_tela(Vector2(x, alcance_y.x))
 		var fim = math_para_tela(Vector2(x, alcance_y.y))
-		draw_line(inicio, fim, cor_grade, 1.0)
+		if x != alcance_x.x and x != alcance_x.y:
+			draw_line(inicio, fim, cor_grade, 1.0)
 		x += passo_grid
 
 	var y = alcance_y.x
@@ -42,12 +43,15 @@ func desenhar_malha():
 	while y <= alcance_y.y:
 		var inicio = math_para_tela(Vector2(alcance_x.x, y))
 		var fim = math_para_tela(Vector2(alcance_x.y, y))
-		draw_string(ThemeDB.fallback_font, Vector2(ponto_central.x + 3, ponto_central.y + 11), "0", HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
+		draw_string(ThemeDB.fallback_font, Vector2(ponto_central.x + 3, ponto_central.y + 11), "0", HORIZONTAL_ALIGNMENT_LEFT, -1, 11, cor_numeros)
 		
 		if linha != 0:
-			draw_string(ThemeDB.fallback_font, Vector2(ponto_central.x + 2, inicio.y+3), str(linha), HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
-			draw_string(ThemeDB.fallback_font, Vector2(inicio.y-5, ponto_central.x + 11), str(-linha), HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
-		draw_line(inicio, fim, cor_grade, 1.0)
+			draw_string(ThemeDB.fallback_font, Vector2(ponto_central.x + 2, inicio.y+3), str(linha), HORIZONTAL_ALIGNMENT_LEFT, -1, 11, cor_numeros)
+			draw_string(ThemeDB.fallback_font, Vector2(inicio.y-5, ponto_central.x + 11), str(-linha), HORIZONTAL_ALIGNMENT_LEFT, -1, 11, cor_numeros)
+		
+		if y != alcance_y.x and y != alcance_y.y:
+			draw_line(inicio, fim, cor_grade, 1.0)
+			
 		y += passo_grid
 		linha += 1
 
@@ -61,7 +65,6 @@ func desenhar_malha():
 
 func _draw() -> void:
 	desenhar_malha()
-	draw_circle(ponto_central, raio, cor_ponto)
 	
 	
 
