@@ -290,9 +290,9 @@ SET AUTOCOMMIT FALSE;
 -- Senha: FunxyDemo42!
 -- XP: 20 + 40 + 40 + 20 = 120 pelas quatro atividades concluídas.
 -- Moedas: 46 das atividades + 25 das conquistas - 30 da loja = 41.
-INSERT INTO Usuario (id_usuario, email, senha_hash, nome, sequencia, xp, moedas)
+INSERT INTO Usuario (email, senha_hash, nome, sequencia, xp, moedas)
 VALUES (
-           1,
+
            'lia@funxy.example',
            '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
            'Lia Funxy',

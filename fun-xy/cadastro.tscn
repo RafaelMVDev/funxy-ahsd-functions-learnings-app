@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cvd2d26fhgg48" path="res://images/icones/grade.svg" id="3_wt43o"]
 [ext_resource type="Texture2D" uid="uid://dkiw2jjdrpgqv" path="res://img_fundo.png" id="4_uo0ke"]
 [ext_resource type="Texture2D" uid="uid://b7nkt5xi63bu3" path="res://images/icones/raios.svg" id="5_qcemb"]
-[ext_resource type="Texture2D" uid="uid://l84d711gqi2v" path="res://images/funxy-quadrada.svg" id="6_e2pea"]
+[ext_resource type="Texture2D" uid="uid://baqikcf08u1f2" path="res://images/icones/logo_funxy.png" id="6_qcemb"]
 [ext_resource type="Texture2D" uid="uid://by7m3q8crwwf7" path="res://images/icon.png" id="7_wwuxm"]
 [ext_resource type="Texture2D" uid="uid://c2rti82ym2qb5" path="res://images/icones/usuario.svg" id="8_4w4ko"]
 [ext_resource type="Texture2D" uid="uid://bi3q0qtsb18lu" path="res://images/icones/email.svg" id="9_uo0ke"]
@@ -100,6 +100,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3l645"]
+content_margin_left = 10.0
 content_margin_top = 6.0
 content_margin_bottom = 6.0
 bg_color = Color(0.1254902, 0.45882353, 0.95686275, 1)
@@ -224,7 +225,7 @@ custom_minimum_size = Vector2(80, 70)
 custom_maximum_size = Vector2(80, -1)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("6_e2pea")
+texture = ExtResource("6_qcemb")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer5" unique_id=1572987225]
@@ -262,6 +263,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_p3kxb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=721705318]
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="Label_Usuario" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=1637905890]
 layout_mode = 2
@@ -294,6 +296,7 @@ expand_mode = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1935958874]
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="Label_Email" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1602179364]
 layout_mode = 2
@@ -322,6 +325,7 @@ expand_mode = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=53347065]
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="Label_Senha" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer3" unique_id=1857000594]
 layout_mode = 2
@@ -379,8 +383,10 @@ theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer4" unique_id=784536909]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 17
 theme_override_styles/normal = SubResource("StyleBoxFlat_3l645")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qcemb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rb775")
