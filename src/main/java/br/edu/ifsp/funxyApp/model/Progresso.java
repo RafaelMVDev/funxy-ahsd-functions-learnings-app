@@ -2,7 +2,6 @@ package br.edu.ifsp.funxyApp.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import br.edu.ifsp.funxyApp.model.enums.StatusAtividade;
 
 @Entity
 @Table(name = "Progresso")
@@ -28,9 +27,8 @@ public abstract class Progresso {
     @Column(name = "datetime_conclusao")
     private LocalDateTime datetimeConclusao;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name ="status")
-    private StatusAtividade status;
+    @Column(name ="atividade_concluida")
+    private Boolean atividadeConcluida;
 
     protected Progresso() {
         // Construtor usado pelo JPA.
@@ -45,7 +43,7 @@ public abstract class Progresso {
     public void concluir() {
         if (datetimeConclusao == null) {
             datetimeConclusao = LocalDateTime.now();
-            status = StatusAtividade.concluido;
+            atividadeConcluida = true;
         }
     }
 
@@ -53,10 +51,9 @@ public abstract class Progresso {
         return id;
     }
 
-    public StatusAtividade getStatus(){
-        return status;
+    public Boolean getAtividadeConcluida(){
+        return atividadeConcluida;
     }
-
 
     public Usuario getUsuario() {
         return usuario;

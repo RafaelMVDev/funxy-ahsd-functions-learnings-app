@@ -5,6 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
+import java.util.Objects;
+import java.util.UUID;
+
 @Entity
 @Table(name = "Progresso_Pratica")
 @PrimaryKeyJoinColumn(name = "id_progresso")
@@ -22,11 +25,17 @@ public class ProgressoPratica extends Progresso {
     @Column(name = "movimentos", nullable = false)
     private Integer movimentos = 0;
 
+    @Column(name = "tentativa_uuid", unique = true, updatable = false)
+    private UUID tentativaUuid;
+
+
     protected ProgressoPratica() {}
 
-    public ProgressoPratica(Usuario usuario, AtividadePratica atividade) {
+    public ProgressoPratica(Usuario usuario, AtividadePratica atividade, UUID tentativaUuid) {
         super(usuario, atividade);
+        this.tentativaUuid = Objects.requireNonNull(tentativaUuid, "tentativaUuid");
     }
+
 
     public String getListaFuncoes() {
         return listaFuncoes;
@@ -44,6 +53,9 @@ public class ProgressoPratica extends Progresso {
         return movimentos;
     }
 
+    public UUID getTentativaUuid() {
+        return tentativaUuid;
+    }
     public void atualizarEstado(
             String listaFuncoes,
             String listaFuncoesValidas,

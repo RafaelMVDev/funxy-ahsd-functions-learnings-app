@@ -25,10 +25,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.TreeMap;
 
 @Service
@@ -56,7 +58,6 @@ public class ProgressoUsuarioService {
 
     @Transactional(readOnly = true)
     public List<TrilhaProgressoDto> buscarTrilhas(Long usuarioId) {
-        // trilhaId -> atividadeId -> tentativas do jogador
         Map<Long, Map<Long, List<Tentativa>>> porTrilha = new TreeMap<>();
 
         for (ProgressoLeitura progresso : leituras.findByUsuario_Id(usuarioId)) {
@@ -70,14 +71,16 @@ public class ProgressoUsuarioService {
 
         for (ProgressoPratica progresso : praticas.findByUsuario_Id(usuarioId)) {
             Tentativa tentativa = montarTentativaPratica(progresso);
-
             adicionarTentativa(porTrilha, progresso.getAtividade(), tentativa);
         }
 
-        Comparator<Tentativa> maisRecentePrimeiro = Comparator
-                .comparing(Tentativa::iniciadaEm)
-                .thenComparing(Tentativa::progressoId)
-                .reversed();
+        Comparator<Tentativa> porStatusEConclusao = Comparator
+                .comparing(Tentativa::atividadeConcluida)
+                .thenComparing(
+                        Tentativa::concluidaEm,
+                        Comparator.nullsLast(Comparator.reverseOrder())
+                )
+                .thenComparing(Tentativa::progressoId, Comparator.reverseOrder());
 
         List<TrilhaProgressoDto> resultado = new ArrayList<>();
 
@@ -85,7 +88,7 @@ public class ProgressoUsuarioService {
             List<AtividadeProgresso> fases = new ArrayList<>();
 
             porAtividade.forEach((atividadeId, tentativas) -> {
-                tentativas.sort(maisRecentePrimeiro);
+                tentativas.sort(porStatusEConclusao);
                 fases.add(new AtividadeProgresso(atividadeId, tentativas));
             });
 
@@ -95,39 +98,64 @@ public class ProgressoUsuarioService {
         return resultado;
     }
 
-
-
     @Transactional
     public Tentativa salvarPratica(
             Long usuarioId,
             Long atividadeId,
             SalvarProgressoPraticaRequestDto request
     ) {
-        Usuario usuario = usuarios.findUsuarioById(usuarioId)
+        Usuario usuario = usuarios.buscarParaSalvarProgresso(usuarioId)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Usuário não encontrado."
                 ));
 
-        ProgressoPratica progresso = praticas
-                .findByUsuario_IdAndAtividade_IdAndDatetimeConclusaoIsNull(
-                        usuarioId, atividadeId
-                )
-                .orElseGet(() -> criarTentativaPratica(usuario, atividadeId));
+        Optional<ProgressoPratica> existente =
+                praticas.findByUsuario_IdAndTentativaUuid(
+                        usuarioId, request.tentativaUuid()
+                );
+
+        ProgressoPratica progresso;
+
+        if (existente.isPresent()) {
+            progresso = existente.get();
+
+            if (!atividadeId.equals(progresso.getAtividade().getId())) {
+                throw new ResponseStatusException(
+                        HttpStatus.CONFLICT, "Essa tentativa pertence a outra atividade."
+                );
+            }
+
+            if (progresso.getDatetimeConclusao() != null) {
+                // O banco já salvou a conclusão. Devolve o mesmo progressoId.
+                return montarTentativaPratica(progresso);
+            }
+        } else {
+            AtividadePratica pratica = buscarAtividadePratica(atividadeId);
+            validarSalvamentoPratica(usuarioId, pratica);
+
+            // A validação da trilha procura OUTRA atividade aberta.
+            // Aqui verificamos se ESTA atividade já tem uma jogada em andamento.
+            if (praticas.findByUsuario_IdAndAtividade_IdAndDatetimeConclusaoIsNull(
+                    usuarioId, atividadeId
+            ).isPresent()) {
+                throw new ResponseStatusException(
+                        HttpStatus.CONFLICT,
+                        "Esta prática já tem uma tentativa aberta. Retome essa tentativa."
+                );
+            }
+
+            progresso = new ProgressoPratica(usuario, pratica, request.tentativaUuid());
+        }
 
         aplicarEstado(progresso, request);
 
-        if (request.status()) {
+        if (request.concluida()) {
             progresso.concluir();
         }
 
-        ProgressoPratica salvo = praticas.save(progresso);
-        return montarTentativaPratica(salvo);
+        return montarTentativaPratica(praticas.save(progresso));
     }
-
-    private ProgressoPratica criarTentativaPratica(
-            Usuario usuario,
-            Long atividadeId
-    ) {
+    private AtividadePratica buscarAtividadePratica(Long atividadeId) {
         Atividades atividade = atividades.findById(atividadeId)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Atividade não encontrada."
@@ -139,15 +167,42 @@ public class ProgressoUsuarioService {
             );
         }
 
-        return new ProgressoPratica(usuario, pratica);
+        return pratica;
     }
 
+    private void validarSalvamentoPratica(Long usuarioId, AtividadePratica pratica) {
+        Long trilhaId = pratica.getIdTrilha();
+        Integer numeroAtual = pratica.getNumeroAtividade();
+
+        if (praticas.existeOutraPraticaAberta(usuarioId, trilhaId, pratica.getId())) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Conclua a prática em andamento antes de salvar outra nesta trilha."
+            );
+        }
+
+        Optional<Integer> anterior =
+                atividades.buscarNumeroPraticaAnterior(trilhaId, numeroAtual);
+
+        if (anterior.isEmpty()) {
+            return; // É a primeira prática da trilha.
+        }
+
+        int numeroAnterior = anterior.get();
+
+        if (!praticas.concluiuPratica(usuarioId, trilhaId, numeroAnterior)) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Conclua a prática " + numeroAnterior
+                            + " antes de salvar a prática " + numeroAtual + "."
+            );
+        }
+    }
 
     private void aplicarEstado(
             ProgressoPratica progresso,
             SalvarProgressoPraticaRequestDto request
     ) {
-        // O DTO recebe arrays JSON; as colunas do banco guardam TEXT.
         progresso.atualizarEstado(
                 request.listaFuncoes().toString(),
                 request.listaFuncoesValidas().toString(),
@@ -181,14 +236,12 @@ public class ProgressoUsuarioService {
             Progresso progresso,
             ProgressoEspecifico progressoEspecifico
     ) {
-        String status = progresso.getDatetimeConclusao() == null
-                ? "em_andamento"
-                : "concluido";
+        LocalDateTime concluidaEm = progresso.getDatetimeConclusao();
 
         return new Tentativa(
                 progresso.getId(),
-                status,
-                progresso.getDatetimeConclusao(),
+                concluidaEm != null,
+                concluidaEm,
                 progressoEspecifico
         );
     }

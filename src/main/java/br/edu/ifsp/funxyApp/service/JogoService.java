@@ -50,7 +50,7 @@ public class JogoService {
                 new LinkedHashMap<>();
 
         for (Atividades atividade :
-                atividades.findAllByOrderByIdTrilhaAscNumeroAtividadeAsc()) {
+                atividades.findAllByOrderByTrilha_IdAscNumeroAtividadeAsc()) {
 
             Long trilhaId = atividade.getIdTrilha();
 
@@ -99,8 +99,7 @@ public class JogoService {
         } else if (atividade instanceof AtividadePratica pratica) {
             conteudo = new JogoResponseDto.Pratica(
                     pratica.getMediaMovimentos(),
-                    pratica.getMalhaPontos(),
-                    pratica.getCoordenadaChegada()
+                    pratica.getColisoesMalha()
             );
         } else {
             throw new IllegalStateException(
