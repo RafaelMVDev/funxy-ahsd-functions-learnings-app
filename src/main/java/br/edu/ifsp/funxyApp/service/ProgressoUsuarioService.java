@@ -104,11 +104,13 @@ public class ProgressoUsuarioService {
             Long atividadeId,
             SalvarProgressoPraticaRequestDto request
     ) {
+        System.out.println("TENTANDO SALVAR PROGRESSO PRATICA");
         Usuario usuario = usuarios.buscarParaSalvarProgresso(usuarioId)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Usuário não encontrado."
                 ));
 
+        System.out.println("USUÁRIO ENCONTRADO");
         Optional<ProgressoPratica> existente =
                 praticas.findByUsuario_IdAndTentativaUuid(
                         usuarioId, request.tentativaUuid()
@@ -117,9 +119,11 @@ public class ProgressoUsuarioService {
         ProgressoPratica progresso;
 
         if (existente.isPresent()) {
+            System.out.println("TENTATIVA EM ANDAMENTO EXISTENTE");
             progresso = existente.get();
 
             if (!atividadeId.equals(progresso.getAtividade().getId())) {
+                System.out.println("Essa tentativa pertence a outra atividade");
                 throw new ResponseStatusException(
                         HttpStatus.CONFLICT, "Essa tentativa pertence a outra atividade."
                 );
@@ -127,6 +131,7 @@ public class ProgressoUsuarioService {
 
             if (progresso.getDatetimeConclusao() != null) {
                 // O banco já salvou a conclusão. Devolve o mesmo progressoId.
+                System.out.println("O banco já salvou a conclusão. Devolve o mesmo progressoId.");
                 return montarTentativaPratica(progresso);
             }
         } else {
@@ -138,6 +143,7 @@ public class ProgressoUsuarioService {
             if (praticas.findByUsuario_IdAndAtividade_IdAndDatetimeConclusaoIsNull(
                     usuarioId, atividadeId
             ).isPresent()) {
+                System.out.println(" Esta prática já tem uma tentativa aberta. Retome essa tentativa.");
                 throw new ResponseStatusException(
                         HttpStatus.CONFLICT,
                         "Esta prática já tem uma tentativa aberta. Retome essa tentativa."
@@ -153,7 +159,9 @@ public class ProgressoUsuarioService {
             progresso.concluir();
         }
 
-        return montarTentativaPratica(praticas.save(progresso));
+        ProgressoPratica save = praticas.save(progresso);
+        System.out.println("Deu certo");
+        return montarTentativaPratica(save);
     }
     private AtividadePratica buscarAtividadePratica(Long atividadeId) {
         Atividades atividade = atividades.findById(atividadeId)

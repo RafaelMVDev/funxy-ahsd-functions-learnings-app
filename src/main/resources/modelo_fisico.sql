@@ -271,8 +271,7 @@ ALTER TABLE Atividades ADD CONSTRAINT ck_atividades_tipo
 ALTER TABLE Configuracao ADD CONSTRAINT ck_configuracao_tema
     CHECK (tema IN ('claro', 'escuro'));
 -- DADOS MOCK
-INSERT INTO Usuario (email, senha_hash,nome)
-VALUES ( 'admin@email.com', '$2a$10$rfUqfWJG6QypSIYrnLsM8ORUSbbOHpAfB0rbbEfr6cppOVajq4xSG','Rafael MV');
+
 
 -- Usuario: admin@email.com
 -- senha: 123456
@@ -280,12 +279,6 @@ VALUES ( 'admin@email.com', '$2a$10$rfUqfWJG6QypSIYrnLsM8ORUSbbOHpAfB0rbbEfr6cpp
 
 ---- DADO USUARIO MOCK
 -- Sem início = não iniciada; só início = em andamento;
-
-
-ALTER TABLE Progresso ADD CONSTRAINT ck_progresso_inicio
-    CHECK (datetime_conclusao IS NULL);
-
-
 
 -- =========================================================
 -- 2. USUÁRIA DE TESTE E CONFIGURAÇÃO
@@ -299,7 +292,7 @@ SET AUTOCOMMIT FALSE;
 -- Moedas: 46 das atividades + 25 das conquistas - 30 da loja = 41.
 INSERT INTO Usuario (id_usuario, email, senha_hash, nome, sequencia, xp, moedas)
 VALUES (
-           -7100,
+           1,
            'lia@funxy.example',
            '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
            'Lia Funxy',
@@ -343,15 +336,31 @@ INSERT INTO Item_Passe_Batalha (id_item, xp_necessario)
 VALUES (-7162, 100);
 
 INSERT INTO Inventario (id_usuario, id_item, equipado) VALUES
-                                                           (-7100, -7161, TRUE),
-                                                           (-7100, -7162, FALSE);
+                                                           (1, -7161, TRUE),
+                                                           (1, -7162, FALSE);
 
 -- Sessão antiga já revogada; o login real deve criar uma nova sessão.
 INSERT INTO Sessoes
 (id_usuario, token_hash, criado_em, expira_em, revogado_em, nome_dispositivo)
 VALUES
-    (-7100, REPEAT('a', 64), CURRENT_DATE-2, CURRENT_DATE+28,
+    (1, REPEAT('a', 64), CURRENT_DATE-2, CURRENT_DATE+28,
      CURRENT_DATE-1, 'Android de teste');
 
 COMMIT;
 SET AUTOCOMMIT TRUE;
+
+-- TESTEEEEE --
+INSERT INTO Trilha (id_trilha, nome_trilha, numero_trilha)
+SELECT 1, 'Introdução às funções', '1'
+    WHERE NOT EXISTS (
+    SELECT 1 FROM Trilha WHERE id_trilha = 1
+);
+
+INSERT INTO Atividades (
+    id_atividade, id_trilha, titulo, tipo, numero_atividade
+) VALUES (
+             1, 1, 'Primeira prática', 'pratica', 1
+         );
+
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+VALUES (1, 5, '[]');

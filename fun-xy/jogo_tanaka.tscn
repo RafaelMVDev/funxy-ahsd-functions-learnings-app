@@ -1379,3 +1379,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_b4btq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tjtnt")
 text = "X"
 script = ExtResource("10_0fd60")
+
+[node name="SalvarProgressoHTTP" type="HTTPRequest" parent="." unique_id=571212708]
