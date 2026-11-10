@@ -35,6 +35,9 @@ func _on_button_pressed():
 		label_mensagem.visible = true
 		label_mensagem.text = "A senha deve ter no mínimo 6 caracteres"
 		return
+	
+	#Colocar validação de regex do email
+	
 	label_mensagem.visible = true
 	label_mensagem.text = "Enviando cadastro..."
 	
@@ -71,7 +74,7 @@ func _on_cadastro_response(result, response_code, headers, body):
 			
 			# Aguarda 1.5 segundos para o usuário ler a mensagem e troca para o Login
 			await get_tree().create_timer(1.5).timeout
-			get_tree().change_scene_to_file("res://verificar_email.tscn")
+			get_tree().change_scene_to_file("res://login.tscn")
 		else:
 			# Exibe a mensagem enviada pelo servidor (ex: "E-mail já cadastrado")
 			label_mensagem.visible = true
