@@ -30,7 +30,12 @@ func _on_button_pressed():
 		label_mensagem.visible = true
 		label_mensagem.text = "Preencha todos os campos!"
 		return
-		
+	
+	if not verificar_email(email):
+		label_mensagem.text = "Email inválido"
+		label_mensagem.visible = true
+		return
+	
 	if senha.length() < 6:
 		label_mensagem.visible = true
 		label_mensagem.text = "A senha deve ter no mínimo 6 caracteres"
@@ -91,5 +96,20 @@ func _esconder_exibir_senha() -> void:
 		senha_input.secret = false
 		botao_senha.icon = icone_olho_aberto
 		
-		
+func _on_button_login_pressed() -> void:
+	get_tree().change_scene_to_file("res://login.tscn")
 	
+func verificar_email(email: String) -> bool:
+	var regex = RegEx.new()
+	var padrao = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+	
+	var erro = regex.compile(padrao)
+	if erro != OK:
+		return false
+		
+	var resultado = regex.search(email)
+	
+	if resultado and resultado.get_string() == email:
+		return true
+		
+	return false

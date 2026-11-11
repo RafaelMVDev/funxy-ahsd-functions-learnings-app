@@ -140,12 +140,12 @@ func _carregar_vitoria():
 	"""
 	var dic_para_api = {
     # Gerado ao iniciar a tentativa ou recuperado da API ao continuar.
-    	"tentativaUuid": tentativa_uuid,
-    	"concluida": true, #true ao concluir, false ao salvar em andamento.
-    	"listaFuncoes": lista_funcoes,
-    	"listaFuncoesValidas": lista_funcoes_validas,
-    	"listaDominios": lista_dominios,
-    	"movimentos": quantidade_movimentos
+		"tentativaUuid": tentativa_uuid,
+		"concluida": true, #true ao concluir, false ao salvar em andamento.
+		"listaFuncoes": lista_funcoes,
+		"listaFuncoesValidas": lista_funcoes_validas,
+		"listaDominios": lista_dominios,
+		"movimentos": quantidade_movimentos
 	}
 	print(dic_para_api)
 	"""
@@ -184,12 +184,12 @@ func sair_da_partida() -> void:
 	"""todo: ==== Adicionado(Morales) vvvvvvv: Novo formato de dicionario para api mais simplificado ===="""
 	"""var dic_para_api = {
     # Gerado ao iniciar a tentativa ou recuperado da API ao continuar.
-    	"tentativaUuid": tentativa_uuid,
-    	"concluida": false, #true ao concluir, false ao salvar em andamento.
-    	"listaFuncoes": lista_funcoes,
-    	"listaFuncoesValidas": lista_funcoes_validas,
-    	"listaDominios": lista_dominios,
-    	"movimentos": quantidade_movimentos
+		"tentativaUuid": tentativa_uuid,
+		"concluida": false, #true ao concluir, false ao salvar em andamento.
+		"listaFuncoes": lista_funcoes,
+		"listaFuncoesValidas": lista_funcoes_validas,
+		"listaDominios": lista_dominios,
+		"movimentos": quantidade_movimentos
 	}"""
 		
 	

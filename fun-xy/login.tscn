@@ -1,45 +1,127 @@
 [gd_scene format=3 uid="uid://bux2m0jm3562k"]
 
 [ext_resource type="Script" uid="uid://bgwaw2kdocr8f" path="res://login.gd" id="1_cau7c"]
+[ext_resource type="Texture2D" uid="uid://dlpeucl41i6be" path="res://images/icones/funcao-fx.svg" id="2_0trqi"]
+[ext_resource type="Texture2D" uid="uid://cvd2d26fhgg48" path="res://images/icones/grade.svg" id="3_xwwoh"]
+[ext_resource type="Texture2D" uid="uid://dkiw2jjdrpgqv" path="res://img_fundo.png" id="4_d2als"]
+[ext_resource type="Texture2D" uid="uid://b7nkt5xi63bu3" path="res://images/icones/raios.svg" id="5_lyrfs"]
+[ext_resource type="Texture2D" uid="uid://baqikcf08u1f2" path="res://images/icones/logo_funxy.png" id="6_2vwaj"]
+[ext_resource type="Texture2D" uid="uid://by7m3q8crwwf7" path="res://images/icon.png" id="7_2rjvb"]
+[ext_resource type="Texture2D" uid="uid://bi3q0qtsb18lu" path="res://images/icones/email.svg" id="8_qyti6"]
+[ext_resource type="Texture2D" uid="uid://6gnxrxo1sjdo" path="res://images/icones/cadeado.svg" id="9_osbi4"]
+[ext_resource type="Texture2D" uid="uid://bk2s4bgpgclo4" path="res://images/olho-fechado.svg" id="10_621tt"]
 
-[sub_resource type="Gradient" id="Gradient_3n56f"]
-colors = PackedColorArray(0.078431375, 0.09803922, 0.3019608, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_bj1uy"]
+colors = PackedColorArray(0.020974653, 0.074406825, 0.22031772, 1, 0.03529412, 0.101960786, 0.2784314, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tajqu"]
-gradient = SubResource("Gradient_3n56f")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t1khq"]
+gradient = SubResource("Gradient_bj1uy")
 width = 360
 height = 640
-fill_from = Vector2(0.5173913, 0)
-fill_to = Vector2(0.51304346, 1)
+fill_from = Vector2(0, 0.0042735045)
+fill_to = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cau7c"]
-content_margin_left = 30.0
-content_margin_top = 30.0
-content_margin_right = 30.0
-content_margin_bottom = 30.0
-bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3kxb"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n56f"]
+[sub_resource type="Gradient" id="Gradient_hkpux"]
+colors = PackedColorArray(0.34509805, 0.7294118, 0.99607843, 1, 0.34117648, 0.7137255, 0.99607843, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6t4ox"]
+gradient = SubResource("Gradient_hkpux")
+fill_from = Vector2(1, 0.557971)
+fill_to = Vector2(0, 0.5217391)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t5wce"]
+texture = SubResource("GradientTexture2D_6t4ox")
+
+[sub_resource type="Gradient" id="Gradient_nmqm8"]
+colors = PackedColorArray(0.32941177, 0.7254902, 1, 1, 0.34117648, 0.7137255, 0.99607843, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rb775"]
+gradient = SubResource("Gradient_nmqm8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ywne8"]
+texture = SubResource("GradientTexture2D_rb775")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vn1ho"]
+content_margin_left = 40.0
 content_margin_top = 6.0
 content_margin_bottom = 6.0
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlo4h"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgw1h"]
+bg_color = Color(1, 1, 1, 0.99215686)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqlb1"]
+content_margin_left = 40.0
 content_margin_top = 6.0
 content_margin_bottom = 6.0
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_affgl"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mee7c"]
+content_margin_left = 10.0
+bg_color = Color(0.1254902, 0.45882353, 0.95686275, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_on3y8"]
+content_margin_left = 10.0
+bg_color = Color(0.1254902, 0.45882353, 0.95686275, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysypo"]
+content_margin_left = 10.0
+bg_color = Color(0.30390048, 0.567475, 0.98493856, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2lsy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d05sf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjkqk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1d1x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhobu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf1lw"]
 
 [node name="Login" type="Control" unique_id=1218836669]
 layout_mode = 3
@@ -50,64 +132,247 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cau7c")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1094238136]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1594225422]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_tajqu")
+texture = SubResource("GradientTexture2D_t1khq")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2" unique_id=1588524138]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -90.0
+offset_right = 123.0
+offset_bottom = -35.0
+grow_vertical = 0
+texture = ExtResource("2_0trqi")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2" unique_id=882681954]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -61.0
+offset_right = -23.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_xwwoh")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect2" unique_id=1680909460]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 9.0
+offset_right = -11.0
+offset_bottom = 101.0
+grow_horizontal = 0
+texture = ExtResource("4_d2als")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect2" unique_id=1621327587]
+visible = false
+layout_mode = 0
+offset_left = 210.0
+offset_top = 103.0
+offset_right = 262.0
+offset_bottom = 154.0
+texture = ExtResource("5_lyrfs")
+expand_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1006513497]
-custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
+offset_left = -99.0
+offset_top = -132.0
+offset_right = 99.0
+offset_bottom = 142.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cau7c")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_p3kxb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1741796173]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer" unique_id=1558043526]
+custom_minimum_size = Vector2(240, 450)
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="PanelContainer/VBoxContainer2" unique_id=1749564959]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer2/VBoxContainer5" unique_id=1974668579]
+custom_minimum_size = Vector2(80, 70)
+custom_maximum_size = Vector2(80, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_2vwaj")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer5" unique_id=1973306022]
+layout_mode = 2
+theme_override_font_sizes/font_size = 29
+text = "Login"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer5" unique_id=1549126134]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
 alignment = 1
 
-[node name="Label_EmailUsuario" type="Label" parent="PanelContainer/VBoxContainer" unique_id=524522661]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer5/HBoxContainer" unique_id=238055297]
+custom_minimum_size = Vector2(90, 2)
+custom_maximum_size = Vector2(80, 90)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_t5wce")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer2/VBoxContainer5/HBoxContainer" unique_id=1203784078]
+custom_minimum_size = Vector2(20, 0)
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("7_2rjvb")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer5/HBoxContainer" unique_id=1133337516]
+custom_minimum_size = Vector2(90, 2)
+custom_maximum_size = Vector2(90, 2)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_ywne8")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer2" unique_id=106672681]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label_Email" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer2" unique_id=815195539]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "Email"
 
-[node name="LineEdit_EmailUsuario" type="LineEdit" parent="PanelContainer/VBoxContainer" unique_id=1549777343]
+[node name="LineEdit_EmailUsuario" type="LineEdit" parent="PanelContainer/VBoxContainer2/VBoxContainer2" unique_id=1839473399]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_3n56f")
+theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_vn1ho")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mgw1h")
 
-[node name="Label_Senha" type="Label" parent="PanelContainer/VBoxContainer" unique_id=479270224]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer2/VBoxContainer2/LineEdit_EmailUsuario" unique_id=245504916]
+custom_maximum_size = Vector2(32, 25)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 29.0
+offset_bottom = 25.0
+texture = ExtResource("8_qyti6")
+expand_mode = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer2" unique_id=1923993974]
 layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label_Senha" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer3" unique_id=1863807217]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "Senha"
 
-[node name="LineEdit_Senha" type="LineEdit" parent="PanelContainer/VBoxContainer" unique_id=267572934]
+[node name="LineEdit_Senha" type="LineEdit" parent="PanelContainer/VBoxContainer2/VBoxContainer3" unique_id=1044143894]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_3n56f")
+theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_xqlb1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_affgl")
 secret = true
 
-[node name="Label_Mensagem" type="Label" parent="PanelContainer/VBoxContainer" unique_id=25646311]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer2/VBoxContainer3/LineEdit_Senha" unique_id=1954593975]
+custom_maximum_size = Vector2(25, 27)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 26.0
+offset_bottom = 26.0
+texture = ExtResource("9_osbi4")
+expand_mode = 1
+
+[node name="ButtonSenha" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer3/LineEdit_Senha" unique_id=429350371]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -14.5
+offset_right = -9.0
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("10_621tt")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label_Mensagem" type="Label" parent="PanelContainer/VBoxContainer2" unique_id=1976994936]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
 
-[node name="Button_Entrar" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1901117213]
+[node name="VBoxContainer4" type="VBoxContainer" parent="PanelContainer/VBoxContainer2" unique_id=1716460024]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_xlo4h")
-text = "Logar"
+theme_override_constants/separation = 4
 
-[node name="HTTPRequest" type="HTTPRequest" parent="PanelContainer/VBoxContainer" unique_id=1740030830]
+[node name="Button_logar" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer4" unique_id=1755715803]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_mee7c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_on3y8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ysypo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y2lsy")
+text = "Logar  ➔"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Button_Entrar" to="." method="_on_button_entrar_pressed"]
+[node name="ButtonCadastro" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer4" unique_id=699283710]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.1254902, 0.45882353, 0.95686275, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d05sf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjkqk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_v1d1x")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bhobu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bf1lw")
+text = "Ainda não possui uma conta?
+Cadastrar"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1740030830]
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer2/VBoxContainer3/LineEdit_Senha/ButtonSenha" to="." method="_on_button_senha_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer2/VBoxContainer4/Button_logar" to="." method="_on_button_entrar_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer2/VBoxContainer4/ButtonCadastro" to="." method="_on_button_cadastro_pressed"]

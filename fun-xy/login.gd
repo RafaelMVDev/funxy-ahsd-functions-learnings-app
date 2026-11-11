@@ -1,12 +1,14 @@
 extends Control
 
-@onready var email_input = $PanelContainer/VBoxContainer/LineEdit_EmailUsuario
-@onready var senha_input = $PanelContainer/VBoxContainer/LineEdit_Senha
-@onready var label_mensagem = $PanelContainer/VBoxContainer/Label_Mensagem
-@onready var http_request: HTTPRequest = $PanelContainer/VBoxContainer/HTTPRequest
-
+@onready var email_input = %LineEdit_EmailUsuario
+@onready var senha_input = %LineEdit_Senha
+@onready var label_mensagem = %Label_Mensagem
+@onready var http_request: HTTPRequest = $HTTPRequest
+@onready var botao_senha: Button = %ButtonSenha
 # Subsitua pela URL fornecida pelo seu colega (ou pelo Mocky)
 var url_api = "http://localhost:8080/auth/login"
+var icone_olho_aberto = preload("res://images/icones/olho.svg")
+var icone_olho_fechado = preload("res://images/olho-fechado.svg")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,13 +16,21 @@ func _ready() -> void:
 	http_request.request_completed.connect(_on_login_response)
 
 func _on_button_entrar_pressed():
+	label_mensagem.visible = false
 	var email = email_input.text
 	var senha = senha_input.text
 	
 	if email.is_empty() or senha.is_empty():
 		label_mensagem.text = "Preencha todos os campos!"
+		label_mensagem.visible = true
 		return
 	
+	if not verificar_email(email):
+		label_mensagem.text = "Email inválido"
+		label_mensagem.visible = true
+		return
+	
+	label_mensagem.visible = true
 	label_mensagem.text = "Conectando..."
 	
 	# Monta o dicionário com os dados
@@ -35,6 +45,8 @@ func _on_button_entrar_pressed():
 	
 	# Envia a requisição POST para a API
 	http_request.request(url_api, headers, HTTPClient.METHOD_POST, json_body)
+	
+	#Precisa das mensagens de erro! Usuário não encontrado ou senha incorreta
 
 func _on_login_response(result, response_code, headers, body):
 	# Converte o corpo da resposta de texto UTF-8 para JSON
@@ -60,3 +72,29 @@ func _on_login_response(result, response_code, headers, body):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _on_button_cadastro_pressed() -> void:
+	get_tree().change_scene_to_file("res://cadastro.tscn")
+
+func _on_button_senha_pressed() -> void:
+	if senha_input.secret == false:
+		senha_input.secret = true
+		botao_senha.icon = icone_olho_fechado
+	else:
+		senha_input.secret = false
+		botao_senha.icon = icone_olho_aberto
+
+func verificar_email(email: String) -> bool:
+	var regex = RegEx.new()
+	var padrao = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+	
+	var erro = regex.compile(padrao)
+	if erro != OK:
+		return false
+		
+	var resultado = regex.search(email)
+	
+	if resultado and resultado.get_string() == email:
+		return true
+		
+	return false

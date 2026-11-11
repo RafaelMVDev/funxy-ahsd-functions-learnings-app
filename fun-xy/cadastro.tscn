@@ -12,11 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://6gnxrxo1sjdo" path="res://images/icones/cadeado.svg" id="10_qcemb"]
 [ext_resource type="Texture2D" uid="uid://bk2s4bgpgclo4" path="res://images/olho-fechado.svg" id="11_qcemb"]
 
-[sub_resource type="Gradient" id="Gradient_bj1uy"]
+[sub_resource type="Gradient" id="Gradient_qcemb"]
 colors = PackedColorArray(0.020974653, 0.074406825, 0.22031772, 1, 0.03529412, 0.101960786, 0.2784314, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_727ai"]
-gradient = SubResource("Gradient_bj1uy")
+gradient = SubResource("Gradient_qcemb")
 width = 360
 height = 640
 fill_from = Vector2(0, 0.0042735045)
@@ -36,22 +36,22 @@ corner_radius_bottom_left = 20
 [sub_resource type="Gradient" id="Gradient_ux1vq"]
 colors = PackedColorArray(0.34509805, 0.7294118, 0.99607843, 1, 0.34117648, 0.7137255, 0.99607843, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6t4ox"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e2pea"]
 gradient = SubResource("Gradient_ux1vq")
 fill_from = Vector2(1, 0.557971)
 fill_to = Vector2(0, 0.5217391)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b4btq"]
-texture = SubResource("GradientTexture2D_6t4ox")
+texture = SubResource("GradientTexture2D_e2pea")
 
 [sub_resource type="Gradient" id="Gradient_8c6if"]
 colors = PackedColorArray(0.32941177, 0.7254902, 1, 1, 0.34117648, 0.7137255, 0.99607843, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rb775"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wwuxm"]
 gradient = SubResource("Gradient_8c6if")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3kxb"]
-texture = SubResource("GradientTexture2D_rb775")
+texture = SubResource("GradientTexture2D_wwuxm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ye3j0"]
 content_margin_left = 40.0
@@ -101,8 +101,6 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3l645"]
 content_margin_left = 10.0
-content_margin_top = 6.0
-content_margin_bottom = 6.0
 bg_color = Color(0.1254902, 0.45882353, 0.95686275, 1)
 corner_radius_top_left = 17
 corner_radius_top_right = 17
@@ -110,6 +108,7 @@ corner_radius_bottom_right = 17
 corner_radius_bottom_left = 17
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcemb"]
+content_margin_left = 10.0
 bg_color = Color(0.1254902, 0.45882353, 0.95686275, 1)
 corner_radius_top_left = 17
 corner_radius_top_right = 17
@@ -117,6 +116,7 @@ corner_radius_bottom_right = 17
 corner_radius_bottom_left = 17
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb775"]
+content_margin_left = 10.0
 bg_color = Color(0.30390048, 0.567475, 0.98493856, 1)
 corner_radius_top_left = 17
 corner_radius_top_right = 17
@@ -124,6 +124,16 @@ corner_radius_bottom_right = 17
 corner_radius_bottom_left = 17
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uo0ke"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3kxb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w4ko"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixrit"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b4btq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t4ox"]
 
 [node name="Cadastro" type="Control" unique_id=1652294607]
 layout_mode = 3
@@ -188,14 +198,15 @@ expand_mode = 1
 [node name="TextureRect4" type="TextureRect" parent="TextureRect" unique_id=802554925]
 layout_mode = 0
 offset_left = 210.0
-offset_top = 103.0
+offset_top = 87.0
 offset_right = 262.0
-offset_bottom = 154.0
+offset_bottom = 138.0
 texture = ExtResource("5_qcemb")
 expand_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=442854161]
-custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(400, 500)
+propagate_maximum_size = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -203,18 +214,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -234.0
+offset_top = -250.0
 offset_right = 150.0
-offset_bottom = 276.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdspj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=843933400]
-custom_minimum_size = Vector2(240, 450)
+custom_minimum_size = Vector2(240, 400)
 custom_maximum_size = Vector2(240, -1)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=506022072]
 layout_mode = 2
@@ -372,15 +385,15 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1792484718]
-layout_mode = 2
-
-[node name="Label_Mensagem" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer4" unique_id=1192622767]
+[node name="Label_Mensagem" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1192622767]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1792484718]
+layout_mode = 2
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer4" unique_id=784536909]
 custom_minimum_size = Vector2(0, 45)
@@ -393,8 +406,22 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_rb775")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_uo0ke")
 text = "Cadastrar  ➔"
 
+[node name="ButtonLogin" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer4" unique_id=229632912]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.1254902, 0.45882353, 0.95686275, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p3kxb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4w4ko")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ixrit")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_b4btq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6t4ox")
+text = "Já possui uma conta?
+Logar"
+
 [node name="HTTPRequest" type="HTTPRequest" parent="PanelContainer/VBoxContainer" unique_id=150668803]
 unique_name_in_owner = true
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer3/LineEdit_Senha/ButtonSenha" to="." method="_esconder_exibir_senha"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer4/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer4/ButtonLogin" to="." method="_on_button_login_pressed"]
