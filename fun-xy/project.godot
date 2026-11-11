@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Sessao="*uid://ycaimgyjvkgf"
+DadosJogo="*uid://be5sverbg14is"
 
 [display]
 
