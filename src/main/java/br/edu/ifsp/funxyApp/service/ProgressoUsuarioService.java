@@ -75,7 +75,7 @@ public class ProgressoUsuarioService {
         }
 
         Comparator<Tentativa> porStatusEConclusao = Comparator
-                .comparing(Tentativa::atividadeConcluida)
+                .comparing(Tentativa::concluida)
                 .thenComparing(
                         Tentativa::concluidaEm,
                         Comparator.nullsLast(Comparator.reverseOrder())
@@ -224,7 +224,8 @@ public class ProgressoUsuarioService {
                 lerLista(progresso.getListaFuncoes()),
                 lerLista(progresso.getListaFuncoesValidas()),
                 lerLista(progresso.getListaDominios()),
-                progresso.getMovimentos()
+                progresso.getMovimentos(),
+                progresso.getTentativaUuid()
         );
 
         return montarTentativa(progresso, dadosPratica);

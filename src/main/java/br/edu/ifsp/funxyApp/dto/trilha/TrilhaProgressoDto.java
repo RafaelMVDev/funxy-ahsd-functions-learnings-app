@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 public record TrilhaProgressoDto(
         Long trilhaId,
@@ -16,7 +17,7 @@ public record TrilhaProgressoDto(
 
     public record Tentativa(
             Long progressoId,
-            boolean atividadeConcluida,
+            Boolean status,
             LocalDateTime concluidaEm,
             ProgressoEspecifico progressoEspecifico
     ) {}
@@ -31,6 +32,7 @@ public record TrilhaProgressoDto(
             ArrayNode listaFuncoes,
             ArrayNode listaFuncoesValidas,
             ArrayNode listaDominios,
-            Integer movimentos
+            Integer movimentos,
+            UUID tentativaUuid
     ) implements ProgressoEspecifico {}
 }
