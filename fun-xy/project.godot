@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Sessao="*uid://ycaimgyjvkgf"
 DadosJogo="*uid://be5sverbg14is"
+Api="*uid://dfd77ucde83lk"
 
 [display]
 
