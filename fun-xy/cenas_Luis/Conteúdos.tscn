@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dwdynpq2vpjd2" path="res://images/icones_luis/Ranking.png" id="6_ybqmn"]
 [ext_resource type="Texture2D" uid="uid://322eclljkepr" path="res://images/icones_luis/Perfil.png" id="7_wb6y3"]
 [ext_resource type="Texture2D" uid="uid://bysqk0ebc2cjr" path="res://images/icones_luis/Config.png" id="8_11lrj"]
-[ext_resource type="Texture2D" uid="uid://bac2rw3d3oe6q" path="res://images/livro preto.png" id="9_pvi13"]
+[ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="9_pvi13"]
 
 [sub_resource type="GDScript" id="GDScript_pks1p"]
 
