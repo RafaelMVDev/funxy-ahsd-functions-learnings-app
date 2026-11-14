@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <!-- Alto-falante branco do título Som e Áudio -->
+  <path d="M10 25h10l13-11c1.9-1.6 4.8-.3 4.8 2.2v31.6c0 2.5-2.9 3.8-4.8 2.2L20 39H10a4 4 0 0 1-4-4v-6a4 4 0 0 1 4-4Z" fill="#FFFFFF"/>
+  <path d="M44 24.2a11.6 11.6 0 0 1 0 15.6M50.8 17.4a21.1 21.1 0 0 1 0 29.2" stroke="#FFFFFF" stroke-width="4.4" stroke-linecap="round"/>
+</svg>

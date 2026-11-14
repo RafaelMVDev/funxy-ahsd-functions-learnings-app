@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <!-- Cadeado branco do título Privacidade -->
+  <path d="M20.5 29v-7.8C20.5 13.5 25.6 9 32 9s11.5 4.5 11.5 12.2V29" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="16" y="27" width="32" height="31" rx="4.8" fill="#FFFFFF"/>
+  <circle cx="32" cy="40.5" r="4.1" fill="#1A4DAD"/>
+  <path d="M32 43.1v6.2" stroke="#1A4DAD" stroke-width="4.1" stroke-linecap="round"/>
+</svg>
