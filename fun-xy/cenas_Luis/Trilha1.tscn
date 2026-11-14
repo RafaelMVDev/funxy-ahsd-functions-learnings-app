@@ -25,7 +25,7 @@ fill_to = Vector2(0.51304346, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdg80"]
 content_margin_left = 5.0
-bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 anti_aliasing_size = 4.643
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wei45"]
@@ -41,7 +41,7 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
-bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fhiq"]
 bg_color = Color(0.79608965, 0.87572545, 0.99725264, 1)
