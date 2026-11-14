@@ -5,7 +5,10 @@
 [ext_resource type="Script" uid="uid://cp3qohxsj4sxs" path="res://malha_plano_cartesiano.gd" id="2_bq6yp"]
 [ext_resource type="Script" uid="uid://cm5n25siilx6t" path="res://grafico.gd" id="3_bq6yp"]
 [ext_resource type="Script" uid="uid://dttu1xeydxab8" path="res://teclado_matematico.gd" id="4_77yt0"]
+[ext_resource type="AudioStream" uid="uid://dcp2ovrsskyt7" path="res://sons/872707__heyheytheree__confirm-sci-fi-ui-sfx-free.wav" id="4_x4sgy"]
+[ext_resource type="AudioStream" uid="uid://d4hwuat6pu3x0" path="res://sons/868713__benparamoreaudio__bubble_5.wav" id="5_fh7mu"]
 [ext_resource type="PackedScene" uid="uid://bv4635aeugnm7" path="res://tela_vencedor.tscn" id="6_jj7yg"]
+[ext_resource type="AudioStream" uid="uid://dymniqagvldfi" path="res://sons/587252__beetlemuse__dats-right.wav" id="6_x4sgy"]
 [ext_resource type="Script" uid="uid://cs2681bhq6icd" path="res://funcoes_listadas.gd" id="7_d7ek1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o30a"]
@@ -329,6 +332,16 @@ script = ExtResource("1_gpm53")
 
 [node name="Grafico" type="Node2D" parent="FundoPlanoCartesiano" unique_id=1944659863]
 script = ExtResource("3_bq6yp")
+
+[node name="AudioCorreto" type="AudioStreamPlayer" parent="FundoPlanoCartesiano/Grafico" unique_id=621862150]
+stream = ExtResource("4_x4sgy")
+volume_db = -10.806
+
+[node name="AudioIncorreto" type="AudioStreamPlayer" parent="FundoPlanoCartesiano/Grafico" unique_id=1661539332]
+stream = ExtResource("5_fh7mu")
+
+[node name="AudioVitoria" type="AudioStreamPlayer" parent="FundoPlanoCartesiano/Grafico" unique_id=1751146776]
+stream = ExtResource("6_x4sgy")
 
 [node name="MalhaPlanoCartesiano" type="Node2D" parent="FundoPlanoCartesiano" unique_id=245684022]
 script = ExtResource("2_bq6yp")

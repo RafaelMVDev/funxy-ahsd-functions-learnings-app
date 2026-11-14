@@ -6,6 +6,9 @@ extends Node2D
 @onready var mensagem = get_node("../../TecladoMatematico/VisoresTeclado/Mensagem")
 @onready var check_funcao = %ButtonFuncao
 @onready var check_dominio = %ButtonDominio
+@onready var efeito_sonoro_correto = $AudioCorreto
+@onready var efeito_sonoro_incorreto = $AudioIncorreto
+@onready var efeito_sonoro_vitoria = $AudioVitoria
 
 signal vitoria()
 
@@ -78,18 +81,22 @@ func carregar_fase(colisoes_dados: Array):
 		colisor.add_child(visual)
 		add_child(colisor)
 
-
 func carregar_progresso() -> void:
 	jogo.quantidade_movimentos = 0
+	funcoes_exibidas.remover_funcoes_listadas
 	var counter = 0
+	var bus_idx = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_mute(bus_idx, true)
+	
 	for linha in jogo.lista_funcoes:
 		atualizar_grafico(linha, jogo.lista_dominios[counter])
 		jogo.lista_funcoes.pop_back()
 		jogo.lista_dominios.pop_back()
 		counter += 1
-		funcoes_exibidas.remover_funcoes_listadas
 		
-
+	await get_tree().create_timer(0.8).timeout
+	AudioServer.set_bus_mute(bus_idx, false)
+		
 func definir_dominio(dominio: String) -> Array:
 	var x_min: float = alcance_x_min
 	var x_max: float = alcance_x_max
@@ -149,31 +156,40 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 					nova_linha.default_color = Color("FFAA24")
 					jogo.linha_desconexa.append(nova_linha)
 					mensagem.text = "Não acertou o ponto inicial"
+					efeito_sonoro_incorreto.play()
 				elif acertou_obstaculo:
 					nova_linha.default_color = Color("FFAA24")
 					jogo.linha_desconexa.append(nova_linha)
 					mensagem.text = "Colisão com um obstáculo"
+					efeito_sonoro_incorreto.play()
 				else: 
 					nova_linha.default_color = Color.GREEN
 					jogo.linhas_desenhadas.append(nova_linha)
+					if not acertou_fim:
+						efeito_sonoro_correto.play()
 				
 			else:
 				if acertou_obstaculo:
 					nova_linha.default_color = Color("FFAA24")
 					jogo.linha_desconexa.append(nova_linha)
 					mensagem.text = "Colisão com um obstáculo"
+					efeito_sonoro_incorreto.play()
 				else:
 					nova_linha.default_color = Color.GREEN
 					jogo.linhas_desenhadas.back().default_color = Color.WHITE 
 					jogo.linhas_desenhadas.append(nova_linha)
+					if not acertou_fim:
+						efeito_sonoro_correto.play()
 			
 			if acertou_fim and nova_linha in jogo.linhas_desenhadas:
+				efeito_sonoro_vitoria.play()
 				emit_signal("vitoria")
 				
 		else:
 			nova_linha.default_color = Color("FFAA24")
 			jogo.linha_desconexa.append(nova_linha)
 			mensagem.text = "A linha não tem continuidade"
+			efeito_sonoro_incorreto.play()
 		
 		add_child(nova_linha)
 		funcoes_exibidas.exibir_funcoes(expressao_str)
