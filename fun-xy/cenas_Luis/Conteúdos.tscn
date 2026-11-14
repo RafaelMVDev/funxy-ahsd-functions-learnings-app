@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bl8gu8rd3i3ge"]
 
 [ext_resource type="Texture2D" uid="uid://d4jm453j4qukp" path="res://images/icones_luis/moedas.png" id="1_njqnh"]
+[ext_resource type="Script" uid="uid://cfd4bpf6bbwx3" path="res://cenas_Luis/conteúdos.gd" id="1_pvi13"]
 [ext_resource type="Texture2D" uid="uid://bkcs8b6j5qn3c" path="res://images/icones_luis/exp.png" id="2_j1thl"]
 [ext_resource type="Texture2D" uid="uid://7iqwbw0lndv8" path="res://images/icones_luis/sequência(foguinho).png" id="3_7qexj"]
 [ext_resource type="Texture2D" uid="uid://b43e5bwgpci0g" path="res://images/fundo unidade.png" id="4_7qexj"]
@@ -10,9 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dwdynpq2vpjd2" path="res://images/icones_luis/Ranking.png" id="6_ybqmn"]
 [ext_resource type="Texture2D" uid="uid://322eclljkepr" path="res://images/icones_luis/Perfil.png" id="7_wb6y3"]
 [ext_resource type="Texture2D" uid="uid://bysqk0ebc2cjr" path="res://images/icones_luis/Config.png" id="8_11lrj"]
-[ext_resource type="Texture2D" uid="uid://bac2rw3d3oe6q" path="res://images/livro preto.png" id="9_pvi13"]
-
-[sub_resource type="GDScript" id="GDScript_pks1p"]
+[ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="9_pvi13"]
 
 [sub_resource type="Gradient" id="Gradient_bj1uy"]
 colors = PackedColorArray(0.078431375, 0.09803922, 0.3019608, 1, 0, 0, 0, 1)
@@ -93,7 +92,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_pks1p")
+script = ExtResource("1_pvi13")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=394388375]
 layout_mode = 1
@@ -637,3 +636,6 @@ custom_maximum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("8_11lrj")
 stretch_mode = 3
+
+[connection signal="pressed" from="HboxBAIXO/PanelContainer4/CenterContainer3/TextureButton" to="." method="_on_texture_button_perfil_pressed"]
+[connection signal="pressed" from="HboxBAIXO/PanelContainer5/CenterContainer4/TextureButton" to="." method="_on_texture_button_configuracoes_pressed"]
