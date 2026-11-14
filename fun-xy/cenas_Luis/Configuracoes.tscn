@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bjbdrevu0nmya"]
 
 [ext_resource type="Texture2D" uid="uid://cebd8fkvkhvq8" path="res://images/icones_luis/image 5.png" id="1_lcyg2"]
+[ext_resource type="Script" uid="uid://uds8dh1aa56r" path="res://cenas_Luis/configuracoes.gd" id="1_wsnq7"]
 [ext_resource type="Texture2D" uid="uid://brt3d0otelqf2" path="res://images/icones_luis/Foto_de_Perfil.png" id="2_u4eu3"]
 [ext_resource type="Texture2D" uid="uid://be6slbqck10bi" path="res://images/icones/home_page_icon.png" id="3_owudd"]
 [ext_resource type="Texture2D" uid="uid://co5wwcmy267kk" path="res://images/icones/aparencia_sol_branco.svg" id="3_royyv"]
 [ext_resource type="Texture2D" uid="uid://bwh2aa2088752" path="res://images/icones/som_alto_falante.svg" id="4_16sjw"]
 [ext_resource type="Texture2D" uid="uid://dgx67lsg7lx1d" path="res://images/icones/tema_claro_sol_azul.svg" id="4_jvjea"]
 [ext_resource type="Texture2D" uid="uid://br16uewudahgw" path="res://images/icones_luis/Passe.png" id="4_mm4fs"]
-[ext_resource type="Script" uid="uid://dd18y6tt3t4qa" path="res://cenas_Luis/panel_container_2.gd" id="4_wsnq7"]
 [ext_resource type="Texture2D" uid="uid://crmipbo7d6kwn" path="res://images/privacidade_cadeado.svg" id="5_jvjea"]
 [ext_resource type="Texture2D" uid="uid://bofo467a4ueg3" path="res://images/icones/tema_escuro_lua_branca.svg" id="5_oerov"]
 [ext_resource type="Texture2D" uid="uid://dwdynpq2vpjd2" path="res://images/icones_luis/Ranking.png" id="5_rwvof"]
@@ -109,6 +109,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wsnq7")
 
 [node name="Panel" type="Panel" parent="." unique_id=899044618]
 layout_mode = 1
@@ -224,7 +225,6 @@ text = "Personalize o tema do aplicativo"
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b4btq")
-script = ExtResource("4_wsnq7")
 
 [node name="FundoClaro" type="PanelContainer" parent="PanelCONFIGS/VBoxContainer/Aparencia/PanelContainer2" unique_id=1978216170]
 unique_name_in_owner = true
@@ -421,10 +421,18 @@ custom_maximum_size = Vector2(72, -1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6sinh")
 
-[node name="TextureRect" type="TextureRect" parent="HboxBAIXO/PanelContainer" unique_id=600741760]
+[node name="ButtonHome" type="Button" parent="HboxBAIXO/PanelContainer" unique_id=155357214]
+layout_mode = 2
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="HboxBAIXO/PanelContainer/ButtonHome" unique_id=600741760]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
-layout_mode = 2
+layout_mode = 0
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 58.0
+offset_bottom = 61.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_owudd")
@@ -444,7 +452,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 
-[node name="TextureButton" type="TextureButton" parent="HboxBAIXO/PanelContainer2/CenterContainer" unique_id=385880919]
+[node name="ButtonPasse" type="TextureButton" parent="HboxBAIXO/PanelContainer2/CenterContainer" unique_id=385880919]
 custom_minimum_size = Vector2(32, 32)
 custom_maximum_size = Vector2(32, 32)
 layout_mode = 2
@@ -465,7 +473,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 
-[node name="TextureButton" type="TextureButton" parent="HboxBAIXO/PanelContainer3/CenterContainer2" unique_id=1895414361]
+[node name="ButtonRank" type="TextureButton" parent="HboxBAIXO/PanelContainer3/CenterContainer2" unique_id=1895414361]
 custom_minimum_size = Vector2(32, 32)
 custom_maximum_size = Vector2(32, 32)
 layout_mode = 2
@@ -486,7 +494,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 
-[node name="TextureButton" type="TextureButton" parent="HboxBAIXO/PanelContainer4/CenterContainer3" unique_id=883059732]
+[node name="TexturePerfil" type="TextureButton" parent="HboxBAIXO/PanelContainer4/CenterContainer3" unique_id=883059732]
 custom_minimum_size = Vector2(32, 32)
 custom_maximum_size = Vector2(32, 32)
 layout_mode = 2
@@ -507,12 +515,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 
-[node name="TextureButton" type="TextureButton" parent="HboxBAIXO/PanelContainer5/CenterContainer4" unique_id=860340998]
+[node name="ButtonConfig" type="TextureButton" parent="HboxBAIXO/PanelContainer5/CenterContainer4" unique_id=860340998]
 custom_minimum_size = Vector2(32, 32)
 custom_maximum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("7_pjwo2")
 stretch_mode = 3
 
-[connection signal="pressed" from="PanelCONFIGS/VBoxContainer/Aparencia/PanelContainer2/FundoClaro/Button" to="PanelCONFIGS/VBoxContainer/Aparencia/PanelContainer2" method="_on_button_pressed"]
-[connection signal="pressed" from="PanelCONFIGS/VBoxContainer/Aparencia/PanelContainer2/FundoEscuro/Button" to="PanelCONFIGS/VBoxContainer/Aparencia/PanelContainer2" method="_on_button_pressed"]
+[connection signal="pressed" from="HboxBAIXO/PanelContainer/ButtonHome" to="." method="_on_button_home_pressed"]

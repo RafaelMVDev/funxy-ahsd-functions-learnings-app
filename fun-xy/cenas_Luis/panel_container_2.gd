@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	var estilo_botao_claro: StyleBox = get_theme_stylebox(botao_claro)
+	"""var estilo_botao_claro: StyleBox = get_theme_stylebox(botao_claro)
 	var estilo_botao_escuro: StyleBox = get_theme_stylebox(botao_escuro)
 	if estilo_botao_claro.bg_color == Color("e5eefd"):
 		sol.icon = icon_sol_branco
@@ -34,4 +34,10 @@ func _on_button_pressed() -> void:
 		sol.icon = icon_sol_azul
 		estilo_botao_claro.bg_color = Color("e5eefd")
 		#lua,icon = icon_lua_clara
-		estilo_botao_escuro.bg_color = Color("1d3b91")
+		estilo_botao_escuro.bg_color = Color("1d3b91")"""
+	pass
+
+
+func _on_button_home_pressed() -> void:
+	get_tree().change_scene_to_file("res://homepage.tscn")
+	pass # Replace with function body.
