@@ -1,12 +1,9 @@
 package br.edu.ifsp.funxyApp.controller;
 
-import br.edu.ifsp.funxyApp.dto.auth.LoginRequestDto;
-import br.edu.ifsp.funxyApp.dto.auth.LoginResponseDto;
-
-import br.edu.ifsp.funxyApp.dto.auth.RegistroRequestDto;
-import br.edu.ifsp.funxyApp.dto.auth.RegistroResponseDto;
+import br.edu.ifsp.funxyApp.dto.auth.*;
 
 import jakarta.validation.Valid;
+import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +36,7 @@ public class AuthController {
     @PostMapping("/registro")
 
     public ResponseEntity<RegistroResponseDto> registro(@Valid @RequestBody RegistroRequestDto request) {
-        RegistroResponseDto resposta = authService.register(request);
+        RegistroResponseDto resposta = authService.registro(request);
 
         HttpStatus status = resposta.sucesso()
                 ? HttpStatus.CREATED     // se for true: 201
@@ -49,7 +46,17 @@ public class AuthController {
 
     }
 
+    /* Rota para revalidar tokens */
+    @PostMapping("/atualizarTokens")
+    public ResponseEntity<TokensResponseDto> refresh(
+            @Valid @RequestBody RefreshRequestDto request
+    ) {
+        TokensResponseDto tokens = authService.atualizarTokens(request);
 
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(tokens);
+    }
 }
 
 

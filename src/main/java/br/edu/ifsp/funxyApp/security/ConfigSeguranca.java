@@ -36,7 +36,7 @@ public class ConfigSeguranca{
                         .requestMatchers(HttpMethod.POST,
                                 "/auth/registro",
                                 "/auth/login",
-                                "/auth/refresh"
+                                "/auth/atualizarTokens"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
