@@ -254,6 +254,8 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3kxb"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37g1n"]
 content_margin_left = 10.0
 content_margin_top = 5.0
@@ -488,6 +490,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8s6yw")
 text = "➜]"
 
 [node name="VBoxContainerFuncao" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
+visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_vertical = 0
@@ -1026,26 +1029,15 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dvwsp")
 text = "⌫"
 
 [node name="VBoxContainerDominio" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1602529930]
-visible = false
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 
 [node name="Linha1" type="HBoxContainer" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio" unique_id=1858926081]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 5
 alignment = 1
 
 [node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=967134865]
-custom_minimum_size = Vector2(50, 45)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
-theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "x"
-icon_alignment = 1
-expand_icon = true
-
-[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=310994833]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
@@ -1055,7 +1047,7 @@ text = "7"
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1651684011]
+[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=310994833]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
@@ -1065,13 +1057,23 @@ text = "8"
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=112119860]
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1651684011]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
 text = "9"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=112119860]
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
+text = "x"
 icon_alignment = 1
 expand_icon = true
 
@@ -1094,7 +1096,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "<"
+text = "4"
 icon_alignment = 1
 expand_icon = true
 
@@ -1104,7 +1106,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "≤"
+text = "5"
 icon_alignment = 1
 expand_icon = true
 
@@ -1114,7 +1116,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "4"
+text = "6"
 icon_alignment = 1
 expand_icon = true
 
@@ -1124,7 +1126,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "5"
+text = "<"
 icon_alignment = 1
 expand_icon = true
 
@@ -1134,7 +1136,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "6"
+text = "≤"
 icon_alignment = 1
 expand_icon = true
 
@@ -1149,7 +1151,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "-"
+text = "1"
 icon_alignment = 1
 expand_icon = true
 
@@ -1159,7 +1161,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "1"
+text = "2"
 icon_alignment = 1
 expand_icon = true
 
@@ -1169,7 +1171,17 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "2"
+text = "3"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button7" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha6" unique_id=188154046]
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
+text = "."
 icon_alignment = 1
 expand_icon = true
 
@@ -1179,7 +1191,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "3"
+text = "-"
 icon_alignment = 1
 expand_icon = true
 
@@ -1187,6 +1199,29 @@ expand_icon = true
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
+
+[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha7" unique_id=1234460545]
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ycd0d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hhsu4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r5l5e")
+text = "↩"
+
+[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha7" unique_id=2109791049]
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
+text = "0"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha7" unique_id=1171733305]
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_p3kxb")
 
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha7" unique_id=1175125633]
 custom_minimum_size = Vector2(50, 45)
@@ -1203,45 +1238,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xa50t")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nh7eb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dvwsp")
 text = "⌫"
-
-[node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha7" unique_id=1234460545]
-custom_minimum_size = Vector2(50, 45)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_ycd0d")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_hhsu4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_r5l5e")
-text = "↩"
-
-[node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha7" unique_id=1884940031]
-visible = false
-custom_minimum_size = Vector2(50, 45)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
-theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "↩"
-icon_alignment = 1
-expand_icon = true
-
-[node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha7" unique_id=2109791049]
-custom_minimum_size = Vector2(50, 45)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
-theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "0"
-icon_alignment = 1
-expand_icon = true
-
-[node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha7" unique_id=188154046]
-custom_minimum_size = Vector2(50, 45)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
-theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
-text = "."
-icon_alignment = 1
-expand_icon = true
 
 [node name="PainelFuncoes" type="ScrollContainer" parent="." unique_id=1107101911]
 visible = false
