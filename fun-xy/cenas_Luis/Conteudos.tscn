@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bl8gu8rd3i3ge"]
 
 [ext_resource type="Texture2D" uid="uid://d4jm453j4qukp" path="res://images/icones_luis/moedas.png" id="1_njqnh"]
-[ext_resource type="Script" uid="uid://cfd4bpf6bbwx3" path="res://cenas_Luis/conteúdos.gd" id="1_pvi13"]
 [ext_resource type="Texture2D" uid="uid://bkcs8b6j5qn3c" path="res://images/icones_luis/exp.png" id="2_j1thl"]
 [ext_resource type="Texture2D" uid="uid://7iqwbw0lndv8" path="res://images/icones_luis/sequência(foguinho).png" id="3_7qexj"]
 [ext_resource type="Texture2D" uid="uid://b43e5bwgpci0g" path="res://images/fundo unidade.png" id="4_7qexj"]
@@ -12,11 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://322eclljkepr" path="res://images/icones_luis/Perfil.png" id="7_wb6y3"]
 [ext_resource type="Texture2D" uid="uid://bysqk0ebc2cjr" path="res://images/icones_luis/Config.png" id="8_11lrj"]
 [ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="9_pvi13"]
-<<<<<<< HEAD
 
 [sub_resource type="GDScript" id="GDScript_pks1p"]
-=======
->>>>>>> 25d22141762427bc12aa5fd25204b9988e9343ab
 
 [sub_resource type="Gradient" id="Gradient_bj1uy"]
 colors = PackedColorArray(0.078431375, 0.09803922, 0.3019608, 1, 0, 0, 0, 1)
@@ -29,7 +25,7 @@ fill_from = Vector2(0.5173913, 0)
 fill_to = Vector2(0.51304346, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v137e"]
-bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 border_width_left = 5
 border_width_right = 5
 border_color = Color(0.8, 0.8, 0.8, 0)
@@ -48,6 +44,7 @@ corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
 bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 10
 corner_radius_bottom_left = 10
 
@@ -65,6 +62,11 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33x8s"]
 bg_color = Color(0.79608965, 0.87572545, 0.99725264, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.98234254, 0.9823423, 0.9823424, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -72,6 +74,11 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s0fj"]
 bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 
@@ -79,16 +86,16 @@ corner_radius_bottom_right = 10
 bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbpwf"]
-bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxoc6"]
-bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stimt"]
-bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnhu6"]
-bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 
 [node name="Control" type="Control" unique_id=2124759028]
 layout_mode = 3
@@ -97,7 +104,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pvi13")
+script = SubResource("GDScript_pks1p")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=394388375]
 layout_mode = 1
@@ -300,7 +307,7 @@ theme_override_constants/margin_bottom = 15
 
 [node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=670875796]
 layout_mode = 2
-text = "Funções Aritméticas"
+text = "Função Afim"
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1" unique_id=2048350161]
 clip_children = 2
@@ -314,12 +321,6 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("5_pks1p")
 expand_mode = 3
-
-[node name="PainelTrilha1" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1" unique_id=820974463]
-visible = false
-custom_minimum_size = Vector2(-1, 400)
-custom_maximum_size = Vector2(-1, 400)
-layout_mode = 2
 
 [node name="Unidade 2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1839039624]
 layout_mode = 2
@@ -354,7 +355,7 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "UNIDADE 1"
+text = "UNIDADE 2"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2/PanelContainer/VBoxContainer" unique_id=398766884]
 layout_mode = 2
@@ -363,7 +364,7 @@ theme_override_constants/margin_bottom = 15
 
 [node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2/PanelContainer/VBoxContainer/MarginContainer2" unique_id=235608509]
 layout_mode = 2
-text = "Funções Aritméticas"
+text = "Função Quadrática"
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2" unique_id=905775331]
 clip_children = 2
@@ -377,12 +378,6 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("6_pks1p")
 expand_mode = 3
-
-[node name="PainelTrilha2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2" unique_id=1760120856]
-visible = false
-custom_minimum_size = Vector2(-1, 400)
-custom_maximum_size = Vector2(-1, 400)
-layout_mode = 2
 
 [node name="Unidade 3" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=879265630]
 layout_mode = 2
@@ -417,7 +412,7 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "UNIDADE 1"
+text = "UNIDADE 3"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3/PanelContainer/VBoxContainer" unique_id=477952423]
 layout_mode = 2
@@ -426,7 +421,7 @@ theme_override_constants/margin_bottom = 15
 
 [node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3/PanelContainer/VBoxContainer/MarginContainer2" unique_id=159184367]
 layout_mode = 2
-text = "Funções Aritméticas"
+text = "Funções Exponencial"
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3" unique_id=965201678]
 clip_children = 2
@@ -441,11 +436,119 @@ size_flags_stretch_ratio = 0.0
 texture = ExtResource("5_pks1p")
 expand_mode = 3
 
-[node name="PainelTrilha3" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3" unique_id=1938472447]
-visible = false
-custom_minimum_size = Vector2(-1, 400)
-custom_maximum_size = Vector2(-1, 400)
+[node name="Unidade 4" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=528901337]
 layout_mode = 2
+
+[node name="Unidade3" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4" unique_id=567973774]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3" unique_id=1544232211]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer" unique_id=1565801498]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer" unique_id=1353673791]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer/MarginContainer" unique_id=139635299]
+layout_mode = 2
+texture = ExtResource("4_7qexj")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=611169464]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_right = 41.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "UNIDADE 4"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer" unique_id=1009683045]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer/MarginContainer2" unique_id=230009021]
+layout_mode = 2
+text = "Função Logaritmica"
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3" unique_id=1577410930]
+clip_children = 2
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gngh")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer2" unique_id=702765448]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("5_pks1p")
+expand_mode = 3
+
+[node name="Unidade 5" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1113589217]
+layout_mode = 2
+
+[node name="Unidade3" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5" unique_id=1832970099]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3" unique_id=1608312964]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer" unique_id=1421207721]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer" unique_id=1736200682]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer/MarginContainer" unique_id=690210393]
+layout_mode = 2
+texture = ExtResource("4_7qexj")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=1951478504]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_right = 41.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "UNIDADE 5"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer" unique_id=188350384]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer/MarginContainer2" unique_id=2037112703]
+layout_mode = 2
+text = "Função Modular"
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3" unique_id=619109998]
+clip_children = 2
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gngh")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer2" unique_id=875128185]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("5_pks1p")
+expand_mode = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=1892171103]
 layout_mode = 2
@@ -641,6 +744,3 @@ custom_maximum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("8_11lrj")
 stretch_mode = 3
-
-[connection signal="pressed" from="HboxBAIXO/PanelContainer4/CenterContainer3/TextureButton" to="." method="_on_texture_button_perfil_pressed"]
-[connection signal="pressed" from="HboxBAIXO/PanelContainer5/CenterContainer4/TextureButton" to="." method="_on_texture_button_configuracoes_pressed"]
