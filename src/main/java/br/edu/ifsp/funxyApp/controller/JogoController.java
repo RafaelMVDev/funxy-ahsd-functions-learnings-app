@@ -25,6 +25,7 @@ public class JogoController {
     // GET /jogo
     @GetMapping
     public JogoResponseDto buscarTudo() {
+        System.out.println("BUSCANDO!");
         return jogoService.carregarTudo();
     }
 

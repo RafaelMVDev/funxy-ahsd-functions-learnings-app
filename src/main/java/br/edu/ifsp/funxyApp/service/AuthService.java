@@ -112,7 +112,7 @@ public class AuthService {
 
 
     @Transactional
-    public TokensResponseDto refresh(RefreshRequestDto request) {
+    public TokensResponseDto atualizarTokens(RefreshRequestDto request) {
         String recebido = request.refreshToken();
 
         // 1. Verifica assinatura, validade e tipo usando SEU método existente.

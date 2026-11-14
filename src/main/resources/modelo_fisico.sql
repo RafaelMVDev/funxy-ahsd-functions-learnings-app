@@ -340,12 +340,12 @@ INSERT INTO Inventario (id_usuario, id_item, equipado) VALUES
                                                            (1, -7162, FALSE);
 
 -- Sessão antiga já revogada; o login real deve criar uma nova sessão.
-INSERT INTO Sessoes
+/*INSERT INTO Sessoes
 (id_usuario, token_hash, criado_em, expira_em, revogado_em, nome_dispositivo)
 VALUES
     (1, REPEAT('a', 64), CURRENT_DATE-2, CURRENT_DATE+28,
      CURRENT_DATE-1, 'Android de teste');
-
+*/
 COMMIT;
 SET AUTOCOMMIT TRUE;
 

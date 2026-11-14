@@ -17,8 +17,9 @@ public record TrilhaProgressoDto(
 
     public record Tentativa(
             Long progressoId,
-            Boolean status,
+            Boolean concluida,
             LocalDateTime concluidaEm,
+
             ProgressoEspecifico progressoEspecifico
     ) {}
 

@@ -24,6 +24,7 @@ var ponto_central: Vector2
 var escala_pixel: float
 var alcance_x_min: float = -5.0
 var alcance_x_max: float = 5.0
+var dados_partida: Array
 
 func _ready() -> void:
 	var PlanoCartesiano = get_parent()
@@ -43,6 +44,9 @@ func _ready() -> void:
 	else:
 		escala_pixel = 30.0
 	carregar_fase(dados_fase_api)
+	
+	if jogo.status_partida == "continuacao":
+		carregar_progresso()
 
 func carregar_fase(colisoes_dados: Array):
 	for dados in colisoes_dados:
@@ -74,6 +78,19 @@ func carregar_fase(colisoes_dados: Array):
 		colisor.add_child(visual)
 		add_child(colisor)
 
+
+func carregar_progresso() -> void:
+	print('carregou progresso!')
+	jogo.quantidade_movimentos = 0
+	var counter = 0
+	for linha in jogo.lista_funcoes:
+		atualizar_grafico(linha, jogo.lista_dominios[counter])
+		jogo.lista_funcoes.pop_back()
+		jogo.lista_dominios.pop_back()
+		counter += 1
+		funcoes_exibidas.remover_funcoes_listadas
+		
+
 func definir_dominio(dominio: String) -> Array:
 	var x_min: float = alcance_x_min
 	var x_max: float = alcance_x_max
@@ -95,6 +112,7 @@ func definir_dominio(dominio: String) -> Array:
 func atualizar_grafico(expressao_str: String, dominio_str: String):
 	jogo.quantidade_movimentos += 1
 	jogo.lista_funcoes.append(expressao_str)
+	jogo.lista_dominios.append(dominio_str)
 	
 	check_funcao.visible = false
 	check_dominio.visible = false
@@ -103,6 +121,7 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 	var limites = definir_dominio(dominio_str)
 	var x_min: float = limites[0]
 	var x_max: float = limites[1]
+	print(x_min)
 
 	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 800)
 	
@@ -139,8 +158,6 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 				else: 
 					nova_linha.default_color = Color.GREEN
 					jogo.linhas_desenhadas.append(nova_linha)
-					jogo.lista_dominios.append(dominio_str)
-					jogo.lista_funcoes_validas.append(expressao_str)
 				
 			else:
 				if acertou_obstaculo:
@@ -151,8 +168,6 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 					nova_linha.default_color = Color.GREEN
 					jogo.linhas_desenhadas.back().default_color = Color.WHITE 
 					jogo.linhas_desenhadas.append(nova_linha)
-					jogo.lista_dominios.append(dominio_str)
-					jogo.lista_funcoes_validas.append(expressao_str)
 			
 			if acertou_fim and nova_linha in jogo.linhas_desenhadas:
 				emit_signal("vitoria")

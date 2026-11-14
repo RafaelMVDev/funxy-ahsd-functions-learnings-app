@@ -17,9 +17,14 @@ var funcao_armazenada: String   #Referente ao visor
 var dominio_armazenado: String  #Referente ao visor
 var linhas_desenhadas: Array[Line2D] = [] #Linhas válidas
 var linha_desconexa: Array[Line2D] = [] 
-var lista_funcoes: Array[String] = [] #Para enviar a API, de modo a reconstruir o histórico de funções
-var lista_funcoes_validas: Array[String] = []
-var lista_dominios: Array[String] = []
+var lista_funcoes: Array #Para enviar a API, de modo a reconstruir o histórico de funções
+var lista_dominios: Array
+var status_partida:  String = "nova"
+var tentativa_partida
+var dados_partida
+var id_tentativa
+var trilha: int = 1 #É dinamico com base nas propriedades do botão que o chamou
+var atv: int = 1 #É dinamico com base nas propriedades do botão que o chamou
 
 """Adicionado (Morales): variaveis uteis para salvamento e funcionalidade de salvar uuid tentativa"""
 var tentativa_uuid: String #Referente ao id da tentativa para salvamento no banco
@@ -76,12 +81,28 @@ func _ready() -> void:
 	botao_sair_partida.sair_partida.connect(sair_da_partida)
 	queue_redraw()
 	
+	var tentativas = Sessao.buscar_tentativas(trilha, atv)
+	
+	if tentativas: #verificar se o godot entende lista vazia como false
+		for tentativa in tentativas:
+			print(tentativa["status"])
+			if tentativa["status"] == false:
+				id_tentativa = tentativa["progressoId"]
+				status_partida = "continuacao"
+				tentativa_partida = tentativa
+				dados_partida = tentativa_partida["progressoEspecifico"]
+				
+				lista_funcoes = dados_partida["listaFuncoes"]
+				lista_dominios = dados_partida["listaDominios"]
+				grafico.carregar_progresso()
+	
+	#logica para a nova tentativa
+	
 func _reiniciar_partida(): 
 	get_tree().reload_current_scene()
 	#PRECISA GERAR UM NOVO UUID DA PARTIDA AQUI E SALVAR EM ALGUM LUGAR!!!
 	#Adicionado (morales)
 	tentativa_uuid = _gerar_uuid_tentativa()
-	
 	
 func _on_exibir_funcoes_antigas():
 	painel_funcoes.visible = not painel_funcoes.visible
@@ -104,8 +125,6 @@ func _on_teclado_dominio_enviado(dominio: String):
 func _voltar_movimento():
 	if not linhas_desenhadas.is_empty():
 		linhas_desenhadas.pop_back().queue_free()
-		lista_dominios.pop_back()
-		lista_funcoes_validas.pop_back()
 		if not linhas_desenhadas.is_empty():
 			linhas_desenhadas.back().default_color = Color.GREEN
 		
@@ -113,14 +132,15 @@ func _resetar():
 	funcao_armazenada = ""
 	dominio_armazenado = ""
 
-
 func _carregar_vitoria():
 	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos) #E pontuação
-	#Verificar se há algum registro desse id com status "incompleto"
-	#Se sim, dará update para status = "completo" e nos demais dados
-	#Se não, vai criar um novo histórico
-	#Marcar a data do final
-	
+	if status_partida == "continuação":
+		Sessao.atualizar_status(trilha, atv, id_tentativa)
+	#else:
+		#Criar uma função para criar uma nova tentativa de status true
+		
+		
+		
 	""" ==== Comentado(Morales) vvvvvvv: Novo formato de dicionario para api mais simplificado ==== """
 	
 	#var dic_para_api = {
@@ -157,6 +177,16 @@ func _carregar_vitoria():
 func sair_da_partida() -> void:
 	#Enviar dados para a API
 	get_tree().change_scene_to_file("res://homepage.tscn")
+	#if status_partida == "continuacao":
+		#Atualizar os dados: 
+			#Lista_funcoes
+			#lista_dominios
+	
+	#else:
+		#Criar uma nova tentativa
+			
+		
+	
 	#DADOS
 	# quantidade_movimentos
 	# lista_funcoes_validas
@@ -213,7 +243,6 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 		"tentativaUuid": tentativa_uuid,
 		"concluida": concluida,
 		"listaFuncoes": lista_funcoes,
-		"listaFuncoesValidas": lista_funcoes_validas,
 		"listaDominios": lista_dominios,
 		"movimentos": quantidade_movimentos
 	}

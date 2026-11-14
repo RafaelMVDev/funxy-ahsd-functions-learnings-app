@@ -24,6 +24,8 @@ func exibir_funcoes(expressao: String) -> void:
 	add_child(painel_individual)
 	painel_individual.add_to_group("painel_funcoes")
 
+func remover_funcoes_listadas():
+	get_tree().call_group("painel_funcoes", "queue_free")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
