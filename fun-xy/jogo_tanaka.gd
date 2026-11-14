@@ -62,6 +62,8 @@ func _gerar_uuid_tentativa() -> String:
 	]
 
 func _ready() -> void:
+	menu_vitoria.scale = Vector2.ZERO
+	menu_vitoria.hide()
 	#O nó do aplicativo chama a função _iniciar_jogo
 	#Passa como argumento o id da atividade que o player selecionou
 	#Buscar na API os dados da atividade correspondente ao id
@@ -134,6 +136,10 @@ func _resetar():
 
 func _carregar_vitoria():
 	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos) #E pontuação
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(menu_vitoria, "scale", Vector2(1.0, 1.0), 0.5)
+	
 	if status_partida == "continuação":
 		Sessao.atualizar_status(trilha, atv, id_tentativa)
 	#else:

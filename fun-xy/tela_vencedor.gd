@@ -11,6 +11,7 @@ func exibir_tela_vitoria(movimentos_finais: int):
 	#Fazer a pontuação
 	show()
 	
+	
 func _ready() -> void:
 	botao_reiniciar.pressed.connect(reiniciar_partida)
 	botao_home.pressed.connect(carregar_home)

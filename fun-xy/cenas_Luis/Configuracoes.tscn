@@ -162,7 +162,7 @@ bbcode_enabled = true
 text = "[b]Nome de Usuário[/b]"
 fit_content = true
 
-[node name="Button" type="Button" parent="PanelContainer2/HBoxContainer" unique_id=285626443]
+[node name="ButtonEditarPerfil" type="Button" parent="PanelContainer2/HBoxContainer" unique_id=285626443]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 0
