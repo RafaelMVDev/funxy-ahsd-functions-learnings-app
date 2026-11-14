@@ -120,7 +120,7 @@ func _on_login_response(resultado: Dictionary) -> void:
 		return
 
 	Api.registrar_login()
-
+	
 	# O catálogo vem de uma rota separada.
 	mostrar_mensagem("Carregando as fases...")
 	var catalogo: Dictionary = await Api.buscar("/jogo")
@@ -140,7 +140,16 @@ func _on_login_response(resultado: Dictionary) -> void:
 	if not DadosJogo.carregar_catalogo(jogo):
 		falhar_login("Não foi possível organizar as trilhas, conquistas e itens.")
 		return
-
+		
+	print("===== Dados do player carregados! ===== ")
+	print(Sessao.player)
+	print("===== Dados do jogo carregados! ===== ")
+	print("Trilhas existentes:")
+	print(DadosJogo.trilhas)
+	print("Conquistas existentes:")
+	print(DadosJogo.conquistas)
+	print("Itens existentes: ")
+	print(DadosJogo.itens)
 	# Os dados pessoais e o catálogo estão disponíveis nos globais.
 	abrir_home()
 
@@ -232,8 +241,8 @@ func _on_cadastro_response(result, response_code, headers, body):
 			label_mensagem.text = "Conta criada com sucesso!"
 			
 			# Aguarda 1.5 segundos para o usuário ler a mensagem e troca para o Login
-			await get_tree().create_timer(1.5).timeout
-			get_tree().change_scene_to_file("res://login.tscn")
+			await get_tree().create_timer(1).timeout
+			_on_btn_go_to_login_pressed()
 		else:
 			# Exibe a mensagem enviada pelo servidor (ex: "E-mail já cadastrado")
 			label_mensagem.visible = true

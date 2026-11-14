@@ -13,25 +13,29 @@ var atividades_por_id: Dictionary = {}
 
 # Recebe só o objeto "jogo", seja do login ou da rota GET /jogo.
 func carregar_catalogo(jogo: Dictionary) -> bool:
+	print("TESATAEAS")
+	print(jogo)
 	var novas_trilhas = jogo.get("trilhas")
 	var novas_conquistas = jogo.get("conquistas")
 	var novos_itens = jogo.get("itens")
 
 	if not (novas_trilhas is Array and novas_conquistas is Array and novos_itens is Array):
 		return false
-
+	print("CERTO 1")
 	var indice: Dictionary = {}
 
 	for trilha in novas_trilhas:
 		if not (trilha is Dictionary) or not (trilha.get("atividades") is Array):
+			print("TRILHA NAO É DICT OU NN POSSUI ATIVIDADES")
 			return false
 
 		for atividade in trilha["atividades"]:
 			if not (atividade is Dictionary) or not atividade.has("atividadeId"):
+				print("ATIVIDADE NÃO É DICT OU NN TEM ID")
 				return false
 
 			indice[int(atividade["atividadeId"])] = atividade
-
+	print("CERTO 2")
 	# Só substitui o catálogo depois de terminar a leitura.
 	trilhas = novas_trilhas
 	conquistas = novas_conquistas

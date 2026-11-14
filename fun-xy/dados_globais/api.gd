@@ -258,7 +258,7 @@ func _guardar_refresh() -> void:
 # Chamada pelo _ready() da tela de login.
 func restaurar_sessao() -> Dictionary:
 	var versao: int = _versao_sessao
-
+	print("Tentando restaurar sessão")
 	if Sessao.access_token.is_empty():
 		# Ao abrir o jogo do zero, tenta recuperar o refresh salvo.
 		if Sessao.refresh_token.is_empty():
