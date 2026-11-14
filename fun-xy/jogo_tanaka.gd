@@ -7,8 +7,6 @@ extends Control
 @onready var botao_funcoes_antigas = $%BotaoFuncoesAntigas
 @onready var visor_funcao = %VisorFuncao
 @onready var virsor_dominio = %VisorDominio
-@onready var botao_sair_partida = %BotaoSairPartida
-@onready var botao_reiniciar_partida = %BotaoResetarPartida
 """Adicionado Morales : criei um node pra fazer http requests"""
 @onready var http_salvamento: HTTPRequest = $SalvarProgressoHTTP
 
@@ -22,7 +20,7 @@ var lista_dominios: Array
 var status_partida:  String = "nova"
 var tentativa_partida
 var dados_partida
-var id_tentativa
+var id_tentativa #Pega da api caso haja um status == false
 var trilha: int = 1 #É dinamico com base nas propriedades do botão que o chamou
 var atv: int = 1 #É dinamico com base nas propriedades do botão que o chamou
 
@@ -79,15 +77,12 @@ func _ready() -> void:
 	grafico.vitoria.connect(_carregar_vitoria)
 	botao_funcoes_antigas.pressed.connect(_on_exibir_funcoes_antigas)
 	menu_vitoria.resetar_partida.connect(_reiniciar_partida)
-	botao_reiniciar_partida.reiniciar_partida.connect(_reiniciar_partida)
-	botao_sair_partida.sair_partida.connect(sair_da_partida)
 	queue_redraw()
 	
 	var tentativas = Sessao.buscar_tentativas(trilha, atv)
 	
 	if tentativas: #verificar se o godot entende lista vazia como false
 		for tentativa in tentativas:
-			print(tentativa["status"])
 			if tentativa["status"] == false:
 				id_tentativa = tentativa["progressoId"]
 				status_partida = "continuacao"
@@ -140,7 +135,7 @@ func _carregar_vitoria():
 	tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_property(menu_vitoria, "scale", Vector2(1.0, 1.0), 0.5)
 	
-	if status_partida == "continuação":
+	if status_partida == "continuacao":
 		Sessao.atualizar_status(trilha, atv, id_tentativa)
 	#else:
 		#Criar uma função para criar uma nova tentativa de status true

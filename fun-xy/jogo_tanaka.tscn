@@ -5,11 +5,8 @@
 [ext_resource type="Script" uid="uid://cp3qohxsj4sxs" path="res://malha_plano_cartesiano.gd" id="2_bq6yp"]
 [ext_resource type="Script" uid="uid://cm5n25siilx6t" path="res://grafico.gd" id="3_bq6yp"]
 [ext_resource type="Script" uid="uid://dttu1xeydxab8" path="res://teclado_matematico.gd" id="4_77yt0"]
-[ext_resource type="Script" uid="uid://b623ygvocnqj4" path="res://botao_mini_menu.gd" id="6_4q688"]
 [ext_resource type="PackedScene" uid="uid://bv4635aeugnm7" path="res://tela_vencedor.tscn" id="6_jj7yg"]
 [ext_resource type="Script" uid="uid://cs2681bhq6icd" path="res://funcoes_listadas.gd" id="7_d7ek1"]
-[ext_resource type="Script" uid="uid://crcv0olwje5ln" path="res://botao_resetar_partida.gd" id="9_x4sgy"]
-[ext_resource type="Script" uid="uid://d3udtt0pnud7r" path="res://botão_sair_da_partida.gd" id="10_0fd60"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o30a"]
 bg_color = Color(0, 0.06293178, 0.17789346, 1)
@@ -268,55 +265,6 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb775"]
-bg_color = Color(0.6627451, 0.3647059, 1, 0.6431373)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
-corner_radius_top_left = 9
-corner_radius_top_right = 9
-corner_radius_bottom_left = 9
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utchv"]
-bg_color = Color(5.5350364e-07, 0.51683146, 0.29223612, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0.2718552, 0.14545977, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_360ds"]
-bg_color = Color(0.15599576, 0.39724296, 0.2919456, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4btq"]
-bg_color = Color(0.7599904, 0.051833294, 2.8878452e-07, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.46394253, 0.01755933, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjtnt"]
-bg_color = Color(0.56088907, 0.026486797, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
 [node name="jogo_tanaka" type="Control" unique_id=1126857255]
 layout_mode = 3
 anchors_preset = 15
@@ -531,14 +479,13 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_0fd60")
 text = "f(x)"
 metadata/_edit_use_anchors_ = true
 
-[node name="BotaoMiniMenu" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/Continaer_botoes_partida" unique_id=421218508]
+[node name="BotaoSairPartida" type="Button" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/Continaer_botoes_partida" unique_id=421218508]
 custom_minimum_size = Vector2(40, 32)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_p3kxb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8s6yw")
-text = "☰"
-script = ExtResource("6_4q688")
+text = "➜]"
 
 [node name="VBoxContainerFuncao" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
 custom_minimum_size = Vector2(300, 300)
@@ -1329,55 +1276,6 @@ script = ExtResource("7_d7ek1")
 visible = false
 layout_mode = 1
 
-[node name="MiniMenu" type="PanelContainer" parent="." unique_id=2106220667]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(60, 110)
-custom_maximum_size = Vector2(70, 110)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -74.0
-offset_top = -29.0
-offset_right = -14.0
-offset_bottom = 81.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rb775")
-
-[node name="MarginContainer" type="MarginContainer" parent="MiniMenu" unique_id=470712376]
-layout_mode = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="BotaoResetarPartida" type="Button" parent="MiniMenu/MarginContainer" unique_id=322209950]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(2.4065375e-08, 0.2170547, 0.11085982, 1)
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_utchv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_360ds")
-text = "⭯"
-script = ExtResource("9_x4sgy")
-
-[node name="BotaoSairPartida" type="Button" parent="MiniMenu/MarginContainer" unique_id=105158319]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.27884626, 0.0060916566, 0, 1)
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxFlat_b4btq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_tjtnt")
-text = "X"
-script = ExtResource("10_0fd60")
-
 [node name="SalvarProgressoHTTP" type="HTTPRequest" parent="." unique_id=571212708]
+
+[connection signal="pressed" from="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/Continaer_botoes_partida/BotaoSairPartida" to="." method="sair_da_partida"]

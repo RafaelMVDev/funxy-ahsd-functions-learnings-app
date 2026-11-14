@@ -80,7 +80,6 @@ func carregar_fase(colisoes_dados: Array):
 
 
 func carregar_progresso() -> void:
-	print('carregou progresso!')
 	jogo.quantidade_movimentos = 0
 	var counter = 0
 	for linha in jogo.lista_funcoes:
@@ -121,7 +120,6 @@ func atualizar_grafico(expressao_str: String, dominio_str: String):
 	var limites = definir_dominio(dominio_str)
 	var x_min: float = limites[0]
 	var x_max: float = limites[1]
-	print(x_min)
 
 	var lista_de_pontos = calcular_pontos_funcao(expressao_str, x_min, x_max, 800)
 	
