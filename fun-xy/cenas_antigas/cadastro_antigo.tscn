@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://q8n0bovj5pip"]
 
-[ext_resource type="Script" uid="uid://bybnfsrmkov53" path="res://cadastro.gd" id="1_rdspj"]
 [ext_resource type="Texture2D" uid="uid://dlpeucl41i6be" path="res://images/icones/funcao-fx.svg" id="2_4so0t"]
 [ext_resource type="Texture2D" uid="uid://cvd2d26fhgg48" path="res://images/icones/grade.svg" id="3_wt43o"]
 [ext_resource type="Texture2D" uid="uid://dkiw2jjdrpgqv" path="res://img_fundo.png" id="4_uo0ke"]
@@ -135,14 +134,13 @@ corner_radius_bottom_left = 17
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t4ox"]
 
-[node name="Cadastro" type="Control" unique_id=1652294607]
+[node name="Cadastro_antigo" type="Control" unique_id=1652294607]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rdspj")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=908360093]
 layout_mode = 1

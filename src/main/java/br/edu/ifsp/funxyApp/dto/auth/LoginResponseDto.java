@@ -1,5 +1,5 @@
 package br.edu.ifsp.funxyApp.dto.auth;
 
-public record LoginResponseDto(String acessToken, String refreshToken, UsuarioInicialResponseDto userDados){
+public record LoginResponseDto(String accessToken, String refreshToken, UsuarioInicialResponseDto userDados){
 
 };

@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://c6lwabnrybgyv"]
 
-[ext_resource type="Script" uid="uid://bybnfsrmkov53" path="res://cadastro.gd" id="1_o5rjx"]
-[ext_resource type="Texture2D" uid="uid://dlpeucl41i6be" path="res://images/icones/funcao-fx.svg" id="2_suirj"]
-[ext_resource type="Texture2D" uid="uid://cvd2d26fhgg48" path="res://images/icones/grade.svg" id="3_ceje6"]
-[ext_resource type="Texture2D" uid="uid://dkiw2jjdrpgqv" path="res://img_fundo.png" id="4_nh4wr"]
-[ext_resource type="Texture2D" uid="uid://b7nkt5xi63bu3" path="res://images/icones/raios.svg" id="5_wur0a"]
-[ext_resource type="Texture2D" uid="uid://bespmumjlln1" path="res://images/icones/logo_fun-removebg-preview.png" id="6_o5rjx"]
-[ext_resource type="Texture2D" uid="uid://by7m3q8crwwf7" path="res://images/icon.png" id="7_63wb4"]
-[ext_resource type="Texture2D" uid="uid://c2rti82ym2qb5" path="res://images/icones/usuario.svg" id="8_gir6c"]
-[ext_resource type="Texture2D" uid="uid://bi3q0qtsb18lu" path="res://images/icones/email.svg" id="9_46aar"]
-[ext_resource type="Texture2D" uid="uid://6gnxrxo1sjdo" path="res://images/icones/cadeado.svg" id="10_sqasj"]
-[ext_resource type="Texture2D" uid="uid://bk2s4bgpgclo4" path="res://images/olho-fechado.svg" id="11_4fthx"]
+[ext_resource type="Script" uid="uid://bybnfsrmkov53" path="res://cadastro_login.gd" id="1_lhwy8"]
+[ext_resource type="Texture2D" uid="uid://dlpeucl41i6be" path="res://images/icones/funcao-fx.svg" id="2_880ua"]
+[ext_resource type="Texture2D" uid="uid://cvd2d26fhgg48" path="res://images/icones/grade.svg" id="3_osbjj"]
+[ext_resource type="Texture2D" uid="uid://dkiw2jjdrpgqv" path="res://img_fundo.png" id="4_6q3as"]
+[ext_resource type="Texture2D" uid="uid://b7nkt5xi63bu3" path="res://images/icones/raios.svg" id="5_w8uqo"]
+[ext_resource type="Texture2D" uid="uid://bespmumjlln1" path="res://images/icones/logo_fun-removebg-preview.png" id="6_dk6ul"]
+[ext_resource type="Texture2D" uid="uid://by7m3q8crwwf7" path="res://images/icon.png" id="7_ev5v7"]
+[ext_resource type="Texture2D" uid="uid://bi3q0qtsb18lu" path="res://images/icones/email.svg" id="8_rt37s"]
+[ext_resource type="Texture2D" uid="uid://6gnxrxo1sjdo" path="res://images/icones/cadeado.svg" id="9_1uprd"]
+[ext_resource type="Texture2D" uid="uid://bk2s4bgpgclo4" path="res://images/olho-fechado.svg" id="10_wpagr"]
+[ext_resource type="Texture2D" uid="uid://c2rti82ym2qb5" path="res://images/icones/usuario.svg" id="11_nwe6x"]
 
 [sub_resource type="Gradient" id="Gradient_qcemb"]
 colors = PackedColorArray(0.020974653, 0.074406825, 0.22031772, 1, 0.03529412, 0.101960786, 0.2784314, 1)
@@ -240,7 +240,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_o5rjx")
+script = ExtResource("1_lhwy8")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=908360093]
 layout_mode = 1
@@ -261,7 +261,7 @@ offset_top = -90.0
 offset_right = 123.0
 offset_bottom = -35.0
 grow_vertical = 0
-texture = ExtResource("2_suirj")
+texture = ExtResource("2_880ua")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=683026855]
@@ -277,7 +277,7 @@ offset_right = -23.0
 offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("3_ceje6")
+texture = ExtResource("3_osbjj")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="TextureRect" unique_id=1123838648]
@@ -290,7 +290,7 @@ offset_top = 9.0
 offset_right = -11.0
 offset_bottom = 101.0
 grow_horizontal = 0
-texture = ExtResource("4_nh4wr")
+texture = ExtResource("4_6q3as")
 expand_mode = 1
 
 [node name="TextureRect4" type="TextureRect" parent="TextureRect" unique_id=802554925]
@@ -299,7 +299,7 @@ offset_left = 210.0
 offset_top = 80.0
 offset_right = 262.0
 offset_bottom = 131.0
-texture = ExtResource("5_wur0a")
+texture = ExtResource("5_w8uqo")
 expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="TextureRect" unique_id=1254913984]
@@ -317,7 +317,7 @@ offset_bottom = 44.759995
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-texture = ExtResource("6_o5rjx")
+texture = ExtResource("6_dk6ul")
 expand_mode = 1
 
 [node name="SlideWindow" type="Control" parent="." unique_id=959562078]
@@ -377,7 +377,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ceje6")
 custom_minimum_size = Vector2(20, 0)
 custom_maximum_size = Vector2(20, 20)
 layout_mode = 2
-texture = ExtResource("7_63wb4")
+texture = ExtResource("7_ev5v7")
 
 [node name="PanelContainer2" type="PanelContainer" parent="SlideWindow/LoginPanel/VBoxContainer2/VBoxContainer5/HBoxContainer" unique_id=1104112273]
 custom_minimum_size = Vector2(90, 2)
@@ -413,7 +413,7 @@ offset_left = 8.0
 offset_top = 10.0
 offset_right = 29.0
 offset_bottom = 25.0
-texture = ExtResource("9_46aar")
+texture = ExtResource("8_rt37s")
 expand_mode = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="SlideWindow/LoginPanel/VBoxContainer2" unique_id=384754741]
@@ -443,7 +443,7 @@ offset_left = 12.0
 offset_top = 9.0
 offset_right = 26.0
 offset_bottom = 26.0
-texture = ExtResource("10_sqasj")
+texture = ExtResource("9_1uprd")
 expand_mode = 1
 
 [node name="ButtonSenha_Login" type="Button" parent="SlideWindow/LoginPanel/VBoxContainer2/VBoxContainer3/LineEdit_Senha_Login" unique_id=207675871]
@@ -460,7 +460,7 @@ offset_right = -9.0
 offset_bottom = 20.5
 grow_horizontal = 0
 grow_vertical = 2
-icon = ExtResource("11_4fthx")
+icon = ExtResource("10_wpagr")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -547,7 +547,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_b4btq")
 custom_minimum_size = Vector2(20, 0)
 custom_maximum_size = Vector2(20, 20)
 layout_mode = 2
-texture = ExtResource("7_63wb4")
+texture = ExtResource("7_ev5v7")
 
 [node name="PanelContainer2" type="PanelContainer" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer5/HBoxContainer" unique_id=971168880]
 custom_minimum_size = Vector2(90, 2)
@@ -587,7 +587,7 @@ offset_top = -8.5
 offset_right = 28.0
 offset_bottom = 8.5
 grow_vertical = 2
-texture = ExtResource("8_gir6c")
+texture = ExtResource("11_nwe6x")
 expand_mode = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="SlideWindow/RegisterPanel/VBoxContainer" unique_id=1935958874]
@@ -616,7 +616,7 @@ offset_left = 8.0
 offset_top = 10.0
 offset_right = 29.0
 offset_bottom = 25.0
-texture = ExtResource("9_46aar")
+texture = ExtResource("8_rt37s")
 expand_mode = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="SlideWindow/RegisterPanel/VBoxContainer" unique_id=53347065]
@@ -646,7 +646,7 @@ offset_left = 12.0
 offset_top = 9.0
 offset_right = 26.0
 offset_bottom = 26.0
-texture = ExtResource("10_sqasj")
+texture = ExtResource("9_1uprd")
 expand_mode = 1
 
 [node name="ButtonSenha" type="Button" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer3/LineEdit_Senha" unique_id=1745496396]
@@ -663,7 +663,7 @@ offset_right = -9.0
 offset_bottom = 20.5
 grow_horizontal = 0
 grow_vertical = 2
-icon = ExtResource("11_4fthx")
+icon = ExtResource("10_wpagr")
 flat = true
 icon_alignment = 1
 expand_icon = true

@@ -54,8 +54,8 @@ func _on_button_entrar_pressed() -> void:
 	if entrando:
 		return
 
-	var email := email_input.text.strip_edges()
-	var senha := senha_input.text  # A senha deve ser enviada como foi digitada.
+	var email: String = email_input.text.strip_edges()
+	var senha: String = senha_input.text
 
 	if email.is_empty() or senha.is_empty():
 		mostrar_mensagem("Preencha todos os campos!")
@@ -68,73 +68,57 @@ func _on_button_entrar_pressed() -> void:
 	entrando = true
 	mostrar_mensagem("Conectando...")
 
-	var dados := {"email": email, "senha": senha}
-	var headers := PackedStringArray(["Content-Type: application/json"])
+	var dados: Dictionary = {
+		"email": email,
+		"senha": senha
+	}
 
-	# Login não envia Authorization: ele é quem obtém os primeiros tokens.
-	var erro := http_request.request(
-		URL_LOGIN,
-		headers,
+	# O Api já adiciona a URL_BASE e os cabeçalhos necessários.
+	# Não enviamos token porque esta é a requisição de login.
+	var resultado: Dictionary = await Api._enviar(
 		HTTPClient.METHOD_POST,
+		"/auth/login",
 		JSON.stringify(dados)
 	)
 
-	if erro != OK:
-		falhar_login("Não foi possível iniciar a conexão.")
+	# Encaminha a resposta para a função responsável pelo restante do login.
+	await _on_login_response(resultado)
 
 
-func _on_login_response(
-		result: int,
-		response_code: int,
-		_headers: PackedStringArray,
-		body: PackedByteArray
-) -> void:
-	if result != HTTPRequest.RESULT_SUCCESS:
-		falhar_login("Não foi possível conectar ao servidor.")
+func _on_login_response(resultado: Dictionary) -> void:
+	if not resultado["ok"]:
+		if resultado["codigo"] == 401:
+			falhar_login("E-mail ou senha inválidos.")
+		else:
+			falhar_login(str(resultado["mensagem"]))
 		return
 
-	if response_code == 401:
-		falhar_login("E-mail ou senha inválidos.")
-		return
-
-	var resposta = JSON.parse_string(body.get_string_from_utf8())
-
-	if response_code != 200:
-		var mensagem: String = "Erro ao fazer login (HTTP %d)." % response_code
-
-		if resposta is Dictionary:
-			var erros = resposta.get("erros")
-			if erros is Array and not erros.is_empty():
-				mensagem = str(erros[0])
-			elif resposta.get("mensagem") is String:
-				mensagem = resposta["mensagem"]
-
-		falhar_login(mensagem)
-		return
+	# O Api já converteu o corpo JSON para um Dictionary.
+	var resposta = resultado["dados"]
 
 	if not (resposta is Dictionary):
 		falhar_login("O servidor retornou uma resposta de login inválida.")
 		return
 
-	# 1. Guarda acessToken, refreshToken e userDados no global Sessao.
-	# Isso precisa acontecer ANTES do GET /jogo, pois Api usa Sessao.access_token.
+	# Guarda os tokens e os dados do jogador antes de consultar /jogo.
 	if not Sessao.carregar_do_login(resposta):
 		falhar_login("O login não retornou os tokens ou os dados do jogador.")
 		return
 
 	Api.registrar_login()
 
-	# 2. O catálogo vem de uma rota separada.
+	# O catálogo vem de uma rota separada.
 	mostrar_mensagem("Carregando as fases...")
 	var catalogo: Dictionary = await Api.buscar("/jogo")
 
 	if not catalogo["ok"]:
-		falhar_login("Não foi possível carregar o jogo. " + str(catalogo["mensagem"]))
+		falhar_login(
+			"Não foi possível carregar o jogo. " + str(catalogo["mensagem"])
+		)
 		return
 
-	# "dados" aqui é a chave criada pelo Api.gd para o corpo da resposta HTTP.
-	# Seu conteúdo já é o JogoResponseDto: {trilhas, conquistas, itens}.
 	var jogo = catalogo["dados"]
+
 	if not (jogo is Dictionary):
 		falhar_login("O catálogo do jogo veio em formato inválido.")
 		return
@@ -143,7 +127,7 @@ func _on_login_response(
 		falhar_login("Não foi possível organizar as trilhas, conquistas e itens.")
 		return
 
-	# 3. A homepage já pode acessar Sessao e DadosJogo.
+	# Os dados pessoais e o catálogo estão disponíveis nos globais.
 	abrir_home()
 
 

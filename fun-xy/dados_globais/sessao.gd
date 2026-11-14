@@ -6,7 +6,7 @@ const API_BASE_URL: String = "http://localhost:8080"
 # Preenchido pela tela de login após autenticar o jogador.
 
 #Quando terminar o jogo, atualizar o banco de dados e a API reenvia os dados
-
+"""
 var access_token: String = "access-token-mock"
 var refresh_token: String = "refresh-token-mock"
 
@@ -93,35 +93,62 @@ var player_trilhas: Array = [
 		]
 	}
 ]
+"""
+var access_token: String = "access-token-mock"
+var refresh_token: String = "refresh-token-mock"
 
+var player: Dictionary = {
+	
+}
 
+var player_configuracao: Dictionary = {
+	
+}
+
+var player_inventario: Array = [
+	
+]
+
+var player_conquistas: Array = [
+	
+]
+
+var player_trilhas: Array = [
+	
+]
 # Recebe a resposta INTEIRA do POST /auth/login.
 # Retorna false se não vierem os dados necessários para entrar.
 func carregar_do_login(resposta: Dictionary) -> bool:
 	var dados = resposta.get("userDados")
+	print(resposta)
 	if not (dados is Dictionary):
 		return false
-
+	print("dados é dictionary")
 	var perfil = dados.get("usuario")
 	if not (perfil is Dictionary) or not perfil.has("id"):
 		return false
-
+	print("perfil é dictionary")
 	# No DTO o nome é "accessToken". O segundo nome cobre a grafia
 	# "acessToken" que aparecia no seu script antigo.
 	var access = resposta.get("accessToken","")
 	var refresh = resposta.get("refreshToken", "")
-
+	print(typeof(access))
+	print(typeof(refresh))
+	print(access is String)
+	print(refresh is String)
+	print(refresh.is_empty())
+	print(access.is_empty())
 	if not (access is String) or access.is_empty():
 		return false
 	if not (refresh is String) or refresh.is_empty():
 		return false
-
+	print("ambos tokens sao string")
 	var inventario = dados.get("inventario", [])
 	var conquistas = dados.get("conquistas", [])
 	var trilhas = dados.get("trilhas", [])
 	if not (inventario is Array and conquistas is Array and trilhas is Array):
 		return false
-
+	print("inventario conquistas e trilhas sao array")
 	access_token = access
 	refresh_token = refresh
 	player = perfil
