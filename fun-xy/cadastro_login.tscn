@@ -337,7 +337,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LoginPanel" type="PanelContainer" parent="SlideWindow" unique_id=711542061]
-custom_maximum_size = Vector2(-1, 400)
+custom_maximum_size = Vector2(250, 400)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -504,7 +504,7 @@ Cadastrar"
 unique_name_in_owner = true
 
 [node name="RegisterPanel" type="PanelContainer" parent="SlideWindow" unique_id=442854161]
-custom_maximum_size = Vector2(-1, 400)
+custom_maximum_size = Vector2(250, 400)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
