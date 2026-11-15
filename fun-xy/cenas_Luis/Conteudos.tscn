@@ -25,8 +25,8 @@ fill_to = Vector2(0.51304346, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v137e"]
 bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
-border_width_left = 5
-border_width_right = 5
+border_width_left = 7
+border_width_right = 7
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne27r"]
@@ -43,12 +43,19 @@ corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
 bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gngh"]
 bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 
@@ -120,9 +127,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_right = 5.0
-offset_bottom = -100.0
+offset_left = -7.0
+offset_right = 7.0
+offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -244,6 +251,8 @@ text = "CONTEÚDOS"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=817560763]
+custom_minimum_size = Vector2(0, 132)
+custom_maximum_size = Vector2(-1, 275)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 15
@@ -258,6 +267,7 @@ scroll_hint_mode = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer" unique_id=1675020897]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer" unique_id=1157230825]
@@ -557,7 +567,7 @@ theme_override_constants/margin_right = 15
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer2" unique_id=232712145]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_p1u0y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/PanelContainer" unique_id=579317651]
@@ -580,20 +590,23 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 15
 text = "Progresso do Jogo"
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=132228309]
-custom_minimum_size = Vector2(0, 25)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1205045965]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=859636785]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "0%"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=132228309]
 custom_maximum_size = Vector2(-1, 19)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 13
 theme_override_styles/background = SubResource("StyleBoxFlat_33x8s")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5s0fj")
 show_percentage = false
-
-[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=859636785]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "0%"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer" unique_id=1479577055]
 layout_mode = 2
@@ -612,20 +625,24 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 15
 text = "Progresso dos Materiais"
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=1109145634]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=552610420]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=327043744]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "0%"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1109145634]
 custom_minimum_size = Vector2(0, 25)
 custom_maximum_size = Vector2(-1, 19)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 13
 theme_override_styles/background = SubResource("StyleBoxFlat_33x8s")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5s0fj")
 show_percentage = false
-
-[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=327043744]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "0%"
 
 [node name="HboxBAIXO" type="HBoxContainer" parent="." unique_id=1755579737]
 custom_minimum_size = Vector2(360, 0)
