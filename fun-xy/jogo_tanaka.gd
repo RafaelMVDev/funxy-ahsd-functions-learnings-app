@@ -22,6 +22,7 @@ var dados_partida
 var id_tentativa #Pega da api caso haja um status == false
 var trilha: int
 var atv: int 
+var dados_fase
 
 
 """Adicionado (Morales): variaveis uteis para salvamento e funcionalidade de salvar uuid tentativa"""
@@ -64,6 +65,8 @@ func _ready() -> void:
 	atv = DadosGlobais.atv_atual 
 	menu_vitoria.scale = Vector2.ZERO
 	menu_vitoria.hide()
+	dados_fase = DadosJogo.buscar_atividade(atv)
+
 	#O nó do aplicativo chama a função _iniciar_jogo
 	#Passa como argumento o id da atividade que o player selecionou
 	#Buscar na API os dados da atividade correspondente ao id
@@ -183,7 +186,6 @@ func _carregar_vitoria():
 
 func sair_da_partida() -> void:
 	#Enviar dados para a API
-	SceneTransition.change_scene("res://Trilha.tscn")
 	#if status_partida == "continuacao":
 		#Atualizar os dados: 
 			#Lista_funcoes
@@ -191,44 +193,15 @@ func sair_da_partida() -> void:
 	
 	#else:
 		#Criar uma nova tentativa
-			
-		
-	
-	#DADOS
-	# quantidade_movimentos
-	# lista_funcoes_validas
-	# lista_dominios
-	# lista_funcoes, para a exibição das funções anteriores
-	# status = "incompleto"
-	"""todo: ==== Comentado(Morales) vvvvvvv: Novo formato de dicionario para api mais simplificado ===="""
-	#var dic_para_api = {
-			#"trilhaId": 1,
-			#"atividadeId": 5,
-			#"tentativa": {
-			#"concluida": false, #Alterado(Morales), True: pra bater com  com dic pra enviar
-			#"tentaiva_uuid": tentativa_uuid,
-			#"progressoEspecifico": {
-				#"listaFuncoes": lista_funcoes,
-				#"listaFuncoesValidas": lista_funcoes_validas,
-				#"listaDominios": lista_dominios,
-				#"movimentos": quantidade_movimentos
-			#}
-		#}
-	#}
+
 	var conclusao = false
 	await salvar_progresso_atividade_api(conclusao)
 	Sessao.atualizarProgresso()
-	#FORMATO DO DICIONARIO QUE TA SENDO ENVIADO AQUI EMBAIXO
-	"""todo: ==== Adicionado(Morales) vvvvvvv: Novo formato de dicionario para api mais simplificado ===="""
-	"""var dic_para_api = {
-    # Gerado ao iniciar a tentativa ou recuperado da API ao continuar.
-		"tentativaUuid": tentativa_uuid,
-		"concluida": false, #true ao concluir, false ao salvar em andamento.
-		"listaFuncoes": lista_funcoes,
-		"listaFuncoesValidas": lista_funcoes_validas,
-		"listaDominios": lista_dominios,
-		"movimentos": quantidade_movimentos
-	}"""
+	print("Sessão do player: ")
+	print(Sessao.player_trilhas)
+	print("Quantidade de movimetnos: ")
+	print(quantidade_movimentos)
+	SceneTransition.change_scene("res://Trilha.tscn")
 		
 	
 	
