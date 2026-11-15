@@ -230,6 +230,11 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 	for i in range(passos + 1):
 		var x_matematico = x_min + (i * passo_x)
 		var y_matematico = expr.execute([x_matematico])
+
+		if expr.has_execute_failed() or y_matematico == null:
+			mensagem.text = "Expressão inválida"
+			return []
+				
 		var pixel_x = ponto_central.x + (x_matematico * escala_pixel)
 		var pixel_y = ponto_central.y - (y_matematico * escala_pixel)
 
@@ -238,6 +243,8 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 		if pixel_y >= topo_y and pixel_y <= limite_y:
 			pontos.append(ponto)
 	return pontos
+
+	
 
 func verificar_cruzamento(novos_pontos: Array[Vector2]) -> bool:
 	if jogo.linhas_desenhadas.is_empty():
