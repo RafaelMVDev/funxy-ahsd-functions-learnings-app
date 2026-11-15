@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bpm0r0h6w7e7h" path="res://images/linha.png" id="6_gx75j"]
 [ext_resource type="Texture2D" uid="uid://dwdynpq2vpjd2" path="res://images/icones_luis/Ranking.png" id="6_pomvp"]
 [ext_resource type="Texture2D" uid="uid://322eclljkepr" path="res://images/icones_luis/Perfil.png" id="7_jgkfa"]
+[ext_resource type="Script" uid="uid://huqpa513dg0o" path="res://BotaoFase.gd" id="7_uh1mg"]
 [ext_resource type="Texture2D" uid="uid://bysqk0ebc2cjr" path="res://images/icones_luis/Config.png" id="8_u80dp"]
 
 [sub_resource type="Gradient" id="Gradient_o8lxc"]
@@ -456,6 +457,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
 text = "1
 "
+script = ExtResource("7_uh1mg")
+id_da_trilha = 1
+id_do_botao = 1
 
 [node name="2" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade1/VBoxContainer/PanelContainer/Control" unique_id=785663690]
 custom_minimum_size = Vector2(65, 65)
@@ -476,6 +480,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
 text = "2
 "
+script = ExtResource("7_uh1mg")
+id_da_trilha = 1
+id_do_botao = 2
 
 [node name="3" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade1/VBoxContainer/PanelContainer/Control" unique_id=247389956]
 custom_minimum_size = Vector2(65, 65)
@@ -495,6 +502,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
 text = "3
 "
+script = ExtResource("7_uh1mg")
+id_da_trilha = 1
+id_do_botao = 3
 
 [node name="Leitura" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade1/VBoxContainer/PanelContainer/Control" unique_id=570450964]
 custom_minimum_size = Vector2(75, 75)
@@ -620,6 +630,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
 text = "1
 "
+script = ExtResource("7_uh1mg")
+id_da_trilha = 2
+id_do_botao = 1
 
 [node name="2" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade2/VBoxContainer/PanelContainer/Control" unique_id=996440049]
 custom_minimum_size = Vector2(65, 65)
@@ -640,6 +653,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
 text = "2
 "
+script = ExtResource("7_uh1mg")
+id_da_trilha = 2
+id_do_botao = 2
 
 [node name="3" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade2/VBoxContainer/PanelContainer/Control" unique_id=1247724478]
 custom_minimum_size = Vector2(65, 65)
@@ -659,6 +675,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
 text = "3
 "
+script = ExtResource("7_uh1mg")
+id_da_trilha = 2
+id_do_botao = 3
 
 [node name="Leitura" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade2/VBoxContainer/PanelContainer/Control" unique_id=1874841334]
 custom_minimum_size = Vector2(75, 75)
