@@ -503,7 +503,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8s6yw")
 text = "➜]"
 
 [node name="VBoxContainerFuncao" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1735758894]
-visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_vertical = 0
@@ -1042,6 +1041,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dvwsp")
 text = "⌫"
 
 [node name="VBoxContainerDominio" type="VBoxContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=1602529930]
+visible = false
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 

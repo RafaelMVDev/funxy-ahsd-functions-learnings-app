@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FunXY"
-run/main_scene="uid://266aijmlmgw"
+run/main_scene="uid://c6lwabnrybgyv"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,7 @@ Sessao="*uid://ycaimgyjvkgf"
 DadosJogo="*uid://be5sverbg14is"
 Api="*uid://dfd77ucde83lk"
 SceneTransition="*uid://cuv24huqft5x"
+DadosGlobais="*uid://bdluj3yi8okjt"
 
 [display]
 

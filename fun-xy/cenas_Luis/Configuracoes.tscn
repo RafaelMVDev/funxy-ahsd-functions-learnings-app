@@ -7,12 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://co5wwcmy267kk" path="res://images/icones/aparencia_sol_branco.svg" id="3_royyv"]
 [ext_resource type="Texture2D" uid="uid://bwh2aa2088752" path="res://images/icones/som_alto_falante.svg" id="4_16sjw"]
 [ext_resource type="Texture2D" uid="uid://dgx67lsg7lx1d" path="res://images/icones/tema_claro_sol_azul.svg" id="4_jvjea"]
-[ext_resource type="Texture2D" uid="uid://br16uewudahgw" path="res://images/icones_luis/Passe.png" id="4_mm4fs"]
 [ext_resource type="Texture2D" uid="uid://crmipbo7d6kwn" path="res://images/privacidade_cadeado.svg" id="5_jvjea"]
 [ext_resource type="Texture2D" uid="uid://bofo467a4ueg3" path="res://images/icones/tema_escuro_lua_branca.svg" id="5_oerov"]
 [ext_resource type="Texture2D" uid="uid://dwdynpq2vpjd2" path="res://images/icones_luis/Ranking.png" id="5_rwvof"]
 [ext_resource type="Texture2D" uid="uid://322eclljkepr" path="res://images/icones_luis/Perfil.png" id="6_0d87y"]
 [ext_resource type="Texture2D" uid="uid://bgh2alpbauwbe" path="res://images/icones_luis/ConfigBranco.png" id="7_pjwo2"]
+[ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="10_wsnq7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
 bg_color = Color(0.019607844, 0.078431375, 0.23137255, 1)
@@ -453,11 +453,11 @@ size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 
 [node name="ButtonPasse" type="TextureButton" parent="HboxBAIXO/PanelContainer2/CenterContainer" unique_id=385880919]
-custom_minimum_size = Vector2(32, 32)
-custom_maximum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(55, 55)
+custom_maximum_size = Vector2(55, 55)
 layout_mode = 2
-texture_normal = ExtResource("4_mm4fs")
-stretch_mode = 3
+texture_normal = ExtResource("10_wsnq7")
+stretch_mode = 5
 
 [node name="PanelContainer3" type="PanelContainer" parent="HboxBAIXO" unique_id=1261514153]
 custom_minimum_size = Vector2(72, 0)

@@ -156,7 +156,7 @@ func _on_login_response(resultado: Dictionary) -> void:
 
 func abrir_home() -> void:
 	mostrar_mensagem("Entrando...")
-	var erro := get_tree().change_scene_to_file("res://homepage.tscn")
+	var erro := get_tree().change_scene_to_file("res://cenas_Luis/Conteudos.tscn")
 	if erro != OK:
 		falhar_login("Não foi possível abrir a página inicial.")
 
@@ -177,7 +177,7 @@ func _on_button_cadastro_pressed() -> void:
 
 
 func _on_button_senha_pressed() -> void:
-	senha_input.secret = not senha_input.secret
+	senha_input_login.secret = not senha_input_login.secret
 	botao_senha_login.icon = icone_olho_fechado if senha_input_login.secret else icone_olho_aberto
 
 
@@ -253,7 +253,7 @@ func _esconder_exibir_senha() -> void:
 		botao_senha.icon = icone_olho_aberto
 		
 func _on_button_login_pressed() -> void:
-	get_tree().change_scene_to_file("res://login.tscn")
+	get_tree().change_scene_to_file("res://cenas_Luis/Conteúdos.tscn")
 	
 func verificar_email(email: String) -> bool:
 	var regex = RegEx.new()
