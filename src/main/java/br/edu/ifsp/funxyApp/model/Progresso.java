@@ -27,8 +27,11 @@ public abstract class Progresso {
     @Column(name = "datetime_conclusao")
     private LocalDateTime datetimeConclusao;
 
-    @Column(name ="atividade_concluida")
-    private Boolean atividadeConcluida;
+    @Column(name = "tipo")
+    private String tipo;
+
+    @Column(name ="status")
+    private Boolean status;
 
     protected Progresso() {
         // Construtor usado pelo JPA.
@@ -43,7 +46,7 @@ public abstract class Progresso {
     public void concluir() {
         if (datetimeConclusao == null) {
             datetimeConclusao = LocalDateTime.now();
-            atividadeConcluida = true;
+            status = true;
         }
     }
 
@@ -52,7 +55,7 @@ public abstract class Progresso {
     }
 
     public Boolean getAtividadeConcluida(){
-        return atividadeConcluida;
+        return status;
     }
 
     public Usuario getUsuario() {

@@ -96,7 +96,7 @@ var player_trilhas: Array = [
 """
 var access_token: String = "access-token-mock"
 var refresh_token: String = "refresh-token-mock"
-
+var versao_sessao: int = 0
 var player: Dictionary = {
 	
 }
@@ -120,24 +120,19 @@ var player_trilhas: Array = [
 # Retorna false se não vierem os dados necessários para entrar.
 func carregar_do_login(resposta: Dictionary) -> bool:
 	var dados = resposta.get("userDados")
-	print(resposta)
+	print(dados)
 	if not (dados is Dictionary):
 		return false
-	print("dados é dictionary")
+	
 	var perfil = dados.get("usuario")
 	if not (perfil is Dictionary) or not perfil.has("id"):
 		return false
-	print("perfil é dictionary")
+	
 	# No DTO o nome é "accessToken". O segundo nome cobre a grafia
 	# "acessToken" que aparecia no seu script antigo.
 	var access = resposta.get("accessToken","")
 	var refresh = resposta.get("refreshToken", "")
-	print(typeof(access))
-	print(typeof(refresh))
-	print(access is String)
-	print(refresh is String)
-	print(refresh.is_empty())
-	print(access.is_empty())
+	
 	if not (access is String) or access.is_empty():
 		return false
 	if not (refresh is String) or refresh.is_empty():
@@ -146,9 +141,10 @@ func carregar_do_login(resposta: Dictionary) -> bool:
 	var inventario = dados.get("inventario", [])
 	var conquistas = dados.get("conquistas", [])
 	var trilhas = dados.get("trilhas", [])
+	print(trilhas)
 	if not (inventario is Array and conquistas is Array and trilhas is Array):
 		return false
-	print("inventario conquistas e trilhas sao array")
+
 	access_token = access
 	refresh_token = refresh
 	player = perfil
@@ -186,19 +182,58 @@ func atualizar_status(trilha_id: int, atividade_id: int, id_tentativa: int):
 							print("ALTERANDO STATUS")
 							tentativa["status"] = true
 	
-# Chame ao sair da conta para não manter os dados do jogador anterior.
-func limpar() -> void:
+
+
+
+func iniciar_sessao(access: String, refresh: String) -> void:
+	versao_sessao += 1
+	atualizar_tokens(access, refresh)
+
+
+# Usado também após renovar os tokens.
+func atualizar_tokens(access: String, refresh: String) -> void:
+	access_token = access
+	refresh_token = refresh
+
+
+func encerrar_sessao() -> void:
+	versao_sessao += 1
 	access_token = ""
-	refresh_token = ""
+	refresh_token = ""     
 	player = {}
 	player_configuracao = {}
 	player_inventario = []
 	player_conquistas = []
 	player_trilhas = []
-
-
 func cabecalhos_autenticados() -> PackedStringArray:
 	return PackedStringArray([
 		"Content-Type: application/json",
 		"Authorization: Bearer " + access_token
 	])
+
+
+func atualizarProgresso() -> bool:
+	# Busca o progresso atualizado do jogador autenticado.
+	var resposta: Dictionary = await Api.requisitar(
+		HTTPClient.METHOD_GET,
+		"/progresso",
+		"",
+		true
+	)
+
+	# Em caso de erro, mantém os dados que já estavam na sessão.
+	if not resposta.get("ok", false):
+		push_warning(str(resposta.get("mensagem", "Erro ao atualizar o progresso.")))
+		return false
+
+	var trilhas = resposta.get("dados")
+
+	# O endpoint deve retornar uma lista, inclusive [] se não houver progresso.
+	if not (trilhas is Array):
+		push_warning("A API não retornou uma lista de trilhas.")
+		return false
+
+	# Substitui os dados locais pelos dados atualizados do banco.
+	player_trilhas = trilhas
+	print(player_trilhas)
+	return true

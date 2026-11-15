@@ -81,6 +81,7 @@ public class AuthService {
         // Retornando dados da sessão
         UsuarioInicialResponseDto usuarioDados = usuarioService.carregar(usuario.getId());
         System.out.println("RETORNANDO!!!!!!!!!!!!!!!!!!");
+        System.out.println(usuarioDados);
         return new LoginResponseDto(acessToken,refreshToken,usuarioDados);
     }
 

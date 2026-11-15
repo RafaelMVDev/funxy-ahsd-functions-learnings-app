@@ -10,6 +10,10 @@ import br.edu.ifsp.funxyApp.model.Itens;
 import br.edu.ifsp.funxyApp.repository.AtividadesRepository;
 import br.edu.ifsp.funxyApp.repository.ConquistasRepository;
 import br.edu.ifsp.funxyApp.repository.ItensRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,15 +30,18 @@ public class JogoService {
     private final AtividadesRepository atividades;
     private final ConquistasRepository conquistas;
     private final ItensRepository itens;
+    private final ObjectMapper objectMapper;
 
     public JogoService(
             AtividadesRepository atividades,
             ConquistasRepository conquistas,
-            ItensRepository itens
+            ItensRepository itens,
+            ObjectMapper objectMapper
     ) {
         this.atividades = atividades;
         this.conquistas = conquistas;
         this.itens = itens;
+        this.objectMapper = objectMapper;
     }
 
     public JogoResponseDto carregarTudo() {
@@ -88,6 +95,24 @@ public class JogoService {
                 .toList();
     }
 
+    private ArrayNode converterColisoes(String json) {
+        try {
+            JsonNode dados = objectMapper.readTree(json);
+
+            if (!(dados instanceof ArrayNode array)) {
+                throw new IllegalStateException(
+                        "As colisões da atividade devem ser um array JSON."
+                );
+            }
+
+            return array;
+        } catch (JsonProcessingException e) {
+            throw new IllegalStateException(
+                    "As colisões da atividade contêm um JSON inválido.", e
+            );
+        }
+    }
+
     private JogoResponseDto.Atividade montarAtividade(Atividades atividade) {
         JogoResponseDto.ConteudoAtividade conteudo;
 
@@ -99,7 +124,7 @@ public class JogoService {
         } else if (atividade instanceof AtividadePratica pratica) {
             conteudo = new JogoResponseDto.Pratica(
                     pratica.getMediaMovimentos(),
-                    pratica.getColisoesMalha()
+                    converterColisoes(pratica.getColisoesMalha())
             );
         } else {
             throw new IllegalStateException(

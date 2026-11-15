@@ -56,7 +56,6 @@ public record UsuarioInicialResponseDto(
             Integer numeroAtividade,
             String titulo,
             String tipo,
-            LocalDateTime iniciadaEm,
             LocalDateTime concluidaEm
     ) {}
 }

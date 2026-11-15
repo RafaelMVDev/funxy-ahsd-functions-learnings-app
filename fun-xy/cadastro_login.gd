@@ -18,8 +18,8 @@ extends Control
 
 
 # Aponta para a nova rota da sua API Spring Boot
-const URL_LOGIN := "http://localhost:8080/auth/login"
-var url_api = "http://localhost:8080/auth/registro"
+const URL_LOGIN := "/auth/login"
+var URL_CADASTRO = "/auth/registro"
 var icone_olho_aberto = preload("res://images/icones/olho.svg")
 var icone_olho_fechado = preload("res://images/olho-fechado.svg")
 var entrando := false
@@ -60,10 +60,8 @@ func _on_btn_go_to_login_pressed():
 	tween.tween_property(register_panel, "position:x", window_width+100, slide_duration)
 
 func _on_button_entrar_pressed() -> void:
-	print("fia da puta")
-	print(entrando)
+
 	if entrando:
-		print("retornando merda")
 		return
 	print("oi")
 	var email: String = email_input_login.text.strip_edges()
@@ -89,10 +87,11 @@ func _on_button_entrar_pressed() -> void:
 
 	# O Api já adiciona a URL_BASE e os cabeçalhos necessários.
 	# Não enviamos token porque esta é a requisição de login.
-	var resultado: Dictionary = await Api._enviar(
+	var resultado: Dictionary = await Api.requisitar(
 		HTTPClient.METHOD_POST,
-		"/auth/login",
-		JSON.stringify(dados)
+		URL_LOGIN,
+		JSON.stringify(dados),
+		false
 	)
 
 	# Encaminha a resposta para a função responsável pelo restante do login.
@@ -151,7 +150,8 @@ func _on_login_response(resultado: Dictionary) -> void:
 	print("Itens existentes: ")
 	print(DadosJogo.itens)
 	# Os dados pessoais e o catálogo estão disponíveis nos globais.
-	abrir_home()
+	get_tree().change_scene_to_file("res://jogo_tanaka.tscn")
+	#abrir_home()
 
 
 func abrir_home() -> void:
@@ -218,38 +218,31 @@ func _on_button_pressed():
 	
 	# Transforma o dicionário em texto no formato JSON
 	var json_body = JSON.stringify(dados)
-	var headers = ["Content-Type: application/json"]
-	
-	# Dispara a requisição HTTP tipo POST
-	http_request.request(url_api, headers, HTTPClient.METHOD_POST, json_body)
-
-func _on_cadastro_response(result, response_code, headers, body):
-	label_mensagem.visible = false
-	print("result: ", result)
-	print("response_code: ", response_code)
-	print("headers: ", headers)
-	print("body: ", body.get_string_from_utf8())
-	var json = JSON.new()
-	var error = json.parse(body.get_string_from_utf8())
-	
-	if error == OK:
-		var resposta = json.get_data()
+	var resposta = await Api.requisitar(
+		HTTPClient.METHOD_POST,
+		URL_CADASTRO,json_body,
+		false
+		)
 		
-		# O Spring retorna 201 para recurso criado com sucesso
-		if response_code == 201:
-			label_mensagem.visible = true
-			label_mensagem.text = "Conta criada com sucesso!"
-			
-			# Aguarda 1.5 segundos para o usuário ler a mensagem e troca para o Login
-			await get_tree().create_timer(1).timeout
-			_on_btn_go_to_login_pressed()
-		else:
-			# Exibe a mensagem enviada pelo servidor (ex: "E-mail já cadastrado")
-			label_mensagem.visible = true
-			label_mensagem.text = resposta.get("mensagem", "Erro ao cadastrar.")
+	await _on_cadastro_response(resposta)
+	
+
+func _on_cadastro_response(resposta: Dictionary) -> void:
+	label_mensagem.visible = true
+
+	if resposta["ok"] and resposta["codigo"] == 201:
+		label_mensagem.text = "Conta criada com sucesso!"
+
+		# Aguarda 1 segundo antes de abrir o login.
+		await get_tree().create_timer(1.0).timeout
+		_on_btn_go_to_login_pressed()
 	else:
-		label_mensagem.visible = true
-		label_mensagem.text = "Falha de comunicação com o servidor."
+		var mensagem: String = resposta.get("mensagem", "")
+
+		if mensagem.is_empty():
+			mensagem = "Não foi possível confirmar o cadastro."
+
+		label_mensagem.text = mensagem
 
 func _esconder_exibir_senha() -> void:
 	if senha_input.secret == false:

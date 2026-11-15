@@ -3,6 +3,7 @@ package br.edu.ifsp.funxyApp.controller;
 import br.edu.ifsp.funxyApp.dto.jogo.NomeUsuarioDto;
 import br.edu.ifsp.funxyApp.dto.jogo.SalvarConfiguracaoRequestDto;
 import br.edu.ifsp.funxyApp.dto.auth.UsuarioInicialResponseDto;
+import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
 import br.edu.ifsp.funxyApp.service.ProgressoUsuarioService;
 import br.edu.ifsp.funxyApp.service.UsuarioService;
 import jakarta.validation.Valid;
@@ -14,14 +15,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/usuario/me")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
-
+    private final ProgressoUsuarioService progressoUsuarioService;
     public UsuarioController(UsuarioService usuarioService, ProgressoUsuarioService progressoUsuarioService) {
         this.usuarioService = usuarioService;
+        this.progressoUsuarioService = progressoUsuarioService;
 
     }
 
@@ -50,4 +54,12 @@ public class UsuarioController {
     ) {
         return usuarioService.salvarConfiguracao(usuarioId, request);
     }
+
+    @GetMapping("/progresso")
+    public List<TrilhaProgressoDto> retornarTrilhas(
+            @AuthenticationPrincipal Long usuarioId
+    ){
+        return progressoUsuarioService.buscarTrilhas(usuarioId);
+    }
+
 }

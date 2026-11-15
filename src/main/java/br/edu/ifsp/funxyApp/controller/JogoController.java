@@ -26,6 +26,8 @@ public class JogoController {
     @GetMapping
     public JogoResponseDto buscarTudo() {
         System.out.println("BUSCANDO!");
+        JogoResponseDto dados = jogoService.carregarTudo();
+        System.out.println(dados);
         return jogoService.carregarTudo();
     }
 
