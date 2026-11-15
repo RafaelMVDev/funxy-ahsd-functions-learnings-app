@@ -177,7 +177,7 @@ func _on_button_cadastro_pressed() -> void:
 
 
 func _on_button_senha_pressed() -> void:
-	senha_input.secret = not senha_input.secret
+	senha_input_login.secret = not senha_input_login.secret
 	botao_senha_login.icon = icone_olho_fechado if senha_input_login.secret else icone_olho_aberto
 
 
