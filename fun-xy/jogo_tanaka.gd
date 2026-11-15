@@ -20,8 +20,9 @@ var status_partida:  String = "nova"
 var tentativa_partida
 var dados_partida
 var id_tentativa #Pega da api caso haja um status == false
-var trilha: int = 1 #É dinamico com base nas propriedades do botão que o chamou
-var atv: int = 3 #É dinamico com base nas propriedades do botão que o chamou
+var trilha: int
+var atv: int 
+
 
 """Adicionado (Morales): variaveis uteis para salvamento e funcionalidade de salvar uuid tentativa"""
 var tentativa_uuid: String #Referente ao id da tentativa para salvamento no banco
@@ -59,6 +60,8 @@ func _gerar_uuid_tentativa() -> String:
 	]
 
 func _ready() -> void:
+	trilha = DadosGlobais.trilha_atual 
+	atv = DadosGlobais.atv_atual 
 	menu_vitoria.scale = Vector2.ZERO
 	menu_vitoria.hide()
 	#O nó do aplicativo chama a função _iniciar_jogo
@@ -138,6 +141,9 @@ func _carregar_vitoria():
 		Sessao.atualizar_status(trilha, atv, id_tentativa)
 	#else:
 		#Criar uma função para criar uma nova tentativa de status true
+	
+	#Calculo da pontuação
+	#Atualizar o xp do player
 		
 		
 		
@@ -177,7 +183,7 @@ func _carregar_vitoria():
 
 func sair_da_partida() -> void:
 	#Enviar dados para a API
-	get_tree().change_scene_to_file("res://Trilha.tscn")
+	SceneTransition.change_scene("res://Trilha.tscn")
 	#if status_partida == "continuacao":
 		#Atualizar os dados: 
 			#Lista_funcoes

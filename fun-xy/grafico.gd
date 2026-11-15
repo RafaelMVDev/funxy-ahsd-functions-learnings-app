@@ -11,7 +11,9 @@ extends Node2D
 @onready var efeito_sonoro_vitoria = $AudioVitoria
 
 signal vitoria()
-
+#var dados_fase = DadosJogo.buscar_atividade(DadosGlobais.atv_atual)
+#Não precisa passar trilha? 
+#Qual é a saida de buscar atv? é só as colisões ou também me pasa o xp?
 var dados_fase_api = [ #Simulação
 	{ "tipo": "inicio", "x": -5.0, "y": -5.0, "largura": 0.4, "altura": 0.4 },
 	{ "tipo": "fim", "x": 5.0, "y": 3.0, "largura": 0.4, "altura": 0.4 },
