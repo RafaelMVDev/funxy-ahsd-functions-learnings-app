@@ -156,7 +156,7 @@ func _on_login_response(resultado: Dictionary) -> void:
 
 func abrir_home() -> void:
 	mostrar_mensagem("Entrando...")
-	var erro := get_tree().change_scene_to_file("res://cenas_Luis/Conteúdos.tscn")
+	var erro := get_tree().change_scene_to_file("res://cenas_Luis/Conteudos.tscn")
 	if erro != OK:
 		falhar_login("Não foi possível abrir a página inicial.")
 
