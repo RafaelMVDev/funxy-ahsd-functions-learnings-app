@@ -177,7 +177,7 @@ func _carregar_vitoria():
 
 func sair_da_partida() -> void:
 	#Enviar dados para a API
-	get_tree().change_scene_to_file("res://homepage.tscn")
+	get_tree().change_scene_to_file("res://Trilha.tscn")
 	#if status_partida == "continuacao":
 		#Atualizar os dados: 
 			#Lista_funcoes

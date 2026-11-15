@@ -150,7 +150,7 @@ func _on_login_response(resultado: Dictionary) -> void:
 	print("Itens existentes: ")
 	print(DadosJogo.itens)
 	# Os dados pessoais e o catálogo estão disponíveis nos globais.
-	get_tree().change_scene_to_file("res://jogo_tanaka.tscn")
+	get_tree().change_scene_to_file("res://Trilha.tscn")
 	#abrir_home()
 
 
