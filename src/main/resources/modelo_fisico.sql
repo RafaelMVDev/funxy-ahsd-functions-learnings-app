@@ -228,6 +228,17 @@ CREATE TABLE Progresso_Leitura (
                                            ON DELETE CASCADE
 );
 
+CREATE TABLE Usuario_Foto (
+                              id_usuario BIGINT PRIMARY KEY,
+                              conteudo BLOB NOT NULL,
+                              tipo_conteudo VARCHAR(50) NOT NULL,
+
+                              CONSTRAINT fk_usuario_foto
+                                  FOREIGN KEY (id_usuario)
+                                      REFERENCES usuario (id_usuario)
+                                      ON DELETE CASCADE
+);
+
 
 
 /* Índices */
