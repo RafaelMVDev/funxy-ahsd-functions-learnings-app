@@ -14,7 +14,7 @@ var atividades_por_id: Dictionary = {}
 # Recebe só o objeto "jogo", seja do login ou da rota GET /jogo.
 func carregar_catalogo(jogo: Dictionary) -> bool:
 	print("TESATAEAS")
-	print(jogo)
+	#print(jogo)
 	var novas_trilhas = jogo.get("trilhas")
 	var novas_conquistas = jogo.get("conquistas")
 	var novos_itens = jogo.get("itens")

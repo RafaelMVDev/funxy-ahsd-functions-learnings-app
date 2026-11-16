@@ -8,7 +8,6 @@ extends Control
 @onready var visor_funcao = %VisorFuncao
 @onready var virsor_dominio = %VisorDominio
 
-
 var quantidade_movimentos: int = 0
 var funcao_armazenada: String   #Referente ao visor
 var dominio_armazenado: String  #Referente ao visor
@@ -85,10 +84,11 @@ func _ready() -> void:
 	queue_redraw()
 	
 	var tentativas = Sessao.buscar_tentativas(trilha, atv)
-	
+	print(Sessao.player_trilhas)
 	if tentativas: #verificar se o godot entende lista vazia como false
 		for tentativa in tentativas:
 			if tentativa["status"] == false:
+				print("ACHOU TENTATIVA INCOMPLETA")
 				id_tentativa = tentativa["progressoId"]
 				status_partida = "continuacao"
 				tentativa_partida = tentativa
@@ -96,7 +96,7 @@ func _ready() -> void:
 				
 				lista_funcoes = dados_partida["listaFuncoes"]
 				lista_dominios = dados_partida["listaDominios"]
-				grafico.carregar_progresso()
+				print(tentativa_partida)
 	
 	#logica para a nova tentativa
 	
@@ -209,7 +209,7 @@ func sair_da_partida() -> void:
 func salvar_progresso_atividade_api(concluida: bool) -> bool:
 	if salvando: #Evita enviar 2 requests antes do primeiro ser finalizado
 		return false
-
+	
 	#Token vazio = usuário nn logou, sem atividade_id tbm nn da 
 	if Sessao.access_token.is_empty() or atividade_id <= 0:
 		push_warning("Faça login e selecione uma atividade antes de salvar.")

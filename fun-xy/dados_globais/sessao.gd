@@ -120,7 +120,7 @@ var player_trilhas: Array = [
 # Retorna false se não vierem os dados necessários para entrar.
 func carregar_do_login(resposta: Dictionary) -> bool:
 	var dados = resposta.get("userDados")
-	print(dados)
+	#print(dados)
 	if not (dados is Dictionary):
 		return false
 	
@@ -137,11 +137,11 @@ func carregar_do_login(resposta: Dictionary) -> bool:
 		return false
 	if not (refresh is String) or refresh.is_empty():
 		return false
-	print("ambos tokens sao string")
+	#print("ambos tokens sao string")
 	var inventario = dados.get("inventario", [])
 	var conquistas = dados.get("conquistas", [])
 	var trilhas = dados.get("trilhas", [])
-	print(trilhas)
+	#print(trilhas)
 	if not (inventario is Array and conquistas is Array and trilhas is Array):
 		return false
 
@@ -235,5 +235,5 @@ func atualizarProgresso() -> bool:
 
 	# Substitui os dados locais pelos dados atualizados do banco.
 	player_trilhas = trilhas
-	print(player_trilhas)
+	#print(player_trilhas)
 	return true
