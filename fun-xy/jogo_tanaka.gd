@@ -148,7 +148,8 @@ func _carregar_vitoria():
 	var pontuacao = int(dados_fase["xpBase"] + dados_fase["xpBase"] / (1 + (quantidade_movimentos * 0.1)))
 	var moedas = dados_fase["moedaBase"] 
 	
-	Sessao.atualizar_recompensas(pontuacao, moedas)
+	await Sessao.atualizar_recompensas(pontuacao, moedas)
+	DadosJogo.carregar_ranking() 
 	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos, pontuacao) 
 	
 		

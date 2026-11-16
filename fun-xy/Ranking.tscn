@@ -298,7 +298,8 @@ layout_mode = 2
 theme_override_constants/separation = 9
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer2/HBoxContainer" unique_id=1631844520]
+[node name="ContainerPlayer" type="PanelContainer" parent="PanelContainer2/HBoxContainer" unique_id=1631844520]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
@@ -306,7 +307,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_aai3x")
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer2/HBoxContainer/PanelContainer" unique_id=589571430]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer2/HBoxContainer/ContainerPlayer" unique_id=589571430]
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4

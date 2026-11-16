@@ -15,17 +15,17 @@ func carregar_cabeçalho() -> void:
 	var streak = Sessao.player["sequencia"]
 	
 	if xp:
-		label_xp.text = str(xp)
+		label_xp.text = str(int(xp))
 	else:
 		label_xp.text = '0'
 		
 	if moedas:
-		label_moedas.text = str(moedas)
+		label_moedas.text = str(int(moedas))
 	else: 
 		label_moedas.text = "0"
 		
 	if streak:
-		label_streak.text = str(streak)
+		label_streak.text = str(int(streak))
 	else:
 		label_streak.text = '1'
 
