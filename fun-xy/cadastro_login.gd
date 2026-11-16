@@ -140,7 +140,7 @@ func _on_login_response(resultado: Dictionary) -> void:
 		falhar_login("Não foi possível organizar as trilhas, conquistas e itens.")
 		return
 	
-	"""
+	
 	print("===== Dados do player carregados! ===== ")
 	print(Sessao.player)
 	print("===== Dados do jogo carregados! ===== ")
@@ -150,7 +150,8 @@ func _on_login_response(resultado: Dictionary) -> void:
 	print(DadosJogo.conquistas)
 	print("Itens existentes: ")
 	print(DadosJogo.itens)
-	"""
+	
+
 	# Os dados pessoais e o catálogo estão disponíveis nos globais.
 	get_tree().change_scene_to_file("res://Trilha.tscn")
 	#abrir_home()
