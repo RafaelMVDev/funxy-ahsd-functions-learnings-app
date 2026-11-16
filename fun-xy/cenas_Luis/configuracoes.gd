@@ -22,7 +22,7 @@ var icon_sol_azul = preload("res://images/icones/tema_claro_sol_azul.svg")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-    label_nome.text = nome
+	label_nome.text = nome
 	label_nome.visible = true
 
 	if FileAccess.file_exists("user://avatar_usuario.png"):
@@ -30,9 +30,9 @@ func _ready() -> void:
 		foto_perfil.texture = ImageTexture.create_from_image(imagem)
 
 	var master_bus_index = AudioServer.get_bus_index("Master")
-    	var is_muted = AudioServer.is_bus_mute(master_bus_index)
-    	AudioServer.set_bus_mute(master_bus_index, is_muted)
-    	botao_som.set_pressed_no_signal(is_muted)
+	var is_muted = AudioServer.is_bus_mute(master_bus_index)
+	AudioServer.set_bus_mute(master_bus_index, is_muted)
+	botao_som.set_pressed_no_signal(is_muted)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
