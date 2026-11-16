@@ -200,7 +200,7 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 
 	var dados := {
 		"tentativaUuid": tentativa_uuid,
-		"concluida": concluida,
+		"status": concluida,
 		"listaFuncoes": lista_funcoes,
 		"listaDominios": lista_dominios,
 		"movimentos": quantidade_movimentos
