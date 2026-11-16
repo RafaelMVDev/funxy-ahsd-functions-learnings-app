@@ -90,9 +90,6 @@ func _ready() -> void:
 	queue_redraw()
 	
 	var tentativas = Sessao.buscar_tentativas(trilha, atv)
-	print("=========================== TENTATIVAS ==================================")
-	print(tentativas)
-	print(Sessao.player_trilhas)
 	if tentativas:
 		for tentativa in tentativas:
 			if tentativa["status"] == false:
@@ -111,9 +108,6 @@ func _ready() -> void:
 	#logica para a nova tentativa
 	
 func _reiniciar_partida(): 
-	if status_partida == "continuacao" and id_tentativa != null:
-		Sessao.atualizar_status(trilha, atv, id_tentativa)
-	
 	get_tree().reload_current_scene()
 	
 func _on_exibir_funcoes_antigas():
@@ -145,8 +139,6 @@ func _resetar():
 	dominio_armazenado = ""
 
 func _carregar_vitoria():
-	if status_partida == "continuacao":
-		Sessao.atualizar_status(trilha, atv, id_tentativa)
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_property(menu_vitoria, "scale", Vector2(1.0, 1.0), 0.5)

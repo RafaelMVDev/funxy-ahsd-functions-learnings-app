@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bpm0r0h6w7e7h" path="res://images/linha.png" id="7_j18ad"]
 [ext_resource type="Script" uid="uid://huqpa513dg0o" path="res://BotaoFase.gd" id="8_8w561"]
 [ext_resource type="Texture2D" uid="uid://cjctleudmdo6h" path="res://images/livro branco.png" id="9_jmjnk"]
+[ext_resource type="Texture2D" uid="uid://du2cfkck6cvii" path="res://images/home_page_icon_white_transparent.png" id="10_jgkfa"]
 [ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="11_cnf11"]
-[ext_resource type="Texture2D" uid="uid://be6slbqck10bi" path="res://images/icones/home_page_icon.png" id="11_u80dp"]
 [ext_resource type="Texture2D" uid="uid://dwdynpq2vpjd2" path="res://images/icones_luis/Ranking.png" id="12_o3p80"]
 [ext_resource type="Texture2D" uid="uid://322eclljkepr" path="res://images/icones_luis/Perfil.png" id="13_g2tbt"]
 [ext_resource type="Texture2D" uid="uid://bysqk0ebc2cjr" path="res://images/icones_luis/Config.png" id="14_tohh8"]
@@ -52,6 +52,11 @@ border_color = Color(0.79607844, 0.8745098, 0.99607843, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fhiq"]
 bg_color = Color(0.79608965, 0.87572545, 0.99725264, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.019607844, 0.078431375, 0.23137255, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -59,8 +64,14 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pomvp"]
 bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.019607844, 0.078431375, 0.23137255, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3kxb"]
 content_margin_top = 10.0
@@ -327,7 +338,7 @@ theme_override_constants/margin_top = 8
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer2/VBoxContainer/MarginContainer" unique_id=115697838]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0049803625, 0.022944545, 0.10672363, 1)
-text = "Conclusão da Trilha"
+text = "Progresso das Atividades"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/VBoxContainer" unique_id=1578854331]
 layout_mode = 2
@@ -337,12 +348,14 @@ theme_override_constants/separation = 12
 layout_mode = 2
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/MarginContainer" unique_id=112178090]
+[node name="LabelPorcentagemProgresso" type="Label" parent="VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/MarginContainer" unique_id=112178090]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.012738267, 0.056474946, 0.18423656, 1)
 text = "20%"
 
 [node name="ProgressBar2" type="ProgressBar" parent="VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=697294800]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 25)
 custom_maximum_size = Vector2(270, 20)
 layout_mode = 2
@@ -375,7 +388,6 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="Unidade1" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=933817915]
-visible = false
 custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
@@ -549,8 +561,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Unidade2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=714555870]
-visible = false
-custom_minimum_size = Vector2(0, 500)
+custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
 
@@ -723,7 +734,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Unidade3" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=1315660818]
-custom_minimum_size = Vector2(0, 500)
+custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
 
@@ -895,6 +906,352 @@ icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
 
+[node name="Unidade4" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=2074198505]
+custom_maximum_size = Vector2(-1, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4" unique_id=1894377970]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer" unique_id=228603233]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+
+[node name="Unidade1" type="BoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer" unique_id=628734773]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1" unique_id=1481172412]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u80dp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer" unique_id=268378503]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=471821480]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer" unique_id=248901761]
+layout_mode = 2
+texture = ExtResource("5_wei45")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=2006844386]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_right = 41.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "UNIDADE 4"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=1992353084]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=671120592]
+layout_mode = 2
+text = "Função Exponencial"
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1" unique_id=501273137]
+clip_children = 2
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_abqas")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer2" unique_id=1199977961]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("6_kg341")
+expand_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer" unique_id=404422439]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rb775")
+
+[node name="Control" type="Control" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/PanelContainer" unique_id=1456244090]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/PanelContainer/Control" unique_id=903140449]
+layout_mode = 0
+offset_left = 159.0
+offset_top = -30.0
+offset_right = 245.0
+offset_bottom = 216.0
+texture = ExtResource("7_j18ad")
+
+[node name="1" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/PanelContainer/Control" unique_id=878921419]
+custom_minimum_size = Vector2(65, 65)
+custom_maximum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 147.0
+offset_top = 4.0
+offset_right = 212.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
+keep_pressed_outside = true
+text = "10
+"
+script = ExtResource("8_8w561")
+id_da_trilha = 4
+id_do_botao = 10
+
+[node name="2" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/PanelContainer/Control" unique_id=1909318488]
+custom_minimum_size = Vector2(65, 65)
+custom_maximum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 209.0
+offset_top = 98.0
+offset_right = 274.0
+offset_bottom = 163.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
+keep_pressed_outside = true
+text = "11
+"
+script = ExtResource("8_8w561")
+id_da_trilha = 4
+id_do_botao = 11
+
+[node name="3" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/PanelContainer/Control" unique_id=490405728]
+custom_minimum_size = Vector2(65, 65)
+custom_maximum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 143.0
+offset_top = 173.0
+offset_right = 208.0
+offset_bottom = 238.0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
+keep_pressed_outside = true
+text = "12
+"
+script = ExtResource("8_8w561")
+id_da_trilha = 4
+id_do_botao = 12
+
+[node name="Leitura" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/PanelContainer/Control" unique_id=914251492]
+custom_minimum_size = Vector2(75, 75)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 50.0
+offset_top = 78.0
+offset_right = 125.0
+offset_bottom = 153.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
+keep_pressed_outside = true
+icon = ExtResource("9_jmjnk")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Unidade5" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=699340242]
+custom_maximum_size = Vector2(-1, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5" unique_id=142493077]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer" unique_id=1903665081]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+
+[node name="Unidade1" type="BoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer" unique_id=1429656756]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1" unique_id=1695231946]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u80dp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer" unique_id=992880864]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=1401375969]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer" unique_id=140574846]
+layout_mode = 2
+texture = ExtResource("5_wei45")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=480398848]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_right = 41.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "UNIDADE 5"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=197531533]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=1925387644]
+layout_mode = 2
+text = "Função Logarítmica "
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1" unique_id=1670026933]
+clip_children = 2
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_abqas")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer2" unique_id=593231884]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("6_kg341")
+expand_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer" unique_id=584954068]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rb775")
+
+[node name="Control" type="Control" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/PanelContainer" unique_id=1386869311]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/PanelContainer/Control" unique_id=127873879]
+layout_mode = 0
+offset_left = 159.0
+offset_top = -30.0
+offset_right = 245.0
+offset_bottom = 216.0
+texture = ExtResource("7_j18ad")
+
+[node name="1" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/PanelContainer/Control" unique_id=1785712207]
+custom_minimum_size = Vector2(65, 65)
+custom_maximum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 147.0
+offset_top = 4.0
+offset_right = 212.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
+keep_pressed_outside = true
+text = "13
+"
+script = ExtResource("8_8w561")
+id_da_trilha = 5
+id_do_botao = 13
+
+[node name="2" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/PanelContainer/Control" unique_id=516732638]
+custom_minimum_size = Vector2(65, 65)
+custom_maximum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 209.0
+offset_top = 98.0
+offset_right = 274.0
+offset_bottom = 163.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
+keep_pressed_outside = true
+text = "14
+"
+script = ExtResource("8_8w561")
+id_da_trilha = 5
+id_do_botao = 14
+
+[node name="3" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/PanelContainer/Control" unique_id=727137463]
+custom_minimum_size = Vector2(65, 65)
+custom_maximum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 143.0
+offset_top = 173.0
+offset_right = 208.0
+offset_bottom = 238.0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
+keep_pressed_outside = true
+text = "15
+"
+script = ExtResource("8_8w561")
+id_da_trilha = 5
+id_do_botao = 15
+
+[node name="Leitura" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/PanelContainer/Control" unique_id=1366440588]
+custom_minimum_size = Vector2(75, 75)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 50.0
+offset_top = 78.0
+offset_right = 125.0
+offset_bottom = 153.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
+keep_pressed_outside = true
+icon = ExtResource("9_jmjnk")
+icon_alignment = 1
+expand_icon = true
+
 [node name="HboxBAIXO" type="HBoxContainer" parent="." unique_id=892294223]
 custom_minimum_size = Vector2(360, 70)
 custom_maximum_size = Vector2(360, 70)
@@ -928,7 +1285,7 @@ offset_right = 53.0
 offset_bottom = 55.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("11_u80dp")
+texture = ExtResource("10_jgkfa")
 expand_mode = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="HboxBAIXO" unique_id=2057484740]

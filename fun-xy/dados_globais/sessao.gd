@@ -172,19 +172,6 @@ func buscar_tentativas(trilha_id: int, atividade_id: int) -> Array:
 
 	return []
 
-func atualizar_status(trilha_id: int, atividade_id: int, id_tentativa: int):
-	for trilha in player_trilhas:
-		if trilha["trilhaId"] == trilha_id:
-			for atividade in trilha["atividades"]:
-				if atividade["atividadeId"] == atividade_id:
-					for tentativa in atividade["tentativas"]:
-						if tentativa["progressoId"] == id_tentativa:
-							print("ALTERANDO STATUS")
-							tentativa["status"] = true
-	
-
-
-
 func iniciar_sessao(access: String, refresh: String) -> void:
 	versao_sessao += 1
 	atualizar_tokens(access, refresh)
