@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dny2a1np6hth4"]
+
+[ext_resource type="Script" uid="uid://d0xvpjifd8woj" path="res://materiais_leitura_interface.gd" id="1_wt6km"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
+bg_color = Color(0, 0.24172059, 0.5591923, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb775"]
+bg_color = Color(0, 0.24313726, 0.56078434, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixrit"]
+bg_color = Color(0, 0.24313726, 0.56078434, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="Control" type="Control" unique_id=1902620754]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wt6km")
+
+[node name="Panel" type="Panel" parent="." unique_id=122276130]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="." unique_id=1600891692]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.84700006
+anchor_top = 0.89800006
+anchor_right = 0.84700006
+anchor_bottom = 0.89800006
+offset_left = -19.920013
+offset_top = -19.720032
+offset_right = 20.079987
+offset_bottom = 20.279968
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_p3kxb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rb775")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ixrit")
+text = "X"
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_sair_pressed"]

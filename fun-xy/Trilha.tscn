@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://huqpa513dg0o" path="res://BotaoFase.gd" id="8_8w561"]
 [ext_resource type="Texture2D" uid="uid://cjctleudmdo6h" path="res://images/livro branco.png" id="9_jmjnk"]
 [ext_resource type="Texture2D" uid="uid://du2cfkck6cvii" path="res://images/home_page_icon_white_transparent.png" id="10_jgkfa"]
+[ext_resource type="Script" uid="uid://buvjucuvsnyuo" path="res://material_leitura.gd" id="11_abqas"]
 [ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="11_cnf11"]
 [ext_resource type="Texture2D" uid="uid://dwdynpq2vpjd2" path="res://images/icones_luis/Ranking.png" id="12_o3p80"]
 [ext_resource type="Texture2D" uid="uid://322eclljkepr" path="res://images/icones_luis/Perfil.png" id="13_g2tbt"]
@@ -106,7 +107,7 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0, 0.13725491, 0.3882353, 1)
+border_color = Color(9.62615e-07, 0.27551973, 0.7069991, 1)
 corner_radius_top_left = 45
 corner_radius_top_right = 45
 corner_radius_bottom_right = 45
@@ -565,6 +566,9 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("11_abqas")
+id_trilha_leitura = 1
+cena_atual = "res://Trilha.tscn"
 
 [node name="Unidade2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=714555870]
 custom_maximum_size = Vector2(-1, 400)
@@ -738,6 +742,9 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("11_abqas")
+id_trilha_leitura = 2
+cena_atual = "res://Trilha.tscn"
 
 [node name="Unidade3" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=1315660818]
 custom_maximum_size = Vector2(-1, 400)
@@ -911,6 +918,9 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("11_abqas")
+id_trilha_leitura = 3
+cena_atual = "res://Trilha.tscn"
 
 [node name="Unidade4" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=2074198505]
 custom_maximum_size = Vector2(-1, 400)
@@ -1084,6 +1094,9 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("11_abqas")
+id_trilha_leitura = 4
+cena_atual = "res://Trilha.tscn"
 
 [node name="Unidade5" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=699340242]
 custom_maximum_size = Vector2(-1, 400)
@@ -1257,6 +1270,9 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("11_abqas")
+id_trilha_leitura = 5
+cena_atual = "res://Trilha.tscn"
 
 [node name="HboxBAIXO" type="HBoxContainer" parent="." unique_id=892294223]
 custom_minimum_size = Vector2(360, 70)
