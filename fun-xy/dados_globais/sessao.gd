@@ -216,7 +216,7 @@ func atualizarProgresso() -> bool:
 	# Busca o progresso atualizado do jogador autenticado.
 	var resposta: Dictionary = await Api.requisitar(
 		HTTPClient.METHOD_GET,
-		"/progresso",
+		"/api/usuario/me/progresso",
 		"",
 		true
 	)

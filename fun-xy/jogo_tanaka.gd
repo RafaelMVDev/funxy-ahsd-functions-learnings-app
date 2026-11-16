@@ -27,11 +27,14 @@ var dados_fase
 """Adicionado (Morales): variaveis uteis para salvamento e funcionalidade de salvar uuid tentativa"""
 var tentativa_uuid: String #Referente ao id da tentativa para salvamento no banco
 var atividade_id: int = 1 # Dps ver como vai puxar isso
-var rota_salvar : String = "/progresso/pratica/%d/salvar" % [atividade_id]
+var rota_salvar : String = "/progresso/pratica/%d/salvar" % [atv]
+
+
 
 var salvando: bool = false
 var fase_concluida: bool = false
 var conclusao_confirmada: bool = false
+
 
 """Adicionado (Morales) - Função que gera um novo uuid para cada tentativa da atividade:"""
 func _gerar_uuid_tentativa() -> String:
@@ -58,6 +61,7 @@ func _gerar_uuid_tentativa() -> String:
    		hex.substr(16, 4),
    		hex.substr(20, 12)
 	]
+
 
 func _ready() -> void:
 	trilha = DadosGlobais.trilha_atual 
@@ -96,6 +100,8 @@ func _ready() -> void:
 				
 				lista_funcoes = dados_partida["listaFuncoes"]
 				lista_dominios = dados_partida["listaDominios"]
+				tentativa_uuid = str(dados_partida.get("tentativaUuid", ""))
+				quantidade_movimentos = int(dados_partida.get("movimentos", 0))
 				print(tentativa_partida)
 	
 	#logica para a nova tentativa
@@ -182,6 +188,7 @@ func _carregar_vitoria():
 	"""Adicionado Morales: função para montar requisição para api e tratar resultado"""
 	var conclusao = true
 	await salvar_progresso_atividade_api(conclusao)
+	print("======================== ATUALIZANDO PROGRESSO ======================")
 	Sessao.atualizarProgresso()
 
 func sair_da_partida() -> void:
@@ -196,6 +203,7 @@ func sair_da_partida() -> void:
 
 	var conclusao = false
 	await salvar_progresso_atividade_api(conclusao)
+	print("======================== ATUALIZANDO PROGRESSO ======================")
 	Sessao.atualizarProgresso()
 	print("Sessão do player: ")
 	print(Sessao.player_trilhas)
@@ -211,7 +219,7 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 		return false
 	
 	#Token vazio = usuário nn logou, sem atividade_id tbm nn da 
-	if Sessao.access_token.is_empty() or atividade_id <= 0:
+	if Sessao.access_token.is_empty() or atv <= 0:
 		push_warning("Faça login e selecione uma atividade antes de salvar.")
 		return false
 
@@ -230,11 +238,13 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 
 	# Inicia o POST com o token do jogador e o corpo em JSON.
 	salvando = true
-
+	print("======================ATIVIDADE_ID==================")
+	print(atv)
 	var resposta := await Api.requisitar(
 		HTTPClient.METHOD_POST,
-		rota_salvar,
-		JSON.stringify(dados)
+		"/progresso/pratica/%d/salvar" % [atv],
+		JSON.stringify(dados),
+		true
 	)
 
 	if resposta["codigo"] == 0:
@@ -244,6 +254,7 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 	# O sinal retorna [resultado, código HTTP, cabeçalhos, corpo].
 
 	salvando = false
+	print(resposta)
 	if not resposta.get("ok", false):
 		push_warning(str(resposta.get(
 		"mensagem",

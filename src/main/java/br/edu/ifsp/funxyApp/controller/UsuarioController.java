@@ -59,6 +59,7 @@ public class UsuarioController {
     public List<TrilhaProgressoDto> retornarTrilhas(
             @AuthenticationPrincipal Long usuarioId
     ){
+        System.out.println("OIIDIADOASDIAI");
         return progressoUsuarioService.buscarTrilhas(usuarioId);
     }
 

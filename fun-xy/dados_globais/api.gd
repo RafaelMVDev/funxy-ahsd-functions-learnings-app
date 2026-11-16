@@ -128,7 +128,7 @@ func requisitar(
 
 	var versao_original: int = Sessao.versao_sessao
 	var token_enviado: String = Sessao.access_token
-
+	
 	var resposta: Dictionary = await _enviar(
 		metodo, rota, corpo, token_enviado
 	)
@@ -242,9 +242,11 @@ func _enviar(
 		headers.append("Content-Type: application/json")
 
 	if not token.is_empty():
+		print("ADICIONANDO BEARER "+ token)
 		headers.append("Authorization: Bearer " + token)
 
 	var url: String = Sessao.API_BASE_URL.trim_suffix("/") + rota
+	print(url)
 	var erro: int = http.request(url, headers, metodo, corpo)
 
 	if erro != OK:
