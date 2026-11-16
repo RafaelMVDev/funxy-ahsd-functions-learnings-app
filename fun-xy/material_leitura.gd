@@ -5,6 +5,9 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#fazer a verificação do status da atv
+	#if id_trilha_leitura in trilhas_atividades_lidas:
+	#      aplica estilo diferente no botão
 	pass # Replace with function body.
 
 func _pressed() -> void:
