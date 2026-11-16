@@ -61,6 +61,10 @@ func aplicar_estilo_incompleto() -> void:
 	estilo_botao.bg_color = Color("df6316ff") 
 	add_theme_stylebox_override("normal", estilo_botao)
 	
+	var estilo_hover = estilo_botao.duplicate()
+	estilo_hover.set_border_width_all(6)
+	add_theme_stylebox_override("hover", estilo_hover)
+	
 func aplicar_estilo_concluido() -> void:
 	var estilo_botao = StyleBoxFlat.new()
 	estilo_botao.set_border_width_all(4)
@@ -68,8 +72,13 @@ func aplicar_estilo_concluido() -> void:
 	estilo_botao.border_color = Color(1.0, 1.0, 1.0, 1.0) 
 	estilo_botao.bg_color = Color("418af9") 
 	add_theme_stylebox_override("normal", estilo_botao)
+	
+	var estilo_hover = estilo_botao.duplicate()
+	estilo_hover.set_border_width_all(6)
+	add_theme_stylebox_override("hover", estilo_hover)
+	
 	text = "✔"
-
+	
 func aplicar_estilo_bloqueado() -> void:
 	var estilo_botao = StyleBoxFlat.new()
 	estilo_botao.set_border_width_all(4)
