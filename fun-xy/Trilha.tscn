@@ -375,6 +375,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="Unidade1" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=933817915]
+visible = false
 custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
@@ -429,7 +430,7 @@ theme_override_constants/margin_bottom = 15
 
 [node name="Label2" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade1/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=539877335]
 layout_mode = 2
-text = "Funções Afim"
+text = "Função Afim"
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade1/VBoxContainer/MarginContainer/Unidade1" unique_id=615566002]
 clip_children = 2
@@ -548,6 +549,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Unidade2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=714555870]
+visible = false
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
@@ -602,7 +604,7 @@ theme_override_constants/margin_bottom = 15
 
 [node name="Label2" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade2/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=1893126615]
 layout_mode = 2
-text = "Funções Quadrática"
+text = "Função Quadrática"
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade2/VBoxContainer/MarginContainer/Unidade1" unique_id=1496607949]
 clip_children = 2
@@ -649,7 +651,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
-text = "1
+text = "4
 "
 script = ExtResource("8_8w561")
 id_da_trilha = 2
@@ -672,7 +674,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
-text = "2
+text = "5
 "
 script = ExtResource("8_8w561")
 id_da_trilha = 2
@@ -694,7 +696,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
-text = "3
+text = "6
 "
 script = ExtResource("8_8w561")
 id_da_trilha = 2
@@ -720,63 +722,44 @@ icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer" unique_id=1388279305]
-visible = false
+[node name="Unidade3" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=1315660818]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3" unique_id=1223451784]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3" unique_id=108449922]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Area trilha" type="Control" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer" unique_id=1930510527]
-custom_minimum_size = Vector2(0, 640)
-custom_maximum_size = Vector2(-1, 650)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer/Area trilha" unique_id=1471138998]
-layout_mode = 0
-offset_right = 353.0
-offset_bottom = 400.0
-texture = ExtResource("7_j18ad")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3" unique_id=425801257]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2" unique_id=2066294000]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer" unique_id=432950697]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
 
-[node name="Unidade1" type="BoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer" unique_id=811372259]
+[node name="Unidade1" type="BoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer" unique_id=1118375922]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer/Unidade1" unique_id=2084278165]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1" unique_id=1987429922]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_u80dp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer/Unidade1/PanelContainer" unique_id=156430878]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer" unique_id=1062993756]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=2049411658]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=1469809374]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 5
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer" unique_id=1883063859]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer" unique_id=1071398437]
 layout_mode = 2
 texture = ExtResource("5_wei45")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=301106877]
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=1075434711]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -785,57 +768,55 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "UNIDADE 1"
+text = "UNIDADE 3"
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=1344980940]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=508844986]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 15
 
-[node name="Label2" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=1840495939]
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=854042907]
 layout_mode = 2
-text = "Funções Afim"
+text = "Função Quadrática"
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer/Unidade1" unique_id=865949154]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1" unique_id=1894647057]
 clip_children = 2
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_abqas")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/MarginContainer/Unidade1/PanelContainer2" unique_id=1184569134]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer2" unique_id=1276188762]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("6_kg341")
 expand_mode = 3
 
-[node name="Area trilha" type="Control" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2" unique_id=1366931475]
-custom_minimum_size = Vector2(0, 640)
-custom_maximum_size = Vector2(-1, 650)
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer" unique_id=542962704]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rb775")
+
+[node name="Control" type="Control" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/PanelContainer" unique_id=1910521553]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/Area trilha" unique_id=674109263]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/PanelContainer/Control" unique_id=1300849064]
 layout_mode = 0
-offset_left = 139.0
-offset_top = -1.0
-offset_right = 223.0
-offset_bottom = 278.0
+offset_left = 159.0
+offset_top = -30.0
+offset_right = 245.0
+offset_bottom = 216.0
 texture = ExtResource("7_j18ad")
 
-[node name="1" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/Area trilha" unique_id=1509504465]
+[node name="1" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/PanelContainer/Control" unique_id=227456536]
 custom_minimum_size = Vector2(65, 65)
 custom_maximum_size = Vector2(65, 65)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.46400002
-anchor_top = 0.13700001
-anchor_right = 0.46400002
-anchor_bottom = 0.13700001
-offset_left = -30.040009
-offset_top = -32.680008
-offset_right = 29.959991
-offset_bottom = 27.319992
-grow_horizontal = 2
+layout_mode = 0
+offset_left = 147.0
+offset_top = 4.0
+offset_right = 212.0
+offset_bottom = 69.0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
@@ -843,23 +824,22 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
-text = "1
+text = "7
 "
+script = ExtResource("8_8w561")
+id_da_trilha = 3
+id_do_botao = 7
 
-[node name="2" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/Area trilha" unique_id=758604631]
+[node name="2" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/PanelContainer/Control" unique_id=611788986]
 custom_minimum_size = Vector2(65, 65)
 custom_maximum_size = Vector2(65, 65)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.601
-anchor_top = 0.277
-anchor_right = 0.601
-anchor_bottom = 0.277
-offset_left = -32.36
-offset_top = -32.28
-offset_right = 32.64
-offset_bottom = 32.72
-grow_horizontal = 2
+layout_mode = 0
+offset_left = 209.0
+offset_top = 98.0
+offset_right = 274.0
+offset_bottom = 163.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
@@ -867,23 +847,21 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
-text = "2
+text = "8
 "
+script = ExtResource("8_8w561")
+id_da_trilha = 3
+id_do_botao = 8
 
-[node name="3" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/Area trilha" unique_id=1920649915]
+[node name="3" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/PanelContainer/Control" unique_id=605256145]
 custom_minimum_size = Vector2(65, 65)
 custom_maximum_size = Vector2(65, 65)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.446
-anchor_top = 0.42700002
-anchor_right = 0.446
-anchor_bottom = 0.42700002
-offset_left = -32.559998
-offset_top = -32.28
-offset_right = 32.440002
-offset_bottom = 32.72
-grow_horizontal = 2
+layout_mode = 0
+offset_left = 143.0
+offset_top = 173.0
+offset_right = 208.0
+offset_bottom = 238.0
+size_flags_vertical = 8
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
@@ -891,43 +869,31 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
-text = "3
+text = "9
 "
+script = ExtResource("8_8w561")
+id_da_trilha = 3
+id_do_botao = 9
 
-[node name="Leitura" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/Area trilha" unique_id=262386945]
+[node name="Leitura" type="Button" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/PanelContainer/Control" unique_id=917864627]
 custom_minimum_size = Vector2(75, 75)
 custom_maximum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.20700002
-anchor_top = 0.24300002
-anchor_right = 0.20700002
-anchor_bottom = 0.24300002
-offset_left = -37.520004
-offset_top = -37.520004
-offset_right = 37.479996
-offset_bottom = 37.479996
-grow_horizontal = 2
+layout_mode = 0
+offset_left = 50.0
+offset_top = 78.0
+offset_right = 125.0
+offset_bottom = 153.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gtosd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gx75j")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_uh1mg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_70f3o")
 keep_pressed_outside = true
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer3/VBoxContainer2/Area trilha/Leitura" unique_id=1925774951]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -19.0
-offset_top = -20.0
-offset_right = 21.0
-offset_bottom = 20.0
-texture = ExtResource("9_jmjnk")
-expand_mode = 2
+icon = ExtResource("9_jmjnk")
+icon_alignment = 1
+expand_icon = true
 
 [node name="HboxBAIXO" type="HBoxContainer" parent="." unique_id=892294223]
 custom_minimum_size = Vector2(360, 70)
