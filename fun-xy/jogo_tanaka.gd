@@ -90,6 +90,7 @@ func _ready() -> void:
 	queue_redraw()
 	
 	var tentativas = Sessao.buscar_tentativas(trilha, atv)
+	print(tentativas)
 	if tentativas:
 		for tentativa in tentativas:
 			if tentativa["status"] == false:
