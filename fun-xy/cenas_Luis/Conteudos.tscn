@@ -167,7 +167,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("1_njqnh")
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=1159484067]
+[node name="Label_Moeda" type="Label" parent="VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=1159484067]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1, -1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -200,7 +201,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("2_j1thl")
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/HBoxContainer2" unique_id=493614168]
+[node name="Label_XP" type="Label" parent="VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/HBoxContainer2" unique_id=493614168]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, -1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -233,7 +235,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("3_7qexj")
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer3" unique_id=1545891568]
+[node name="Label_Sequencia" type="Label" parent="VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer3" unique_id=1545891568]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, -1)
 layout_mode = 2
 size_flags_horizontal = 3
