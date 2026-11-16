@@ -6,6 +6,7 @@ var trilhas: Array = []
 var conquistas: Array = []
 var itens: Array = []
 var carregado: bool = false
+var ranking_xp:Array = []
 
 # Exemplo: atividades_por_id[11] contém os dados da atividade 11.
 var atividades_por_id: Dictionary = {}
@@ -13,7 +14,7 @@ var atividades_por_id: Dictionary = {}
 
 # Recebe só o objeto "jogo", seja do login ou da rota GET /jogo.
 func carregar_catalogo(jogo: Dictionary) -> bool:
-	print("TESATAEAS")
+
 	#print(jogo)
 	var novas_trilhas = jogo.get("trilhas")
 	var novas_conquistas = jogo.get("conquistas")
@@ -48,7 +49,26 @@ func carregar_catalogo(jogo: Dictionary) -> bool:
 func buscar_atividade(atividade_id: int) -> Dictionary:
 	return atividades_por_id.get(atividade_id, {})
 
+func carregar_ranking() -> bool:
+	var resposta: Dictionary = await Api.requisitar(
+		HTTPClient.METHOD_GET,
+		"/jogo/ranking"
+	)
 
+	if not resposta["ok"]:
+		push_warning("Erro ao carregar ranking: " + str(resposta["mensagem"]))
+		return false
+
+	# O Api já converteu o JSON. A rota retorna uma lista de jogadores.
+	var dados = resposta["dados"]
+
+	if not (dados is Array):
+		push_warning("O ranking retornou em um formato inválido.")
+		return false
+
+	# Uma lista vazia também é válida: significa que não há jogadores.
+	ranking_xp = dados
+	return true
 # Use com "await". Faz uma requisição apenas quando for chamada.
 # O HTTPRequest é criado aqui; não precisa adicionar um nó pelo editor.
 func carregar_da_api() -> bool:

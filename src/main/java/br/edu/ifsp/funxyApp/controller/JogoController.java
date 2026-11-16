@@ -1,6 +1,7 @@
 package br.edu.ifsp.funxyApp.controller;
 
 
+import br.edu.ifsp.funxyApp.dto.jogo.RankingJogadorDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,5 +48,11 @@ public class JogoController {
     @GetMapping("/itens")
     public List<JogoResponseDto.Item> buscarItens() {
         return jogoService.buscarItens();
+    }
+
+    // GET /jogo/ranking
+    @GetMapping("/ranking")
+    public List<RankingJogadorDto> buscarRanking() {
+        return jogoService.buscarRanking();
     }
 }

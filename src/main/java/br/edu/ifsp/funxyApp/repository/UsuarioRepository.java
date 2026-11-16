@@ -20,7 +20,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     boolean existsByEmail(String email);
 
     boolean existsByNome(String nome);
-
+    /* Pra ranking de usuario */
+    List<Usuario> findTop15ByOrderByXpDescIdAsc();
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<Usuario> findUsuarioById(Long id);
 
