@@ -1,5 +1,8 @@
 extends Control
 
+@onready var foto_perfil: TextureRect = %FotoPerfil
+@onready var seletor_arquivo: FileDialog = %SeletorArquivo
+
 @onready var label_nome: RichTextLabel = %RichTextLabel
 
 var nome = str(Sessao.player['nome'])
@@ -20,6 +23,10 @@ var icon_sol_azul = preload("res://images/icones/tema_claro_sol_azul.svg")
 func _ready() -> void:
 	label_nome.text = nome
 	label_nome.visible = true
+	
+	if FileAccess.file_exists("user://avatar_usuario.png"):
+		var imagem = Image.load_from_file("user://avatar_usuario.png")
+		foto_perfil.texture = ImageTexture.create_from_image(imagem)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,3 +58,23 @@ func _on_button_home_pressed() -> void:
 func _on_button_deslogar_pressed() -> void:
 	Api.sair()
 	get_tree().change_scene_to_file("res://cadastro_login.tscn")
+
+
+func _on_button_trocar_foto_pressed() -> void:
+	seletor_arquivo.popup_centered(Vector2i(600, 400))
+	
+func _on_seletor_arquivo_file_selected(caminho_arquivo: String):
+	print("Arquivo selecionado: ", caminho_arquivo)
+	
+	# Carrega a imagem direto do caminho selecionado
+	var imagem = Image.load_from_file(caminho_arquivo)
+	
+	if imagem != null:
+		print("Imagem carregada com sucesso! Tamanho: ", imagem.get_size())
+		var textura = ImageTexture.create_from_image(imagem)
+		foto_perfil.texture = textura
+		
+		# Salva localmente para persistir
+		imagem.save_png("user://avatar_usuario.png")
+	else:
+		print("ERRO: Não foi possível ler a imagem nesse caminho.")

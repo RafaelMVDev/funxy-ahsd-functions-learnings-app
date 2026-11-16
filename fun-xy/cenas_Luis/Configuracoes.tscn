@@ -35,6 +35,10 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6hchu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_di2w4"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn38w"]
 content_margin_left = 20.0
 content_margin_top = 20.0
@@ -164,15 +168,31 @@ size_flags_vertical = 0
 theme_override_constants/separation = 18
 
 [node name="PanelFOTO" type="PanelContainer" parent="PanelContainer2/HBoxContainer" unique_id=2024642400]
+clip_children = 1
 custom_minimum_size = Vector2(75, 75)
 custom_maximum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ujvkh")
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer2/HBoxContainer/PanelFOTO" unique_id=252770242]
+[node name="FotoPerfil" type="TextureRect" parent="PanelContainer2/HBoxContainer/PanelFOTO" unique_id=252770242]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("2_u4eu3")
-stretch_mode = 5
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ButtonTrocarFoto" type="Button" parent="PanelContainer2/HBoxContainer/PanelFOTO" unique_id=7991611]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6hchu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_di2w4")
+
+[node name="SeletorArquivo" type="FileDialog" parent="PanelContainer2/HBoxContainer/PanelFOTO" unique_id=1435324796]
+unique_name_in_owner = true
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png, *.jpg, *.jpeg ; Imagens")
+use_native_dialog = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer2/HBoxContainer" unique_id=1061354469]
 unique_name_in_owner = true
@@ -584,5 +604,7 @@ layout_mode = 2
 texture_normal = ExtResource("7_pjwo2")
 stretch_mode = 3
 
+[connection signal="pressed" from="PanelContainer2/HBoxContainer/PanelFOTO/ButtonTrocarFoto" to="." method="_on_button_trocar_foto_pressed"]
+[connection signal="file_selected" from="PanelContainer2/HBoxContainer/PanelFOTO/SeletorArquivo" to="." method="_on_seletor_arquivo_file_selected"]
 [connection signal="pressed" from="PanelCONFIGS/VBoxContainer/Deslogar/Button" to="." method="_on_button_deslogar_pressed"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer/ButtonHome" to="." method="_on_button_home_pressed"]
