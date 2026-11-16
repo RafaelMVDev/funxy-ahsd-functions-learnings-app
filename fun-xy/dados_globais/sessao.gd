@@ -212,7 +212,7 @@ func cabecalhos_autenticados() -> PackedStringArray:
 	])
 
 
-func atualizarProgresso() -> bool:
+func atualizarProgresso() -> bool: #Mas não salva o status né
 	# Busca o progresso atualizado do jogador autenticado.
 	var resposta: Dictionary = await Api.requisitar(
 		HTTPClient.METHOD_GET,

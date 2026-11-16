@@ -121,6 +121,7 @@ theme_override_constants/separation = 19
 alignment = 1
 
 [node name="DisplayPontuacao" type="Label" parent="PanelContainer/VBoxContainer" unique_id=996256280]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 45
@@ -150,7 +151,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6t4ox")
 layout_mode = 2
 theme_override_constants/separation = -4
 
-[node name="Pontuacao" type="Label" parent="PanelContainer/VBoxContainer/BoxPontuacao" unique_id=1019265030]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/BoxPontuacao" unique_id=1019265030]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 28

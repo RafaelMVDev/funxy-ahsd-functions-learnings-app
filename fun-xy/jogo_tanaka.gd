@@ -26,8 +26,8 @@ var dados_fase
 
 """Adicionado (Morales): variaveis uteis para salvamento e funcionalidade de salvar uuid tentativa"""
 var tentativa_uuid: String #Referente ao id da tentativa para salvamento no banco
-var atividade_id: int = 1 # Dps ver como vai puxar isso
-var rota_salvar : String = "/progresso/pratica/%d/salvar" % [atv]
+var atividade_id: int  # Dps ver como vai puxar isso
+var rota_salvar : String 
 
 
 
@@ -66,9 +66,11 @@ func _gerar_uuid_tentativa() -> String:
 func _ready() -> void:
 	trilha = DadosGlobais.trilha_atual 
 	atv = DadosGlobais.atv_atual 
+	atividade_id = DadosGlobais.atv_atual 
 	menu_vitoria.scale = Vector2.ZERO
 	menu_vitoria.hide()
 	dados_fase = DadosJogo.buscar_atividade(atv)
+	rota_salvar = "/progresso/pratica/%d/salvar" % [atv]
 
 	#O nó do aplicativo chama a função _iniciar_jogo
 	#Passa como argumento o id da atividade que o player selecionou
@@ -88,8 +90,10 @@ func _ready() -> void:
 	queue_redraw()
 	
 	var tentativas = Sessao.buscar_tentativas(trilha, atv)
+	print("=========================== TENTATIVAS ==================================")
+	print(tentativas)
 	print(Sessao.player_trilhas)
-	if tentativas: #verificar se o godot entende lista vazia como false
+	if tentativas:
 		for tentativa in tentativas:
 			if tentativa["status"] == false:
 				print("ACHOU TENTATIVA INCOMPLETA")
@@ -101,16 +105,16 @@ func _ready() -> void:
 				lista_funcoes = dados_partida["listaFuncoes"]
 				lista_dominios = dados_partida["listaDominios"]
 				tentativa_uuid = str(dados_partida.get("tentativaUuid", ""))
-				quantidade_movimentos = int(dados_partida.get("movimentos", 0))
+				quantidade_movimentos = dados_partida["movimentos"]
 				print(tentativa_partida)
 	
 	#logica para a nova tentativa
 	
 func _reiniciar_partida(): 
+	if status_partida == "continuacao" and id_tentativa != null:
+		Sessao.atualizar_status(trilha, atv, id_tentativa)
+	
 	get_tree().reload_current_scene()
-	#PRECISA GERAR UM NOVO UUID DA PARTIDA AQUI E SALVAR EM ALGUM LUGAR!!!
-	#Adicionado (morales)
-	tentativa_uuid = _gerar_uuid_tentativa()
 	
 func _on_exibir_funcoes_antigas():
 	painel_funcoes.visible = not painel_funcoes.visible
@@ -141,56 +145,25 @@ func _resetar():
 	dominio_armazenado = ""
 
 func _carregar_vitoria():
-	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos) #E pontuação
+	if status_partida == "continuacao":
+		Sessao.atualizar_status(trilha, atv, id_tentativa)
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_property(menu_vitoria, "scale", Vector2(1.0, 1.0), 0.5)
 	
-	if status_partida == "continuacao":
-		Sessao.atualizar_status(trilha, atv, id_tentativa)
+	var conclusao = true
+	await salvar_progresso_atividade_api(conclusao)
+	
+	var pontuacao = dados_fase["xpBase"] + dados_fase["xpBase"] / (1 + (quantidade_movimentos * 0.1))
+	
+	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos, pontuacao) #E pontuação
+	
 	#else:
 		#Criar uma função para criar uma nova tentativa de status true
 	
 	#Calculo da pontuação
 	#Atualizar o xp do player
 		
-		
-		
-	""" ==== Comentado(Morales) vvvvvvv: Novo formato de dicionario para api mais simplificado ==== """
-	
-	#var dic_para_api = {
-			#"trilhaId": 1, #Obtido da API quando a fase carrega
-			#"atividadeId": 5, #Obtido da API quando a fase carrega
-			#"tentativa": {
-			#"tentativaUuid":tentativa_uuid, #Alterado(Morales): identificador Unico da tentativa do player na mesma atividade
-			#"concluida": true, #Alterado(Morales): True: fase concluida, False: em andamento
-			#"progressoEspecifico": {
-				#"listaFuncoes": lista_funcoes,
-				#"listaFuncoesValidas": lista_funcoes_validas,
-				#"listaDominios": lista_dominios,
-				#"movimentos": quantidade_movimentos
-			#}
-		#}
-	#}
-	"""
-	var dic_para_api = {
-    # Gerado ao iniciar a tentativa ou recuperado da API ao continuar.
-		"tentativaUuid": tentativa_uuid,
-		"concluida": true, #true ao concluir, false ao salvar em andamento.
-		"listaFuncoes": lista_funcoes,
-		"listaFuncoesValidas": lista_funcoes_validas,
-		"listaDominios": lista_dominios,
-		"movimentos": quantidade_movimentos
-	}
-	print(dic_para_api)
-	"""
-	
-	"""Adicionado Morales: função para montar requisição para api e tratar resultado"""
-	var conclusao = true
-	await salvar_progresso_atividade_api(conclusao)
-	print("======================== ATUALIZANDO PROGRESSO ======================")
-	Sessao.atualizarProgresso()
-
 func sair_da_partida() -> void:
 	#Enviar dados para a API
 	#if status_partida == "continuacao":
@@ -211,9 +184,6 @@ func sair_da_partida() -> void:
 	print(quantidade_movimentos)
 	SceneTransition.change_scene("res://Trilha.tscn")
 		
-	
-	
-""" Adicionado morales: funcao que manda uma requisicao pra api salvar"""
 func salvar_progresso_atividade_api(concluida: bool) -> bool:
 	if salvando: #Evita enviar 2 requests antes do primeiro ser finalizado
 		return false
@@ -238,11 +208,9 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 
 	# Inicia o POST com o token do jogador e o corpo em JSON.
 	salvando = true
-	print("======================ATIVIDADE_ID==================")
-	print(atv)
 	var resposta := await Api.requisitar(
 		HTTPClient.METHOD_POST,
-		"/progresso/pratica/%d/salvar" % [atv],
+		rota_salvar,
 		JSON.stringify(dados),
 		true
 	)
@@ -294,6 +262,7 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 		push_warning("O progresso foi salvo, mas não foi possível atualizar as trilhas da sessão.")
 
 	# O salvamento foi confirmado, mesmo se a atualização da sessão falhar.
+	print("================ Progresso Salvo ==============")
 	return true
 	
 
