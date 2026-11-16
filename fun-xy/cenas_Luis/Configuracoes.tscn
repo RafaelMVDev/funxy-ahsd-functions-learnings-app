@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dwdynpq2vpjd2" path="res://images/icones_luis/Ranking.png" id="5_rwvof"]
 [ext_resource type="Texture2D" uid="uid://322eclljkepr" path="res://images/icones_luis/Perfil.png" id="6_0d87y"]
 [ext_resource type="Texture2D" uid="uid://bgh2alpbauwbe" path="res://images/icones_luis/ConfigBranco.png" id="7_pjwo2"]
+[ext_resource type="Texture2D" uid="uid://dr2mqu3xdvj7" path="res://images/Deslogar_icone.png" id="9_pd53x"]
 [ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="10_wsnq7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
@@ -96,6 +97,27 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hchu"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee22i"]
+bg_color = Color(1, 0.37863827, 0.39058366, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pd53x"]
+bg_color = Color(0.21739751, 0.30630088, 0.68326783, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sinh"]
 bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 
@@ -153,11 +175,12 @@ texture = ExtResource("2_u4eu3")
 stretch_mode = 5
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer2/HBoxContainer" unique_id=1061354469]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_font_sizes/normal_font_size = 14
-theme_override_font_sizes/bold_font_size = 14
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
 text = "[b]Nome de Usuário[/b]"
 fit_content = true
@@ -192,6 +215,7 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="Aparencia" type="VBoxContainer" parent="PanelCONFIGS/VBoxContainer" unique_id=612237702]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -301,6 +325,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_kt402")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2uhnc")
 
 [node name="Separador" type="PanelContainer" parent="PanelCONFIGS/VBoxContainer" unique_id=1944588965]
+visible = false
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rb775")
@@ -399,6 +424,43 @@ text = "Perfil Privado"
 [node name="CheckButton" type="CheckButton" parent="PanelCONFIGS/VBoxContainer/Privacidade/PanelContainer" unique_id=2092465814]
 layout_mode = 2
 size_flags_horizontal = 8
+
+[node name="Separador3" type="PanelContainer" parent="PanelCONFIGS/VBoxContainer" unique_id=23165121]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rb775")
+
+[node name="Deslogar" type="VBoxContainer" parent="PanelCONFIGS/VBoxContainer" unique_id=1119786607]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Button" type="Button" parent="PanelCONFIGS/VBoxContainer/Deslogar" unique_id=728474432]
+custom_minimum_size = Vector2(130, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_6hchu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ee22i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pd53x")
+
+[node name="TextureRect" type="TextureRect" parent="PanelCONFIGS/VBoxContainer/Deslogar/Button" unique_id=700431665]
+custom_minimum_size = Vector2(35, 30)
+custom_maximum_size = Vector2(35, 30)
+layout_mode = 0
+offset_left = 15.0
+offset_right = 115.0
+offset_bottom = 32.0
+texture = ExtResource("9_pd53x")
+
+[node name="Label" type="Label" parent="PanelCONFIGS/VBoxContainer/Deslogar/Button" unique_id=1215511435]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 7.0
+offset_right = 115.0
+offset_bottom = 25.0
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Deslogar"
 
 [node name="HboxBAIXO" type="HBoxContainer" parent="." unique_id=720697398]
 custom_minimum_size = Vector2(360, 0)
@@ -522,4 +584,5 @@ layout_mode = 2
 texture_normal = ExtResource("7_pjwo2")
 stretch_mode = 3
 
+[connection signal="pressed" from="PanelCONFIGS/VBoxContainer/Deslogar/Button" to="." method="_on_button_deslogar_pressed"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer/ButtonHome" to="." method="_on_button_home_pressed"]

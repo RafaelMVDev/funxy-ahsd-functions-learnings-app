@@ -1,5 +1,9 @@
 extends Control
 
+@onready var label_nome: RichTextLabel = %RichTextLabel
+
+var nome = str(Sessao.player['nome'])
+
 @onready var sol = %TextureRectSol
 @onready var lua = %TextureRectLua
 @onready var texto_sol = %LabelClaro
@@ -11,9 +15,11 @@ extends Control
 var icon_sol_branco = preload("res://images/icones/aparencia_sol_branco.svg")
 var icon_lua_branca = preload("res://images/icones/tema_escuro_lua_branca.svg")
 var icon_sol_azul = preload("res://images/icones/tema_claro_sol_azul.svg")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	label_nome.text = nome
+	label_nome.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,4 +46,8 @@ func _on_button_pressed() -> void:
 
 func _on_button_home_pressed() -> void:
 	get_tree().change_scene_to_file("res://cenas_Luis/Conteudos.tscn")
-	pass # Replace with function body.
+
+
+func _on_button_deslogar_pressed() -> void:
+	Api.sair()
+	get_tree().change_scene_to_file("res://cadastro_login.tscn")
