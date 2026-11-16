@@ -179,26 +179,25 @@ public class ProgressoUsuarioService {
     }
 
 
-    private void validarSalvamentoPratica(Long usuarioId, AtividadePratica pratica) {
+    private void validarSalvamentoPratica(
+            Long usuarioId,
+            AtividadePratica pratica
+    ) {
         Long trilhaId = pratica.getIdTrilha();
         Integer numeroAtual = pratica.getNumeroAtividade();
-
-        if (praticas.existeOutraPraticaAberta(usuarioId, trilhaId, pratica.getId())) {
-            throw new ResponseStatusException(
-                    HttpStatus.CONFLICT,
-                    "Conclua a prática em andamento antes de salvar outra nesta trilha."
-            );
-        }
 
         Optional<Integer> anterior =
                 atividades.buscarNumeroPraticaAnterior(trilhaId, numeroAtual);
 
+        // A primeira prática da trilha não exige conclusão anterior.
         if (anterior.isEmpty()) {
-            return; // É a primeira prática da trilha.
+            return;
         }
 
         int numeroAnterior = anterior.get();
 
+        // Basta existir uma tentativa concluída na prática anterior.
+        // Uma nova tentativa aberta nessa prática não bloqueia o avanço.
         if (!praticas.concluiuPratica(usuarioId, trilhaId, numeroAnterior)) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,
