@@ -4,6 +4,8 @@ import br.edu.ifsp.funxyApp.dto.jogo.NomeUsuarioDto;
 import br.edu.ifsp.funxyApp.dto.jogo.SalvarConfiguracaoRequestDto;
 import br.edu.ifsp.funxyApp.dto.auth.UsuarioInicialResponseDto;
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
+import br.edu.ifsp.funxyApp.dto.usuario.AtualizarMoedasRequestDto;
+import br.edu.ifsp.funxyApp.dto.usuario.AtualizarXpRequestDto;
 import br.edu.ifsp.funxyApp.service.ProgressoUsuarioService;
 import br.edu.ifsp.funxyApp.service.UsuarioService;
 import jakarta.validation.Valid;
@@ -61,6 +63,32 @@ public class UsuarioController {
     ){
         System.out.println("OIIDIADOASDIAI");
         return progressoUsuarioService.buscarTrilhas(usuarioId);
+    }
+
+    // GET /api/usuario/me/perfil
+    @GetMapping("/perfil")
+    public UsuarioInicialResponseDto.Perfil buscarPerfil(
+            @AuthenticationPrincipal Long usuarioId
+    ) {
+        return usuarioService.buscarPerfil(usuarioId);
+    }
+
+    // PATCH /api/usuario/me/moedas
+    @PatchMapping("/moedas")
+    public UsuarioInicialResponseDto.Perfil atualizarMoedas(
+            @AuthenticationPrincipal Long usuarioId,
+            @Valid @RequestBody AtualizarMoedasRequestDto request
+    ) {
+        return usuarioService.atualizarMoedas(usuarioId, request);
+    }
+
+    // PATCH /api/usuario/me/xp
+    @PatchMapping("/xp")
+    public UsuarioInicialResponseDto.Perfil atualizarXp(
+            @AuthenticationPrincipal Long usuarioId,
+            @Valid @RequestBody AtualizarXpRequestDto request
+    ) {
+        return usuarioService.atualizarXp(usuarioId, request);
     }
 
 }

@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import br.edu.ifsp.funxyApp.dto.jogo.NomeUsuarioDto;
 import br.edu.ifsp.funxyApp.dto.jogo.SalvarConfiguracaoRequestDto;
+import br.edu.ifsp.funxyApp.dto.usuario.AtualizarMoedasRequestDto;
+import br.edu.ifsp.funxyApp.dto.usuario.AtualizarXpRequestDto;
 
 import java.util.List;
 
@@ -158,6 +160,62 @@ public class UsuarioService {
                 nomeEnum(config.getTema()),
                 config.getIdioma(),
                 config.getNotificacao()
+        );
+    }
+
+    // Busca somente os dados da tabela Usuario.
+    @Transactional(readOnly = true)
+    public UsuarioInicialResponseDto.Perfil buscarPerfil(Long usuarioId) {
+        Usuario usuario = buscarUsuarioOuFalhar(usuarioId);
+        return montarPerfil(usuario);
+    }
+
+    // Substitui o saldo de moedas pelo total informado.
+    @Transactional
+    public UsuarioInicialResponseDto.Perfil atualizarMoedas(
+            Long usuarioId,
+            AtualizarMoedasRequestDto request
+    ) {
+        Usuario usuario = buscarUsuarioOuFalhar(usuarioId);
+
+        usuario.setMoedas(request.moedas());
+        usuarios.save(usuario);
+
+        return montarPerfil(usuario);
+    }
+
+    // Substitui o XP pelo total informado.
+    @Transactional
+    public UsuarioInicialResponseDto.Perfil atualizarXp(
+            Long usuarioId,
+            AtualizarXpRequestDto request
+    ) {
+        Usuario usuario = buscarUsuarioOuFalhar(usuarioId);
+
+        usuario.setXp(request.xp());
+        usuarios.save(usuario);
+
+        return montarPerfil(usuario);
+    }
+
+    // Centraliza a busca usada pelos três métodos.
+    private Usuario buscarUsuarioOuFalhar(Long usuarioId) {
+        return usuarios.findById(usuarioId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Usuário não encontrado."
+                ));
+    }
+
+    // Monta somente os dados que serão enviados ao cliente.
+    private UsuarioInicialResponseDto.Perfil montarPerfil(Usuario usuario) {
+        return new UsuarioInicialResponseDto.Perfil(
+                usuario.getId(),
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.getSequencia(),
+                usuario.getMoedas(),
+                usuario.getXp()
         );
     }
 }
