@@ -16,9 +16,6 @@ public class ProgressoPratica extends Progresso {
     @Column(name = "lista_funcoes", nullable = false)
     private String listaFuncoes = "[]";
 
-    @Column(name = "lista_funcoes_validas", nullable = false)
-    private String listaFuncoesValidas = "[]";
-
     @Column(name = "lista_dominios", nullable = false)
     private String listaDominios = "[]";
 
@@ -41,10 +38,6 @@ public class ProgressoPratica extends Progresso {
         return listaFuncoes;
     }
 
-    public String getListaFuncoesValidas() {
-        return listaFuncoesValidas;
-    }
-
     public String getListaDominios() {
         return listaDominios;
     }
@@ -58,12 +51,10 @@ public class ProgressoPratica extends Progresso {
     }
     public void atualizarEstado(
             String listaFuncoes,
-            String listaFuncoesValidas,
             String listaDominios,
             int movimentos
     ) {
         this.listaFuncoes = listaFuncoes;
-        this.listaFuncoesValidas = listaFuncoesValidas;
         this.listaDominios = listaDominios;
         this.movimentos = movimentos;
     }

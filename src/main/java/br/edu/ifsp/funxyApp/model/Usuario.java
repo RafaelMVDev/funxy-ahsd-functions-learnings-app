@@ -22,13 +22,13 @@ public class Usuario {
     private String senha;
 
     @Column(name="sequencia")
-    private Integer sequencia;
+    private Integer sequencia = 0;
 
     @Column(name="moedas")
-    private Long moedas;
+    private Long moedas = 0L;
 
     @Column(name="xp")
-    private Long xp;
+    private Long xp = 0L;
 
 
     public Usuario() {}

@@ -1,15 +1,16 @@
 package br.edu.ifsp.funxyApp.service;
 
 import br.edu.ifsp.funxyApp.dto.jogo.JogoResponseDto;
-import br.edu.ifsp.funxyApp.model.AtividadeLeitura;
-import br.edu.ifsp.funxyApp.model.AtividadePratica;
-import br.edu.ifsp.funxyApp.model.Atividades;
-import br.edu.ifsp.funxyApp.model.ItemLoja;
-import br.edu.ifsp.funxyApp.model.ItemPasseBatalha;
-import br.edu.ifsp.funxyApp.model.Itens;
+import br.edu.ifsp.funxyApp.dto.jogo.RankingJogadorDto;
+import br.edu.ifsp.funxyApp.model.*;
 import br.edu.ifsp.funxyApp.repository.AtividadesRepository;
 import br.edu.ifsp.funxyApp.repository.ConquistasRepository;
 import br.edu.ifsp.funxyApp.repository.ItensRepository;
+import br.edu.ifsp.funxyApp.repository.UsuarioRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,16 +26,22 @@ public class JogoService {
 
     private final AtividadesRepository atividades;
     private final ConquistasRepository conquistas;
+    private final UsuarioRepository usuarios;
     private final ItensRepository itens;
+    private final ObjectMapper objectMapper;
 
     public JogoService(
             AtividadesRepository atividades,
             ConquistasRepository conquistas,
-            ItensRepository itens
+            UsuarioRepository usuarios,
+            ItensRepository itens,
+            ObjectMapper objectMapper
     ) {
         this.atividades = atividades;
         this.conquistas = conquistas;
         this.itens = itens;
+        this.objectMapper = objectMapper;
+        this.usuarios = usuarios;
     }
 
     public JogoResponseDto carregarTudo() {
@@ -88,6 +95,24 @@ public class JogoService {
                 .toList();
     }
 
+    private ArrayNode converterColisoes(String json) {
+        try {
+            JsonNode dados = objectMapper.readTree(json);
+
+            if (!(dados instanceof ArrayNode array)) {
+                throw new IllegalStateException(
+                        "As colisões da atividade devem ser um array JSON."
+                );
+            }
+
+            return array;
+        } catch (JsonProcessingException e) {
+            throw new IllegalStateException(
+                    "As colisões da atividade contêm um JSON inválido.", e
+            );
+        }
+    }
+
     private JogoResponseDto.Atividade montarAtividade(Atividades atividade) {
         JogoResponseDto.ConteudoAtividade conteudo;
 
@@ -99,7 +124,7 @@ public class JogoService {
         } else if (atividade instanceof AtividadePratica pratica) {
             conteudo = new JogoResponseDto.Pratica(
                     pratica.getMediaMovimentos(),
-                    pratica.getColisoesMalha()
+                    converterColisoes(pratica.getColisoesMalha())
             );
         } else {
             throw new IllegalStateException(
@@ -140,7 +165,24 @@ public class JogoService {
                 xpNecessario
         );
     }
+    @Transactional(readOnly = true)
+    public List<RankingJogadorDto> buscarRanking() {
+        List<Usuario> jogadores = usuarios.findTop15ByOrderByXpDescIdAsc();
+        List<RankingJogadorDto> ranking = new ArrayList<>();
 
+        for (int i = 0; i < jogadores.size(); i++) {
+            Usuario usuario = jogadores.get(i);
+
+            ranking.add(new RankingJogadorDto(
+                    i + 1,
+                    usuario.getId(),
+                    usuario.getNome(),
+                    usuario.getXp()
+            ));
+        }
+
+        return ranking;
+    }
     private static String nomeEnum(Enum<?> valor) {
         return valor == null ? null : valor.name();
     }

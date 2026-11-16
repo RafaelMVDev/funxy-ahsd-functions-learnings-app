@@ -7,8 +7,6 @@ extends Control
 @onready var botao_funcoes_antigas = $%BotaoFuncoesAntigas
 @onready var visor_funcao = %VisorFuncao
 @onready var virsor_dominio = %VisorDominio
-"""Adicionado Morales : criei um node pra fazer http requests"""
-@onready var http_salvamento: HTTPRequest = $SalvarProgressoHTTP
 
 var quantidade_movimentos: int = 0
 var funcao_armazenada: String   #Referente ao visor
@@ -21,17 +19,22 @@ var status_partida:  String = "nova"
 var tentativa_partida
 var dados_partida
 var id_tentativa #Pega da api caso haja um status == false
-var trilha: int = 1 #É dinamico com base nas propriedades do botão que o chamou
-var atv: int = 1 #É dinamico com base nas propriedades do botão que o chamou
+var trilha: int
+var atv: int 
+var dados_fase
+
 
 """Adicionado (Morales): variaveis uteis para salvamento e funcionalidade de salvar uuid tentativa"""
 var tentativa_uuid: String #Referente ao id da tentativa para salvamento no banco
-var atividade_id: int = 1 # Dps ver como vai puxar isso
-var rota_salvar : String = "%s/progresso/pratica/%d/salvar" % [Sessao.API_BASE_URL,atividade_id]
+var atividade_id: int  # Dps ver como vai puxar isso
+var rota_salvar : String 
+
+
 
 var salvando: bool = false
 var fase_concluida: bool = false
 var conclusao_confirmada: bool = false
+
 
 """Adicionado (Morales) - Função que gera um novo uuid para cada tentativa da atividade:"""
 func _gerar_uuid_tentativa() -> String:
@@ -59,9 +62,16 @@ func _gerar_uuid_tentativa() -> String:
    		hex.substr(20, 12)
 	]
 
+
 func _ready() -> void:
+	trilha = DadosGlobais.trilha_atual 
+	atv = DadosGlobais.atv_atual 
+	atividade_id = DadosGlobais.atv_atual 
 	menu_vitoria.scale = Vector2.ZERO
 	menu_vitoria.hide()
+	dados_fase = DadosJogo.buscar_atividade(atv)
+	rota_salvar = "/progresso/pratica/%d/salvar" % [atv]
+
 	#O nó do aplicativo chama a função _iniciar_jogo
 	#Passa como argumento o id da atividade que o player selecionou
 	#Buscar na API os dados da atividade correspondente ao id
@@ -80,8 +90,7 @@ func _ready() -> void:
 	queue_redraw()
 	
 	var tentativas = Sessao.buscar_tentativas(trilha, atv)
-	
-	if tentativas: #verificar se o godot entende lista vazia como false
+	if tentativas:
 		for tentativa in tentativas:
 			if tentativa["status"] == false:
 				id_tentativa = tentativa["progressoId"]
@@ -91,15 +100,13 @@ func _ready() -> void:
 				
 				lista_funcoes = dados_partida["listaFuncoes"]
 				lista_dominios = dados_partida["listaDominios"]
-				grafico.carregar_progresso()
+				tentativa_uuid = str(dados_partida.get("tentativaUuid", ""))
+				quantidade_movimentos = dados_partida["movimentos"]
 	
 	#logica para a nova tentativa
 	
 func _reiniciar_partida(): 
 	get_tree().reload_current_scene()
-	#PRECISA GERAR UM NOVO UUID DA PARTIDA AQUI E SALVAR EM ALGUM LUGAR!!!
-	#Adicionado (morales)
-	tentativa_uuid = _gerar_uuid_tentativa()
 	
 func _on_exibir_funcoes_antigas():
 	painel_funcoes.visible = not painel_funcoes.visible
@@ -130,54 +137,24 @@ func _resetar():
 	dominio_armazenado = ""
 
 func _carregar_vitoria():
-	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos) #E pontuação
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_property(menu_vitoria, "scale", Vector2(1.0, 1.0), 0.5)
 	
-	if status_partida == "continuacao":
-		Sessao.atualizar_status(trilha, atv, id_tentativa)
-	#else:
-		#Criar uma função para criar uma nova tentativa de status true
-		
-		
-		
-	""" ==== Comentado(Morales) vvvvvvv: Novo formato de dicionario para api mais simplificado ==== """
-	
-	#var dic_para_api = {
-			#"trilhaId": 1, #Obtido da API quando a fase carrega
-			#"atividadeId": 5, #Obtido da API quando a fase carrega
-			#"tentativa": {
-			#"tentativaUuid":tentativa_uuid, #Alterado(Morales): identificador Unico da tentativa do player na mesma atividade
-			#"concluida": true, #Alterado(Morales): True: fase concluida, False: em andamento
-			#"progressoEspecifico": {
-				#"listaFuncoes": lista_funcoes,
-				#"listaFuncoesValidas": lista_funcoes_validas,
-				#"listaDominios": lista_dominios,
-				#"movimentos": quantidade_movimentos
-			#}
-		#}
-	#}
-	"""
-	var dic_para_api = {
-    # Gerado ao iniciar a tentativa ou recuperado da API ao continuar.
-		"tentativaUuid": tentativa_uuid,
-		"concluida": true, #true ao concluir, false ao salvar em andamento.
-		"listaFuncoes": lista_funcoes,
-		"listaFuncoesValidas": lista_funcoes_validas,
-		"listaDominios": lista_dominios,
-		"movimentos": quantidade_movimentos
-	}
-	print(dic_para_api)
-	"""
-	
-	"""Adicionado Morales: função para montar requisição para api e tratar resultado"""
 	var conclusao = true
-	salvar_progresso_atividade_api(conclusao)
-
+	await salvar_progresso_atividade_api(conclusao)
+	
+	#Precisa somar com o valor Antigo!
+	var pontuacao = int(dados_fase["xpBase"] + dados_fase["xpBase"] / (1 + (quantidade_movimentos * 0.1)))
+	var moedas = dados_fase["moedaBase"] 
+	
+	await Sessao.atualizar_recompensas(pontuacao, moedas)
+	DadosJogo.carregar_ranking() 
+	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos, pontuacao) 
+	
+		
 func sair_da_partida() -> void:
 	#Enviar dados para a API
-	get_tree().change_scene_to_file("res://homepage.tscn")
 	#if status_partida == "continuacao":
 		#Atualizar os dados: 
 			#Lista_funcoes
@@ -185,53 +162,18 @@ func sair_da_partida() -> void:
 	
 	#else:
 		#Criar uma nova tentativa
-			
-		
-	
-	#DADOS
-	# quantidade_movimentos
-	# lista_funcoes_validas
-	# lista_dominios
-	# lista_funcoes, para a exibição das funções anteriores
-	# status = "incompleto"
-	"""todo: ==== Comentado(Morales) vvvvvvv: Novo formato de dicionario para api mais simplificado ===="""
-	#var dic_para_api = {
-			#"trilhaId": 1,
-			#"atividadeId": 5,
-			#"tentativa": {
-			#"concluida": false, #Alterado(Morales), True: pra bater com  com dic pra enviar
-			#"tentaiva_uuid": tentativa_uuid,
-			#"progressoEspecifico": {
-				#"listaFuncoes": lista_funcoes,
-				#"listaFuncoesValidas": lista_funcoes_validas,
-				#"listaDominios": lista_dominios,
-				#"movimentos": quantidade_movimentos
-			#}
-		#}
-	#}
+
 	var conclusao = false
-	salvar_progresso_atividade_api(conclusao)
-	#FORMATO DO DICIONARIO QUE TA SENDO ENVIADO AQUI EMBAIXO
-	"""todo: ==== Adicionado(Morales) vvvvvvv: Novo formato de dicionario para api mais simplificado ===="""
-	"""var dic_para_api = {
-    # Gerado ao iniciar a tentativa ou recuperado da API ao continuar.
-		"tentativaUuid": tentativa_uuid,
-		"concluida": false, #true ao concluir, false ao salvar em andamento.
-		"listaFuncoes": lista_funcoes,
-		"listaFuncoesValidas": lista_funcoes_validas,
-		"listaDominios": lista_dominios,
-		"movimentos": quantidade_movimentos
-	}"""
+	await salvar_progresso_atividade_api(conclusao)
+	Sessao.atualizarProgresso()
+	SceneTransition.change_scene("res://Trilha.tscn")
 		
-	
-	
-""" Adicionado morales: funcao que manda uma requisicao pra api salvar"""
 func salvar_progresso_atividade_api(concluida: bool) -> bool:
 	if salvando: #Evita enviar 2 requests antes do primeiro ser finalizado
 		return false
-
+	
 	#Token vazio = usuário nn logou, sem atividade_id tbm nn da 
-	if Sessao.access_token.is_empty() or atividade_id <= 0:
+	if Sessao.access_token.is_empty() or atv <= 0:
 		push_warning("Faça login e selecione uma atividade antes de salvar.")
 		return false
 
@@ -242,7 +184,7 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 
 	var dados := {
 		"tentativaUuid": tentativa_uuid,
-		"concluida": concluida,
+		"status": concluida,
 		"listaFuncoes": lista_funcoes,
 		"listaDominios": lista_dominios,
 		"movimentos": quantidade_movimentos
@@ -250,50 +192,58 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 
 	# Inicia o POST com o token do jogador e o corpo em JSON.
 	salvando = true
-	http_salvamento.timeout = 15.0 # verificar timeout
-
-	var erro := http_salvamento.request(
-		rota_salvar,
-		Sessao.cabecalhos_autenticados(), #Checar dados_globais/sessao.gd pra ver isso!
+	var resposta := await Api.requisitar(
 		HTTPClient.METHOD_POST,
-		JSON.stringify(dados)
+		rota_salvar,
+		JSON.stringify(dados),
+		true
 	)
 
-	if erro != OK:
+	if resposta["codigo"] == 0:
 		salvando = false
-		push_warning("Não foi possível iniciar o envio: " + error_string(erro))
+		push_warning("Não foi possível iniciar o envio: " + error_string(resposta["mensagem"]))
 		return false
-
 	# O sinal retorna [resultado, código HTTP, cabeçalhos, corpo].
-	var resposta: Array = await http_salvamento.request_completed
+
 	salvando = false
-
-	var resultado: int = resposta[0]
-	var codigo_http: int = resposta[1]
-	var corpo: PackedByteArray = resposta[3]
-
-	if resultado != HTTPRequest.RESULT_SUCCESS:
-		push_warning("Falha de conexão. Tente salvar novamente.")
+	if not resposta.get("ok", false):
+		push_warning(str(resposta.get(
+		"mensagem",
+		"Não foi possível salvar o progresso."
+		)))
 		return false
 
-	if codigo_http != 200:
-		push_warning("Erro HTTP %d: %s" % [codigo_http, corpo.get_string_from_utf8()])
+	# Api.requisitar() já converteu o JSON.
+	var tentativa = resposta.get("dados")
+
+	if not (tentativa is Dictionary):
+		push_warning("A API retornou um formato inesperado.")
 		return false
 
-	var tentativa = JSON.parse_string(corpo.get_string_from_utf8())
-	if not (tentativa is Dictionary) or not tentativa.has("progressoId"):
+	if not tentativa.has("progressoId"):
 		push_warning("A API respondeu sem o progressoId da tentativa.")
 		return false
 
-	conclusao_confirmada = tentativa.get("atividadeConcluida", false)
-	print(conclusao_confirmada)
-	print(concluida)
+	# Nome do campo definido no seu DTO Tentativa.
+	var confirmacao = tentativa.get("status")
+
+	if not (confirmacao is bool):
+		push_warning("A API respondeu sem um campo 'concluida' válido.")
+		return false
+
+	conclusao_confirmada = confirmacao
+
 	if concluida and not conclusao_confirmada:
 		push_warning("A API recebeu o progresso, mas a fase ainda consta como aberta.")
 		return false
 
-	print("Progresso salvo! ID: ", tentativa["progressoId"])
+	var atualizado: bool = await Sessao.atualizarProgresso()
+
+	if not atualizado:
+		push_warning("O progresso foi salvo, mas não foi possível atualizar as trilhas da sessão.")
+
 	return true
+	
 
 
 func _process(_delta: float) -> void:

@@ -11,14 +11,10 @@ extends Node2D
 @onready var efeito_sonoro_vitoria = $AudioVitoria
 
 signal vitoria()
-
-var dados_fase_api = [ #Simulação
-	{ "tipo": "inicio", "x": -5.0, "y": -5.0, "largura": 0.4, "altura": 0.4 },
-	{ "tipo": "fim", "x": 5.0, "y": 3.0, "largura": 0.4, "altura": 0.4 },
-	{ "tipo": "obstaculo", "x": 2.0, "y": 3.0, "largura": 1.0, "altura": 1.5 },
-	{ "tipo": "obstaculo", "x": -3.0, "y": -1.0, "largura": 0.8, "altura": 2.0 }
-]
-
+#var dados_fase = DadosJogo.buscar_atividade(DadosGlobais.atv_atual)
+#Não precisa passar trilha? 
+#Qual é a saida de buscar atv? é só as colisões ou também me pasa o xp?
+var dados_fase_api  
 var comeco_x: float
 var fim_x: float
 var limite_y: float
@@ -30,8 +26,11 @@ var alcance_x_max: float = 5.0
 var dados_partida: Array
 
 func _ready() -> void:
+	await jogo.ready
 	var PlanoCartesiano = get_parent()
 	var Malha = get_node("../MalhaPlanoCartesiano")
+	
+	dados_fase_api = jogo.dados_fase["conteudo"]["colisoesMalha"]
 
 	comeco_x = PlanoCartesiano.origem.x
 	fim_x = comeco_x + PlanoCartesiano.size.x
@@ -86,6 +85,7 @@ func carregar_progresso() -> void:
 	funcoes_exibidas.remover_funcoes_listadas
 	var counter = 0
 	var bus_idx = AudioServer.get_bus_index("Master")
+	var estado_anterior_audio = AudioServer.is_bus_mute(bus_idx)
 	AudioServer.set_bus_mute(bus_idx, true)
 	
 	for linha in jogo.lista_funcoes:
@@ -95,7 +95,7 @@ func carregar_progresso() -> void:
 		counter += 1
 		
 	await get_tree().create_timer(0.8).timeout
-	AudioServer.set_bus_mute(bus_idx, false)
+	AudioServer.set_bus_mute(bus_idx, estado_anterior_audio)
 		
 func definir_dominio(dominio: String) -> Array:
 	var x_min: float = alcance_x_min

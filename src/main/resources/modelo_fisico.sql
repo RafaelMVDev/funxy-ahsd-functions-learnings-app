@@ -189,7 +189,8 @@ CREATE TABLE Progresso (
                            id_usuario BIGINT NOT NULL,
                            id_atividade BIGINT NOT NULL,
                            datetime_conclusao TIMESTAMP,
-                           atividade_concluida BOOLEAN DEFAULT FALSE,
+                           status BOOLEAN DEFAULT FALSE,
+                           tipo VARCHAR(20) DEFAULT '',
 
 
 
@@ -207,7 +208,6 @@ CREATE TABLE Progresso (
 CREATE TABLE Progresso_Pratica (
                                    id_progresso BIGINT PRIMARY KEY,
                                    lista_funcoes TEXT DEFAULT '[]',
-                                   lista_funcoes_validas TEXT DEFAULT '[]',
                                    lista_dominios TEXT DEFAULT '[]',
                                    movimentos INT DEFAULT 0,
                                    tentativa_uuid UUID UNIQUE NOT NULL,
@@ -226,6 +226,17 @@ CREATE TABLE Progresso_Leitura (
                                        FOREIGN KEY (id_progresso)
                                            REFERENCES Progresso (id_progresso)
                                            ON DELETE CASCADE
+);
+
+CREATE TABLE Usuario_Foto (
+                              id_usuario BIGINT PRIMARY KEY,
+                              conteudo BLOB NOT NULL,
+                              tipo_conteudo VARCHAR(50) NOT NULL,
+
+                              CONSTRAINT fk_usuario_foto
+                                  FOREIGN KEY (id_usuario)
+                                      REFERENCES usuario (id_usuario)
+                                      ON DELETE CASCADE
 );
 
 
@@ -270,97 +281,3 @@ ALTER TABLE Atividades ADD CONSTRAINT ck_atividades_tipo
 
 ALTER TABLE Configuracao ADD CONSTRAINT ck_configuracao_tema
     CHECK (tema IN ('claro', 'escuro'));
--- DADOS MOCK
-
-
--- Usuario: admin@email.com
--- senha: 123456
-
-
----- DADO USUARIO MOCK
--- Sem início = não iniciada; só início = em andamento;
-
--- =========================================================
--- 2. USUÁRIA DE TESTE E CONFIGURAÇÃO
--- =========================================================
-
-SET AUTOCOMMIT FALSE;
-
--- Login: lia@funxy.example
--- Senha: FunxyDemo42!
--- XP: 20 + 40 + 40 + 20 = 120 pelas quatro atividades concluídas.
--- Moedas: 46 das atividades + 25 das conquistas - 30 da loja = 41.
-INSERT INTO Usuario (email, senha_hash, nome, sequencia, xp, moedas)
-VALUES (
-
-           'lia@funxy.example',
-           '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
-           'Lia Funxy',
-           3, 120, 41
-       );
-
---- INSERIR DADOS MOCK AQUI PRA PROGRRESSO E ATIVIDADES
-
--- =========================================================
--- 5. CONQUISTAS: DUAS DESBLOQUEADAS, UMA AINDA NO CATÁLOGO
--- =========================================================
-
-INSERT INTO Conquistas
-(id_conquista, nome, tipo, valor_condicao, descricao, moeda)
-VALUES
-    (-7151, 'Primeiro ponto', 'conclusao', 1, 'Conclua sua primeira atividade.', 10),
-    (-7152, 'Três dias no plano', 'sequencia', 3, 'Estude por três dias consecutivos.', 15),
-    (-7153, 'Dez passos à frente', 'conclusao', 10, 'Conclua dez atividades.', 30);
-
-INSERT INTO Conquista_Usuario_Acessa (id_usuario, id_conquista, data)
-SELECT id_usuario, -7151, datetime_conclusao
-FROM Progresso WHERE id_progresso = -7131
-UNION ALL
-SELECT id_usuario, -7152, datetime_conclusao
-FROM Progresso WHERE id_progresso = -7141;
-
--- =========================================================
--- 6. LOJA, PASSE E INVENTÁRIO
--- =========================================================
-
-INSERT INTO Itens (id_item, tipo, estilo, descricao, meta_dados) VALUES
-                                                                     (-7161, 'loja', 'avatar', 'Raposa Cartesiana',
-                                                                      '{"slug":"raposa-cartesiana","animacao":"idle"}'),
-                                                                     (-7162, 'passe', 'moldura', 'Moldura da Parábola',
-                                                                      '{"slug":"moldura-parabola","cor":"#EE9248"}');
-
-INSERT INTO Item_Loja (id_item, valor)
-VALUES (-7161, 30);
-
-INSERT INTO Item_Passe_Batalha (id_item, xp_necessario)
-VALUES (-7162, 100);
-
-INSERT INTO Inventario (id_usuario, id_item, equipado) VALUES
-                                                           (1, -7161, TRUE),
-                                                           (1, -7162, FALSE);
-
--- Sessão antiga já revogada; o login real deve criar uma nova sessão.
-/*INSERT INTO Sessoes
-(id_usuario, token_hash, criado_em, expira_em, revogado_em, nome_dispositivo)
-VALUES
-    (1, REPEAT('a', 64), CURRENT_DATE-2, CURRENT_DATE+28,
-     CURRENT_DATE-1, 'Android de teste');
-*/
-COMMIT;
-SET AUTOCOMMIT TRUE;
-
--- TESTEEEEE --
-INSERT INTO Trilha (id_trilha, nome_trilha, numero_trilha)
-SELECT 1, 'Introdução às funções', '1'
-    WHERE NOT EXISTS (
-    SELECT 1 FROM Trilha WHERE id_trilha = 1
-);
-
-INSERT INTO Atividades (
-    id_atividade, id_trilha, titulo, tipo, numero_atividade
-) VALUES (
-             1, 1, 'Primeira prática', 'pratica', 1
-         );
-
-INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
-VALUES (1, 5, '[]');

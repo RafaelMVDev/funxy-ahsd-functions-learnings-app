@@ -88,55 +88,6 @@ func _autenticada(metodo: int, rota: String, dados = null) -> Dictionary:
 # REFRESH DOS TOKENS
 # =========================================================
 
-func _renovar_tokens() -> Dictionary:
-	if _renovando:
-		# Já existe um refresh em andamento. Espera o resultado dele.
-		var resultado: Dictionary = await refresh_finalizado
-		return resultado
-
-	if Sessao.refresh_token.is_empty():
-		return _resultado(401, null, "Não há refresh token. Faça login novamente.")
-
-	_renovando = true
-
-	var versao: int = _versao_sessao
-	var corpo: String = JSON.stringify({
-		"refreshToken": Sessao.refresh_token
-	})
-
-	# O refresh token vai no corpo. Não envie o access expirado no cabeçalho.
-	var resposta: Dictionary = await _enviar(
-		HTTPClient.METHOD_POST, "/auth/atualizarTokens", corpo
-	)
-
-	if versao != _versao_sessao:
-		resposta = _resultado(0, null, "A sessão mudou.")
-
-	elif resposta["ok"]:
-		var dados = resposta["dados"]
-
-		if _tem_par_de_tokens(dados):
-			# O backend troca os DOIS tokens na renovação.
-			Sessao.access_token = dados["accessToken"]
-			Sessao.refresh_token = dados["refreshToken"]
-			_guardar_refresh()
-			resposta = _resultado(200)
-		else:
-			resposta = _resultado(0, null, "A API não devolveu os dois tokens.")
-
-	elif resposta["codigo"] == 401:
-		# O próprio refresh foi recusado. Agora é necessário outro login.
-		sair()
-		resposta = _resultado(401, null, "Sua sessão expirou. Faça login novamente.")
-
-	# Um timeout não apaga a conta nem dispara logout.
-	_renovando = false
-	refresh_finalizado.emit(resposta)
-
-	if resposta["codigo"] == 401:
-		sessao_expirada.emit()
-
-	return resposta
 
 
 func _tem_par_de_tokens(dados) -> bool:
@@ -156,14 +107,128 @@ func _tem_par_de_tokens(dados) -> bool:
 # ENVIO HTTP
 # =========================================================
 
+signal renovacao_finalizada(resultado: Dictionary)
+
+const ROTA_REFRESH: String = "/auth/atualizarTokens"
+
+var renovando_tokens: bool = false
+
+
+# Função chamada pelas telas.
+# autenticada = false: envia sem token e sem renovação automática.
+# autenticada = true: envia o token e tenta renovar caso receba 401.
+func requisitar(
+		metodo: int,
+		rota: String,
+		corpo: String = "",
+		autenticada: bool = true
+) -> Dictionary:
+	if not autenticada:
+		return await _enviar(metodo, rota, corpo)
+
+	var versao_original: int = Sessao.versao_sessao
+	var token_enviado: String = Sessao.access_token
+	
+	var resposta: Dictionary = await _enviar(
+		metodo, rota, corpo, token_enviado
+	)
+
+	if Sessao.versao_sessao != versao_original:
+		return _resultado(0, null, "A sessão mudou durante a requisição.")
+
+	if resposta["codigo"] != 401:
+		return resposta
+
+	# Se outra requisição já renovou o token, usamos o valor novo.
+	# Se a renovação ainda estiver acontecendo, aguardamos.
+	if renovando_tokens or Sessao.access_token == token_enviado:
+		var renovacao: Dictionary = await _renovar_tokens()
+
+		if Sessao.versao_sessao != versao_original:
+			return _resultado(401, null, "A sessão foi encerrada ou alterada.")
+
+		if not renovacao["ok"]:
+			return renovacao
+
+	if Sessao.access_token.is_empty():
+		return _resultado(401, null, "Faça login para continuar.")
+
+	# Repete UMA vez, com o mesmo corpo e o novo token.
+	# Chamar _enviar diretamente impede um ciclo de renovações.
+	var repeticao: Dictionary = await _enviar(
+		metodo, rota, corpo, Sessao.access_token
+	)
+
+	if Sessao.versao_sessao != versao_original:
+		return _resultado(0, null, "A sessão mudou durante a requisição.")
+
+	return repeticao
+
+
+func _renovar_tokens() -> Dictionary:
+	# Compartilha o resultado da renovação em andamento.
+	if renovando_tokens:
+		var resultado_compartilhado: Dictionary = await renovacao_finalizada
+		return resultado_compartilhado
+
+	if Sessao.refresh_token.is_empty():
+		return _resultado(401, null, "Faça login para continuar.")
+
+	renovando_tokens = true
+
+	var versao_original: int = Sessao.versao_sessao
+	var corpo: String = JSON.stringify({
+		"refreshToken": Sessao.refresh_token
+	})
+
+	# Sem Authorization. O refresh token vai no corpo.
+	var resposta: Dictionary = await _enviar(
+		HTTPClient.METHOD_POST,
+		ROTA_REFRESH,
+		corpo
+	)
+
+	if Sessao.versao_sessao != versao_original:
+		resposta = _resultado(0, null, "A sessão mudou durante a renovação.")
+
+	elif resposta["ok"]:
+		var dados = resposta["dados"]
+
+		if not (dados is Dictionary):
+			resposta = _resultado(0, null, "Resposta de renovação inválida.")
+		else:
+			var novo_access = dados.get("accessToken")
+			var novo_refresh = dados.get("refreshToken")
+
+			if not (novo_access is String) or not (novo_refresh is String):
+				resposta = _resultado(0, null, "A API não retornou os tokens esperados.")
+
+			elif novo_access.is_empty() or novo_refresh.is_empty():
+				resposta = _resultado(0, null, "A API retornou tokens vazios.")
+
+			else:
+				# Atualiza os dois, pois o refresh também pode ser substituído.
+				Sessao.atualizar_tokens(novo_access, novo_refresh)
+
+	elif resposta["codigo"] == 401:
+		# Consideramos que o endpoint usa 401 para refresh inválido/expirado.
+		Sessao.encerrar_sessao()
+		resposta = _resultado(401, null, "Sua sessão expirou. Faça login novamente.")
+
+	# Falha de conexão ou erro do servidor preservam os tokens.
+	renovando_tokens = false
+	renovacao_finalizada.emit(resposta)
+	return resposta
+
+
+# Executa apenas uma chamada HTTP.
+# O token vazio significa que Authorization será omitido.
 func _enviar(
 		metodo: int,
 		rota: String,
 		corpo: String = "",
 		token: String = ""
 ) -> Dictionary:
-	# Cada chamada tem seu próprio nó. Assim, carregar o catálogo e
-	# salvar uma fase não disputam o mesmo HTTPRequest.
 	var http: HTTPRequest = HTTPRequest.new()
 	add_child(http)
 	http.timeout = 10.0
@@ -177,15 +242,17 @@ func _enviar(
 		headers.append("Content-Type: application/json")
 
 	if not token.is_empty():
+		print("ADICIONANDO BEARER "+ token)
 		headers.append("Authorization: Bearer " + token)
 
-	var erro: int = http.request(URL_BASE + rota, headers, metodo, corpo)
+	var url: String = Sessao.API_BASE_URL.trim_suffix("/") + rota
+	print(url)
+	var erro: int = http.request(url, headers, metodo, corpo)
 
 	if erro != OK:
 		http.queue_free()
 		return _resultado(0, null, "Não foi possível iniciar a conexão.")
 
-	# A Godot retorna: [resultado da conexão, código HTTP, cabeçalhos, corpo].
 	var retorno: Array = await http.request_completed
 	http.queue_free()
 
@@ -200,21 +267,26 @@ func _enviar(
 		dados = JSON.parse_string(bytes.get_string_from_utf8())
 
 	var mensagem: String = ""
+
 	if codigo < 200 or codigo >= 300:
 		mensagem = "Erro HTTP %d." % codigo
 
 		if dados is Dictionary:
-			# Seu ExcecaoApiHandler usa {"erros": ["..."]}.
 			var erros = dados.get("erros")
+
 			if erros is Array and not erros.is_empty():
 				mensagem = str(erros[0])
 			elif dados.get("mensagem") is String:
 				mensagem = dados["mensagem"]
-
+	#print(dados)
 	return _resultado(codigo, dados, mensagem)
 
 
-func _resultado(codigo: int, dados = null, mensagem: String = "") -> Dictionary:
+func _resultado(
+		codigo: int,
+		dados = null,
+		mensagem: String = ""
+) -> Dictionary:
 	return {
 		"ok": codigo >= 200 and codigo < 300,
 		"codigo": codigo,

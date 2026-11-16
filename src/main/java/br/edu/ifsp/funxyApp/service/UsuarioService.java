@@ -4,13 +4,17 @@ import br.edu.ifsp.funxyApp.dto.auth.UsuarioInicialResponseDto;
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
 import br.edu.ifsp.funxyApp.model.Usuario;
 import br.edu.ifsp.funxyApp.model.Configuracao;
+import br.edu.ifsp.funxyApp.model.UsuarioFoto;
 import br.edu.ifsp.funxyApp.repository.*;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import br.edu.ifsp.funxyApp.dto.jogo.NomeUsuarioDto;
 import br.edu.ifsp.funxyApp.dto.jogo.SalvarConfiguracaoRequestDto;
+import br.edu.ifsp.funxyApp.dto.usuario.AtualizarMoedasRequestDto;
+import br.edu.ifsp.funxyApp.dto.usuario.AtualizarXpRequestDto;
 
 import java.util.List;
 
@@ -21,6 +25,7 @@ public class UsuarioService {
     private final ConfiguracaoRepository configuracoes;
     private final InventarioRepository inventarios;
     private final ConquistaUsuarioAcessaRepository conquistas;
+    private final UsuarioFotoRepository fotos;
     // Services
 
     private final ProgressoUsuarioService progressoUsuarioService;
@@ -30,13 +35,15 @@ public class UsuarioService {
             ConfiguracaoRepository configuracoes,
             InventarioRepository inventarios,
             ConquistaUsuarioAcessaRepository conquistas,
-            ProgressoUsuarioService progressoUsuarioService
+            ProgressoUsuarioService progressoUsuarioService,
+            UsuarioFotoRepository fotos
     ) {
         this.usuarios = usuarios;
         this.configuracoes = configuracoes;
         this.inventarios = inventarios;
         this.conquistas = conquistas;
         this.progressoUsuarioService = progressoUsuarioService;
+        this.fotos = fotos; /* Foto de perfil do usuário */
     }
     @Transactional(readOnly = true)
     public UsuarioInicialResponseDto carregar(Long usuarioId) {
@@ -159,5 +166,101 @@ public class UsuarioService {
                 config.getIdioma(),
                 config.getNotificacao()
         );
+    }
+
+    // Busca somente os dados da tabela Usuario.
+    @Transactional(readOnly = true)
+    public UsuarioInicialResponseDto.Perfil buscarPerfil(Long usuarioId) {
+        Usuario usuario = buscarUsuarioOuFalhar(usuarioId);
+        return montarPerfil(usuario);
+    }
+
+    // Substitui o saldo de moedas pelo total informado.
+    @Transactional
+    public UsuarioInicialResponseDto.Perfil atualizarMoedas(
+            Long usuarioId,
+            AtualizarMoedasRequestDto request
+    ) {
+        Usuario usuario = buscarUsuarioOuFalhar(usuarioId);
+
+        usuario.setMoedas(request.moedas());
+        usuarios.save(usuario);
+
+        return montarPerfil(usuario);
+    }
+
+    // Substitui o XP pelo total informado.
+    @Transactional
+    public UsuarioInicialResponseDto.Perfil atualizarXp(
+            Long usuarioId,
+            AtualizarXpRequestDto request
+    ) {
+        Usuario usuario = buscarUsuarioOuFalhar(usuarioId);
+
+        usuario.setXp(request.xp());
+        usuarios.save(usuario);
+
+        return montarPerfil(usuario);
+    }
+
+    // Centraliza a busca usada pelos três métodos.
+    private Usuario buscarUsuarioOuFalhar(Long usuarioId) {
+        return usuarios.findById(usuarioId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Usuário não encontrado."
+                ));
+    }
+
+    // Monta somente os dados que serão enviados ao cliente.
+    private UsuarioInicialResponseDto.Perfil montarPerfil(Usuario usuario) {
+        return new UsuarioInicialResponseDto.Perfil(
+                usuario.getId(),
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.getSequencia(),
+                usuario.getMoedas(),
+                usuario.getXp()
+        );
+    }
+
+    @Transactional
+    public void salvarFoto(Long usuarioId, byte[] conteudo) {
+        if (conteudo.length == 0) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "A imagem está vazia."
+            );
+        }
+
+        Usuario usuario = buscarUsuarioOuFalhar(usuarioId);
+
+        UsuarioFoto foto = fotos.findById(usuarioId)
+                .orElseGet(() -> new UsuarioFoto(
+                        usuario,
+                        conteudo,
+                        MediaType.IMAGE_PNG_VALUE
+                ));
+
+        foto.setConteudo(conteudo);
+        foto.setTipoConteudo(MediaType.IMAGE_PNG_VALUE);
+
+        fotos.save(foto);
+    }
+
+    @Transactional(readOnly = true)
+    public byte[] buscarFoto(Long usuarioId) {
+        return fotos.findById(usuarioId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Usuário sem foto de perfil."
+                ))
+                .getConteudo();
+    }
+
+    @Transactional
+    public void removerFoto(Long usuarioId) {
+        // O ID da foto é o próprio ID do usuário.
+        fotos.findById(usuarioId).ifPresent(fotos::delete);
     }
 }

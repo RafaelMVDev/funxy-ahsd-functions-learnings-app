@@ -1,5 +1,7 @@
 package br.edu.ifsp.funxyApp.dto.jogo;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
+
 import java.util.List;
 
 public record JogoResponseDto(
@@ -40,7 +42,7 @@ public record JogoResponseDto(
 
     public record Pratica(
             Integer mediaMovimentos,
-            String colisoesMalha
+            ArrayNode colisoesMalha
     ) implements ConteudoAtividade {}
 
     public record Conquista(

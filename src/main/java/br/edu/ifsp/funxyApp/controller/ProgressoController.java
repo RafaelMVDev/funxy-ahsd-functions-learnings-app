@@ -27,6 +27,7 @@ public class ProgressoController {
             @PathVariable Long atividadeId,
             @Valid @RequestBody SalvarProgressoPraticaRequestDto request
     ) {
+        System.out.println("CARALHIO");
         return progressoUsuarioService.salvarPratica(
                 usuarioId, atividadeId, request
         );

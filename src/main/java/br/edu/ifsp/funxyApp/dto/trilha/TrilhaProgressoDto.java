@@ -12,12 +12,13 @@ public record TrilhaProgressoDto(
 ) {
     public record AtividadeProgresso(
             Long atividadeId,
+            String tipo,
             List<Tentativa> tentativas
     ) {}
 
     public record Tentativa(
             Long progressoId,
-            Boolean concluida,
+            Boolean status,
             LocalDateTime concluidaEm,
 
             ProgressoEspecifico progressoEspecifico
@@ -31,7 +32,6 @@ public record TrilhaProgressoDto(
 
     public record Pratica(
             ArrayNode listaFuncoes,
-            ArrayNode listaFuncoesValidas,
             ArrayNode listaDominios,
             Integer movimentos,
             UUID tentativaUuid
