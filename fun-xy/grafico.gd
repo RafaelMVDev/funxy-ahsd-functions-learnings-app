@@ -85,6 +85,7 @@ func carregar_progresso() -> void:
 	funcoes_exibidas.remover_funcoes_listadas
 	var counter = 0
 	var bus_idx = AudioServer.get_bus_index("Master")
+	var estado_anterior_audio = AudioServer.is_bus_mute(bus_idx)
 	AudioServer.set_bus_mute(bus_idx, true)
 	
 	for linha in jogo.lista_funcoes:
@@ -94,7 +95,7 @@ func carregar_progresso() -> void:
 		counter += 1
 		
 	await get_tree().create_timer(0.8).timeout
-	AudioServer.set_bus_mute(bus_idx, false)
+	AudioServer.set_bus_mute(bus_idx, estado_anterior_audio)
 		
 func definir_dominio(dominio: String) -> Array:
 	var x_min: float = alcance_x_min
