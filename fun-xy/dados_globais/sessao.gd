@@ -158,7 +158,6 @@ func carregar_do_login(resposta: Dictionary) -> bool:
 	print(player)
 	return true
 
-
 # Retorna as tentativas do jogador em uma fase.
 # Se ele nunca abriu a fase, retorna [].
 func buscar_tentativas(trilha_id: int, atividade_id: int) -> Array:
@@ -182,7 +181,6 @@ func atualizar_tokens(access: String, refresh: String) -> void:
 	access_token = access
 	refresh_token = refresh
 
-
 func encerrar_sessao() -> void:
 	versao_sessao += 1
 	access_token = ""
@@ -192,6 +190,7 @@ func encerrar_sessao() -> void:
 	player_inventario = []
 	player_conquistas = []
 	player_trilhas = []
+	
 func cabecalhos_autenticados() -> PackedStringArray:
 	return PackedStringArray([
 		"Content-Type: application/json",
@@ -224,3 +223,53 @@ func atualizarProgresso() -> bool: #Mas não salva o status né
 	player_trilhas = trilhas
 	#print(player_trilhas)
 	return true
+
+func atualizar_recompensas(valor_xp: int, valor_moedas: int) -> bool:
+	#Somar com o valor antigo
+	var tudo_ok: bool = true
+	var novo_xp
+	var novo_moedas
+	
+	if not player["xp"]:
+		novo_xp = valor_xp 
+	else: 
+		novo_xp = player["xp"] + valor_xp
+	
+	if not player["moedas"]:
+		novo_moedas = valor_moedas
+	else:
+		novo_moedas = player["moedas"] + valor_moedas
+	
+	var corpo_xp = JSON.stringify({"xp": novo_xp})
+	var resposta_xp: Dictionary = await Api.requisitar(
+		HTTPClient.METHOD_PATCH,
+		"/api/usuario/me/xp",
+		corpo_xp,
+		true
+	)
+	
+	if resposta_xp.get("ok", false):
+		var dados_perfil = resposta_xp.get("dados")
+		if dados_perfil is Dictionary:
+			player = dados_perfil
+	else:
+		push_warning(str(resposta_xp.get("mensagem", "Erro ao atualizar XP no banco.")))
+		tudo_ok = false
+
+	var corpo_moedas = JSON.stringify({"moedas": novo_moedas})
+	var resposta_moedas: Dictionary = await Api.requisitar(
+		HTTPClient.METHOD_PATCH,
+		"/api/usuario/me/moedas",
+		corpo_moedas,
+		true
+	)
+	
+	if resposta_moedas.get("ok", false):
+		var dados_perfil = resposta_moedas.get("dados")
+		if dados_perfil is Dictionary:
+			player = dados_perfil
+	else:
+		push_warning(str(resposta_moedas.get("mensagem", "Erro ao atualizar moedas no banco.")))
+		tudo_ok = false
+
+	return tudo_ok

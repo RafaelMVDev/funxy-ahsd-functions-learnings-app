@@ -90,7 +90,6 @@ func _ready() -> void:
 	queue_redraw()
 	
 	var tentativas = Sessao.buscar_tentativas(trilha, atv)
-	print(tentativas)
 	if tentativas:
 		for tentativa in tentativas:
 			if tentativa["status"] == false:
@@ -145,9 +144,12 @@ func _carregar_vitoria():
 	var conclusao = true
 	await salvar_progresso_atividade_api(conclusao)
 	
-	var pontuacao = dados_fase["xpBase"] + dados_fase["xpBase"] / (1 + (quantidade_movimentos * 0.1))
+	#Precisa somar com o valor Antigo!
+	var pontuacao = int(dados_fase["xpBase"] + dados_fase["xpBase"] / (1 + (quantidade_movimentos * 0.1)))
+	var moedas = dados_fase["moedaBase"] 
 	
-	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos, pontuacao) #E pontuação
+	Sessao.atualizar_recompensas(pontuacao, moedas)
+	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos, pontuacao) 
 	
 		
 func sair_da_partida() -> void:
@@ -162,12 +164,7 @@ func sair_da_partida() -> void:
 
 	var conclusao = false
 	await salvar_progresso_atividade_api(conclusao)
-	print("======================== ATUALIZANDO PROGRESSO ======================")
 	Sessao.atualizarProgresso()
-	print("Sessão do player: ")
-	print(Sessao.player_trilhas)
-	print("Quantidade de movimetnos: ")
-	print(quantidade_movimentos)
 	SceneTransition.change_scene("res://Trilha.tscn")
 		
 func salvar_progresso_atividade_api(concluida: bool) -> bool:
@@ -208,7 +205,6 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 	# O sinal retorna [resultado, código HTTP, cabeçalhos, corpo].
 
 	salvando = false
-	print(resposta)
 	if not resposta.get("ok", false):
 		push_warning(str(resposta.get(
 		"mensagem",
@@ -240,15 +236,11 @@ func salvar_progresso_atividade_api(concluida: bool) -> bool:
 		push_warning("A API recebeu o progresso, mas a fase ainda consta como aberta.")
 		return false
 
-	print("Progresso salvo! ID: ", tentativa["progressoId"])
-
 	var atualizado: bool = await Sessao.atualizarProgresso()
 
 	if not atualizado:
 		push_warning("O progresso foi salvo, mas não foi possível atualizar as trilhas da sessão.")
 
-	# O salvamento foi confirmado, mesmo se a atualização da sessão falhar.
-	print("================ Progresso Salvo ==============")
 	return true
 	
 
