@@ -27,7 +27,7 @@ func carregar_cabeçalho() -> void:
 	if streak:
 		label_streak.text = str(streak)
 	else:
-		label_streak.text = '0'
+		label_streak.text = '1'
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

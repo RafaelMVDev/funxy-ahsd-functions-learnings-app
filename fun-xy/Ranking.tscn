@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bb7fka24fn10m" path="res://ranking.gd" id="1_4p2ic"]
 [ext_resource type="Texture2D" uid="uid://d4jm453j4qukp" path="res://images/icones_luis/moedas.png" id="2_duiko"]
+[ext_resource type="Script" uid="uid://cg5m2d5hlqg1w" path="res://cabecalho.gd" id="2_rhto8"]
 [ext_resource type="Texture2D" uid="uid://bkcs8b6j5qn3c" path="res://images/icones_luis/exp.png" id="3_rhto8"]
 [ext_resource type="Texture2D" uid="uid://7iqwbw0lndv8" path="res://images/icones_luis/sequência(foguinho).png" id="4_u24wf"]
 [ext_resource type="Texture2D" uid="uid://brt3d0otelqf2" path="res://images/icones_luis/Foto_de_Perfil.png" id="5_ktsra"]
@@ -113,6 +114,7 @@ clip_contents = true
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_u24wf")
+script = ExtResource("2_rhto8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer1" unique_id=1603613432]
 layout_mode = 2
@@ -140,7 +142,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("2_duiko")
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=1638400724]
+[node name="MoedasLabel" type="Label" parent="VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=1638400724]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -173,7 +176,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("3_rhto8")
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/HBoxContainer2" unique_id=2142537803]
+[node name="XpLabel" type="Label" parent="VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/HBoxContainer2" unique_id=2142537803]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, -1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -206,7 +210,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("4_u24wf")
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer3" unique_id=1272852108]
+[node name="StreakLabel" type="Label" parent="VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer3" unique_id=1272852108]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, -1)
 layout_mode = 2
 size_flags_horizontal = 3

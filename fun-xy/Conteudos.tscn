@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dl1jjmtgcykrv" path="res://cenas_Luis/conteudos.gd" id="1_iy87b"]
 [ext_resource type="Texture2D" uid="uid://d4jm453j4qukp" path="res://images/icones_luis/moedas.png" id="1_njqnh"]
+[ext_resource type="Script" uid="uid://cg5m2d5hlqg1w" path="res://cabecalho.gd" id="2_00c4k"]
 [ext_resource type="Texture2D" uid="uid://bkcs8b6j5qn3c" path="res://images/icones_luis/exp.png" id="2_j1thl"]
 [ext_resource type="Texture2D" uid="uid://7iqwbw0lndv8" path="res://images/icones_luis/sequência(foguinho).png" id="3_7qexj"]
 [ext_resource type="Texture2D" uid="uid://b43e5bwgpci0g" path="res://images/fundo unidade.png" id="4_7qexj"]
@@ -134,6 +135,7 @@ clip_contents = true
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_g8b14")
+script = ExtResource("2_00c4k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer1" unique_id=1856637026]
 layout_mode = 2
@@ -161,7 +163,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("1_njqnh")
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=588585802]
+[node name="MoedasLabel" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=588585802]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -194,7 +197,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("2_j1thl")
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/HBoxContainer2" unique_id=242595159]
+[node name="XpLabel" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/HBoxContainer2" unique_id=242595159]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, -1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -227,7 +231,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("3_7qexj")
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer3" unique_id=1711716536]
+[node name="StreakLabel" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer3" unique_id=1711716536]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, -1)
 layout_mode = 2
 size_flags_horizontal = 3
