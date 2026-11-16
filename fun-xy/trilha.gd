@@ -4,13 +4,13 @@ extends Control
 @onready var barra_progresso: ProgressBar = %ProgressBar2
 
 func _ready() -> void:
-	progresso_visual()
+	barra_progresso_visual()
 	pass # Replace with function body.
 
 func _process(delta: float) -> void:
 	pass
 
-func progresso_visual() -> void:
+func barra_progresso_visual() -> void:
 	var total_atividades = contar_total_atividades(DadosJogo.trilhas)
 	var total_concluidas = contar_atividades_concluidas(Sessao.player_trilhas)
 	
@@ -19,7 +19,6 @@ func progresso_visual() -> void:
 	
 	label_porcentagem.text = str(porcentagem) + "%"
 	barra_progresso.value = porcentagem
-	
 	
 func contar_total_atividades(dados: Array) -> int:
 	var total: int = 0

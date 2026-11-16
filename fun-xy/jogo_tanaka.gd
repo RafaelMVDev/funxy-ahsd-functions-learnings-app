@@ -94,7 +94,6 @@ func _ready() -> void:
 	if tentativas:
 		for tentativa in tentativas:
 			if tentativa["status"] == false:
-				print("ACHOU TENTATIVA INCOMPLETA")
 				id_tentativa = tentativa["progressoId"]
 				status_partida = "continuacao"
 				tentativa_partida = tentativa
@@ -104,7 +103,6 @@ func _ready() -> void:
 				lista_dominios = dados_partida["listaDominios"]
 				tentativa_uuid = str(dados_partida.get("tentativaUuid", ""))
 				quantidade_movimentos = dados_partida["movimentos"]
-				print(tentativa_partida)
 	
 	#logica para a nova tentativa
 	
@@ -151,11 +149,6 @@ func _carregar_vitoria():
 	
 	menu_vitoria.exibir_tela_vitoria(quantidade_movimentos, pontuacao) #E pontuação
 	
-	#else:
-		#Criar uma função para criar uma nova tentativa de status true
-	
-	#Calculo da pontuação
-	#Atualizar o xp do player
 		
 func sair_da_partida() -> void:
 	#Enviar dados para a API

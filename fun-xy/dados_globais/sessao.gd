@@ -155,7 +155,7 @@ func carregar_do_login(resposta: Dictionary) -> bool:
 	# No primeiro login, o backend pode retornar "configuracao": null.
 	var config = dados.get("configuracao")
 	player_configuracao = config if config is Dictionary else {}
-
+	print(player)
 	return true
 
 
