@@ -1,112 +1,129 @@
 [gd_scene format=3 uid="uid://dny2a1np6hth4"]
 
+[ext_resource type="Theme" path="res://ui/funxy_theme.tres" id="UI_theme"]
+
+[ext_resource type="Texture2D" path="res://ui/home.svg" id="UI_home"]
+
+[ext_resource type="Texture2D" path="res://ui/book.svg" id="UI_book"]
+
+[ext_resource type="Texture2D" path="res://ui/rank.svg" id="UI_rank"]
+
+[ext_resource type="Texture2D" path="res://ui/profile.svg" id="UI_profile"]
+
+[ext_resource type="Texture2D" path="res://ui/settings.svg" id="UI_settings"]
+
 [ext_resource type="Script" uid="uid://d0xvpjifd8woj" path="res://materiais_leitura_interface.gd" id="1_wt6km"]
 [ext_resource type="Script" uid="uid://gfatlo350gs3" path="res://material_especifico.gd" id="2_j3sfx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io4r2"]
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(0.92157, 0.94902, 1.0, 1)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g2hn"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(1.0, 1.0, 1.0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a0gx"]
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(0.92157, 0.94902, 1.0, 1)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utku0"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(1.0, 1.0, 1.0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0axe"]
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(0.92157, 0.94902, 1.0, 1)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juqt6"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(1.0, 1.0, 1.0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxey2"]
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(0.92157, 0.94902, 1.0, 1)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ja1h6"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(1.0, 1.0, 1.0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oh5al"]
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(0.92157, 0.94902, 1.0, 1)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r44xx"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(1.0, 1.0, 1.0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 corner_detail = 16
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqwr1"]
 bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
@@ -114,7 +131,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -147,7 +164,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -161,6 +178,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wt6km")
+theme = ExtResource("UI_theme")
 
 [node name="Panel" type="Panel" parent="." unique_id=122276130]
 layout_mode = 1
@@ -172,16 +190,16 @@ grow_vertical = 2
 
 [node name="MaterialUnidade1" type="VBoxContainer" parent="." unique_id=397284740]
 visible = false
-custom_minimum_size = Vector2(-1, 555)
-custom_maximum_size = Vector2(-1, 555)
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 418.0
+offset_bottom = -84.0
 grow_horizontal = 2
 theme_override_constants/separation = 8
 script = ExtResource("2_j3sfx")
 unidade_atv = 1
+anchor_bottom = 1.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade1" unique_id=1018975615]
 layout_mode = 2
@@ -201,13 +219,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 15
 bbcode_enabled = true
 text = "[b] UNIDADE 1: Função Afim[/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_constants/line_separation = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade1" unique_id=1802283376]
 layout_mode = 2
@@ -224,9 +243,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2g2hn")
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade1/MarginContainer/PanelContainer" unique_id=1330409220]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade1/MarginContainer/PanelContainer/MarginContainer" unique_id=1249192851]
 layout_mode = 2
@@ -240,7 +260,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 bbcode_enabled = true
 text = "	Também conhecida como Função de 1º Grau, essa é a máquina que cresce ou diminui de forma constante e previsível. A melhor forma de entendê-la é pensar em uma corrida de táxi (ou aplicativo). Ao entrar no carro, você já paga um valor fixo só por começar a corrida. Depois, o preço sobe um valor exato a cada quilômetro rodado.
 
@@ -261,22 +281,23 @@ text = "	Também conhecida como Função de 1º Grau, essa é a máquina que cre
 	[b]Onde a linha corta o chão? (A Raiz da Função)[/b] Se o \"b\" é onde a linha corta o eixo Y (a parede vertical), existe também o ponto exato onde a linha corta o eixo X (o chão horizontal). Esse ponto é chamado de [b]Raiz ou Zero da Função. [/b]É o momento em que a máquina zera, ou seja, f(x) = 0. Se o gráfico fosse o nível do mar, a raiz seria exatamente o momento em que a linha sai da água e atinge a superfície.
 
 	[b]Domínio e Imagem na Função Afim:[/b] Como essa reta não tem quebras, não tem divisão por zero e não tem raiz quadrada restrita, ela não possui limites. A linha inclinada vai infinitamente para a esquerda e para a direita (sombras infinitas no eixo X) e sobe e desce infinitamente (sombras infinitas no eixo Y)."
+theme_override_constants/line_separation = 6
 
 [node name="TextureRect" type="TextureRect" parent="MaterialUnidade1/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=461324905]
 layout_mode = 2
 
 [node name="MaterialUnidade2" type="VBoxContainer" parent="." unique_id=444630206]
 visible = false
-custom_minimum_size = Vector2(0, 555)
-custom_maximum_size = Vector2(-1, 555)
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 418.0
+offset_bottom = -84.0
 grow_horizontal = 2
 theme_override_constants/separation = 8
 script = ExtResource("2_j3sfx")
 unidade_atv = 2
+anchor_bottom = 1.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade2" unique_id=669070114]
 layout_mode = 2
@@ -296,13 +317,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 15
 bbcode_enabled = true
 text = "[b] UNIDADE 2: Função Quadrática[/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_constants/line_separation = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade2" unique_id=1321442903]
 layout_mode = 2
@@ -319,9 +341,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_utku0")
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade2/MarginContainer/PanelContainer" unique_id=802192430]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade2/MarginContainer/PanelContainer/MarginContainer" unique_id=1022033814]
 layout_mode = 2
@@ -335,7 +358,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 bbcode_enabled = true
 text = "	Se a Função Afim era o movimento constante de um táxi, a Função Quadrática (ou de 2º Grau) é a máquina da aceleração e da gravidade.
 
@@ -372,22 +395,23 @@ Se o gráfico é \"triste\" (∩), o vértice é o [b]ponto máximo[/b] (o pico 
 
 
 "
+theme_override_constants/line_separation = 6
 
 [node name="TextureRect" type="TextureRect" parent="MaterialUnidade2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1380621815]
 layout_mode = 2
 
 [node name="MaterialUnidade3" type="VBoxContainer" parent="." unique_id=1126024657]
 visible = false
-custom_minimum_size = Vector2(-1, 555)
-custom_maximum_size = Vector2(-1, 555)
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 418.0
+offset_bottom = -84.0
 grow_horizontal = 2
 theme_override_constants/separation = 8
 script = ExtResource("2_j3sfx")
 unidade_atv = 3
+anchor_bottom = 1.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade3" unique_id=1041484596]
 layout_mode = 2
@@ -407,13 +431,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 15
 bbcode_enabled = true
 text = "[b] UNIDADE 3: Função Exponencial[/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_constants/line_separation = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade3" unique_id=893381910]
 layout_mode = 2
@@ -430,9 +455,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_juqt6")
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade3/MarginContainer/PanelContainer" unique_id=118744277]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade3/MarginContainer/PanelContainer/MarginContainer" unique_id=2050255832]
 layout_mode = 2
@@ -446,7 +472,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 bbcode_enabled = true
 text = "	Se a Função Afim crescia num ritmo constante de soma (como o taxímetro) e a Quadrática funcionava como a gravidade, a Função Exponencial tem um comportamento muito mais radical: ela [b]explode.[/b] É a máquina das multiplicações sucessivas.
 
@@ -483,22 +509,23 @@ text = "	Se a Função Afim crescia num ritmo constante de soma (como o taxímet
 	⚫	[b]Imagem Im(f):[/b] Aqui a regra da barreira invisível entra em ação. Como a curva sobe infinitamente, mas nunca toca o chão (o zero) e nunca vai para o subsolo (números negativos), a sombra no eixo vertical só existe na parte de cima, começando com uma bolinha vazia no zero.
 			
 		⚪	Matematicamente, escrevemos: [b]Im(f) = R^*_+[/b] (Números Reais Positivos, sem o zero) ou simplesmente ~[b]y > 0[/b]. A máquina exponencial só consegue cuspir resultados estritamente positivos."
+theme_override_constants/line_separation = 6
 
 [node name="TextureRect" type="TextureRect" parent="MaterialUnidade3/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1216277962]
 layout_mode = 2
 
 [node name="MaterialUnidade4" type="VBoxContainer" parent="." unique_id=1359049878]
 visible = false
-custom_minimum_size = Vector2(0, 555)
-custom_maximum_size = Vector2(-1, 555)
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 418.0
+offset_bottom = -84.0
 grow_horizontal = 2
 theme_override_constants/separation = 8
 script = ExtResource("2_j3sfx")
 unidade_atv = 4
+anchor_bottom = 1.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade4" unique_id=1444832135]
 layout_mode = 2
@@ -518,13 +545,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 15
 bbcode_enabled = true
 text = "[b] UNIDADE 4: Função Logarítmica[/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_constants/line_separation = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade4" unique_id=15033629]
 layout_mode = 2
@@ -541,9 +569,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ja1h6")
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade4/MarginContainer/PanelContainer" unique_id=873389318]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade4/MarginContainer/PanelContainer/MarginContainer" unique_id=71831847]
 layout_mode = 2
@@ -557,7 +586,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 bbcode_enabled = true
 text = "	Se a Função Exponencial era a máquina que criava explosões de crescimento multiplicando um número várias vezes, a Função Logarítmica é a sua [b]gêmea invertida.[/b] Ela é a máquina que desfaz a explosão. Ela trabalha de trás para frente, como um detetive tentando descobrir o passado.
 
@@ -591,21 +620,23 @@ Matematicamente: [b]D(f) = R^*_+[/b] (Você só pode colocar [b]números estrita
 	⚫	[b]Imagem Im(f):[/b] Olhe para a sombra projetada na parede (Eixo Y). A linha vem do infinito negativo (lá do fundo do poço) e continua subindo (mesmo que lentamente) para o infinito positivo. A sombra no eixo vertical cobre a parede inteira.
 
 		⚪	Matematicamente: [b]Im(f) = R[/b] (A máquina pode cuspir qualquer número real como resposta: positivo, negativo, quebrado ou zero)."
+theme_override_constants/line_separation = 6
 
 [node name="TextureRect" type="TextureRect" parent="MaterialUnidade4/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=880044330]
 layout_mode = 2
 
 [node name="MaterialUnidade5" type="VBoxContainer" parent="." unique_id=1940244406]
 visible = false
-custom_minimum_size = Vector2(0, 555)
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 418.0
+offset_bottom = -84.0
 grow_horizontal = 2
 theme_override_constants/separation = 8
 script = ExtResource("2_j3sfx")
 unidade_atv = 5
+anchor_bottom = 1.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade5" unique_id=1738219207]
 layout_mode = 2
@@ -625,13 +656,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 15
 bbcode_enabled = true
 text = "[b] UNIDADE 5: Função Modular[/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_constants/line_separation = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade5" unique_id=1756501511]
 layout_mode = 2
@@ -648,9 +680,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r44xx")
 
 [node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade5/MarginContainer/PanelContainer" unique_id=526440699]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade5/MarginContainer/PanelContainer/MarginContainer" unique_id=616212257]
 layout_mode = 2
@@ -664,7 +697,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 bbcode_enabled = true
 text = "	Se a Função Logarítmica era o detetive do passado, a Função Modular é uma máquina inabalavelmente otimista. Não importa quanta negatividade você jogue dentro dela, ela sempre vai devolver um resultado positivo (ou neutro).
 
@@ -695,16 +728,20 @@ text = "	Se a Função Logarítmica era o detetive do passado, a Função Modula
 	⚫	[b]Imagem Im(f):[/b] Aqui está o superpoder da máquina. Como ela impede que qualquer coisa vá para o subsolo, a sombra no eixo vertical (Parede Y) começa exatamente no zero (com bolinha cheia, pois o 0 faz parte) e só sobe. Não existe sombra na parte negativa do eixo Y.
 
 		⚪	Matematicamente: [b]Im(f) = R_{+}[/b] (Números Reais Não-Negativos). Ou seja, a máquina só consegue produzir resultados maiores ou iguais a zero (y0)."
+theme_override_constants/line_separation = 6
 
 [node name="TextureRect" type="TextureRect" parent="MaterialUnidade5/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=12131343]
 layout_mode = 2
 
 [node name="MarginContainer3" type="MarginContainer" parent="." unique_id=987388427]
-layout_mode = 0
-offset_top = 570.0
-offset_right = 360.0
-offset_bottom = 640.0
+layout_mode = 1
+offset_top = -76.0
+offset_right = 0.0
+offset_bottom = 0.0
 theme_override_constants/margin_bottom = 10
+anchor_top = 1.0
+anchor_bottom = 1.0
+anchor_right = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3" unique_id=1683618347]
 layout_mode = 2

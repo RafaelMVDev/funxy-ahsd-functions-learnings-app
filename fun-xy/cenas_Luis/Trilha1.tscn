@@ -24,12 +24,8 @@ fill_from = Vector2(0.5173913, 0)
 fill_to = Vector2(0.51304346, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdg80"]
-<<<<<<< HEAD:fun-xy/cenas_Luis/Trilha.tscn
-bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
-=======
 content_margin_left = 5.0
 bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
->>>>>>> d5e934ea470d3a2722a539ea5c4176fbca8ff9e7:fun-xy/cenas_Luis/Trilha1.tscn
 anti_aliasing_size = 4.643
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wei45"]

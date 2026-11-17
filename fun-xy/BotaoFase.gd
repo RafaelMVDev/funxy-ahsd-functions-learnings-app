@@ -53,11 +53,12 @@ func verificar_disponibilidade(trilha: float, id_atv: float) -> void:
 		disabled = false
 
 func aplicar_estilo_incompleto() -> void:
+	tooltip_text = "Em andamento"
 	var estilo_botao = StyleBoxFlat.new()
 	estilo_botao.set_border_width_all(4)
 	estilo_botao.set_corner_radius_all(45)
 	estilo_botao.border_color = Color(1.0, 1.0, 1.0, 1.0) 
-	estilo_botao.bg_color = Color("df6316ff") 
+	estilo_botao.bg_color = Color("98551cff") 
 	add_theme_stylebox_override("normal", estilo_botao)
 	
 	var estilo_hover = estilo_botao.duplicate()
@@ -65,11 +66,12 @@ func aplicar_estilo_incompleto() -> void:
 	add_theme_stylebox_override("hover", estilo_hover)
 	
 func aplicar_estilo_concluido() -> void:
+	tooltip_text = "Concluída"
 	var estilo_botao = StyleBoxFlat.new()
 	estilo_botao.set_border_width_all(4)
 	estilo_botao.set_corner_radius_all(45)
 	estilo_botao.border_color = Color(1.0, 1.0, 1.0, 1.0) 
-	estilo_botao.bg_color = Color("418af9") 
+	estilo_botao.bg_color = Color("16836c") 
 	add_theme_stylebox_override("normal", estilo_botao)
 	
 	var estilo_hover = estilo_botao.duplicate()
@@ -79,9 +81,10 @@ func aplicar_estilo_concluido() -> void:
 	text = "✔"
 	
 func aplicar_estilo_bloqueado() -> void:
+	tooltip_text = "Bloqueada"
 	var estilo_botao = StyleBoxFlat.new()
 	estilo_botao.set_border_width_all(4)
 	estilo_botao.set_corner_radius_all(45)
 	estilo_botao.border_color = Color(0.018, 0.0, 0.222, 1.0) 
-	estilo_botao.bg_color = Color("16305bff") 
+	estilo_botao.bg_color = Color("26354aff") 
 	add_theme_stylebox_override("disabled", estilo_botao)

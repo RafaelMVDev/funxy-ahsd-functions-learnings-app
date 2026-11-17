@@ -1,5 +1,17 @@
 [gd_scene format=3 uid="uid://c6lwabnrybgyv"]
 
+[ext_resource type="Theme" path="res://ui/funxy_theme.tres" id="UI_theme"]
+
+[ext_resource type="Texture2D" path="res://ui/home.svg" id="UI_home"]
+
+[ext_resource type="Texture2D" path="res://ui/book.svg" id="UI_book"]
+
+[ext_resource type="Texture2D" path="res://ui/rank.svg" id="UI_rank"]
+
+[ext_resource type="Texture2D" path="res://ui/profile.svg" id="UI_profile"]
+
+[ext_resource type="Texture2D" path="res://ui/settings.svg" id="UI_settings"]
+
 [ext_resource type="Script" uid="uid://bybnfsrmkov53" path="res://cadastro_login.gd" id="1_lhwy8"]
 [ext_resource type="Texture2D" uid="uid://dlpeucl41i6be" path="res://images/icones/funcao-fx.svg" id="2_880ua"]
 [ext_resource type="Texture2D" uid="uid://cvd2d26fhgg48" path="res://images/icones/grade.svg" id="3_osbjj"]
@@ -13,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://c2rti82ym2qb5" path="res://images/icones/usuario.svg" id="11_nwe6x"]
 
 [sub_resource type="Gradient" id="Gradient_qcemb"]
-colors = PackedColorArray(0.020974653, 0.074406825, 0.22031772, 1, 0.03529412, 0.101960786, 0.2784314, 1)
+colors = PackedColorArray(0.96, 0.98, 1, 1, 0.89, 0.94, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_727ai"]
 gradient = SubResource("Gradient_qcemb")
@@ -60,7 +72,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -82,7 +94,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -125,11 +137,12 @@ corner_radius_bottom_left = 17
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhv46"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdspj"]
-bg_color = Color(0.25490198, 0.5411765, 0.9764706, 0)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+bg_color = Color(1.0, 1.0, 1.0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="Gradient" id="Gradient_ux1vq"]
 colors = PackedColorArray(0.34509805, 0.7294118, 0.99607843, 1, 0.34117648, 0.7137255, 0.99607843, 0)
@@ -167,7 +180,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -179,7 +192,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -191,7 +204,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.21960784, 0.40784314, 0.7882353, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -241,6 +254,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lhwy8")
+theme = ExtResource("UI_theme")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=908360093]
 layout_mode = 1
@@ -250,6 +264,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_727ai")
+modulate = Color(1.0, 1.0, 1.0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=1897128301]
 visible = false
@@ -264,6 +279,7 @@ offset_bottom = -35.0
 grow_vertical = 0
 texture = ExtResource("2_880ua")
 expand_mode = 1
+mouse_filter = 2
 
 [node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=683026855]
 visible = false
@@ -281,6 +297,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_osbjj")
 expand_mode = 1
+mouse_filter = 2
 
 [node name="TextureRect3" type="TextureRect" parent="TextureRect" unique_id=1123838648]
 visible = false
@@ -295,6 +312,7 @@ offset_bottom = 101.0
 grow_horizontal = 0
 texture = ExtResource("4_6q3as")
 expand_mode = 1
+mouse_filter = 2
 
 [node name="TextureRect4" type="TextureRect" parent="TextureRect" unique_id=802554925]
 visible = false
@@ -305,6 +323,7 @@ offset_right = 262.0
 offset_bottom = 131.0
 texture = ExtResource("5_w8uqo")
 expand_mode = 1
+mouse_filter = 2
 
 [node name="TextureRect5" type="TextureRect" parent="TextureRect" unique_id=1254913984]
 custom_minimum_size = Vector2(90, 90)
@@ -363,6 +382,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 29
 text = "Login"
 horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlideWindow/LoginPanel/VBoxContainer2/VBoxContainer5" unique_id=1301156887]
 custom_minimum_size = Vector2(0, 5)
@@ -399,16 +419,18 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Email"
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="LineEdit_Email_Login" type="LineEdit" parent="SlideWindow/LoginPanel/VBoxContainer2/VBoxContainer2" unique_id=1658600880]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 35)
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_b8d7n")
 theme_override_styles/focus = SubResource("StyleBoxFlat_63wb4")
+theme_override_colors/font_placeholder_color = Color(0.32157, 0.38431, 0.47451, 1)
 
 [node name="TextureRect" type="TextureRect" parent="SlideWindow/LoginPanel/VBoxContainer2/VBoxContainer2/LineEdit_Email_Login" unique_id=1805011624]
 custom_maximum_size = Vector2(32, 25)
@@ -428,17 +450,19 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Senha"
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="LineEdit_Senha_Login" type="LineEdit" parent="SlideWindow/LoginPanel/VBoxContainer2/VBoxContainer3" unique_id=1278208474]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 35)
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_gir6c")
 theme_override_styles/focus = SubResource("StyleBoxFlat_46aar")
 secret = true
+theme_override_colors/font_placeholder_color = Color(0.32157, 0.38431, 0.47451, 1)
 
 [node name="TextureRect" type="TextureRect" parent="SlideWindow/LoginPanel/VBoxContainer2/VBoxContainer3/LineEdit_Senha_Login" unique_id=1657038797]
 custom_maximum_size = Vector2(25, 27)
@@ -475,6 +499,7 @@ visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="SlideWindow/LoginPanel/VBoxContainer2" unique_id=872568994]
 layout_mode = 2
@@ -533,6 +558,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 29
 text = "Cadastro"
 horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer5" unique_id=1923313164]
 custom_minimum_size = Vector2(0, 5)
@@ -569,16 +595,18 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Nome de Usuário"
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="LineEdit_Usuario" type="LineEdit" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer" unique_id=424462433]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 35)
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_ye3j0")
 theme_override_styles/focus = SubResource("StyleBoxFlat_4so0t")
+theme_override_colors/font_placeholder_color = Color(0.32157, 0.38431, 0.47451, 1)
 
 [node name="TextureRect" type="TextureRect" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer/LineEdit_Usuario" unique_id=548257604]
 custom_maximum_size = Vector2(25, 25)
@@ -602,16 +630,18 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Email"
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="LineEdit_Email" type="LineEdit" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer2" unique_id=744751130]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 35)
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_ye3j0")
 theme_override_styles/focus = SubResource("StyleBoxFlat_uo0ke")
+theme_override_colors/font_placeholder_color = Color(0.32157, 0.38431, 0.47451, 1)
 
 [node name="TextureRect" type="TextureRect" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer2/LineEdit_Email" unique_id=1133120727]
 custom_maximum_size = Vector2(32, 25)
@@ -631,17 +661,19 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Criar Senha"
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="LineEdit_Senha" type="LineEdit" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer3" unique_id=871470104]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 35)
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_colors/caret_color = Color(0.078431375, 0.09803922, 0.3019608, 1)
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_ye3j0")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wt43o")
 secret = true
+theme_override_colors/font_placeholder_color = Color(0.32157, 0.38431, 0.47451, 1)
 
 [node name="TextureRect" type="TextureRect" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer3/LineEdit_Senha" unique_id=1561578171]
 custom_maximum_size = Vector2(25, 27)
@@ -678,6 +710,7 @@ visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="SlideWindow/RegisterPanel/VBoxContainer" unique_id=1792484718]
 layout_mode = 2

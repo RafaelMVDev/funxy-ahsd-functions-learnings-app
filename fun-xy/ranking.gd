@@ -27,11 +27,11 @@ func _ready() -> void:
 		var estilo_unico = estilo_painel_player.duplicate()
 	
 		if posicao_player == 1:
-			estilo_unico.bg_color = Color("f7d500ff")
+			estilo_unico.bg_color = Color("f5d67aff")
 		elif posicao_player == 2:
-			estilo_unico.bg_color = Color("f78d00ff")
+			estilo_unico.bg_color = Color("c4d7eaff")
 		elif posicao_player == 3:
-			estilo_unico.bg_color = Color("f76700ff")
+			estilo_unico.bg_color = Color("e9bb97ff")
 		else:
 			estilo_unico.bg_color = Color(0.8, 0.8, 0.8) # Cinza claro
 		
@@ -50,13 +50,19 @@ func gerar_ranking(lista_usuarios: Array, vbox_pai: VBoxContainer):
 		
 		var panel_user = PanelContainer.new()
 		panel_user.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		panel_user.custom_minimum_size.y = 55
+		panel_user.custom_minimum_size.y = 68
 		
 		var style_panel = StyleBoxFlat.new()
 		
-		style_panel.bg_color = Color("0f2968")
-		style_panel.content_margin_left = 15
-		style_panel.content_margin_right = 15
+		style_panel.bg_color = Color("ffffff")
+		# Acabamento compartilhado com os painéis das cenas.
+		style_panel.set_corner_radius_all(16)
+		style_panel.set_border_width_all(1)
+		style_panel.border_color = Color("e1e8f0")
+		style_panel.content_margin_top = 8
+		style_panel.content_margin_bottom = 8
+		style_panel.content_margin_left = 12
+		style_panel.content_margin_right = 12
 		panel_user.add_theme_stylebox_override("panel", style_panel)
 		
 		var hbox = HBoxContainer.new()
@@ -66,16 +72,17 @@ func gerar_ranking(lista_usuarios: Array, vbox_pai: VBoxContainer):
 		
 		var panel_foto = PanelContainer.new()
 		panel_foto.custom_minimum_size = Vector2(45, 45)
-		panel_foto.custom_maximum_size = Vector2(45, 45)
+		# O tamanho vem do conteúdo e do alinhamento, sem depender de um limite máximo.
+		panel_foto.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		panel_foto.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		
 		var style_foto = StyleBoxFlat.new()
 		if posicao == 1:
-			style_foto.bg_color = Color("f7d500ff")
+			style_foto.bg_color = Color("f5d67aff")
 		elif posicao == 2:
-			style_foto.bg_color = Color("f78d00ff")
+			style_foto.bg_color = Color("c4d7eaff")
 		elif posicao == 3:
-			style_foto.bg_color = Color("f76700ff")
+			style_foto.bg_color = Color("e9bb97ff")
 		else:
 			style_foto.bg_color = Color(0.8, 0.8, 0.8) # Cinza claro
 		style_foto.corner_radius_top_left = 100
@@ -87,7 +94,7 @@ func gerar_ranking(lista_usuarios: Array, vbox_pai: VBoxContainer):
 		
 		var foto = TextureRect.new()
 		foto.custom_minimum_size = Vector2(40, 40)
-		foto.texture = load("res://images/icones_luis/Foto_de_Perfil.png")
+		foto.texture = load("res://ui/avatar.svg")
 		foto.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		foto.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		foto.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
@@ -97,17 +104,21 @@ func gerar_ranking(lista_usuarios: Array, vbox_pai: VBoxContainer):
 		
 		
 		var vbox_textos = VBoxContainer.new()
-		vbox_textos.add_theme_constant_override("separation", -6)
+		vbox_textos.add_theme_constant_override("separation", 3)
 		vbox_textos.alignment = BoxContainer.ALIGNMENT_CENTER
 		vbox_textos.size_flags_horizontal = Control.SIZE_EXPAND_FILL # Expande para empurrar o ranking para a direita
 		hbox.add_child(vbox_textos)
 		
 		var label_nome = Label.new()
 		label_nome.text = str(jogador["nome"])
+		label_nome.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+		label_nome.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
 		vbox_textos.add_child(label_nome)
 		
 		var label_xp = Label.new()
+		label_xp.add_theme_color_override("font_color", Color("576b84"))
+		label_xp.add_theme_font_size_override("font_size", 14)
 		if jogador["xp"]:
 			label_xp.text = str(int(jogador["xp"])) + "xp"
 		else: 

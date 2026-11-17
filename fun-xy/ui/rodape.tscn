@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://clpnciyc7rvci"]
+
+[ext_resource type="Script" uid="uid://28v1aae3pdf6" path="res://ui/rodape.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bio88qtik85cc" path="res://ui/home.svg" id="2"]
+[ext_resource type="Texture2D" uid="uid://0ih7vcglxq3v" path="res://ui/book.svg" id="3"]
+[ext_resource type="Texture2D" uid="uid://c3thm55b2m70w" path="res://ui/rank.svg" id="4"]
+[ext_resource type="Texture2D" uid="uid://3q0gpvshysug" path="res://ui/profile.svg" id="5"]
+[ext_resource type="Texture2D" uid="uid://d01ueoiu5am3t" path="res://ui/settings.svg" id="6"]
+
+[sub_resource type="StyleBoxFlat" id="bar"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+
+[sub_resource type="StyleBoxFlat" id="clear"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Rodape" type="PanelContainer" unique_id=1989208781]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("bar")
+script = ExtResource("1")
+
+[node name="Margem" type="MarginContainer" parent="." unique_id=2132507291]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Abas" type="HBoxContainer" parent="Margem" unique_id=1996839338]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Trilhas" type="Button" parent="Margem/Abas" unique_id=190372783]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Trilhas"
+theme_override_styles/normal = SubResource("clear")
+
+[node name="Icone" type="TextureRect" parent="Margem/Abas/Trilhas" unique_id=147399033]
+self_modulate = Color(0.392, 0.455, 0.545, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = 8.0
+offset_right = 12.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Legenda" type="Label" parent="Margem/Abas/Trilhas" unique_id=1816385952]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 36.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 11
+text = "Trilhas"
+horizontal_alignment = 1
+
+[node name="Conteudos" type="Button" parent="Margem/Abas" unique_id=1589960338]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Conteúdos"
+theme_override_styles/normal = SubResource("clear")
+
+[node name="Icone" type="TextureRect" parent="Margem/Abas/Conteudos" unique_id=2050481268]
+self_modulate = Color(0.392, 0.455, 0.545, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = 8.0
+offset_right = 12.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Legenda" type="Label" parent="Margem/Abas/Conteudos" unique_id=617033976]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 36.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 11
+text = "Conteúdos"
+horizontal_alignment = 1
+
+[node name="Ranking" type="Button" parent="Margem/Abas" unique_id=1279243407]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Ranking"
+theme_override_styles/normal = SubResource("clear")
+
+[node name="Icone" type="TextureRect" parent="Margem/Abas/Ranking" unique_id=1395014702]
+self_modulate = Color(0.392, 0.455, 0.545, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = 8.0
+offset_right = 12.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Legenda" type="Label" parent="Margem/Abas/Ranking" unique_id=1448069789]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 36.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 11
+text = "Ranking"
+horizontal_alignment = 1
+
+[node name="Perfil" type="Button" parent="Margem/Abas" unique_id=1687526810]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Perfil"
+theme_override_styles/normal = SubResource("clear")
+
+[node name="Icone" type="TextureRect" parent="Margem/Abas/Perfil" unique_id=256572276]
+self_modulate = Color(0.392, 0.455, 0.545, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = 8.0
+offset_right = 12.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Legenda" type="Label" parent="Margem/Abas/Perfil" unique_id=541861045]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 36.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 11
+text = "Perfil"
+horizontal_alignment = 1
+
+[node name="Config" type="Button" parent="Margem/Abas" unique_id=907591068]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Ajustes"
+theme_override_colors/icon_pressed_color = Color(0.37176394, 0.5742717, 0.9783291, 1)
+theme_override_styles/normal = SubResource("clear")
+
+[node name="Icone" type="TextureRect" parent="Margem/Abas/Config" unique_id=738879308]
+self_modulate = Color(0.392, 0.455, 0.545, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = 8.0
+offset_right = 12.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Legenda" type="Label" parent="Margem/Abas/Config" unique_id=899522526]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 36.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 11
+text = "Ajustes"
+horizontal_alignment = 1

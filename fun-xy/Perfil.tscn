@@ -1,15 +1,29 @@
 [gd_scene format=3 uid="uid://bl8gu8rd3i3ge"]
 
+[ext_resource type="PackedScene" path="res://ui/rodape.tscn" id="UI_footer"]
+
+[ext_resource type="Theme" path="res://ui/funxy_theme.tres" id="UI_theme"]
+
+[ext_resource type="Texture2D" path="res://ui/home.svg" id="UI_home"]
+
+[ext_resource type="Texture2D" path="res://ui/book.svg" id="UI_book"]
+
+[ext_resource type="Texture2D" path="res://ui/trophy.svg" id="UI_rank"]
+
+[ext_resource type="Texture2D" path="res://ui/profile.svg" id="UI_profile"]
+
+[ext_resource type="Texture2D" path="res://ui/settings.svg" id="UI_settings"]
+
 [ext_resource type="Script" uid="uid://dus8bymjucqsi" path="res://perfil.gd" id="1_2yoj7"]
-[ext_resource type="Texture2D" uid="uid://bxhrqs0on6vfc" path="res://images/Foto_de_Perfil.png" id="1_042gs"]
+[ext_resource type="Texture2D" path="res://ui/avatar.svg" id="1_042gs"]
 [ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="2_042gs"]
 [ext_resource type="Texture2D" uid="uid://be6slbqck10bi" path="res://images/icones/home_page_icon.png" id="2_b0g2v"]
-[ext_resource type="Texture2D" uid="uid://7npg3irfh1eu" path="res://images/icone_raio.png" id="2_ldqir"]
-[ext_resource type="Texture2D" uid="uid://c6gpisov7fnqc" path="res://images/icone_moedas.png" id="3_3p8ts"]
-[ext_resource type="Texture2D" uid="uid://dwdynpq2vpjd2" path="res://images/icones_luis/Ranking.png" id="3_b0g2v"]
+[ext_resource type="Texture2D" path="res://ui/xp.svg" id="2_ldqir"]
+[ext_resource type="Texture2D" path="res://ui/coin.svg" id="3_3p8ts"]
+[ext_resource type="Texture2D" path="res://ui/trophy.svg" id="3_b0g2v"]
 [ext_resource type="Texture2D" uid="uid://dnoiu0y31eul8" path="res://images/icones_luis/PerfilBranco.png" id="4_187f0"]
-[ext_resource type="Texture2D" uid="uid://ce8bxelrpwxd2" path="res://images/icone_fogo.png" id="4_ekicr"]
-[ext_resource type="Texture2D" uid="uid://c6n7k3xp4jbhd" path="res://images/icones_luis/RankingBranco.png" id="5_3p8ts"]
+[ext_resource type="Texture2D" path="res://ui/flame.svg" id="4_ekicr"]
+[ext_resource type="Texture2D" path="res://ui/trophy.svg" id="5_3p8ts"]
 [ext_resource type="Texture2D" uid="uid://bysqk0ebc2cjr" path="res://images/icones_luis/Config.png" id="5_ldqir"]
 [ext_resource type="Texture2D" uid="uid://blj36h3b1jp6f" path="res://images/explorador.svg" id="6_ekicr"]
 [ext_resource type="Texture2D" uid="uid://ciw3kiha1c4ag" path="res://images/persistente.svg" id="7_64dp6"]
@@ -17,73 +31,80 @@
 [ext_resource type="Texture2D" uid="uid://dnhsl3igg2nup" path="res://images/em_sequencia.svg" id="9_meqgr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p8ts"]
-bg_color = Color(0.019607844, 0.078431375, 0.23137255, 1)
+bg_color = Color(0.96078, 0.96863, 0.98431, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_187f0"]
 content_margin_left = 5.0
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
-border_width_top = 1
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 0
+border_width_bottom = 0
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_042gs"]
-bg_color = Color(0, 0, 0, 1)
-border_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
+bg_color = Color(0.92157, 0.94902, 1.0, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_meqgr"]
 content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
-bg_color = Color(0.20392157, 0.49019608, 0.93333334, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+bg_color = Color(1.0, 1.0, 1.0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldqir"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 116
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1ueu"]
-bg_color = Color(0.011764706, 0.08235294, 0.36078432, 1)
+bg_color = Color(0.86275, 0.89412, 0.93725, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
-bg_color = Color(0.20392157, 0.49019608, 0.93333334, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+bg_color = Color(1, 0.969, 0.886, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5p8xb"]
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+bg_color = Color(1.0, 1.0, 1.0, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdoop"]
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+bg_color = Color(1.0, 1.0, 1.0, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7f26"]
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+bg_color = Color(1.0, 1.0, 1.0, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cph1j"]
-bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
+bg_color = Color(1.0, 1.0, 1.0, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yoj7"]
-bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+bg_color = Color(1.0, 1.0, 1.0, 1)
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [node name="Control" type="Control" unique_id=2084769994]
 layout_mode = 3
@@ -93,6 +114,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2yoj7")
+theme = ExtResource("UI_theme")
 
 [node name="Panel" type="Panel" parent="." unique_id=1958484112]
 layout_mode = 1
@@ -109,10 +131,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -30.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
+offset_left = 0.0
+offset_right = 0.0
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=711880785]
 custom_minimum_size = Vector2(0, 150)
@@ -135,6 +159,7 @@ text = "PERFIL"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="PanelFOTO" type="PanelContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=516630475]
 custom_minimum_size = Vector2(75, 75)
@@ -156,10 +181,11 @@ theme_override_font_sizes/font_size = 20
 text = "Nome_Usuario"
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Label3" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=63728189]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8175213, 0.8175213, 0.81752115, 1)
+theme_override_colors/font_color = Color(0.34118, 0.41961, 0.51765, 1)
 theme_override_font_sizes/font_size = 16
 text = "Seu Progresso de  aprendizagem"
 horizontal_alignment = 1
@@ -170,13 +196,14 @@ layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer" unique_id=314728659]
-custom_minimum_size = Vector2(0, 530)
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 15
+theme_override_constants/separation = 18
 
 [node name="DadosPerfil" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1358480164]
 custom_minimum_size = Vector2(310, -1)
@@ -200,11 +227,12 @@ theme_override_constants/separation = 12
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Experiência/HBoxContainer" unique_id=590216979]
 texture_filter = 4
-custom_minimum_size = Vector2(38, 38)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("2_ldqir")
 expand_mode = 1
 stretch_mode = 5
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Experiência/HBoxContainer" unique_id=1749765988]
 layout_mode = 2
@@ -215,10 +243,11 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "EXPERIÊNCIA: 202020202202020020"
 text_overrun_behavior = 3
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Experiência/HBoxContainer/VBoxContainer" unique_id=405313072]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8862616, 0.88626146, 0.8862615, 1)
+theme_override_colors/font_color = Color(0.34118, 0.41961, 0.51765, 1)
 theme_override_colors/font_outline_color = Color(0.973535, 0.9735351, 0.973535, 1)
 theme_override_font_sizes/font_size = 15
 theme_override_styles/focus = SubResource("StyleBoxFlat_ldqir")
@@ -241,12 +270,12 @@ theme_override_constants/separation = 12
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Moedas/HBoxContainer" unique_id=750848466]
 texture_filter = 4
-custom_minimum_size = Vector2(38, 38)
-custom_maximum_size = Vector2(38, 38)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("3_3p8ts")
 expand_mode = 1
 stretch_mode = 5
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Moedas/HBoxContainer" unique_id=894323377]
 layout_mode = 2
@@ -258,10 +287,11 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "MOEDAS: 232323232323232323"
 text_overrun_behavior = 3
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Moedas/HBoxContainer/VBoxContainer" unique_id=779643257]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8862616, 0.88626146, 0.8862615, 1)
+theme_override_colors/font_color = Color(0.34118, 0.41961, 0.51765, 1)
 theme_override_colors/font_outline_color = Color(0.973535, 0.9735351, 0.973535, 1)
 theme_override_font_sizes/font_size = 15
 theme_override_styles/focus = SubResource("StyleBoxFlat_ldqir")
@@ -283,14 +313,13 @@ size_flags_vertical = 4
 theme_override_constants/separation = 12
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Sequência/HBoxContainer" unique_id=1809444127]
-modulate = Color(0.9620995, 0.5726888, 0, 1)
 texture_filter = 4
-custom_minimum_size = Vector2(38, 38)
-custom_maximum_size = Vector2(38, 38)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("4_ekicr")
 expand_mode = 1
 stretch_mode = 5
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Sequência/HBoxContainer" unique_id=1418608625]
 layout_mode = 2
@@ -301,10 +330,11 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "DIAS: 21323132102323232"
 text_overrun_behavior = 3
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Sequência/HBoxContainer/VBoxContainer" unique_id=103019006]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8862616, 0.88626146, 0.8862615, 1)
+theme_override_colors/font_color = Color(0.34118, 0.41961, 0.51765, 1)
 theme_override_colors/font_outline_color = Color(0.973535, 0.9735351, 0.973535, 1)
 theme_override_font_sizes/font_size = 15
 theme_override_styles/focus = SubResource("StyleBoxFlat_ldqir")
@@ -324,7 +354,6 @@ layout_mode = 2
 theme_override_constants/margin_left = 10
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/Ranking/HBoxContainer/MarginContainer" unique_id=395224722]
-modulate = Color(0.9999998, 0.8438126, 0.4119631, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -334,6 +363,7 @@ texture = ExtResource("5_3p8ts")
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Posição no Ranking"
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Ranking/HBoxContainer" unique_id=934233513]
 layout_mode = 2
@@ -346,6 +376,7 @@ size_flags_horizontal = 8
 text = "138º"
 text_overrun_behavior = 3
 uppercase = true
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=657015823]
 custom_minimum_size = Vector2(0, 20)
@@ -355,6 +386,7 @@ size_flags_stretch_ratio = 16.63
 theme_override_font_sizes/bold_font_size = 14
 bbcode_enabled = true
 text = "[b]MEDALHAS[/b]"
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Conquistas" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2041064899]
 custom_minimum_size = Vector2(0, 110)
@@ -375,7 +407,6 @@ layout_mode = 2
 theme_override_constants/separation = -2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1297153446]
-modulate = Color(1, 0.9137255, 0.22745098, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -395,6 +426,7 @@ text = "[b] EXPLORADOR [/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer" unique_id=663264161]
 layout_mode = 2
@@ -406,7 +438,6 @@ layout_mode = 2
 theme_override_constants/separation = -2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1298306141]
-modulate = Color(1, 0.9137255, 0.22745098, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -426,6 +457,7 @@ text = "[b] PERSISTENTE [/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer" unique_id=2101595977]
 layout_mode = 2
@@ -437,7 +469,6 @@ layout_mode = 2
 theme_override_constants/separation = -2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer/MarginContainer3/VBoxContainer" unique_id=1537090451]
-modulate = Color(1, 0.9137255, 0.22745098, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -457,6 +488,7 @@ text = "[b] ESTREIA [/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer" unique_id=1164623783]
 layout_mode = 2
@@ -468,7 +500,6 @@ layout_mode = 2
 theme_override_constants/separation = -2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer/MarginContainer4/VBoxContainer" unique_id=553761173]
-modulate = Color(1, 0.9137255, 0.22745098, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -488,136 +519,13 @@ text = "[b] CONSTÂNCIA [/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="HboxBAIXO" type="HBoxContainer" parent="." unique_id=1376637337]
-custom_minimum_size = Vector2(360, 70)
-custom_maximum_size = Vector2(360, 70)
+[node name="Rodape" parent="." instance=ExtResource("UI_footer")]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -72.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 0
-alignment = 1
+aba_ativa = 3
 
-[node name="PanelContainer6" type="PanelContainer" parent="HboxBAIXO" unique_id=1232765704]
-custom_minimum_size = Vector2(72, 0)
-custom_maximum_size = Vector2(72, -1)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5p8xb")
-
-[node name="ButtonHome" type="Button" parent="HboxBAIXO/PanelContainer6" unique_id=785687573]
-layout_mode = 2
-flat = true
-
-[node name="TextureRect" type="TextureRect" parent="HboxBAIXO/PanelContainer6/ButtonHome" unique_id=221484479]
-custom_maximum_size = Vector2(40, 40)
-layout_mode = 0
-offset_left = 13.0
-offset_top = 15.0
-offset_right = 53.0
-offset_bottom = 55.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_b0g2v")
-expand_mode = 1
-
-[node name="PanelContainer2" type="PanelContainer" parent="HboxBAIXO" unique_id=1196835070]
-custom_minimum_size = Vector2(72, 72)
-custom_maximum_size = Vector2(72, -1)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mdoop")
-
-[node name="Button" type="Button" parent="HboxBAIXO/PanelContainer2" unique_id=496833793]
-layout_mode = 2
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 2
-expand_icon = true
-
-[node name="TextureRect" type="TextureRect" parent="HboxBAIXO/PanelContainer2/Button" unique_id=1647777044]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 7.0
-offset_right = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_042gs")
-expand_mode = 1
-
-[node name="PanelContainer3" type="PanelContainer" parent="HboxBAIXO" unique_id=1489663985]
-custom_minimum_size = Vector2(72, 0)
-custom_maximum_size = Vector2(72, -1)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_j7f26")
-
-[node name="CenterContainer2" type="CenterContainer" parent="HboxBAIXO/PanelContainer3" unique_id=843476910]
-custom_minimum_size = Vector2(32, 32)
-custom_maximum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-
-[node name="TextureButton" type="TextureButton" parent="HboxBAIXO/PanelContainer3/CenterContainer2" unique_id=1259316136]
-custom_minimum_size = Vector2(32, 32)
-custom_maximum_size = Vector2(32, 32)
-layout_mode = 2
-texture_normal = ExtResource("3_b0g2v")
-stretch_mode = 3
-
-[node name="PanelContainer7" type="PanelContainer" parent="HboxBAIXO" unique_id=579163982]
-custom_minimum_size = Vector2(72, 0)
-custom_maximum_size = Vector2(72, -1)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cph1j")
-
-[node name="Button" type="Button" parent="HboxBAIXO/PanelContainer7" unique_id=566548976]
-layout_mode = 2
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 2
-expand_icon = true
-
-[node name="TextureRect" type="TextureRect" parent="HboxBAIXO/PanelContainer7/Button" unique_id=2085565770]
-custom_maximum_size = Vector2(48, 48)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_187f0")
-expand_mode = 1
-
-[node name="PanelContainer5" type="PanelContainer" parent="HboxBAIXO" unique_id=372001894]
-custom_minimum_size = Vector2(72, 0)
-custom_maximum_size = Vector2(72, -1)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2yoj7")
-
-[node name="CenterContainer4" type="CenterContainer" parent="HboxBAIXO/PanelContainer5" unique_id=2084964514]
-custom_minimum_size = Vector2(32, 32)
-custom_maximum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-
-[node name="TextureButton" type="TextureButton" parent="HboxBAIXO/PanelContainer5/CenterContainer4" unique_id=1866403803]
-custom_minimum_size = Vector2(32, 32)
-custom_maximum_size = Vector2(32, 32)
-layout_mode = 2
-texture_normal = ExtResource("5_ldqir")
-stretch_mode = 3
-
-[connection signal="pressed" from="HboxBAIXO/PanelContainer6/ButtonHome" to="." method="_on_button_home_pressed"]
-[connection signal="pressed" from="HboxBAIXO/PanelContainer2/Button" to="." method="_on_button_pressed_conteudos"]
-[connection signal="pressed" from="HboxBAIXO/PanelContainer3/CenterContainer2/TextureButton" to="." method="_on_button_pressed_ranking"]
-[connection signal="pressed" from="HboxBAIXO/PanelContainer5/CenterContainer4/TextureButton" to="." method="_on_button_pressed_configuracao"]
+[connection signal="trilhas_pressed" from="Rodape" to="." method="_on_button_home_pressed"]
+[connection signal="conteudos_pressed" from="Rodape" to="." method="_on_button_pressed_conteudos"]
+[connection signal="ranking_pressed" from="Rodape" to="." method="_on_button_pressed_ranking"]
+[connection signal="ajustes_pressed" from="Rodape" to="." method="_on_button_pressed_configuracao"]
