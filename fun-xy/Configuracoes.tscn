@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bjbdrevu0nmya"]
 
 [ext_resource type="Script" uid="uid://uds8dh1aa56r" path="res://cenas_Luis/configuracoes.gd" id="1_unjqd"]
-[ext_resource type="Texture2D" uid="uid://cucra5k332xu7" path="res://ui/avatar.svg" id="2_v52in"]
-[ext_resource type="Texture2D" uid="uid://chdyc8agpamem" path="res://ui/edit.svg" id="3_akwb4"]
+[ext_resource type="Texture2D" uid="uid://cms5c7fosgihf" path="res://images/icones_azul_escuro/icon_perfil_azul_escuro.svg" id="3_0d87y"]
+[ext_resource type="Texture2D" uid="uid://cwh21to414tq1" path="res://images/icones_azul_escuro/editar_perfil.svg" id="4_pjwo2"]
 [ext_resource type="Texture2D" uid="uid://cm4sf1121kxiu" path="res://images/icones_azul_escuro/sol.svg" id="5_0d87y"]
 [ext_resource type="Texture2D" uid="uid://ybpkynte5mlw" path="res://ui/sun.svg" id="5_0yrvq"]
 [ext_resource type="Texture2D" uid="uid://deyqg3f8nq84t" path="res://ui/moon.svg" id="6_da1ep"]
@@ -11,9 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://clpnciyc7rvci" path="res://ui/rodape.tscn" id="UI_footer"]
 [ext_resource type="Theme" uid="uid://sf5kdvqdkowx" path="res://ui/funxy_theme.tres" id="UI_theme"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
-bg_color = Color(0.8392157, 0.8745098, 0.9764706, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
+[sub_resource type="Gradient" id="Gradient_qcemb"]
+colors = PackedColorArray(0.8383659, 0.91962564, 0.99999946, 1, 0.89, 0.94, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0d87y"]
+gradient = SubResource("Gradient_qcemb")
+width = 360
+height = 640
+fill_from = Vector2(0, 0.0042735045)
+fill_to = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jv1ba"]
 bg_color = Color(1, 1, 1, 0)
@@ -21,7 +27,7 @@ border_color = Color(0.86275, 0.89412, 0.93725, 1)
 anti_aliasing_size = 4.643
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tmwh"]
-bg_color = Color(0, 0.16076672, 0.3443516, 1)
+bg_color = Color(0.9647059, 0.972549, 1, 1)
 border_color = Color(0.8, 0.8, 0.8, 0)
 corner_radius_bottom_right = 17
 corner_radius_bottom_left = 17
@@ -31,9 +37,37 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sinh"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.6784314, 0.75686276, 0.96862745, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vd5tl"]
+bg_color = Color(0.49692518, 0.9815586, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6hchu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v52in"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.46666667)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_di2w4"]
 
@@ -147,14 +181,14 @@ grow_vertical = 2
 theme = ExtResource("UI_theme")
 script = ExtResource("1_unjqd")
 
-[node name="Panel" type="Panel" parent="." unique_id=899044618]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=172715348]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_p3kxb")
+texture = SubResource("GradientTexture2D_0d87y")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=344791394]
 custom_minimum_size = Vector2(0, 56)
@@ -171,7 +205,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5tmwh")
 
 [node name="TituloConfiguracoes" type="Label" parent="PanelContainer" unique_id=1927053981]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.95193774, 0.9593194, 0.98972124, 1)
+theme_override_colors/font_color = Color(0.1254902, 0.19215687, 0.29411766, 1)
 theme_override_font_sizes/font_size = 24
 text = "Configurações"
 horizontal_alignment = 1
@@ -188,6 +222,7 @@ offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="Corpo" type="VBoxContainer" parent="ConfigScroll" unique_id=1942506719]
 layout_mode = 2
@@ -205,26 +240,48 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 18
 
-[node name="PanelFOTO" type="PanelContainer" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer" unique_id=2024642400]
+[node name="Panel" type="Panel" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer" unique_id=9181075]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6sinh")
+
+[node name="PanelFOTO" type="PanelContainer" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/Panel" unique_id=2024642400]
 clip_children = 1
 custom_minimum_size = Vector2(75, 75)
 custom_maximum_size = Vector2(75, 75)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vd5tl")
 
-[node name="FotoPerfil" type="TextureRect" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/PanelFOTO" unique_id=252770242]
+[node name="FotoPerfil" type="TextureRect" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/Panel/PanelFOTO" unique_id=252770242]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(65, 65)
+custom_maximum_size = Vector2(65, 65)
 layout_mode = 2
-texture = ExtResource("2_v52in")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_0d87y")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="ButtonTrocarFoto" type="Button" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/PanelFOTO" unique_id=7991611]
+[node name="ButtonTrocarFoto" type="Button" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/Panel/PanelFOTO" unique_id=7991611]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_styles/normal = SubResource("StyleBoxEmpty_6hchu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v52in")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_di2w4")
 
-[node name="SeletorArquivo" type="FileDialog" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/PanelFOTO" unique_id=1435324796]
+[node name="SeletorArquivo" type="FileDialog" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/Panel/PanelFOTO" unique_id=1435324796]
 unique_name_in_owner = true
 oversampling_override = 1.0
 title = "Open a File"
@@ -247,13 +304,34 @@ text = "[b]Nome de Usuário[/b]"
 fit_content = true
 
 [node name="ButtonEditarPerfil" type="Button" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer" unique_id=285626443]
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
-size_flags_horizontal = 0
-icon = ExtResource("3_akwb4")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("4_pjwo2")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/ButtonEditarPerfil" unique_id=254248586]
+visible = false
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22500001
+anchor_top = 0.5
+anchor_right = 0.22500001
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_pjwo2")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PanelCONFIGS" type="PanelContainer" parent="ConfigScroll/Corpo" unique_id=131494903]
 layout_mode = 2
@@ -480,10 +558,26 @@ theme_override_constants/separation = 8
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="TextureRect" type="TextureRect" parent="ConfigScroll/Corpo/PanelCONFIGS/VBoxContainer/Privacidade/HBoxContainer" unique_id=460527475]
+[node name="Panel2" type="Panel" parent="ConfigScroll/Corpo/PanelCONFIGS/VBoxContainer/Privacidade/HBoxContainer" unique_id=6899063]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_unjqd")
+
+[node name="TextureRect" type="TextureRect" parent="ConfigScroll/Corpo/PanelCONFIGS/VBoxContainer/Privacidade/HBoxContainer/Panel2" unique_id=460527475]
 custom_minimum_size = Vector2(35, 30)
 custom_maximum_size = Vector2(35, 30)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -15.0
+offset_right = 17.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("9_6sinh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ConfigScroll/Corpo/PanelCONFIGS/VBoxContainer/Privacidade/HBoxContainer" unique_id=2122951066]
@@ -554,8 +648,8 @@ horizontal_alignment = 1
 layout_mode = 1
 aba_ativa = 4
 
-[connection signal="pressed" from="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/PanelFOTO/ButtonTrocarFoto" to="." method="_on_button_trocar_foto_pressed"]
-[connection signal="file_selected" from="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/PanelFOTO/SeletorArquivo" to="." method="_on_seletor_arquivo_file_selected"]
+[connection signal="pressed" from="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/Panel/PanelFOTO/ButtonTrocarFoto" to="." method="_on_button_trocar_foto_pressed"]
+[connection signal="file_selected" from="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/Panel/PanelFOTO/SeletorArquivo" to="." method="_on_seletor_arquivo_file_selected"]
 [connection signal="toggled" from="ConfigScroll/Corpo/PanelCONFIGS/VBoxContainer/SomAudio/PanelContainer/BotaoSom" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="ConfigScroll/Corpo/PanelCONFIGS/VBoxContainer/Deslogar/Button" to="." method="_on_button_deslogar_pressed"]
 [connection signal="conteudos_pressed" from="Rodape" to="." method="_on_button_pressed_conteudo"]
