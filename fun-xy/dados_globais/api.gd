@@ -245,7 +245,7 @@ func _enviar(
 		print("ADICIONANDO BEARER "+ token)
 		headers.append("Authorization: Bearer " + token)
 
-	var url: String = Sessao.API_BASE_URL.trim_suffix("/") + rota
+	var url: String = Sessao.URL_BASE.trim_suffix("/") + rota
 	print(url)
 	var erro: int = http.request(url, headers, metodo, corpo)
 
@@ -309,7 +309,7 @@ func registrar_login() -> void:
 # Limpa a sessão local. Não chama uma rota de logout no backend.
 func sair() -> void:
 	_versao_sessao += 1
-	Sessao.limpar()
+	Sessao.encerrar_sessao()
 
 	var cofre: Node = get_node_or_null("/root/CofreTokens")
 	if cofre != null:
@@ -377,3 +377,4 @@ func restaurar_sessao() -> Dictionary:
 		return _resultado(0, null, "Dados do jogador em formato inválido.")
 
 	return _resultado(200)
+	

@@ -607,9 +607,6 @@ layout_mode = 2
 texture_normal = ExtResource("13_y5ksv")
 stretch_mode = 3
 
-[connection signal="pressed" from="PanelContainer2/HBoxContainer/PanelFOTO/ButtonTrocarFoto" to="." method="_on_button_trocar_foto_pressed"]
-[connection signal="file_selected" from="PanelContainer2/HBoxContainer/PanelFOTO/SeletorArquivo" to="." method="_on_seletor_arquivo_file_selected"]
-[connection signal="pressed" from="PanelCONFIGS/VBoxContainer/Deslogar/Button" to="." method="_on_button_deslogar_pressed"]
 [node name="Button" type="Button" parent="HboxBAIXO/PanelContainer5" unique_id=368714060]
 layout_mode = 2
 flat = true
@@ -628,7 +625,10 @@ grow_vertical = 2
 texture = ExtResource("13_y5ksv")
 expand_mode = 1
 
+[connection signal="pressed" from="PanelContainer2/HBoxContainer/PanelFOTO/ButtonTrocarFoto" to="." method="_on_button_trocar_foto_pressed"]
+[connection signal="file_selected" from="PanelContainer2/HBoxContainer/PanelFOTO/SeletorArquivo" to="." method="_on_seletor_arquivo_file_selected"]
 [connection signal="toggled" from="PanelCONFIGS/VBoxContainer/SomAudio/PanelContainer/BotaoSom" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="PanelCONFIGS/VBoxContainer/Deslogar/Button" to="." method="_on_button_deslogar_pressed"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer/ButtonHome" to="." method="_on_button_home_pressed"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer2/Button" to="." method="_on_button_pressed_conteudo"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer3/CenterContainer2/ButtonRank" to="." method="_on_button_rank_pressed_ranking"]

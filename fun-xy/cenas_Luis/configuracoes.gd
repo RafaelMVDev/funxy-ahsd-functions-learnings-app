@@ -15,14 +15,16 @@ var nome = str(Sessao.player['nome'])
 @onready var botao_escuro = %FundoEscuro
 @onready var botao_som = %BotaoSom
 
+var enviando_foto: bool = false
+
 #var icon_sol_azul = preload("")
 var icon_sol_branco = preload("res://images/icones/aparencia_sol_branco.svg")
 var icon_lua_branca = preload("res://images/icones/tema_escuro_lua_branca.svg")
 var icon_sol_azul = preload("res://images/icones/tema_claro_sol_azul.svg")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
-    label_nome.text = nome
+	carregar_foto_perfil()
+	label_nome.text = nome
 	label_nome.visible = true
 
 	if FileAccess.file_exists("user://avatar_usuario.png"):
@@ -30,9 +32,9 @@ func _ready() -> void:
 		foto_perfil.texture = ImageTexture.create_from_image(imagem)
 
 	var master_bus_index = AudioServer.get_bus_index("Master")
-    	var is_muted = AudioServer.is_bus_mute(master_bus_index)
-    	AudioServer.set_bus_mute(master_bus_index, is_muted)
-    	botao_som.set_pressed_no_signal(is_muted)
+	var is_muted = AudioServer.is_bus_mute(master_bus_index)
+	AudioServer.set_bus_mute(master_bus_index, is_muted)
+	botao_som.set_pressed_no_signal(is_muted)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,7 +60,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_home_pressed() -> void:
-	get_tree().change_scene_to_file("res://cenas_Luis/Conteudos.tscn")
+	get_tree().change_scene_to_file("res://Trilha.tscn")
 
 func _on_button_pressed_conteudo() -> void:
 	get_tree().change_scene_to_file("res://Conteudos.tscn")
@@ -81,17 +83,29 @@ func _on_button_trocar_foto_pressed() -> void:
 	seletor_arquivo.popup_centered(Vector2i(600, 400))
 
 func _on_seletor_arquivo_file_selected(caminho_arquivo: String):
-	print("Arquivo selecionado: ", caminho_arquivo)
+	if enviando_foto:
+		return
 
-	# Carrega a imagem direto do caminho selecionado
-	var imagem = Image.load_from_file(caminho_arquivo)
+	enviando_foto = true
 
-	if imagem != null:
-		print("Imagem carregada com sucesso! Tamanho: ", imagem.get_size())
-		var textura = ImageTexture.create_from_image(imagem)
-		foto_perfil.texture = textura
+	# A função abre a imagem, converte para PNG e envia ao backend.
+	var salvou: bool = await Sessao.enviar_foto(caminho_arquivo)
 
-		# Salva localmente para persistir
-		imagem.save_png("user://avatar_usuario.png")
+	if salvou:
+		print("Foto salva na API!")
+
+		# Atualiza a tela com a imagem que ficou salva no banco.
+		await carregar_foto_perfil()
 	else:
-		print("ERRO: Não foi possível ler a imagem nesse caminho.")
+		push_warning("Não foi possível salvar a foto.")
+
+	enviando_foto = false
+
+func carregar_foto_perfil() -> void:
+	var textura: ImageTexture = await Sessao.buscar_foto()
+
+	if textura != null:
+		foto_perfil.texture = textura
+	else:
+		# Mantém a imagem atual ou o avatar padrão.
+		print("Foto indisponível; mantendo o avatar atual.")

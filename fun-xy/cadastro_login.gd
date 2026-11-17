@@ -153,7 +153,6 @@ func _on_login_response(resultado: Dictionary) -> void:
 	
 	# Pega o ranking atual e coloca na var global
 	await DadosJogo.carregar_ranking()
-	
 	print(DadosJogo.ranking_xp)
 	# Os dados pessoais e o catálogo estão disponíveis nos globais.
 	get_tree().change_scene_to_file("res://Trilha.tscn")
