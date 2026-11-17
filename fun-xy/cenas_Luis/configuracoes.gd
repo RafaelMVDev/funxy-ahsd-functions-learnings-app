@@ -15,15 +15,13 @@ var nome = str(Sessao.player['nome'])
 @onready var botao_escuro = %FundoEscuro
 @onready var botao_som = %BotaoSom
 
-var enviando_foto: bool = false
-
 #var icon_sol_azul = preload("")
 var icon_sol_branco = preload("res://images/icones/aparencia_sol_branco.svg")
 var icon_lua_branca = preload("res://images/icones/tema_escuro_lua_branca.svg")
 var icon_sol_azul = preload("res://images/icones/tema_claro_sol_azul.svg")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	carregar_foto_perfil()
+
 	label_nome.text = nome
 	label_nome.visible = true
 
@@ -60,7 +58,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_home_pressed() -> void:
-	get_tree().change_scene_to_file("res://Trilha.tscn")
+	get_tree().change_scene_to_file("res://cenas_Luis/Conteudos.tscn")
 
 func _on_button_pressed_conteudo() -> void:
 	get_tree().change_scene_to_file("res://Conteudos.tscn")
@@ -83,29 +81,17 @@ func _on_button_trocar_foto_pressed() -> void:
 	seletor_arquivo.popup_centered(Vector2i(600, 400))
 
 func _on_seletor_arquivo_file_selected(caminho_arquivo: String):
-	if enviando_foto:
-		return
+	print("Arquivo selecionado: ", caminho_arquivo)
 
-	enviando_foto = true
+	# Carrega a imagem direto do caminho selecionado
+	var imagem = Image.load_from_file(caminho_arquivo)
 
-	# A função abre a imagem, converte para PNG e envia ao backend.
-	var salvou: bool = await Sessao.enviar_foto(caminho_arquivo)
-
-	if salvou:
-		print("Foto salva na API!")
-
-		# Atualiza a tela com a imagem que ficou salva no banco.
-		await carregar_foto_perfil()
-	else:
-		push_warning("Não foi possível salvar a foto.")
-
-	enviando_foto = false
-
-func carregar_foto_perfil() -> void:
-	var textura: ImageTexture = await Sessao.buscar_foto()
-
-	if textura != null:
+	if imagem != null:
+		print("Imagem carregada com sucesso! Tamanho: ", imagem.get_size())
+		var textura = ImageTexture.create_from_image(imagem)
 		foto_perfil.texture = textura
+
+		# Salva localmente para persistir
+		imagem.save_png("user://avatar_usuario.png")
 	else:
-		# Mantém a imagem atual ou o avatar padrão.
-		print("Foto indisponível; mantendo o avatar atual.")
+		print("ERRO: Não foi possível ler a imagem nesse caminho.")
