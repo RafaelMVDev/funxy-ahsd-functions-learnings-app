@@ -102,3 +102,22 @@ func carregar_da_api() -> bool:
 		return false
 
 	return carregar_catalogo(jogo)
+
+
+# Guarda o ID da atividade de leitura selecionada.
+# -1 significa que nenhuma foi encontrada.
+var atividade_leitura_id: int = -1
+
+
+func buscar_id_leitura(trilha_id: int) -> int:
+	for trilha in trilhas:
+		if int(trilha["trilhaId"]) != trilha_id:
+			continue
+
+		# A atividade número 0 é a leitura dessa trilha.
+		for atividade in trilha["atividades"]:
+			if int(atividade["numeroAtividade"]) == 0:
+				return int(atividade["atividadeId"])
+
+	# A trilha não existe ou não possui uma leitura.
+	return -1

@@ -375,3 +375,46 @@ func buscar_foto() -> ImageTexture:
 
 	return ImageTexture.create_from_image(imagem)
 	
+func concluir_leitura(atividade_id: int, pagina_atual: int) -> bool:
+	if atividade_id <= 0 or pagina_atual < 1:
+		push_warning("Atividade ou página inválida.")
+		return false
+
+	var dados: Dictionary = {
+		"paginaAtual": pagina_atual,
+		"status": true
+	}
+
+	# Api.requisitar envia o token e trata a renovação quando necessário.
+	# Aqui estamos considerando que ela recebe o corpo como Dictionary.
+	var resposta: Dictionary = await Api.requisitar(
+		HTTPClient.METHOD_POST,
+		"/progresso/leitura/%d/salvar" % atividade_id,
+		JSON.stringify(dados)
+	)
+
+	if not resposta["ok"]:
+		push_warning("Não foi possível salvar a leitura: " + str(resposta["mensagem"]))
+		return false
+
+	# O corpo já foi convertido de JSON para Dictionary pelo Api.
+	var tentativa = resposta["dados"]
+
+	if not (tentativa is Dictionary):
+		push_warning("O servidor retornou um progresso inválido.")
+		return false
+
+	if tentativa.get("status") != true:
+		push_warning("O servidor não confirmou a conclusão da leitura.")
+		return false
+
+	# Busca o progresso atualizado para manter Sessao igual ao banco.
+	var progresso: Dictionary = await Api.buscar("/api/usuario/me/progresso")
+
+	if progresso["ok"] and progresso["dados"] is Array:
+		player_trilhas = progresso["dados"]
+	else:
+		# A leitura já foi salva. Não retornar false para evitar salvá-la novamente.
+		push_warning("Leitura salva, mas não foi possível atualizar o progresso local.")
+
+	return true
