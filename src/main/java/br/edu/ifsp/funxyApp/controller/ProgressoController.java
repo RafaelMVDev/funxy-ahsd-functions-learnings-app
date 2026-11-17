@@ -1,5 +1,6 @@
 package br.edu.ifsp.funxyApp.controller;
 
+import br.edu.ifsp.funxyApp.dto.atividade.SalvarProgressoLeituraRequestDto;
 import br.edu.ifsp.funxyApp.dto.atividade.SalvarProgressoPraticaRequestDto;
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
 import br.edu.ifsp.funxyApp.service.ProgressoUsuarioService;
@@ -30,6 +31,19 @@ public class ProgressoController {
         System.out.println("CARALHIO");
         return progressoUsuarioService.salvarPratica(
                 usuarioId, atividadeId, request
+        );
+    }
+
+    @PostMapping("/leitura/{atividadeId}/salvar")
+    public TrilhaProgressoDto.Tentativa salvarLeitura(
+            @AuthenticationPrincipal Long usuarioId,
+            @PathVariable("atividadeId") Long atividadeId,
+            @Valid @RequestBody SalvarProgressoLeituraRequestDto request
+    ) {
+        return progressoUsuarioService.salvarLeitura(
+                usuarioId,
+                atividadeId,
+                request
         );
     }
 }

@@ -16,4 +16,10 @@ public interface ProgressoLeituraRepository
     Optional<ProgressoLeitura> findByIdAndUsuario_Id(
             Long progressoId, Long usuarioId
     );
+
+    Optional<ProgressoLeitura>
+    findFirstByUsuario_IdAndAtividade_IdAndDatetimeConclusaoIsNullOrderByIdDesc(
+            Long usuarioId,
+            Long atividadeId
+    );
 }

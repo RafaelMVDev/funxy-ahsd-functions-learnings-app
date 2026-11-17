@@ -31,7 +31,7 @@ public abstract class Progresso {
     private String tipo;
 
     @Column(name ="status")
-    private Boolean status;
+    private Boolean status = false;
 
     protected Progresso() {
         // Construtor usado pelo JPA.
@@ -46,8 +46,9 @@ public abstract class Progresso {
     public void concluir() {
         if (datetimeConclusao == null) {
             datetimeConclusao = LocalDateTime.now();
-            status = true;
+
         }
+        status = true;
     }
 
     public Long getId() {

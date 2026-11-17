@@ -644,3 +644,183 @@ FROM Trilha t
          JOIN Atividades a ON a.id_trilha = t.id_trilha
          JOIN Atividades_Pratica p ON p.id_atividade = a.id_atividade
 ORDER BY t.numero_trilha, a.numero_atividade;
+
+
+-- =====================================================
+-- CRIA UMA LEITURA POR TRILHA, CASO AINDA NÃO EXISTA
+-- =====================================================
+
+INSERT INTO Atividades (
+    id_trilha,
+    numero_atividade,
+    titulo,
+    descricao,
+    tipo,
+    xp_base,
+    moeda_base
+)
+SELECT
+    t.id_trilha,
+    0,
+    'Introdução',
+    'Conceitos iniciais da trilha.',
+    'leitura',
+    0,
+    0
+FROM Trilha t
+WHERE t.id_trilha IN (1, 2, 3, 4, 5)
+  AND NOT EXISTS (
+    SELECT 1
+    FROM Atividades a
+    WHERE a.id_trilha = t.id_trilha
+      AND a.tipo = 'leitura'
+);
+
+-- Cria os registros da especialização usando os IDs gerados.
+INSERT INTO Atividades_Leitura (
+    id_atividade,
+    textos,
+    imagens
+)
+SELECT
+    a.id_atividade,
+    '[]',
+    '[]'
+FROM Atividades a
+WHERE a.tipo = 'leitura'
+  AND a.id_trilha IN (1, 2, 3, 4, 5)
+  AND NOT EXISTS (
+    SELECT 1
+    FROM Atividades_Leitura leitura
+    WHERE leitura.id_atividade = a.id_atividade
+);
+
+
+-- =====================================================
+-- TRILHA 1 — INTRODUÇÃO ÀS FUNÇÕES
+-- =====================================================
+
+UPDATE Atividades
+SET numero_atividade = 0,
+    titulo = 'O que é uma função?',
+    descricao = 'Entenda entradas, saídas e pontos no plano cartesiano.'
+WHERE id_trilha = 1 AND tipo = 'leitura';
+
+UPDATE Atividades_Leitura
+SET textos = '[
+    "Uma função relaciona valores de entrada a valores de saída. Cada entrada permitida deve produzir uma única saída.",
+    "Chamamos a entrada de x e podemos escrever a saída como f(x). Na função f(x) = x + 2, a regra é somar 2 ao valor escolhido.",
+    "Se x = 1, então f(1) = 3. Se x = 4, então f(4) = 6. A regra é a mesma, mas a saída depende da entrada.",
+    "Podemos representar cada resultado no plano cartesiano. O ponto (1, 3) indica entrada 1 e saída 3.",
+    "O eixo horizontal representa x e o eixo vertical representa y. Para localizar (1, 3), avance 1 unidade à direita e 3 unidades para cima a partir da origem.",
+    "Nos desafios do Funxy, você vai escrever funções e observar seus gráficos. Comece testando valores simples e acompanhando os pontos."
+]'
+WHERE id_atividade IN (
+    SELECT id_atividade FROM Atividades
+    WHERE id_trilha = 1 AND tipo = 'leitura'
+);
+
+
+-- =====================================================
+-- TRILHA 2 — FUNÇÃO AFIM
+-- =====================================================
+
+UPDATE Atividades
+SET numero_atividade = 0,
+    titulo = 'Construindo caminhos com retas',
+    descricao = 'Descubra como os coeficientes mudam o gráfico de uma função afim.'
+WHERE id_trilha = 2 AND tipo = 'leitura';
+
+UPDATE Atividades_Leitura
+SET textos = '[
+    "A função afim tem a forma f(x) = a*x + b. Seu gráfico é uma reta.",
+    "O coeficiente a determina a inclinação. Quando a é positivo, a reta sobe da esquerda para a direita. Quando a é negativo, ela desce.",
+    "Na função f(x) = 2*x + 1, aumentar x em 1 faz a saída aumentar em 2. A reta passa pelos pontos (0, 1), (1, 3) e (2, 5).",
+    "O coeficiente b indica onde a reta cruza o eixo vertical. Em f(x) = x + 3, esse ponto é (0, 3).",
+    "Se a = 0, a função é constante: f(x) = b. Seu gráfico é uma reta horizontal, pois a saída não muda.",
+    "Para encontrar onde f(x) = 2*x - 4 cruza o eixo horizontal, resolva 2*x - 4 = 0. O resultado é x = 2, formando o ponto (2, 0).",
+    "No Funxy, ajuste a para mudar a inclinação do caminho e b para deslocar a reta para cima ou para baixo."
+]'
+WHERE id_atividade IN (
+    SELECT id_atividade FROM Atividades
+    WHERE id_trilha = 2 AND tipo = 'leitura'
+);
+
+
+-- =====================================================
+-- TRILHA 3 — DOMÍNIOS E INTERVALOS
+-- =====================================================
+
+UPDATE Atividades
+SET numero_atividade = 0,
+    titulo = 'Escolhendo onde o caminho existe',
+    descricao = 'Use intervalos para limitar os trechos dos gráficos.'
+WHERE id_trilha = 3 AND tipo = 'leitura';
+
+UPDATE Atividades_Leitura
+SET textos = '[
+    "O domínio é o conjunto de valores de x permitidos em uma função. Restringir o domínio permite mostrar apenas uma parte do gráfico.",
+    "A condição 5 > x > -5 permite valores maiores que -5 e menores que 5. Os extremos -5 e 5 não pertencem ao intervalo.",
+    "A condição 5 >= x >= -5 inclui os extremos. Nesse caso, x pode ser exatamente -5 ou exatamente 5.",
+    "Também podemos misturar os operadores. Em 3 >= x > -2, o valor 3 está incluído e o valor -2 está excluído.",
+    "Imagine a função f(x) = x + 1 restrita a 2 >= x >= -1. O trecho vai do ponto (-1, 0) até o ponto (2, 3), incluindo os dois.",
+    "Algumas expressões já possuem restrições próprias. Em f(x) = 1/x, por exemplo, x não pode ser zero, porque a divisão por zero não está definida.",
+    "Nos desafios, combine a expressão da função com um intervalo para controlar onde cada trecho começa e termina."
+]'
+WHERE id_atividade IN (
+    SELECT id_atividade FROM Atividades
+    WHERE id_trilha = 3 AND tipo = 'leitura'
+);
+
+
+-- =====================================================
+-- TRILHA 4 — FUNÇÃO QUADRÁTICA
+-- =====================================================
+
+UPDATE Atividades
+SET numero_atividade = 0,
+    titulo = 'Explorando parábolas',
+    descricao = 'Aprenda a reconhecer e posicionar curvas quadráticas.'
+WHERE id_trilha = 4 AND tipo = 'leitura';
+
+UPDATE Atividades_Leitura
+SET textos = '[
+    "Uma função quadrática tem a forma f(x) = a*x² + b*x + c, com a diferente de zero. Seu gráfico é uma parábola.",
+    "Se a é positivo, a concavidade fica voltada para cima. Se a é negativo, fica voltada para baixo.",
+    "Na função f(x) = x², alguns pontos são (-2, 4), (-1, 1), (0, 0), (1, 1) e (2, 4). Observe a simetria em relação ao eixo vertical.",
+    "O vértice é o ponto de mínimo quando a parábola abre para cima, ou de máximo quando abre para baixo. Em f(x) = x², ele está em (0, 0).",
+    "Na forma f(x) = a*(x - h)² + k, o vértice fica em (h, k). Por exemplo, f(x) = (x - 2)² + 1 tem vértice em (2, 1).",
+    "Para descobrir onde f(x) = x² - 4 cruza o eixo horizontal, resolva x² - 4 = 0. As raízes são x = -2 e x = 2.",
+    "No Funxy, experimente posicionar o vértice e restringir o domínio para usar apenas o trecho da parábola que ajuda a alcançar o objetivo."
+]'
+WHERE id_atividade IN (
+    SELECT id_atividade FROM Atividades
+    WHERE id_trilha = 4 AND tipo = 'leitura'
+);
+
+
+-- =====================================================
+-- TRILHA 5 — FUNÇÃO MODULAR E CAMINHOS POR TRECHOS
+-- =====================================================
+
+UPDATE Atividades
+SET numero_atividade = 0,
+    titulo = 'Combinando caminhos',
+    descricao = 'Explore o módulo e combine funções em diferentes intervalos.'
+WHERE id_trilha = 5 AND tipo = 'leitura';
+
+UPDATE Atividades_Leitura
+SET textos = '[
+    "O módulo de um número representa sua distância até zero. Por isso, |3| = 3 e |-3| = 3.",
+    "A função f(x) = |x| tem um gráfico em forma de V. Para x negativo, a saída é -x. Para x positivo ou zero, a saída é x.",
+    "Na função f(x) = |x - 2| + 1, o ponto mais baixo fica em (2, 1). Subtrair 2 dentro do módulo desloca o gráfico para a direita.",
+    "Também podemos construir caminhos com funções diferentes em intervalos diferentes. Cada expressão controla um trecho.",
+    "Por exemplo, use f(x) = x + 2 no intervalo 0 >= x >= -2 e g(x) = -x + 2 no intervalo 2 >= x > 0.",
+    "O primeiro trecho chega ao ponto (0, 2). O segundo se aproxima desse mesmo ponto quando x se aproxima de zero pela direita, formando um caminho conectado.",
+    "Ao combinar trechos, confira os valores nas junções. Se uma expressão termina em uma altura e a próxima começa em outra, haverá um salto.",
+    "Agora combine o que aprendeu: escolha as funções, ajuste suas posições e defina os domínios para construir o caminho da fase."
+]'
+WHERE id_atividade IN (
+    SELECT id_atividade FROM Atividades
+    WHERE id_trilha = 5 AND tipo = 'leitura'
+);

@@ -1,5 +1,6 @@
 package br.edu.ifsp.funxyApp.service;
 
+import br.edu.ifsp.funxyApp.dto.atividade.SalvarProgressoLeituraRequestDto;
 import br.edu.ifsp.funxyApp.dto.atividade.SalvarProgressoPraticaRequestDto;
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto;
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto.AtividadeProgresso;
@@ -7,20 +8,15 @@ import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto.Leitura;
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto.Pratica;
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto.ProgressoEspecifico;
 import br.edu.ifsp.funxyApp.dto.trilha.TrilhaProgressoDto.Tentativa;
-import br.edu.ifsp.funxyApp.model.AtividadePratica;
-import br.edu.ifsp.funxyApp.model.Atividades;
-import br.edu.ifsp.funxyApp.model.Progresso;
-import br.edu.ifsp.funxyApp.model.ProgressoLeitura;
-import br.edu.ifsp.funxyApp.model.ProgressoPratica;
-import br.edu.ifsp.funxyApp.model.Usuario;
+import br.edu.ifsp.funxyApp.model.*;
 import br.edu.ifsp.funxyApp.repository.AtividadesRepository;
 import br.edu.ifsp.funxyApp.repository.ProgressoLeituraRepository;
 import br.edu.ifsp.funxyApp.repository.ProgressoPraticaRepository;
 import br.edu.ifsp.funxyApp.repository.UsuarioRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -262,5 +258,56 @@ public class ProgressoUsuarioService {
                 .computeIfAbsent(atividade.getIdTrilha(), id -> new TreeMap<>())
                 .computeIfAbsent(atividade.getId(), id -> new ArrayList<>())
                 .add(tentativa);
+    }
+
+
+    @Transactional
+    public TrilhaProgressoDto.Tentativa salvarLeitura(
+            Long usuarioId,
+            Long atividadeId,
+            SalvarProgressoLeituraRequestDto request
+    ) {
+        Usuario usuario = usuarios.findById(usuarioId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Usuário não encontrado."
+                ));
+
+        Atividades atividade = atividades.findById(atividadeId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Atividade não encontrada."
+                ));
+
+        if (!(atividade instanceof AtividadeLeitura leitura)) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Essa atividade não é de leitura."
+            );
+        }
+
+        // Atualiza uma tentativa aberta ou cria uma nova.
+        ProgressoLeitura progresso = leituras
+                .findFirstByUsuario_IdAndAtividade_IdAndDatetimeConclusaoIsNullOrderByIdDesc(
+                        usuarioId,
+                        atividadeId
+                )
+                .orElseGet(() -> new ProgressoLeitura(usuario, leitura));
+
+        progresso.setPaginaAtual(request.paginaAtual());
+
+        // O próprio model preenche a data e marca o status como true.
+        if (Boolean.TRUE.equals(request.status())) {
+            progresso.concluir();
+        }
+
+        ProgressoLeitura salvo = leituras.save(progresso);
+
+        return new TrilhaProgressoDto.Tentativa(
+                salvo.getId(),
+                Boolean.TRUE.equals(salvo.getAtividadeConcluida()),
+                salvo.getDatetimeConclusao(),
+                new TrilhaProgressoDto.Leitura(salvo.getPaginaAtual())
+        );
     }
 }
