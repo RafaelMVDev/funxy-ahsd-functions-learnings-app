@@ -38,12 +38,12 @@ func salvar_atv_leitura() -> void:
 
 func _on_button_voltar_pressed() -> void:
 	if DadosGlobais.trilha_leitura_atual != 1:
-		DadosGlobais.trilha_leitura_atual -= 1
 		salvar_atv_leitura()
+		DadosGlobais.trilha_leitura_atual -= 1
 		get_tree().reload_current_scene()
 		
 func _on_button_avancar_pressed() -> void:
 	if DadosGlobais.trilha_leitura_atual != 5:
-		DadosGlobais.trilha_leitura_atual += 1
 		salvar_atv_leitura()
+		DadosGlobais.trilha_leitura_atual += 1
 		get_tree().reload_current_scene()
