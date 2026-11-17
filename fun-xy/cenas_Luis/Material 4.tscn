@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://xrog35vgsi8v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnjpa"]
+bg_color = Color(0.019607844, 0.078431375, 0.23137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us1cd"]
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3hvx"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sja2x"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxac6"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 10
+
+[node name="Control" type="Control" unique_id=1096008892]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1179794114]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tnjpa")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=351071631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2" unique_id=51854674]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/MarginContainer2" unique_id=1526626474]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_us1cd")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer2/MarginContainer2/PanelContainer" unique_id=1968286597]
+custom_minimum_size = Vector2(243, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[b] UNIDADE 4: Função Logarítmica[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2" unique_id=1736219977]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/MarginContainer" unique_id=1654886594]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_a3hvx")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer/PanelContainer" unique_id=962155418]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer" unique_id=502843178]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=1932153972]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=95140710]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "	Se a Função Exponencial era a máquina que criava explosões de crescimento multiplicando um número várias vezes, a Função Logarítmica é a sua [b]gêmea invertida.[/b] Ela é a máquina que desfaz a explosão. Ela trabalha de trás para frente, como um detetive tentando descobrir o passado.
+
+	Imagine que você sabe que a bactéria dobrava de tamanho a cada hora. Você chega no laboratório e vê 8 bactérias. A pergunta que a Função Logarítmica responde é: \"Quantas horas (qual expoente) foram necessárias para a base 2 se transformar no número 8?\" A resposta é 3. O logaritmo não calcula o resultado, ele [b]descobre o expoente.[/b]
+
+	A regra matemática dessa máquina é escrita assim:[b]f(x) = logₐ(x)[/b] (Lê-se: logaritmo de \"x\" na base \"a\")
+
+	Vamos desmontar os componentes dessa máquina investigativa:
+
+	⚫	[b]A Base (\"a\"):[/b] Assim como na máquina exponencial, a base é o DNA do problema (o ritmo de crescimento original). Ela fica pequenininha ali embaixo do \"log\". Ela obedece à mesma regra rígida: precisa ser um número positivo (maior que zero) e diferente de 1.
+
+	⚫	[b]O Logaritmando (\"x\"):[/b] É a nossa entrada (o Domínio). É o cenário final que o detetive está investigando (ex: as 8 bactérias).
+
+	[b]Os Pontos Mais Importantes do Gráfico:[/b] Como o logaritmo é o exato inverso da exponencial, o seu gráfico no Plano Cartesiano é literalmente o [b]reflexo no espelho[/b] do gráfico exponencial (como se o espelho estivesse na diagonal).
+
+	1. [b]A Curva da Frenagem:[/b]
+
+		⚪	Se a base for [b]maior que 1 (a > 1)[/b], o gráfico vem lá das profundezas do subsolo (valores negativos muito baixos no eixo Y), sobe espremido contra a parede vertical, fura o chão do eixo X e depois continua subindo para a direita, mas [b]freando.[/b] Ele cresce para sempre, mas cada vez mais devagar. É a curva do \"esforço\": no começo é fácil subir, depois fica exaustivo.
+
+		⚪	Se a base for [b]entre 0 e 1 (0 < a < 1)[/b], acontece o inverso: ela vem lá do alto do céu espremida na parede, fura o chão e continua caindo lentamente rumo à direita.
+
+	2. [b]O Ponto de Partida Universal (x = 1):[/b] Na exponencial, a curva sempre cortava o eixo Y no número 1. No mundo invertido dos logaritmos, a curva pura (como f(x)=log2(x)f(x) = log₂(x)f(x)=log2​(x)) [b]sempre corta o Eixo X exatamente no número 1.[/b] Sabe por quê? Porque se o nosso cenário final (\"x\") for 1 bactéria, o detetive diz: \"O tempo não passou\". Ou seja, qualquer base elevada a zero dá 1. O resultado da máquina quando entra 1 é sempre 0 (loga(1)=0logₐ(1) = 0loga​(1)=0).
+
+	3. [b]A Nova Barreira Invisível (A Assíntota Vertical):[/b] A exponencial tinha uma barreira de vidro no chão. A logarítmica tem uma [b]barreira de vidro na parede[/b] (o Eixo Y). A linha do gráfico desce infinitamente raspando na parede vertical do eixo Y (onde x=0), mas [b]nunca toca nela[/b] e nunca passa para o lado esquerdo (os números negativos).
+
+	[b]Domínio e Imagem na Função Logarítmica:[/b] Como as máquinas são o inverso da outra, o Domínio e a Imagem da Exponencial [b]trocaram de lugar[/b] na Logarítmica! Fazendo o teste da sombra:
+
+	⚫	[b]Domínio D(f):[/b] Olhe para a barreira de vidro. O gráfico simplesmente não existe do lado esquerdo da parede, nem em cima da parede (x=0). A sombra no eixo horizontal (Eixo X) só aparece do zero (com bolinha vazia) para a frente.
+Matematicamente: [b]D(f) = R^*_+[/b] (Você só pode colocar [b]números estritamente positivos[/b] na entrada. Não existe logaritmo de zero, nem de número negativo).
+
+	⚫	[b]Imagem Im(f):[/b] Olhe para a sombra projetada na parede (Eixo Y). A linha vem do infinito negativo (lá do fundo do poço) e continua subindo (mesmo que lentamente) para o infinito positivo. A sombra no eixo vertical cobre a parede inteira.
+
+		⚪	Matematicamente: [b]Im(f) = R[/b] (A máquina pode cuspir qualquer número real como resposta: positivo, negativo, quebrado ou zero)."
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1225377605]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer2" unique_id=1906340515]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/MarginContainer3" unique_id=334604017]
+layout_mode = 2
+
+[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer2/MarginContainer3/HBoxContainer" unique_id=684100405]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 15
+
+[node name="Button" type="Button" parent="VBoxContainer2/MarginContainer3/HBoxContainer/MarginContainer1" unique_id=1640607689]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_sja2x")
+text = "🢀 VOLTAR"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer3/HBoxContainer" unique_id=8370245]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_right = 15
+
+[node name="Button2" type="Button" parent="VBoxContainer2/MarginContainer3/HBoxContainer/MarginContainer" unique_id=1824786952]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_bxac6")
+text = "PULAR 🢂"

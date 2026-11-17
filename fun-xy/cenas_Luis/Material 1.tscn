@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://b10vsr7b0552q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2p7l6"]
+bg_color = Color(0.019607844, 0.078431375, 0.23137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l4v0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvhek"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5lf2"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 10
+
+[node name="Control" type="Control" unique_id=1202131201]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1344981943]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2p7l6")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1020686388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2" unique_id=684213640]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/MarginContainer2" unique_id=579956906]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yf5fn")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer2/MarginContainer2/PanelContainer" unique_id=1874950199]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[b] UNIDADE 1: Função Afim[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2" unique_id=1803488023]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/MarginContainer" unique_id=649924176]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2l4v0")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer/PanelContainer" unique_id=1045550245]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer" unique_id=1510019889]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=952319958]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=649601539]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "	Também conhecida como Função de 1º Grau, essa é a máquina que cresce ou diminui de forma constante e previsível. A melhor forma de entendê-la é pensar em uma corrida de táxi (ou aplicativo). Ao entrar no carro, você já paga um valor fixo só por começar a corrida. Depois, o preço sobe um valor exato a cada quilômetro rodado.
+
+ 	A regra matemática que descreve essa máquina tem duas peças: [b]f(x) = ax + b [/b]
+
+ 	Vamos desmontar essa fórmula:
+
+⚫	[b]O valor de \"b\" (Coeficiente Linear): [/b] É a taxa fixa inicial (a bandeirada do táxi). É onde a história começa quando x=0. No gráfico, o número \"b\" é exatamente o ponto onde a linha corta o Eixo Y (a vertical).
+
+⚫	[b]O valor de \"a\" (Coeficiente Angular ou Taxa de Variação): [/b] É o preço por quilômetro. Ele dita o ritmo da máquina. Se ele for 2, significa que a cada passo para a direita no eixo X, o gráfico sobe 2 andares no eixo Y.
+
+	[b]O Comportamento no Gráfico: [/b] O gráfico de uma Função Afim é sempre uma [b]linha reta inclinada.[/b] Dependendo do valor de \"a\", ela toma dois rumos:
+
+	1. [b]Função Crescente (a > 0):[/b] Se o \"a\" for positivo (ex: f(x) = 2x + 1), a máquina está somando. O gráfico é uma ladeira subindo da esquerda para a direita.
+                    
+	2. [b]Função Decrescente (a < 0):[/b] Se o \"a\" for negativo (ex: f(x) = -2x + 10), a máquina está subtraindo. O gráfico é uma rampa descendo da esquerda para a direita. Pense em uma caixa d'água esvaziando.
+
+	[b]Onde a linha corta o chão? (A Raiz da Função)[/b] Se o \"b\" é onde a linha corta o eixo Y (a parede vertical), existe também o ponto exato onde a linha corta o eixo X (o chão horizontal). Esse ponto é chamado de [b]Raiz ou Zero da Função. [/b]É o momento em que a máquina zera, ou seja, f(x) = 0. Se o gráfico fosse o nível do mar, a raiz seria exatamente o momento em que a linha sai da água e atinge a superfície.
+
+	[b]Domínio e Imagem na Função Afim:[/b] Como essa reta não tem quebras, não tem divisão por zero e não tem raiz quadrada restrita, ela não possui limites. A linha inclinada vai infinitamente para a esquerda e para a direita (sombras infinitas no eixo X) e sobe e desce infinitamente (sombras infinitas no eixo Y)."
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=227129314]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer2" unique_id=2034339135]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/MarginContainer3" unique_id=717734390]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer2/MarginContainer3/HBoxContainer" unique_id=653484814]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 15
+
+[node name="Button" type="Button" parent="VBoxContainer2/MarginContainer3/HBoxContainer/MarginContainer1" unique_id=20853480]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_gvhek")
+text = "🢀 VOLTAR"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer3/HBoxContainer" unique_id=1964050633]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_right = 15
+
+[node name="Button2" type="Button" parent="VBoxContainer2/MarginContainer3/HBoxContainer/MarginContainer" unique_id=1082758236]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_c5lf2")
+text = "PULAR 🢂"

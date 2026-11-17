@@ -632,3 +632,4 @@ expand_mode = 1
 [connection signal="pressed" from="HboxBAIXO/PanelContainer/ButtonHome" to="." method="_on_button_home_pressed"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer2/Button" to="." method="_on_button_pressed_conteudo"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer3/CenterContainer2/ButtonRank" to="." method="_on_button_rank_pressed_ranking"]
+[connection signal="pressed" from="HboxBAIXO/PanelContainer4/CenterContainer3/TexturePerfil" to="." method="_on_button_pressed_perfil"]

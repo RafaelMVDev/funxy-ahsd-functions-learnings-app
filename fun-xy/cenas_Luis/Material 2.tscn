@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://didu3bauh4dxi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbnbp"]
+bg_color = Color(0.019607844, 0.078431375, 0.23137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yp87x"]
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atqgl"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53n4h"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_513wt"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 10
+
+[node name="Control" type="Control" unique_id=738551609]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1874652445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pbnbp")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1036460644]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2" unique_id=499212851]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/MarginContainer2" unique_id=363731738]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yp87x")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer2/MarginContainer2/PanelContainer" unique_id=1782024943]
+custom_minimum_size = Vector2(240, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[b] UNIDADE 2: Função Quadrática[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2" unique_id=984204249]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/MarginContainer" unique_id=1534645913]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_atqgl")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer/PanelContainer" unique_id=1064629080]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer" unique_id=480001653]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=543584562]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=515145644]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "	Se a Função Afim era o movimento constante de um táxi, a Função Quadrática (ou de 2º Grau) é a máquina da aceleração e da gravidade.
+
+	Imagine que você chutou uma bola de futebol para o alto. Ela sobe perdendo força, atinge um ponto máximo no ar, para por uma fração de segundo e começa a cair cada vez mais rápido até bater no chão. Essa curva perfeita que a bola faz no ar é exatamente o desenho dessa função.
+
+	A regra matemática dessa máquina agora tem um \"motor\" mais potente, o [b]x elevado ao quadrado:f(x) = ax² + bx + c[/b]
+
+	Vamos desmontar os componentes principais dessa máquina:
+
+⚫	[b]O valor de \"c\" (O Ponto de Partida):[/b] Assim como na Função Afim, o número que está sozinho (sem a letra x) é exatamente o local onde a linha corta o Eixo Y (a parede vertical). É a altura em que a bola estava quando foi chutada.
+
+⚫	[b]O valor de \"a\" (O Sorriso ou a Tristeza):[/b] O \"a\" é o dono da máquina, o número colado no x². Ele dita o formato do gráfico, chamado de [b]Parábola.[/b]
+
+		⚪	[b]a > 0 (Positivo):[/b] A parábola tem concavidade para cima. Parece um rosto [b]sorrindo[/b] (U). É o formato de uma antena parabólica ou de um vale entre montanhas.
+
+		⚪	[b]a < 0 (Negativo):[/b] A parábola tem concavidade para baixo. Parece um rosto [b]triste[/b] (∩). É o formato exato do chute da bola de futebol ou de um arco e flecha.
+
+	[b]Os Pontos Mais Importantes do Gráfico:[/b] Uma parábola não é apenas uma curva qualquer, ela tem uma anatomia muito específica no Plano Cartesiano:
+
+	1. [b]As Raízes (Onde a bola toca o chão):[/b] Lembra que na Função Afim a raiz era onde a reta cruzava o eixo X (o chão)? Aqui é a mesma coisa (f(x) = 0). O detalhe é que a curva pode cortar o chão em [b]dois lugares diferentes[/b], em [b]apenas um lugar[/b], ou [b]nunca tocar o chão[/b] (ficar flutuando acima dele). É para descobrir onde estão esses buracos no chão que usamos a famosa [b]Fórmula de Bhaskara.[/b]
+
+	2. [b]O Vértice (A Curva da Virada):[/b] Esse é o coração da Função Quadrática. O Vértice é o ponto exato onde a máquina muda de ideia.
+Se o gráfico é um \"sorriso\" (U), o vértice é o [b]ponto mínimo[/b] (o fundo do poço).
+Se o gráfico é \"triste\" (∩), o vértice é o [b]ponto máximo[/b] (o pico da montanha, a altura máxima que a bola de futebol atingiu antes de cair). A parábola é perfeitamente simétrica: se você colocar um espelho bem em cima do vértice, o lado direito é o reflexo exato do lado esquerdo.
+
+	[b]Domínio e Imagem na Função Quadrática:[/b] Aqui a brincadeira da \"sombra\" que aprendemos antes faz todo o sentido:
+
+⚫	[b]Domínio D(f):[/b] Como a curva da parábola vai se abrindo infinitamente para os lados, a sombra no eixo X (horizontal) cobre tudo. Logo, [b]D(f) = R[/b] (você pode colocar qualquer número real na máquina).
+
+⚫	[b]Imagem Im(f):[/b] Aqui está o grande truque! A sombra no eixo Y (vertical) [b]não cobre tudo.[/b] A máquina tem um limite físico criado pelo Vértice.
+		
+		⚪	Se a parábola sorri (U) e o vértice bate no y = 2, a sombra só existe do 2 para cima. A imagem será do 2 até o infinito. A máquina nunca vai cuspir um número menor que 2.
+		⚪	Se a parábola é triste (∩) e o topo da montanha bate no y = 10, a sombra só existe do 10 para baixo. A imagem será de todos os números menores ou iguais a 10.
+
+
+"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1967660850]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer2" unique_id=344847031]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/MarginContainer3" unique_id=2114695067]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer2/MarginContainer3/HBoxContainer" unique_id=689663596]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 15
+
+[node name="Button" type="Button" parent="VBoxContainer2/MarginContainer3/HBoxContainer/MarginContainer1" unique_id=1322899974]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_53n4h")
+text = "🢀 VOLTAR
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer3/HBoxContainer" unique_id=6122797]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_right = 15
+
+[node name="Button2" type="Button" parent="VBoxContainer2/MarginContainer3/HBoxContainer/MarginContainer" unique_id=268655207]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_513wt")
+text = "PULAR 🢂"

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="144" viewBox="0 0 128 144" fill="none">
+<title>Primeiros Passos</title>
+<g stroke="#EAC568" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M35 94 22 124 39 120 48 132 61 105M93 94 106 124 89 120 80 132 67 105"/>
+<circle cx="64" cy="58" r="47"/>
+<polygon points="64.000,33.000 70.466,48.101 86.825,49.584 74.462,60.399 78.107,76.416 64.000,68.000 49.893,76.416 53.538,60.399 41.175,49.584 57.534,48.101" fill="#EAC568" stroke-width="2.5"/>
+</g></svg>

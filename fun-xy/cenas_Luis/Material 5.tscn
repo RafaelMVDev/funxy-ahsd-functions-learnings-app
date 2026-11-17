@@ -1,0 +1,198 @@
+[gd_scene format=3 uid="uid://cdjcjeeknqpg7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mr0hy"]
+bg_color = Color(0.019607844, 0.078431375, 0.23137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga02n"]
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2avb"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1313t"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1738"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 10
+
+[node name="Control" type="Control" unique_id=1065390435]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1269746502]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mr0hy")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=2030509106]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2" unique_id=1535979032]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/MarginContainer2" unique_id=525690195]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ga02n")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer2/MarginContainer2/PanelContainer" unique_id=1849679795]
+custom_minimum_size = Vector2(243, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[b] UNIDADE 5: Função Modular[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2" unique_id=1680814551]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/MarginContainer" unique_id=1667273724]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2avb")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer/PanelContainer" unique_id=1160060919]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer" unique_id=630590516]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=427941229]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=390680392]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "	Se a Função Logarítmica era o detetive do passado, a Função Modular é uma máquina inabalavelmente otimista. Não importa quanta negatividade você jogue dentro dela, ela sempre vai devolver um resultado positivo (ou neutro).
+
+	Na matemática real, o Módulo (ou Valor Absoluto) serve para medir [b]distância.[/b] Pense bem: se você der 5 passos para a frente ou 5 passos para trás, a distância que você percorreu é exatamente a mesma: 5 passos. Não existe \"fita métrica negativa\". A máquina modular foca na quantidade, ignorando a direção.
+
+	A regra matemática dessa máquina usa duas barras de proteção ao redor do x: [b]f(x) = |x|[/b] (Lê-se: \"módulo de x\" ou \"valor absoluto de x\")
+
+	Vamos desmontar como essa máquina opera:
+
+	⚫	[b]Se a entrada for positiva (ou zero):[/b] A máquina não faz nada. Ela deixa o número passar direto. Ex: Entra 5, sai 5. f(5) = 5.
+
+	⚫	[b]Se a entrada for negativa:[/b] A máquina aciona seu mecanismo de inversão, multiplicando o número por -1 para arrancar o sinal de menos. Ex: Entra -8, ela transforma em 8. f(-8) = 8.
+
+	[b]O Comportamento no Gráfico:[/b] Enquanto a Função Afim era uma reta inclinada e a Quadrática era um \"U\", o gráfico da Função Modular tem o formato perfeito de um [b]\"V\".[/b]
+
+	1. [b]O Efeito Rebote no Chão de Concreto:[/b] Imagine uma linha reta (como a Função Afim) descendo da esquerda para a direita. Ela cruzaria o Eixo X (o chão) e continuaria descendo infinitamente para o subsolo dos números negativos. O Módulo coloca um \"chão de concreto impermeável\" exatamente no Eixo X (onde y=0). Quando a linha bate nesse chão, ela não consegue afundar. Em vez disso, ela [b]quica e rebate[/b] de volta para cima, na mesma inclinação, como uma bola de bilhar batendo na borda da mesa. A parte negativa do gráfico é dobrada para cima como um origami.
+
+	2. [b]A Quina (O Vértice do V):[/b] Esse é o ponto exato onde a linha bateu no chão e sofreu o rebote. Na função modular mais pura (f(x) = |x|), essa quina acontece bem na origem, no ponto (0,0). É uma mudança de direção brusca, formando um bico afiado, diferente da curva suave da parábola.
+
+	3. [b]O Espelho Perfeito:[/b] Assim como a Função Quadrática, a Modular é simétrica. Se você colocar um espelho vertical bem na quina do \"V\", o lado direito que sobe rumo ao infinito é o reflexo exato do lado esquerdo.
+
+	[b]Domínio e Imagem na Função Modular:[/b] Fazendo o nosso teste da sombra projetada no Plano Cartesiano:
+
+	⚫	[b]Domínio D(f):[/b] As \"pernas\" do V continuam se abrindo infinitamente para a esquerda e para a direita. A sombra horizontal no chão não tem interrupções.
+
+		⚪	Matematicamente: [b]D(f) = R[/b] (Você pode colocar absolutamente qualquer número real na máquina: positivo, negativo, quebrado, zero...).
+
+	⚫	[b]Imagem Im(f):[/b] Aqui está o superpoder da máquina. Como ela impede que qualquer coisa vá para o subsolo, a sombra no eixo vertical (Parede Y) começa exatamente no zero (com bolinha cheia, pois o 0 faz parte) e só sobe. Não existe sombra na parte negativa do eixo Y.
+
+		⚪	Matematicamente: [b]Im(f) = R_{+}[/b] (Números Reais Não-Negativos). Ou seja, a máquina só consegue produzir resultados maiores ou iguais a zero (y0)."
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=811844918]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer2" unique_id=1423477410]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/MarginContainer3" unique_id=135598994]
+layout_mode = 2
+
+[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer2/MarginContainer3/HBoxContainer" unique_id=1197828050]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 15
+
+[node name="Button" type="Button" parent="VBoxContainer2/MarginContainer3/HBoxContainer/MarginContainer1" unique_id=2086549555]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1313t")
+text = "🢀 VOLTAR"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer3/HBoxContainer" unique_id=2115162344]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_right = 15
+
+[node name="Button2" type="Button" parent="VBoxContainer2/MarginContainer3/HBoxContainer/MarginContainer" unique_id=1928701493]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_g1738")
+text = "PULAR 🢂"
