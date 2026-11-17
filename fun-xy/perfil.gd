@@ -17,10 +17,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_button_pressed_Conteudos() -> void:
-	get_tree().change_scene_to_file("res://cenas_Luis/Conteudos.tscn")
-
 func _on_button_pressed_configuracao() -> void:
 	get_tree().change_scene_to_file("res://Configuracoes.tscn")
 	pass # Replace with function body.
@@ -29,6 +25,11 @@ func _on_button_pressed_ranking() -> void:
 	get_tree().change_scene_to_file("res://Ranking.tscn")
 	pass # Replace with function body.
 
+func _on_button_home_pressed() -> void:
+	get_tree().change_scene_to_file("res://Trilha.tscn")
+	pass # Replace with function body.
+
 
 func _on_button_pressed_conteudos() -> void:
+	get_tree().change_scene_to_file("res://Conteudos.tscn")
 	pass # Replace with function body.

@@ -591,22 +591,6 @@ custom_maximum_size = Vector2(72, -1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_unjqd")
 
-[node name="CenterContainer4" type="CenterContainer" parent="HboxBAIXO/PanelContainer5" unique_id=64726825]
-visible = false
-custom_minimum_size = Vector2(40, 40)
-custom_maximum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-
-[node name="ButtonConfig" type="TextureButton" parent="HboxBAIXO/PanelContainer5/CenterContainer4" unique_id=860340998]
-custom_minimum_size = Vector2(40, 40)
-custom_maximum_size = Vector2(40, 40)
-layout_mode = 2
-texture_normal = ExtResource("13_y5ksv")
-stretch_mode = 3
-
 [node name="Button" type="Button" parent="HboxBAIXO/PanelContainer5" unique_id=368714060]
 layout_mode = 2
 flat = true

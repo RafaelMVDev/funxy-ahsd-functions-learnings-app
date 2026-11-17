@@ -119,7 +119,7 @@ CREATE TABLE Atividades (
                             tipo VARCHAR(40) NOT NULL,
                             xp_base BIGINT NOT NULL DEFAULT 0 CHECK (xp_base >= 0),
                             descricao TEXT,
-                            numero_atividade INT NOT NULL CHECK (numero_atividade > 0),
+                            numero_atividade INT NOT NULL,
                             moeda_base INT NOT NULL DEFAULT 0 CHECK (moeda_base >= 0),
 
                             CONSTRAINT uq_atividade_trilha_numero

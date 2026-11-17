@@ -1,6 +1,124 @@
 [gd_scene format=3 uid="uid://dny2a1np6hth4"]
 
 [ext_resource type="Script" uid="uid://d0xvpjifd8woj" path="res://materiais_leitura_interface.gd" id="1_wt6km"]
+[ext_resource type="Script" uid="uid://gfatlo350gs3" path="res://material_especifico.gd" id="2_j3sfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io4r2"]
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g2hn"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a0gx"]
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utku0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0axe"]
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juqt6"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxey2"]
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ja1h6"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oh5al"]
+bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r44xx"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqwr1"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
 bg_color = Color(0, 0.24172059, 0.5591923, 1)
@@ -23,6 +141,18 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_846xk"]
+bg_color = Color(0.029739076, 0.27312616, 0.61564106, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 10
+
 [node name="Control" type="Control" unique_id=1902620754]
 layout_mode = 3
 anchors_preset = 15
@@ -40,20 +170,560 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="." unique_id=1600891692]
-custom_minimum_size = Vector2(40, 40)
+[node name="MaterialUnidade1" type="VBoxContainer" parent="." unique_id=397284740]
+visible = false
+custom_minimum_size = Vector2(-1, 555)
+custom_maximum_size = Vector2(-1, 555)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.84700006
-anchor_top = 0.89800006
-anchor_right = 0.84700006
-anchor_bottom = 0.89800006
-offset_left = -19.920013
-offset_top = -19.720032
-offset_right = 20.079987
-offset_bottom = 20.279968
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 418.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+script = ExtResource("2_j3sfx")
+unidade_atv = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade1" unique_id=1018975615]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade1/MarginContainer2" unique_id=2007051391]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_io4r2")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MaterialUnidade1/MarginContainer2/PanelContainer" unique_id=1718502590]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[b] UNIDADE 1: Função Afim[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade1" unique_id=1802283376]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade1/MarginContainer" unique_id=606220225]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2g2hn")
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade1/MarginContainer/PanelContainer" unique_id=1330409220]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade1/MarginContainer/PanelContainer/MarginContainer" unique_id=1249192851]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MaterialUnidade1/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=491642729]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MaterialUnidade1/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=736177391]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "	Também conhecida como Função de 1º Grau, essa é a máquina que cresce ou diminui de forma constante e previsível. A melhor forma de entendê-la é pensar em uma corrida de táxi (ou aplicativo). Ao entrar no carro, você já paga um valor fixo só por começar a corrida. Depois, o preço sobe um valor exato a cada quilômetro rodado.
+
+ 	A regra matemática que descreve essa máquina tem duas peças: [b]f(x) = ax + b [/b]
+
+ 	Vamos desmontar essa fórmula:
+
+⚫	[b]O valor de \"b\" (Coeficiente Linear): [/b] É a taxa fixa inicial (a bandeirada do táxi). É onde a história começa quando x=0. No gráfico, o número \"b\" é exatamente o ponto onde a linha corta o Eixo Y (a vertical).
+
+⚫	[b]O valor de \"a\" (Coeficiente Angular ou Taxa de Variação): [/b] É o preço por quilômetro. Ele dita o ritmo da máquina. Se ele for 2, significa que a cada passo para a direita no eixo X, o gráfico sobe 2 andares no eixo Y.
+
+	[b]O Comportamento no Gráfico: [/b] O gráfico de uma Função Afim é sempre uma [b]linha reta inclinada.[/b] Dependendo do valor de \"a\", ela toma dois rumos:
+
+	1. [b]Função Crescente (a > 0):[/b] Se o \"a\" for positivo (ex: f(x) = 2x + 1), a máquina está somando. O gráfico é uma ladeira subindo da esquerda para a direita.
+                    
+	2. [b]Função Decrescente (a < 0):[/b] Se o \"a\" for negativo (ex: f(x) = -2x + 10), a máquina está subtraindo. O gráfico é uma rampa descendo da esquerda para a direita. Pense em uma caixa d'água esvaziando.
+
+	[b]Onde a linha corta o chão? (A Raiz da Função)[/b] Se o \"b\" é onde a linha corta o eixo Y (a parede vertical), existe também o ponto exato onde a linha corta o eixo X (o chão horizontal). Esse ponto é chamado de [b]Raiz ou Zero da Função. [/b]É o momento em que a máquina zera, ou seja, f(x) = 0. Se o gráfico fosse o nível do mar, a raiz seria exatamente o momento em que a linha sai da água e atinge a superfície.
+
+	[b]Domínio e Imagem na Função Afim:[/b] Como essa reta não tem quebras, não tem divisão por zero e não tem raiz quadrada restrita, ela não possui limites. A linha inclinada vai infinitamente para a esquerda e para a direita (sombras infinitas no eixo X) e sobe e desce infinitamente (sombras infinitas no eixo Y)."
+
+[node name="TextureRect" type="TextureRect" parent="MaterialUnidade1/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=461324905]
+layout_mode = 2
+
+[node name="MaterialUnidade2" type="VBoxContainer" parent="." unique_id=444630206]
+visible = false
+custom_minimum_size = Vector2(0, 555)
+custom_maximum_size = Vector2(-1, 555)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 418.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+script = ExtResource("2_j3sfx")
+unidade_atv = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade2" unique_id=669070114]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade2/MarginContainer2" unique_id=429524261]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6a0gx")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MaterialUnidade2/MarginContainer2/PanelContainer" unique_id=1158301427]
+custom_minimum_size = Vector2(240, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[b] UNIDADE 2: Função Quadrática[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade2" unique_id=1321442903]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade2/MarginContainer" unique_id=1868595963]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_utku0")
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade2/MarginContainer/PanelContainer" unique_id=802192430]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade2/MarginContainer/PanelContainer/MarginContainer" unique_id=1022033814]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MaterialUnidade2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=1045756186]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MaterialUnidade2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=971702655]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "	Se a Função Afim era o movimento constante de um táxi, a Função Quadrática (ou de 2º Grau) é a máquina da aceleração e da gravidade.
+
+	Imagine que você chutou uma bola de futebol para o alto. Ela sobe perdendo força, atinge um ponto máximo no ar, para por uma fração de segundo e começa a cair cada vez mais rápido até bater no chão. Essa curva perfeita que a bola faz no ar é exatamente o desenho dessa função.
+
+	A regra matemática dessa máquina agora tem um \"motor\" mais potente, o [b]x elevado ao quadrado:f(x) = ax² + bx + c[/b]
+
+	Vamos desmontar os componentes principais dessa máquina:
+
+⚫	[b]O valor de \"c\" (O Ponto de Partida):[/b] Assim como na Função Afim, o número que está sozinho (sem a letra x) é exatamente o local onde a linha corta o Eixo Y (a parede vertical). É a altura em que a bola estava quando foi chutada.
+
+⚫	[b]O valor de \"a\" (O Sorriso ou a Tristeza):[/b] O \"a\" é o dono da máquina, o número colado no x². Ele dita o formato do gráfico, chamado de [b]Parábola.[/b]
+
+		⚪	[b]a > 0 (Positivo):[/b] A parábola tem concavidade para cima. Parece um rosto [b]sorrindo[/b] (U). É o formato de uma antena parabólica ou de um vale entre montanhas.
+
+		⚪	[b]a < 0 (Negativo):[/b] A parábola tem concavidade para baixo. Parece um rosto [b]triste[/b] (∩). É o formato exato do chute da bola de futebol ou de um arco e flecha.
+
+	[b]Os Pontos Mais Importantes do Gráfico:[/b] Uma parábola não é apenas uma curva qualquer, ela tem uma anatomia muito específica no Plano Cartesiano:
+
+	1. [b]As Raízes (Onde a bola toca o chão):[/b] Lembra que na Função Afim a raiz era onde a reta cruzava o eixo X (o chão)? Aqui é a mesma coisa (f(x) = 0). O detalhe é que a curva pode cortar o chão em [b]dois lugares diferentes[/b], em [b]apenas um lugar[/b], ou [b]nunca tocar o chão[/b] (ficar flutuando acima dele). É para descobrir onde estão esses buracos no chão que usamos a famosa [b]Fórmula de Bhaskara.[/b]
+
+	2. [b]O Vértice (A Curva da Virada):[/b] Esse é o coração da Função Quadrática. O Vértice é o ponto exato onde a máquina muda de ideia.
+Se o gráfico é um \"sorriso\" (U), o vértice é o [b]ponto mínimo[/b] (o fundo do poço).
+Se o gráfico é \"triste\" (∩), o vértice é o [b]ponto máximo[/b] (o pico da montanha, a altura máxima que a bola de futebol atingiu antes de cair). A parábola é perfeitamente simétrica: se você colocar um espelho bem em cima do vértice, o lado direito é o reflexo exato do lado esquerdo.
+
+	[b]Domínio e Imagem na Função Quadrática:[/b] Aqui a brincadeira da \"sombra\" que aprendemos antes faz todo o sentido:
+
+⚫	[b]Domínio D(f):[/b] Como a curva da parábola vai se abrindo infinitamente para os lados, a sombra no eixo X (horizontal) cobre tudo. Logo, [b]D(f) = R[/b] (você pode colocar qualquer número real na máquina).
+
+⚫	[b]Imagem Im(f):[/b] Aqui está o grande truque! A sombra no eixo Y (vertical) [b]não cobre tudo.[/b] A máquina tem um limite físico criado pelo Vértice.
+		
+		⚪	Se a parábola sorri (U) e o vértice bate no y = 2, a sombra só existe do 2 para cima. A imagem será do 2 até o infinito. A máquina nunca vai cuspir um número menor que 2.
+		⚪	Se a parábola é triste (∩) e o topo da montanha bate no y = 10, a sombra só existe do 10 para baixo. A imagem será de todos os números menores ou iguais a 10.
+
+
+"
+
+[node name="TextureRect" type="TextureRect" parent="MaterialUnidade2/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1380621815]
+layout_mode = 2
+
+[node name="MaterialUnidade3" type="VBoxContainer" parent="." unique_id=1126024657]
+visible = false
+custom_minimum_size = Vector2(-1, 555)
+custom_maximum_size = Vector2(-1, 555)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 418.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+script = ExtResource("2_j3sfx")
+unidade_atv = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade3" unique_id=1041484596]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade3/MarginContainer2" unique_id=1397657430]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_f0axe")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MaterialUnidade3/MarginContainer2/PanelContainer" unique_id=494517407]
+custom_minimum_size = Vector2(246, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[b] UNIDADE 3: Função Exponencial[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade3" unique_id=893381910]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade3/MarginContainer" unique_id=479393159]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_juqt6")
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade3/MarginContainer/PanelContainer" unique_id=118744277]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade3/MarginContainer/PanelContainer/MarginContainer" unique_id=2050255832]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MaterialUnidade3/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=417634601]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MaterialUnidade3/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1319610128]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "	Se a Função Afim crescia num ritmo constante de soma (como o taxímetro) e a Quadrática funcionava como a gravidade, a Função Exponencial tem um comportamento muito mais radical: ela [b]explode.[/b] É a máquina das multiplicações sucessivas.
+
+	Imagine uma bactéria em um laboratório. A regra de vida dela é se dividir ao meio a cada hora. Na primeira hora, você tem 1 bactéria. Na segunda, 2. Na terceira, 4. Depois 8, 16, 32, 64... O crescimento começa parecendo inofensivo, mas de repente o laboratório inteiro está lotado. Outro exemplo famoso são os juros compostos: o dinheiro rendendo sobre o próprio rendimento.
+
+	A regra matemática dessa máquina inverte as coisas. Até agora, o [b]x[/b] ficava no \"chão\" (como base). Na Função Exponencial, o [b]x sobe para o telhado:f(x) = a^x[/b] (Lê-se: \"a\" elevado a \"x\")
+
+	Vamos desmontar os componentes dessa máquina:
+
+⚫	[b]A Base (\"a\"):[/b] É o motor da multiplicação. Ela precisa ser um número positivo (maior que zero) e diferente de 1.
+
+		⚪	Se [b]a > 1[/b] (ex: 2, 3, 4...), a máquina é uma fábrica de [b]Crescimento Exponencial.[/b] Ela dobra, triplica ou quadruplica o resultado a cada passo.
+
+		⚪	Se [b]0 < a < 1[/b] (ex: 0,5 ou 1/2), a máquina vira uma tesoura de [b]Decaimento Exponencial.[/b] A cada passo, ela corta a entrada pela metade, um terço, etc. É assim que os cientistas calculam quanto tempo leva para um copo de café esfriar ou o lixo radioativo perder o perigo.
+
+⚫	[b]O Expoente (\"x\"):[/b] É o relógio da máquina. Ele diz quantas vezes a base vai se multiplicar por ela mesma. O x é a nossa entrada (o Domínio).
+
+	[b]Os Pontos Mais Importantes do Gráfico:[/b] O gráfico da Função Exponencial não é uma reta nem um \"U\", mas sim uma curva que lembra muito uma rampa de skate extremista:
+
+	1. [b]A Curva do Foguete (ou do Paraquedas):[/b]
+
+		⚪	Se a função for [b]crescente (a > 1)[/b], o gráfico vem arrastando pelo chão (eixo X) da esquerda para a direita e, de repente, sobe quase reto como um foguete.
+
+		⚪	Se for [b]decrescente (0 < a < 1)[/b], ela despenca lá do alto no eixo Y como um paraquedista e vai freando aos poucos conforme se aproxima do chão.
+
+	2. [b]O Ponto de Partida Universal (y = 1):[/b] A não ser que você adicione outros números à fórmula, a função exponencial pura (como f(x)=2x) [b]sempre[/b] vai cortar o Eixo Y exatamente no número 1. Sabe por quê? Porque qualquer número (diferente de zero) elevado ao expoente 0 é igual a 1 (20=1; 10000=1). Quando o tempo é zero (x=0), a história da multiplicação sempre começa com uma unidade.
+
+	3. [b]A Barreira Invisível (A Assíntota):[/b] Aqui está a grande magia do gráfico. Lembra da curva que vem arrastando pelo chão? Ela chega muito, muito, muito perto do Eixo X (onde y = 0), mas [b]nunca toca nele.[/b] Pense na máquina de cortar pela metade: se você pegar 1 pizza e cortar pela metade infinitas vezes, os pedaços ficarão microscópicos, mas você nunca terá \"zero pizza\". A linha do gráfico escorrega por uma barreira de vidro invisível (chamada de assíntota) no chão, mas nunca a ultrapassa.
+
+	[b]Domínio e Imagem na Função Exponencial:[/b] Fazendo o teste da sombra:
+
+	⚫	[b]Domínio D(f):[/b] O relógio da máquina aceita qualquer número. Você pode usar expoentes positivos (para avançar no tempo), negativos (para voltar no tempo) ou quebrados. Logo, a sombra no eixo horizontal não tem fim: [b]D(f) = R[/b] (Todos os números reais).
+
+	⚫	[b]Imagem Im(f):[/b] Aqui a regra da barreira invisível entra em ação. Como a curva sobe infinitamente, mas nunca toca o chão (o zero) e nunca vai para o subsolo (números negativos), a sombra no eixo vertical só existe na parte de cima, começando com uma bolinha vazia no zero.
+			
+		⚪	Matematicamente, escrevemos: [b]Im(f) = R^*_+[/b] (Números Reais Positivos, sem o zero) ou simplesmente ~[b]y > 0[/b]. A máquina exponencial só consegue cuspir resultados estritamente positivos."
+
+[node name="TextureRect" type="TextureRect" parent="MaterialUnidade3/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1216277962]
+layout_mode = 2
+
+[node name="MaterialUnidade4" type="VBoxContainer" parent="." unique_id=1359049878]
+visible = false
+custom_minimum_size = Vector2(0, 555)
+custom_maximum_size = Vector2(-1, 555)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 418.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+script = ExtResource("2_j3sfx")
+unidade_atv = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade4" unique_id=1444832135]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade4/MarginContainer2" unique_id=1091200311]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kxey2")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MaterialUnidade4/MarginContainer2/PanelContainer" unique_id=1904400496]
+custom_minimum_size = Vector2(243, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[b] UNIDADE 4: Função Logarítmica[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade4" unique_id=15033629]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade4/MarginContainer" unique_id=1133516851]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ja1h6")
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade4/MarginContainer/PanelContainer" unique_id=873389318]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade4/MarginContainer/PanelContainer/MarginContainer" unique_id=71831847]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MaterialUnidade4/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=880680803]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MaterialUnidade4/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=957797196]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "	Se a Função Exponencial era a máquina que criava explosões de crescimento multiplicando um número várias vezes, a Função Logarítmica é a sua [b]gêmea invertida.[/b] Ela é a máquina que desfaz a explosão. Ela trabalha de trás para frente, como um detetive tentando descobrir o passado.
+
+	Imagine que você sabe que a bactéria dobrava de tamanho a cada hora. Você chega no laboratório e vê 8 bactérias. A pergunta que a Função Logarítmica responde é: \"Quantas horas (qual expoente) foram necessárias para a base 2 se transformar no número 8?\" A resposta é 3. O logaritmo não calcula o resultado, ele [b]descobre o expoente.[/b]
+
+	A regra matemática dessa máquina é escrita assim:[b]f(x) = logₐ(x)[/b] (Lê-se: logaritmo de \"x\" na base \"a\")
+
+	Vamos desmontar os componentes dessa máquina investigativa:
+
+	⚫	[b]A Base (\"a\"):[/b] Assim como na máquina exponencial, a base é o DNA do problema (o ritmo de crescimento original). Ela fica pequenininha ali embaixo do \"log\". Ela obedece à mesma regra rígida: precisa ser um número positivo (maior que zero) e diferente de 1.
+
+	⚫	[b]O Logaritmando (\"x\"):[/b] É a nossa entrada (o Domínio). É o cenário final que o detetive está investigando (ex: as 8 bactérias).
+
+	[b]Os Pontos Mais Importantes do Gráfico:[/b] Como o logaritmo é o exato inverso da exponencial, o seu gráfico no Plano Cartesiano é literalmente o [b]reflexo no espelho[/b] do gráfico exponencial (como se o espelho estivesse na diagonal).
+
+	1. [b]A Curva da Frenagem:[/b]
+
+		⚪	Se a base for [b]maior que 1 (a > 1)[/b], o gráfico vem lá das profundezas do subsolo (valores negativos muito baixos no eixo Y), sobe espremido contra a parede vertical, fura o chão do eixo X e depois continua subindo para a direita, mas [b]freando.[/b] Ele cresce para sempre, mas cada vez mais devagar. É a curva do \"esforço\": no começo é fácil subir, depois fica exaustivo.
+
+		⚪	Se a base for [b]entre 0 e 1 (0 < a < 1)[/b], acontece o inverso: ela vem lá do alto do céu espremida na parede, fura o chão e continua caindo lentamente rumo à direita.
+
+	2. [b]O Ponto de Partida Universal (x = 1):[/b] Na exponencial, a curva sempre cortava o eixo Y no número 1. No mundo invertido dos logaritmos, a curva pura (como f(x)=log2(x)f(x) = log₂(x)f(x)=log2​(x)) [b]sempre corta o Eixo X exatamente no número 1.[/b] Sabe por quê? Porque se o nosso cenário final (\"x\") for 1 bactéria, o detetive diz: \"O tempo não passou\". Ou seja, qualquer base elevada a zero dá 1. O resultado da máquina quando entra 1 é sempre 0 (loga(1)=0logₐ(1) = 0loga​(1)=0).
+
+	3. [b]A Nova Barreira Invisível (A Assíntota Vertical):[/b] A exponencial tinha uma barreira de vidro no chão. A logarítmica tem uma [b]barreira de vidro na parede[/b] (o Eixo Y). A linha do gráfico desce infinitamente raspando na parede vertical do eixo Y (onde x=0), mas [b]nunca toca nela[/b] e nunca passa para o lado esquerdo (os números negativos).
+
+	[b]Domínio e Imagem na Função Logarítmica:[/b] Como as máquinas são o inverso da outra, o Domínio e a Imagem da Exponencial [b]trocaram de lugar[/b] na Logarítmica! Fazendo o teste da sombra:
+
+	⚫	[b]Domínio D(f):[/b] Olhe para a barreira de vidro. O gráfico simplesmente não existe do lado esquerdo da parede, nem em cima da parede (x=0). A sombra no eixo horizontal (Eixo X) só aparece do zero (com bolinha vazia) para a frente.
+Matematicamente: [b]D(f) = R^*_+[/b] (Você só pode colocar [b]números estritamente positivos[/b] na entrada. Não existe logaritmo de zero, nem de número negativo).
+
+	⚫	[b]Imagem Im(f):[/b] Olhe para a sombra projetada na parede (Eixo Y). A linha vem do infinito negativo (lá do fundo do poço) e continua subindo (mesmo que lentamente) para o infinito positivo. A sombra no eixo vertical cobre a parede inteira.
+
+		⚪	Matematicamente: [b]Im(f) = R[/b] (A máquina pode cuspir qualquer número real como resposta: positivo, negativo, quebrado ou zero)."
+
+[node name="TextureRect" type="TextureRect" parent="MaterialUnidade4/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=880044330]
+layout_mode = 2
+
+[node name="MaterialUnidade5" type="VBoxContainer" parent="." unique_id=1940244406]
+visible = false
+custom_minimum_size = Vector2(0, 555)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 418.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+script = ExtResource("2_j3sfx")
+unidade_atv = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="MaterialUnidade5" unique_id=1738219207]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade5/MarginContainer2" unique_id=1779671985]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oh5al")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MaterialUnidade5/MarginContainer2/PanelContainer" unique_id=359355311]
+custom_minimum_size = Vector2(243, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[b] UNIDADE 5: Função Modular[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade5" unique_id=1756501511]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MaterialUnidade5/MarginContainer" unique_id=1533147247]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_r44xx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MaterialUnidade5/MarginContainer/PanelContainer" unique_id=526440699]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MaterialUnidade5/MarginContainer/PanelContainer/MarginContainer" unique_id=616212257]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MaterialUnidade5/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=1954690972]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MaterialUnidade5/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=500966030]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "	Se a Função Logarítmica era o detetive do passado, a Função Modular é uma máquina inabalavelmente otimista. Não importa quanta negatividade você jogue dentro dela, ela sempre vai devolver um resultado positivo (ou neutro).
+
+	Na matemática real, o Módulo (ou Valor Absoluto) serve para medir [b]distância.[/b] Pense bem: se você der 5 passos para a frente ou 5 passos para trás, a distância que você percorreu é exatamente a mesma: 5 passos. Não existe \"fita métrica negativa\". A máquina modular foca na quantidade, ignorando a direção.
+
+	A regra matemática dessa máquina usa duas barras de proteção ao redor do x: [b]f(x) = |x|[/b] (Lê-se: \"módulo de x\" ou \"valor absoluto de x\")
+
+	Vamos desmontar como essa máquina opera:
+
+	⚫	[b]Se a entrada for positiva (ou zero):[/b] A máquina não faz nada. Ela deixa o número passar direto. Ex: Entra 5, sai 5. f(5) = 5.
+
+	⚫	[b]Se a entrada for negativa:[/b] A máquina aciona seu mecanismo de inversão, multiplicando o número por -1 para arrancar o sinal de menos. Ex: Entra -8, ela transforma em 8. f(-8) = 8.
+
+	[b]O Comportamento no Gráfico:[/b] Enquanto a Função Afim era uma reta inclinada e a Quadrática era um \"U\", o gráfico da Função Modular tem o formato perfeito de um [b]\"V\".[/b]
+
+	1. [b]O Efeito Rebote no Chão de Concreto:[/b] Imagine uma linha reta (como a Função Afim) descendo da esquerda para a direita. Ela cruzaria o Eixo X (o chão) e continuaria descendo infinitamente para o subsolo dos números negativos. O Módulo coloca um \"chão de concreto impermeável\" exatamente no Eixo X (onde y=0). Quando a linha bate nesse chão, ela não consegue afundar. Em vez disso, ela [b]quica e rebate[/b] de volta para cima, na mesma inclinação, como uma bola de bilhar batendo na borda da mesa. A parte negativa do gráfico é dobrada para cima como um origami.
+
+	2. [b]A Quina (O Vértice do V):[/b] Esse é o ponto exato onde a linha bateu no chão e sofreu o rebote. Na função modular mais pura (f(x) = |x|), essa quina acontece bem na origem, no ponto (0,0). É uma mudança de direção brusca, formando um bico afiado, diferente da curva suave da parábola.
+
+	3. [b]O Espelho Perfeito:[/b] Assim como a Função Quadrática, a Modular é simétrica. Se você colocar um espelho vertical bem na quina do \"V\", o lado direito que sobe rumo ao infinito é o reflexo exato do lado esquerdo.
+
+	[b]Domínio e Imagem na Função Modular:[/b] Fazendo o nosso teste da sombra projetada no Plano Cartesiano:
+
+	⚫	[b]Domínio D(f):[/b] As \"pernas\" do V continuam se abrindo infinitamente para a esquerda e para a direita. A sombra horizontal no chão não tem interrupções.
+
+		⚪	Matematicamente: [b]D(f) = R[/b] (Você pode colocar absolutamente qualquer número real na máquina: positivo, negativo, quebrado, zero...).
+
+	⚫	[b]Imagem Im(f):[/b] Aqui está o superpoder da máquina. Como ela impede que qualquer coisa vá para o subsolo, a sombra no eixo vertical (Parede Y) começa exatamente no zero (com bolinha cheia, pois o 0 faz parte) e só sobe. Não existe sombra na parte negativa do eixo Y.
+
+		⚪	Matematicamente: [b]Im(f) = R_{+}[/b] (Números Reais Não-Negativos). Ou seja, a máquina só consegue produzir resultados maiores ou iguais a zero (y0)."
+
+[node name="TextureRect" type="TextureRect" parent="MaterialUnidade5/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=12131343]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=987388427]
+layout_mode = 0
+offset_top = 570.0
+offset_right = 360.0
+offset_bottom = 640.0
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3" unique_id=1683618347]
+layout_mode = 2
+
+[node name="MarginContainer1" type="MarginContainer" parent="MarginContainer3/HBoxContainer" unique_id=740382266]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 15
+
+[node name="ButtonVoltar" type="Button" parent="MarginContainer3/HBoxContainer/MarginContainer1" unique_id=239076264]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nqwr1")
+text = "🢀 VOLTAR"
+
+[node name="Button" type="Button" parent="MarginContainer3/HBoxContainer" unique_id=1600891692]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_p3kxb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rb775")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ixrit")
@@ -61,4 +731,18 @@ text = "X"
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="pressed" from="Button" to="." method="_on_button_sair_pressed"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/HBoxContainer" unique_id=1119311576]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_right = 15
+
+[node name="ButtonAvancar" type="Button" parent="MarginContainer3/HBoxContainer/MarginContainer" unique_id=1989411642]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_846xk")
+text = "Avançar 🢂"
+
+[connection signal="pressed" from="MarginContainer3/HBoxContainer/MarginContainer1/ButtonVoltar" to="." method="_on_button_voltar_pressed"]
+[connection signal="pressed" from="MarginContainer3/HBoxContainer/Button" to="." method="_on_button_sair_pressed"]
+[connection signal="pressed" from="MarginContainer3/HBoxContainer/MarginContainer/ButtonAvancar" to="." method="_on_button_avancar_pressed"]

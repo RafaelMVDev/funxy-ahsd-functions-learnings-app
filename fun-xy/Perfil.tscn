@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bl8gu8rd3i3ge"]
 
-[ext_resource type="Script" uid="uid://dus8bymjucqsi" path="res://cenas_Luis/perfil.gd" id="1_2yoj7"]
+[ext_resource type="Script" uid="uid://dus8bymjucqsi" path="res://perfil.gd" id="1_2yoj7"]
 [ext_resource type="Texture2D" uid="uid://bxhrqs0on6vfc" path="res://images/Foto_de_Perfil.png" id="1_042gs"]
 [ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="2_042gs"]
 [ext_resource type="Texture2D" uid="uid://be6slbqck10bi" path="res://images/icones/home_page_icon.png" id="2_b0g2v"]
@@ -70,7 +70,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekicr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5p8xb"]
 bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdoop"]
@@ -79,7 +79,7 @@ bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7f26"]
 bg_color = Color(0.12156863, 0.45882353, 0.95686275, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64dp6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cph1j"]
 bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yoj7"]
@@ -502,33 +502,27 @@ grow_vertical = 0
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="HboxBAIXO" unique_id=371483774]
+[node name="PanelContainer6" type="PanelContainer" parent="HboxBAIXO" unique_id=1232765704]
 custom_minimum_size = Vector2(72, 0)
 custom_maximum_size = Vector2(72, -1)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ekicr")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5p8xb")
 
-[node name="ButtonHome" type="Button" parent="HboxBAIXO/PanelContainer" unique_id=1890074606]
+[node name="ButtonHome" type="Button" parent="HboxBAIXO/PanelContainer6" unique_id=785687573]
 layout_mode = 2
 flat = true
 
-[node name="TextureRect" type="TextureRect" parent="HboxBAIXO/PanelContainer/ButtonHome" unique_id=834549923]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -23.0
-offset_right = 23.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="HboxBAIXO/PanelContainer6/ButtonHome" unique_id=221484479]
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 53.0
+offset_bottom = 55.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_b0g2v")
-expand_mode = 3
+expand_mode = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="HboxBAIXO" unique_id=1196835070]
 custom_minimum_size = Vector2(72, 72)
@@ -577,26 +571,29 @@ layout_mode = 2
 texture_normal = ExtResource("3_b0g2v")
 stretch_mode = 3
 
-[node name="PanelContainer4" type="PanelContainer" parent="HboxBAIXO" unique_id=1472734293]
-custom_minimum_size = Vector2(72, 72)
+[node name="PanelContainer7" type="PanelContainer" parent="HboxBAIXO" unique_id=579163982]
+custom_minimum_size = Vector2(72, 0)
 custom_maximum_size = Vector2(72, -1)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_64dp6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cph1j")
 
-[node name="CenterContainer3" type="CenterContainer" parent="HboxBAIXO/PanelContainer4" unique_id=1297072134]
-custom_minimum_size = Vector2(32, 32)
-custom_maximum_size = Vector2(32, 32)
+[node name="Button" type="Button" parent="HboxBAIXO/PanelContainer7" unique_id=566548976]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 
-[node name="TextureButton" type="TextureButton" parent="HboxBAIXO/PanelContainer4/CenterContainer3" unique_id=1115280868]
-custom_minimum_size = Vector2(32, 32)
-custom_maximum_size = Vector2(32, 32)
-layout_mode = 2
-texture_normal = ExtResource("4_187f0")
-stretch_mode = 3
+[node name="TextureRect" type="TextureRect" parent="HboxBAIXO/PanelContainer7/Button" unique_id=2085565770]
+custom_maximum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_187f0")
+expand_mode = 1
 
 [node name="PanelContainer5" type="PanelContainer" parent="HboxBAIXO" unique_id=372001894]
 custom_minimum_size = Vector2(72, 0)
@@ -619,6 +616,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_ldqir")
 stretch_mode = 3
 
-[connection signal="pressed" from="HboxBAIXO/PanelContainer/ButtonHome" to="." method="_on_button_pressed_conteudos"]
+[connection signal="pressed" from="HboxBAIXO/PanelContainer6/ButtonHome" to="." method="_on_button_home_pressed"]
+[connection signal="pressed" from="HboxBAIXO/PanelContainer2/Button" to="." method="_on_button_pressed_conteudos"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer3/CenterContainer2/TextureButton" to="." method="_on_button_pressed_ranking"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer5/CenterContainer4/TextureButton" to="." method="_on_button_pressed_configuracao"]

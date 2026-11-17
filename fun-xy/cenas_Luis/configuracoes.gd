@@ -58,7 +58,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_home_pressed() -> void:
-	get_tree().change_scene_to_file("res://cenas_Luis/Conteudos.tscn")
+	get_tree().change_scene_to_file("res://Trilha.tscn")
 
 func _on_button_pressed_conteudo() -> void:
 	get_tree().change_scene_to_file("res://Conteudos.tscn")
@@ -69,7 +69,7 @@ func _on_button_rank_pressed_ranking() -> void:
 	pass # Replace with function body.
 	
 func _on_button_pressed_perfil() -> void:
-	get_tree().change_scene_to_file("res://cenas_Luis/Perfil.tscn")
+	get_tree().change_scene_to_file("res://Perfil.tscn")
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	var master_bus_index = AudioServer.get_bus_index("Master")

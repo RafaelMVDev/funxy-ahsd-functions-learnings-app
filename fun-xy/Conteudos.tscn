@@ -769,4 +769,5 @@ stretch_mode = 3
 
 [connection signal="pressed" from="HboxBAIXO/PanelContainer6/ButtonHome" to="." method="_on_button_home_pressed"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer3/CenterContainer2/TextureButton" to="." method="_on_texture_button_pressed_ranking"]
+[connection signal="pressed" from="HboxBAIXO/PanelContainer4/CenterContainer3/TextureButton" to="." method="_on_button_perfil_pressed"]
 [connection signal="pressed" from="HboxBAIXO/PanelContainer5/CenterContainer4/TextureButton" to="." method="_on_texture_button_configuracoes_pressed"]

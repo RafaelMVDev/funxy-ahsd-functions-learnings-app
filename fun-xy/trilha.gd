@@ -50,3 +50,6 @@ func _on_texture_button_pressed_config() -> void:
 
 func _on_texture_button_pressed_rank() -> void:
 	get_tree().change_scene_to_file("res://Ranking.tscn")
+
+func _on_button_perfil_pressed() -> void:
+	get_tree().change_scene_to_file("res://Perfil.tscn")

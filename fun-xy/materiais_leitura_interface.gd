@@ -28,3 +28,16 @@ func _process(delta: float) -> void:
 func _on_button_sair_pressed() -> void:
 	sair_atv()
 	pass # Replace with function body.
+
+
+
+
+func _on_button_voltar_pressed() -> void:
+	if DadosGlobais.trilha_leitura_atual != 1:
+		DadosGlobais.trilha_leitura_atual -= 1
+		get_tree().reload_current_scene()
+		
+func _on_button_avancar_pressed() -> void:
+	if DadosGlobais.trilha_leitura_atual != 5:
+		DadosGlobais.trilha_leitura_atual += 1
+		get_tree().reload_current_scene()

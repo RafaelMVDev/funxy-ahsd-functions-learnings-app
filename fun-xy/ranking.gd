@@ -134,3 +134,7 @@ func _on_texture_button_pressed_conteudos() -> void:
 func _on_texture_button_pressed_config() -> void:
 	get_tree().change_scene_to_file("res://Configuracoes.tscn")
 	pass # Replace with function body.
+
+
+func _on_button_perfil_pressed() -> void:
+	get_tree().change_scene_to_file("res://Perfil.tscn")
