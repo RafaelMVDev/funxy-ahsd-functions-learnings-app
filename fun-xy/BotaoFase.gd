@@ -25,11 +25,10 @@ func atualizar_estilo_do_botao(tentativas: Array) -> void:
 		if tentativa.has("status"):
 			if tentativa["status"] == false:
 				tem_incompleta = true
-				break # Achou false (prioridade máxima), pode parar o loop imediatamente
+				break 
 			elif tentativa["status"] == true:
 				tem_concluida = true
 	
-	# Aplicação dos estilos baseada nas flags
 	if tem_incompleta:
 		aplicar_estilo_incompleto()
 	elif tem_concluida:

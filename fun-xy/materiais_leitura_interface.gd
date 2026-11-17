@@ -19,6 +19,7 @@ func sair_atv() -> void:
 	#Lógica de salvar o progresso da atv.
 	#Como só vai ter um material de leitura por trilha, então pode enviar só a trilha:
 	#trilha_atv
+	salvar_atv_leitura()
 	
 
 func _process(delta: float) -> void:
@@ -30,14 +31,19 @@ func _on_button_sair_pressed() -> void:
 	pass # Replace with function body.
 
 
-
+func salvar_atv_leitura() -> void:
+	var id_atv = DadosJogo.buscar_id_leitura(DadosGlobais.trilha_leitura_atual)
+	Sessao.concluir_leitura(id_atv, 2)
+	
 
 func _on_button_voltar_pressed() -> void:
 	if DadosGlobais.trilha_leitura_atual != 1:
 		DadosGlobais.trilha_leitura_atual -= 1
+		salvar_atv_leitura()
 		get_tree().reload_current_scene()
 		
 func _on_button_avancar_pressed() -> void:
 	if DadosGlobais.trilha_leitura_atual != 5:
 		DadosGlobais.trilha_leitura_atual += 1
+		salvar_atv_leitura()
 		get_tree().reload_current_scene()
