@@ -4,12 +4,14 @@ extends Control
 @onready var texto_xp = $"VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Experiência/HBoxContainer/VBoxContainer/ExperienciaText"
 @onready var texto_sequencia = $"VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Sequência/HBoxContainer/VBoxContainer/SequenciaText"
 @onready var texto_pos_ranking = $VBoxContainer/ScrollContainer/VBoxContainer/Ranking
+@onready var texto_moedas = %MoedasText
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
 	texto_nome.text = Sessao.player["nome"]
 	texto_xp.text = "XP: " + str(int(Sessao.player["xp"]))
 	texto_sequencia.text ="SEQUÊNCIA: " + str(int(Sessao.player["sequencia"]))
+	texto_moedas.text = "MOEDAS: " + str(int(Sessao.player["moedas"]))
 	pass # Replace with function body.
 
 

@@ -253,6 +253,7 @@ layout_mode = 2
 theme_override_constants/separation = 1
 
 [node name="MoedasText" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Moedas/HBoxContainer/VBoxContainer" unique_id=1407049653]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "MOEDAS: 232323232323232323"
