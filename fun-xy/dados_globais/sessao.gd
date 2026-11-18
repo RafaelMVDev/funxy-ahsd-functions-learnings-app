@@ -101,7 +101,7 @@ var player: Dictionary = {
 	
 }
 
-var player_foto := ""
+var player_foto: ImageTexture 
 var player_configuracao: Dictionary = {
 	
 }
@@ -373,7 +373,8 @@ func buscar_foto() -> ImageTexture:
 	if imagem.load_png_from_buffer(corpo) != OK:
 		push_warning("A resposta não contém uma imagem PNG válida.")
 		return null
-
+	var textura = ImageTexture.create_from_image(imagem)
+	Sessao.player_foto = textura
 	return ImageTexture.create_from_image(imagem)
 	
 func concluir_leitura(atividade_id: int, pagina_atual: int) -> bool:

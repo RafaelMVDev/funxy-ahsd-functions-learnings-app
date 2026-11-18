@@ -2,16 +2,15 @@ package br.edu.ifsp.funxyApp.controller;
 
 
 import br.edu.ifsp.funxyApp.dto.jogo.RankingJogadorDto;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.edu.ifsp.funxyApp.dto.jogo.RankingJogadoresFotoDto;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import br.edu.ifsp.funxyApp.dto.jogo.JogoResponseDto;
 import br.edu.ifsp.funxyApp.service.JogoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/jogo")
@@ -55,4 +54,13 @@ public class JogoController {
     public List<RankingJogadorDto> buscarRanking() {
         return jogoService.buscarRanking();
     }
+
+
+        // Endpoint separado apenas para as fotos do ranking
+    @GetMapping("/ranking/fotos")
+    public List<RankingJogadoresFotoDto> buscarFotosEmLote(@RequestParam List<Long> ids) {
+        System.out.println("Buscando fotos!");
+        return jogoService.obterFotosPorIdsEmLote(ids);
+    }
+
 }

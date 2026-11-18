@@ -28,8 +28,10 @@ func _ready() -> void:
 	if FileAccess.file_exists("user://avatar_usuario.png"):
 		var imagem = Image.load_from_file("user://avatar_usuario.png")
 		foto_perfil.texture = ImageTexture.create_from_image(imagem)
-	if Sessao.foto_perfil:
-		foto_perfil.texture = Sessao.foto_perfil
+	if Sessao.player_foto:
+		foto_perfil.texture = Sessao.player_foto
+	else:
+		buscar_foto_perfil()
 	var master_bus_index = AudioServer.get_bus_index("Master")
 	var is_muted = AudioServer.is_bus_mute(master_bus_index)
 	AudioServer.set_bus_mute(master_bus_index, is_muted)

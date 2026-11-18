@@ -7,7 +7,8 @@ var conquistas: Array = []
 var itens: Array = []
 var carregado: bool = false
 var ranking_xp:Array = []
-
+var ranking_fotos:Dictionary = {}
+var ids_ranking:Array = []
 # Exemplo: atividades_por_id[11] contém os dados da atividade 11.
 var atividades_por_id: Dictionary = {}
 
@@ -68,9 +69,32 @@ func carregar_ranking() -> bool:
 
 	# Uma lista vazia também é válida: significa que não há jogadores.
 	ranking_xp = dados
+	ids_ranking.clear()
+	print(ranking_xp)
+	for player_dado in ranking_xp:
+		ids_ranking.append(int(player_dado["usuarioId"]))
+	print(ids_ranking)
+	if ids_ranking.size() > 0:
+		buscar_fotos_lote(ids_ranking)
 	return true
+	
+
+func buscar_fotos_lote(ids: Array) -> void:
+	# Transforma o array de IDs em uma string separada por vírgula (ex: "?ids=1,2,3,4")
+	var ids_str = ",".join(ids)
+	var resposta = await Api.requisitar(HTTPClient.METHOD_GET,"/jogo/ranking/fotos?ids=" + ids_str)
+	if resposta["ok"]:
+		if resposta["dados"]:
+			for usuario in resposta["dados"]:
+				var usuario_id_str = str(int(usuario["usuarioId"]))
+				var base64_str = usuario["fotoBase64"]
+				# Converte o Base64 para Imagem
+				var bytes = Marshalls.base64_to_raw(base64_str)
+				ranking_fotos[usuario_id_str] = bytes
+	print("TERMINOU DE BUSCAR AS FOTOS DA API")
+
 # Use com "await". Faz uma requisição apenas quando for chamada.
-# O HTTPRequest é criado aqui; não precisa adicionar um nó pelo editor.
+# O HTTPRequest é criado aqui; não precisa adicionar um nó 5pelo editor.
 func carregar_da_api() -> bool:
 	if Sessao.access_token.is_empty():
 		return false

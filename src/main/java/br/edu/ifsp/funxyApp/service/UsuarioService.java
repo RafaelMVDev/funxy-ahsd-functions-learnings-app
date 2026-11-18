@@ -16,6 +16,7 @@ import br.edu.ifsp.funxyApp.dto.jogo.SalvarConfiguracaoRequestDto;
 import br.edu.ifsp.funxyApp.dto.usuario.AtualizarMoedasRequestDto;
 import br.edu.ifsp.funxyApp.dto.usuario.AtualizarXpRequestDto;
 
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -256,6 +257,20 @@ public class UsuarioService {
                         "Usuário sem foto de perfil."
                 ))
                 .getConteudo();
+    }
+
+    @Transactional(readOnly = true)
+    public String buscarFotoParaRanking(Long usuarioId) {
+        return fotos.findById(usuarioId)
+                .map(foto -> {
+                    byte[] conteudo = foto.getConteudo();
+                    // Verifica se o conteúdo existe e não está vazio para evitar erros
+                    if (conteudo != null && conteudo.length > 0) {
+                        return Base64.getEncoder().encodeToString(conteudo);
+                    }
+                    return null; // Retorna null se não houver foto
+                })
+                .orElse(null);
     }
 
     @Transactional

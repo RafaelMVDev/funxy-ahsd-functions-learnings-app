@@ -2,11 +2,9 @@ package br.edu.ifsp.funxyApp.service;
 
 import br.edu.ifsp.funxyApp.dto.jogo.JogoResponseDto;
 import br.edu.ifsp.funxyApp.dto.jogo.RankingJogadorDto;
+import br.edu.ifsp.funxyApp.dto.jogo.RankingJogadoresFotoDto;
 import br.edu.ifsp.funxyApp.model.*;
-import br.edu.ifsp.funxyApp.repository.AtividadesRepository;
-import br.edu.ifsp.funxyApp.repository.ConquistasRepository;
-import br.edu.ifsp.funxyApp.repository.ItensRepository;
-import br.edu.ifsp.funxyApp.repository.UsuarioRepository;
+import br.edu.ifsp.funxyApp.repository.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,10 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Transactional(readOnly = true)
@@ -29,19 +24,25 @@ public class JogoService {
     private final UsuarioRepository usuarios;
     private final ItensRepository itens;
     private final ObjectMapper objectMapper;
+    private final UsuarioService usuarioService;
+    private final UsuarioFotoRepository fotos;
 
     public JogoService(
             AtividadesRepository atividades,
             ConquistasRepository conquistas,
             UsuarioRepository usuarios,
             ItensRepository itens,
-            ObjectMapper objectMapper
+            ObjectMapper objectMapper,
+            UsuarioService usuarioService,
+            UsuarioFotoRepository fotos
     ) {
         this.atividades = atividades;
         this.conquistas = conquistas;
         this.itens = itens;
         this.objectMapper = objectMapper;
         this.usuarios = usuarios;
+        this.usuarioService = usuarioService;
+        this.fotos = fotos;
     }
 
     public JogoResponseDto carregarTudo() {
@@ -182,6 +183,17 @@ public class JogoService {
         }
 
         return ranking;
+    }
+
+    @Transactional(readOnly = true)
+    public List<RankingJogadoresFotoDto> obterFotosPorIdsEmLote(List<Long> ids) {
+        return fotos.findAllById(ids).stream()
+                .filter(foto -> foto.getConteudo() != null && foto.getConteudo().length > 0)
+                .map(foto -> new RankingJogadoresFotoDto(
+                        foto.getId(),
+                        Base64.getEncoder().encodeToString(foto.getConteudo())
+                ))
+                .toList();
     }
     private static String nomeEnum(Enum<?> valor) {
         return valor == null ? null : valor.name();

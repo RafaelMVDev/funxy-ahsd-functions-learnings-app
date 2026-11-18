@@ -129,7 +129,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_042gs")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PanelFOTO" unique_id=2092509718]
+[node name="FotoPerfil" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PanelFOTO" unique_id=2092509718]
 layout_mode = 2
 texture = ExtResource("1_042gs")
 expand_mode = 3

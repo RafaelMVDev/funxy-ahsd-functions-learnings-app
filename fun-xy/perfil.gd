@@ -5,12 +5,12 @@ extends Control
 @onready var texto_sequencia = $"VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Sequência/HBoxContainer/VBoxContainer/SequenciaText"
 @onready var texto_pos_ranking = $VBoxContainer/ScrollContainer/VBoxContainer/Ranking
 @onready var texto_moedas = %MoedasText
-@onready var player_imagem = %PanelFOTO/TextureRect
+@onready var player_imagem = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PanelFOTO/FotoPerfil
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
 	if Sessao.player_foto:
-		player_imagem.texture = Sessao.foto_player 
+		player_imagem.texture = Sessao.player_foto
 	texto_nome.text = Sessao.player["nome"]
 	texto_xp.text = "XP: " + str(int(Sessao.player["xp"]))
 	texto_sequencia.text ="SEQUÊNCIA: " + str(int(Sessao.player["sequencia"]))

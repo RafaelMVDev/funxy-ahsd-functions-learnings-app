@@ -131,6 +131,7 @@ func _on_login_response(resultado: Dictionary) -> void:
 		return
 
 	var jogo = catalogo["dados"]
+	
 
 	if not (jogo is Dictionary):
 		falhar_login("O catálogo do jogo veio em formato inválido.")
@@ -153,6 +154,7 @@ func _on_login_response(resultado: Dictionary) -> void:
 	
 	# Pega o ranking atual e coloca na var global
 	await DadosJogo.carregar_ranking()
+	await Sessao.buscar_foto()
 	print(DadosJogo.ranking_xp)
 	# Os dados pessoais e o catálogo estão disponíveis nos globais.
 	get_tree().change_scene_to_file("res://Trilha.tscn")
