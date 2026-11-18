@@ -377,4 +377,104 @@ func restaurar_sessao() -> Dictionary:
 		return _resultado(0, null, "Dados do jogador em formato inválido.")
 
 	return _resultado(200)
+
+
+func enviar_foto(caminho: String) -> bool:
+	var imagem := Image.new()
+
+	if imagem.load(caminho) != OK:
+		push_warning("Não foi possível abrir a imagem selecionada.")
+		return false
+
+	# Converte para PNG, mesmo que a imagem original seja JPEG.
+	var bytes: PackedByteArray = imagem.save_png_to_buffer()
+
+	if bytes.is_empty():
+		push_warning("Não foi possível converter a imagem para PNG.")
+		return false
+
+	var http := HTTPRequest.new()
+	add_child(http)
+	http.timeout = 15.0
+
+	var headers := PackedStringArray([
+		"Content-Type: image/png",
+		"Authorization: Bearer " + Sessao.access_token
+	])
+
+	# Envia os bytes da imagem diretamente, sem converter para JSON.
+	var erro: int = http.request_raw(
+		URL_BASE + "/api/usuario/me/foto",
+		headers,
+		HTTPClient.METHOD_PUT,
+		bytes
+	)
+
+	if erro != OK:
+		http.queue_free()
+		push_warning("Não foi possível iniciar o envio da foto.")
+		return false
+
+	var resposta: Array = await http.request_completed
+	http.queue_free()
+
+	if resposta[0] != HTTPRequest.RESULT_SUCCESS:
+		push_warning("Falha de conexão ao enviar a foto.")
+		return false
+
+	var codigo: int = resposta[1]
+
+	# O backend retorna 204, sem corpo, quando salva corretamente.
+	if codigo != 204:
+		push_warning("Erro ao salvar a foto. HTTP %d." % codigo)
+		return false
+
+	return true
 	
+func buscar_foto() -> ImageTexture:
+	var http := HTTPRequest.new()
+	add_child(http)
+	http.timeout = 15.0
+
+	var headers := PackedStringArray([
+		"Accept: image/png",
+		"Authorization: Bearer " + Sessao.access_token
+	])
+
+	var erro: int = http.request(
+		URL_BASE + "/api/usuario/me/foto",
+		headers,
+		HTTPClient.METHOD_GET
+	)
+
+	if erro != OK:
+		http.queue_free()
+		push_warning("Não foi possível iniciar a busca da foto.")
+		return null
+
+	var resposta: Array = await http.request_completed
+	http.queue_free()
+
+	if resposta[0] != HTTPRequest.RESULT_SUCCESS:
+		push_warning("Falha de conexão ao buscar a foto.")
+		return null
+
+	var codigo: int = resposta[1]
+
+	# O usuário ainda não possui uma foto.
+	if codigo == 404:
+		return null
+
+	if codigo != 200:
+		push_warning("Erro ao buscar a foto. HTTP %d." % codigo)
+		return null
+
+	# O corpo contém bytes de PNG, não JSON.
+	var corpo: PackedByteArray = resposta[3]
+	var imagem := Image.new()
+
+	if imagem.load_png_from_buffer(corpo) != OK:
+		push_warning("A resposta não contém uma imagem PNG válida.")
+		return null
+
+	return ImageTexture.create_from_image(imagem)

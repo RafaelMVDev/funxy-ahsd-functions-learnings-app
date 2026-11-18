@@ -830,7 +830,7 @@ WHERE id_atividade IN (
 """
 
  */
-
+/*
 -- FUNXY: 15 fases desafiadoras, 5 trilhas, 1 leitura por trilha.
 -- H2: substituir o antigo arquivo de inserts. Executar sobre catálogo VAZIO.
 -- Não misturar com os inserts antigos. Não altera usuário, inventário ou progresso.
@@ -938,6 +938,7 @@ SELECT a.id_atividade, 1, '[
     "altura": 2.69
   }
 ]'
+
 FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
 WHERE t.nome_trilha = 'Função afim' AND a.numero_atividade = 1 AND a.tipo = 'pratica';
 
@@ -2379,6 +2380,840 @@ INSERT INTO Atividades (id_trilha, numero_atividade, titulo, descricao, tipo, xp
 SELECT id_trilha, 0, 'Logaritmo e domínio', 'Conceitos para os desafios desta trilha.', 'leitura', 0, 0 FROM Trilha WHERE nome_trilha='Função logarítmica';
 INSERT INTO Atividades_Leitura (id_atividade, textos, imagens)
 SELECT a.id_atividade, '["ln(x) é o logaritmo natural e só é definido quando x é positivo.", "Para logaritmo na base 2, use ln(x)/ln(2). Em ln(x+c), o argumento precisa continuar positivo.", "O crescimento é rápido perto da fronteira do domínio e desacelera ao se afastar dela.", "Em ln(c-x), o argumento exige x<c. A reflexão horizontal muda o lado em que o gráfico fica íngreme."]', '[]' FROM Atividades a JOIN Trilha t ON t.id_trilha=a.id_trilha WHERE t.nome_trilha='Função logarítmica' AND a.tipo='leitura' AND a.numero_atividade=0;
+
+COMMIT;
+SET AUTOCOMMIT TRUE;
+
+SELECT t.nome_trilha, a.numero_atividade, a.titulo, p.media_movimentos FROM Atividades a JOIN Trilha t ON t.id_trilha=a.id_trilha LEFT JOIN Atividades_Pratica p ON p.id_atividade=a.id_atividade ORDER BY t.numero_trilha,a.numero_atividade;
+*/
+
+-- FUNXY: 15 fases desafiadoras, 5 trilhas, 1 leitura por trilha.
+-- H2: substituir o antigo arquivo de inserts. Executar sobre catálogo VAZIO.
+-- Não misturar com os inserts antigos. Não altera usuário, inventário ou progresso.
+-- x/y = CENTRO; largura/altura = tamanho TOTAL em unidades cartesianas.
+-- Plano do projeto: 300 x 300 px, [-5,5] em ambos os eixos, 30 px/unidade.
+-- Paredes: bordas x +/- largura/2, y +/- altura/2; Y é invertido na tela.
+-- Gabaritos e validação ficam em arquivos separados, não no payload da API.
+-- media_movimentos = quantidade de trechos do gabarito, não média medida.
+SET AUTOCOMMIT FALSE;
+
+INSERT INTO Trilha (nome_trilha, numero_trilha) VALUES ('Função afim', '1');
+INSERT INTO Trilha (nome_trilha, numero_trilha) VALUES ('Função quadrática', '2');
+INSERT INTO Trilha (nome_trilha, numero_trilha) VALUES ('Função exponencial', '3');
+INSERT INTO Trilha (nome_trilha, numero_trilha) VALUES ('Função logarítmica', '4');
+INSERT INTO Trilha (nome_trilha, numero_trilha) VALUES ('Função modular', '5');
+
+-- Função afim / fase 1: Alinhamento preciso
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Alinhamento preciso', 'pratica', 40, 'Ajuste inclinação e intercepto para ligar os alvos entre obstáculos isolados.', 1, 10
+FROM Trilha WHERE nome_trilha = 'Função afim';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -4,
+    "y": -3.5,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 4,
+    "y": 2.5,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2,
+    "y": 0.6,
+    "largura": 1.4,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 0,
+    "y": -2.3,
+    "largura": 1.7,
+    "altura": 1.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 2,
+    "y": 2.8,
+    "largura": 1.2,
+    "altura": 1.2
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3,
+    "y": -1.5,
+    "largura": 1.2,
+    "altura": 1.6
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função afim' AND a.numero_atividade = 1 AND a.tipo = 'pratica';
+
+-- Função afim / fase 2: Mudança de direção
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Mudança de direção', 'pratica', 60, 'Conecte dois trechos afins com inclinações diferentes e escolha os domínios.', 2, 15
+FROM Trilha WHERE nome_trilha = 'Função afim';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 2, '[
+  {
+    "tipo": "inicio",
+    "x": -4,
+    "y": -3.5,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 4,
+    "y": -2.9,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -0.5,
+    "y": -2,
+    "largura": 2,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2.8,
+    "y": 1.5,
+    "largura": 1,
+    "altura": 1.8
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 2,
+    "y": 1.4,
+    "largura": 1.4,
+    "altura": 1.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3,
+    "y": -4.2,
+    "largura": 1.1,
+    "altura": 1
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função afim' AND a.numero_atividade = 2 AND a.tipo = 'pratica';
+
+-- Função afim / fase 3: Zigue-zague controlado
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Zigue-zague controlado', 'pratica', 80, 'Planeje três retas conectadas sem prolongá-las para dentro das paredes.', 3, 20
+FROM Trilha WHERE nome_trilha = 'Função afim';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 3, '[
+  {
+    "tipo": "inicio",
+    "x": -4,
+    "y": 2.5,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 4,
+    "y": -0.6,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -1.5,
+    "y": 1.8,
+    "largura": 1.2,
+    "altura": 1.2
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 1.3,
+    "y": 0,
+    "largura": 1.3,
+    "altura": 1.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -3,
+    "y": -2,
+    "largura": 1.5,
+    "altura": 1.5
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3,
+    "y": 3.8,
+    "largura": 1.5,
+    "altura": 1.2
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função afim' AND a.numero_atividade = 3 AND a.tipo = 'pratica';
+
+-- Função quadrática / fase 1: Vale deslocado
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Vale deslocado', 'pratica', 40, 'Posicione o vértice à esquerda e ajuste a abertura da parábola.', 1, 10
+FROM Trilha WHERE nome_trilha = 'Função quadrática';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -4,
+    "y": 1.9,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 3,
+    "y": 1.9,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -0.5,
+    "y": 1.2,
+    "largura": 2.4,
+    "altura": 2.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -3,
+    "y": -3.6,
+    "largura": 1.4,
+    "altura": 1.2
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 2,
+    "y": -3.5,
+    "largura": 1.4,
+    "altura": 1.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3.6,
+    "y": 3.6,
+    "largura": 1.2,
+    "altura": 1.2
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função quadrática' AND a.numero_atividade = 1 AND a.tipo = 'pratica';
+
+-- Função quadrática / fase 2: Teto curvo
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Teto curvo', 'pratica', 60, 'Experimente um arco com vértice deslocado para contornar a ilha central.', 2, 15
+FROM Trilha WHERE nome_trilha = 'Função quadrática';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -2,
+    "y": -1.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 4,
+    "y": -1.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 1,
+    "y": -0.3,
+    "largura": 2.4,
+    "altura": 2
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -1,
+    "y": 4,
+    "largura": 1.3,
+    "altura": 1
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3.2,
+    "y": 3.8,
+    "largura": 1,
+    "altura": 1
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 0,
+    "y": -3.5,
+    "largura": 1.4,
+    "altura": 1.5
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função quadrática' AND a.numero_atividade = 2 AND a.tipo = 'pratica';
+
+-- Função quadrática / fase 3: Parábola assimétrica
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Parábola assimétrica', 'pratica', 80, 'Encontre uma quadrática com eixo deslocado; os alvos estão em alturas diferentes.', 3, 20
+FROM Trilha WHERE nome_trilha = 'Função quadrática';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -4,
+    "y": 1.8,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 3,
+    "y": 1.1,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -0.2,
+    "y": 0.7,
+    "largura": 2.4,
+    "altura": 2.1
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2.8,
+    "y": -3.5,
+    "largura": 1.5,
+    "altura": 1
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 2,
+    "y": -3.4,
+    "largura": 1.5,
+    "altura": 1.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3.2,
+    "y": 3.5,
+    "largura": 1.2,
+    "altura": 1.4
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função quadrática' AND a.numero_atividade = 3 AND a.tipo = 'pratica';
+
+-- Função exponencial / fase 1: Arranque exponencial
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Arranque exponencial', 'pratica', 40, 'A travessia começa quase horizontal e termina com crescimento acelerado.', 1, 10
+FROM Trilha WHERE nome_trilha = 'Função exponencial';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -3,
+    "y": -2.875,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 2.5,
+    "y": 2.65685,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -0.2,
+    "y": 0.2,
+    "largura": 1.8,
+    "altura": 1.7
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -1.8,
+    "y": -4.1,
+    "largura": 1.5,
+    "altura": 1
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 1.8,
+    "y": -3.4,
+    "largura": 1.2,
+    "altura": 1.5
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3.5,
+    "y": 1.2,
+    "largura": 1,
+    "altura": 1.6
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função exponencial' AND a.numero_atividade = 1 AND a.tipo = 'pratica';
+
+-- Função exponencial / fase 2: Crescer desacelerando
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Crescer desacelerando', 'pratica', 60, 'Combine reflexão horizontal e vertical de uma exponencial para alcançar o alvo.', 2, 15
+FROM Trilha WHERE nome_trilha = 'Função exponencial';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -2,
+    "y": 0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 3,
+    "y": 3.875,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 0.1,
+    "y": 1.1,
+    "largura": 1.6,
+    "altura": 1.3
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -1.2,
+    "y": 4.2,
+    "largura": 1.4,
+    "altura": 1
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 2,
+    "y": -1,
+    "largura": 1.8,
+    "altura": 1.8
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3.7,
+    "y": 2,
+    "largura": 1,
+    "altura": 1.3
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função exponencial' AND a.numero_atividade = 2 AND a.tipo = 'pratica';
+
+-- Função exponencial / fase 3: Escala e translação
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Escala e translação', 'pratica', 80, 'Ajuste escala e deslocamento de uma exponencial para contornar os blocos.', 3, 20
+FROM Trilha WHERE nome_trilha = 'Função exponencial';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -3,
+    "y": -3.3125,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 2,
+    "y": 2.5,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 0,
+    "y": 0.7,
+    "largura": 1.5,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2,
+    "y": -4.3,
+    "largura": 1.4,
+    "altura": 0.8
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 1.7,
+    "y": -3,
+    "largura": 1,
+    "altura": 1.8
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2.5,
+    "y": 0.5,
+    "largura": 1.2,
+    "altura": 2
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função exponencial' AND a.numero_atividade = 3 AND a.tipo = 'pratica';
+
+-- Função logarítmica / fase 1: Subida logarítmica
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Subida logarítmica', 'pratica', 40, 'O caminho sobe rápido no começo e desacelera; posicione a restrição do logaritmo.', 1, 10
+FROM Trilha WHERE nome_trilha = 'Função logarítmica';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -3,
+    "y": -3.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 4,
+    "y": 3.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 0.2,
+    "y": -1.8,
+    "largura": 2,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2,
+    "y": 3.2,
+    "largura": 1.2,
+    "altura": 1.8
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 2.2,
+    "y": 4.3,
+    "largura": 1.3,
+    "altura": 1
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -3.8,
+    "y": -0.5,
+    "largura": 1,
+    "altura": 1.4
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função logarítmica' AND a.numero_atividade = 1 AND a.tipo = 'pratica';
+
+-- Função logarítmica / fase 2: Reflexo logarítmico
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Reflexo logarítmico', 'pratica', 60, 'Reflita o logaritmo no eixo horizontal e controle seu deslocamento.', 2, 15
+FROM Trilha WHERE nome_trilha = 'Função logarítmica';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -4,
+    "y": 3.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 3,
+    "y": -3.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -0.8,
+    "y": 1,
+    "largura": 2,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -3,
+    "y": -3.4,
+    "largura": 1.2,
+    "altura": 1.5
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 1,
+    "y": -4.3,
+    "largura": 1.6,
+    "altura": 1
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3,
+    "y": 1,
+    "largura": 1.4,
+    "altura": 1.8
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função logarítmica' AND a.numero_atividade = 2 AND a.tipo = 'pratica';
+
+-- Função logarítmica / fase 3: Aproximação da assíntota
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Aproximação da assíntota', 'pratica', 80, 'Desloque e reflita horizontalmente o logaritmo; respeite o domínio junto à descida final.', 3, 20
+FROM Trilha WHERE nome_trilha = 'Função logarítmica';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -3,
+    "y": 3.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 4,
+    "y": -3.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 0.2,
+    "y": -0.4,
+    "largura": 1.8,
+    "altura": 1.5
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 2.7,
+    "y": 3.1,
+    "largura": 1.2,
+    "altura": 1.8
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2,
+    "y": -1.6,
+    "largura": 1.6,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3,
+    "y": -4.2,
+    "largura": 1.3,
+    "altura": 1
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função logarítmica' AND a.numero_atividade = 3 AND a.tipo = 'pratica';
+
+-- Função modular / fase 1: V fora do centro
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'V fora do centro', 'pratica', 40, 'Desloque o vértice do módulo e ajuste a inclinação dos dois braços.', 1, 10
+FROM Trilha WHERE nome_trilha = 'Função modular';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -4,
+    "y": 0.35,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 3,
+    "y": 0.35,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -0.5,
+    "y": 0.6,
+    "largura": 2.6,
+    "altura": 2
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2.8,
+    "y": -4.2,
+    "largura": 1.2,
+    "altura": 0.8
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 1.6,
+    "y": -4.1,
+    "largura": 1.5,
+    "altura": 1
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3.5,
+    "y": 2.5,
+    "largura": 1,
+    "altura": 1.6
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função modular' AND a.numero_atividade = 1 AND a.tipo = 'pratica';
+
+-- Função modular / fase 2: Pico estreito
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Pico estreito', 'pratica', 60, 'Experimente uma função modular invertida para passar acima da ilha central.', 2, 15
+FROM Trilha WHERE nome_trilha = 'Função modular';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 1, '[
+  {
+    "tipo": "inicio",
+    "x": -3,
+    "y": 0.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 4,
+    "y": 0.9,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 1,
+    "y": 0,
+    "largura": 2.5,
+    "altura": 1.7
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -1.8,
+    "y": 3.6,
+    "largura": 1.3,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3,
+    "y": 3.6,
+    "largura": 1.2,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2,
+    "y": -3,
+    "largura": 1.4,
+    "altura": 1.8
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função modular' AND a.numero_atividade = 2 AND a.tipo = 'pratica';
+
+-- Função modular / fase 3: Dois vales
+INSERT INTO Atividades (id_trilha, titulo, tipo, xp_base, descricao, numero_atividade, moeda_base)
+SELECT id_trilha, 'Dois vales', 'pratica', 80, 'Use dois trechos modulares conectados e ajuste seus domínios em cada vale.', 3, 20
+FROM Trilha WHERE nome_trilha = 'Função modular';
+INSERT INTO Atividades_Pratica (id_atividade, media_movimentos, colisoes_malha)
+SELECT a.id_atividade, 2, '[
+  {
+    "tipo": "inicio",
+    "x": -4,
+    "y": 0.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "fim",
+    "x": 4,
+    "y": 0.0,
+    "largura": 0.4,
+    "altura": 0.4
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -2,
+    "y": 0.1,
+    "largura": 1.5,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 2,
+    "y": 0,
+    "largura": 1.5,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 0,
+    "y": -2.6,
+    "largura": 1.4,
+    "altura": 1.2
+  },
+  {
+    "tipo": "obstaculo",
+    "x": -3,
+    "y": 2.8,
+    "largura": 1.1,
+    "altura": 1.6
+  },
+  {
+    "tipo": "obstaculo",
+    "x": 3,
+    "y": 3,
+    "largura": 1.2,
+    "altura": 1.5
+  }
+]'
+FROM Atividades a JOIN Trilha t ON t.id_trilha = a.id_trilha
+WHERE t.nome_trilha = 'Função modular' AND a.numero_atividade = 3 AND a.tipo = 'pratica';
+
+INSERT INTO Atividades (id_trilha, numero_atividade, titulo, descricao, tipo, xp_base, moeda_base)
+SELECT id_trilha, 0, 'Retas e caminhos por trechos', 'Conceitos para os desafios desta trilha.', 'leitura', 0, 0 FROM Trilha WHERE nome_trilha='Função afim';
+INSERT INTO Atividades_Leitura (id_atividade, textos, imagens)
+SELECT a.id_atividade, '["Uma função afim tem a forma f(x) = a*x + b. O coeficiente a controla a inclinação e b controla a altura em x = 0.", "Para dois pontos distintos em x, calcule a = (y2-y1)/(x2-x1) e depois b = y1-a*x1.", "Se as passagens mudam de direção, use mais de uma reta em domínios diferentes. As alturas devem coincidir no encontro dos trechos.", "No parser atual, escreva o domínio na ordem menor<x<maior; por exemplo, -4<x<1. Ele amostra também os extremos."]', '[]' FROM Atividades a JOIN Trilha t ON t.id_trilha=a.id_trilha WHERE t.nome_trilha='Função afim' AND a.tipo='leitura' AND a.numero_atividade=0;
+
+INSERT INTO Atividades (id_trilha, numero_atividade, titulo, descricao, tipo, xp_base, moeda_base)
+SELECT id_trilha, 0, 'Vértice e abertura das parábolas', 'Conceitos para os desafios desta trilha.', 'leitura', 0, 0 FROM Trilha WHERE nome_trilha='Função quadrática';
+INSERT INTO Atividades_Leitura (id_atividade, textos, imagens)
+SELECT a.id_atividade, '["Uma função quadrática tem a forma a*x*x+b*x+c, com a diferente de zero.", "Na forma a*(x-h)*(x-h)+k, o vértice está em (h,k). O sinal de a define a concavidade.", "O módulo de a controla a abertura: valores maiores deixam a parábola mais fechada. Ajuste o vértice e depois a abertura.", "Observe as passagens próximas ao vértice e nas laterais. Uma reta entre os alvos pode cruzar paredes que a curva contorna."]', '[]' FROM Atividades a JOIN Trilha t ON t.id_trilha=a.id_trilha WHERE t.nome_trilha='Função quadrática' AND a.tipo='leitura' AND a.numero_atividade=0;
+
+INSERT INTO Atividades (id_trilha, numero_atividade, titulo, descricao, tipo, xp_base, moeda_base)
+SELECT id_trilha, 0, 'Crescimento e reflexão exponencial', 'Conceitos para os desafios desta trilha.', 'leitura', 0, 0 FROM Trilha WHERE nome_trilha='Função exponencial';
+INSERT INTO Atividades_Leitura (id_atividade, textos, imagens)
+SELECT a.id_atividade, '["pow(2,x) dobra quando x aumenta em uma unidade. O crescimento não tem inclinação constante.", "Em a*pow(2,x-h)+k, a muda a escala vertical e k desloca a curva para cima ou para baixo.", "Trocar x por -x produz decaimento. Um sinal negativo fora da potência também reflete a curva verticalmente.", "Observe onde o caminho é quase horizontal e onde ele fica íngreme. Isso ajuda a escolher a orientação e o deslocamento."]', '[]' FROM Atividades a JOIN Trilha t ON t.id_trilha=a.id_trilha WHERE t.nome_trilha='Função exponencial' AND a.tipo='leitura' AND a.numero_atividade=0;
+
+INSERT INTO Atividades (id_trilha, numero_atividade, titulo, descricao, tipo, xp_base, moeda_base)
+SELECT id_trilha, 0, 'Logaritmo e domínio', 'Conceitos para os desafios desta trilha.', 'leitura', 0, 0 FROM Trilha WHERE nome_trilha='Função logarítmica';
+INSERT INTO Atividades_Leitura (id_atividade, textos, imagens)
+SELECT a.id_atividade, '["ln(x) é o logaritmo natural e só é definido quando x é positivo.", "Para logaritmo na base 2, use ln(x)/ln(2). Em ln(x+c), o argumento precisa continuar positivo.", "O crescimento é rápido perto da fronteira do domínio e desacelera ao se afastar dela.", "Em ln(c-x), o argumento exige x<c. A reflexão horizontal muda o lado em que o gráfico fica íngreme."]', '[]' FROM Atividades a JOIN Trilha t ON t.id_trilha=a.id_trilha WHERE t.nome_trilha='Função logarítmica' AND a.tipo='leitura' AND a.numero_atividade=0;
+
+INSERT INTO Atividades (id_trilha, numero_atividade, titulo, descricao, tipo, xp_base, moeda_base)
+SELECT id_trilha, 0, 'Módulo, reflexão e vértices', 'Conceitos para os desafios desta trilha.', 'leitura', 0, 0 FROM Trilha WHERE nome_trilha='Função modular';
+INSERT INTO Atividades_Leitura (id_atividade, textos, imagens)
+SELECT a.id_atividade, '["abs(x) representa o módulo e produz um gráfico em V.", "Em a*abs(x-h)+k, o vértice está em (h,k). Um a negativo inverte o V.", "Cada braço é uma reta, mas a mudança de inclinação acontece exatamente no vértice.", "Para dois vales, combine dois módulos em domínios diferentes e confira se eles se encontram sem salto."]', '[]' FROM Atividades a JOIN Trilha t ON t.id_trilha=a.id_trilha WHERE t.nome_trilha='Função modular' AND a.tipo='leitura' AND a.numero_atividade=0;
 
 COMMIT;
 SET AUTOCOMMIT TRUE;

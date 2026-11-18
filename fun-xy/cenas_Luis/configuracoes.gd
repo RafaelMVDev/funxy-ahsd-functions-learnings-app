@@ -28,7 +28,7 @@ func _ready() -> void:
 	if FileAccess.file_exists("user://avatar_usuario.png"):
 		var imagem = Image.load_from_file("user://avatar_usuario.png")
 		foto_perfil.texture = ImageTexture.create_from_image(imagem)
-
+	await carregar_foto_perfil()
 	var master_bus_index = AudioServer.get_bus_index("Master")
 	var is_muted = AudioServer.is_bus_mute(master_bus_index)
 	AudioServer.set_bus_mute(master_bus_index, is_muted)
@@ -81,20 +81,38 @@ func _on_button_deslogar_pressed() -> void:
 
 
 func _on_button_trocar_foto_pressed() -> void:
+	print("APERTANDO!!!")
 	seletor_arquivo.popup_centered(Vector2i(600, 400))
 
-func _on_seletor_arquivo_file_selected(caminho_arquivo: String):
-	print("Arquivo selecionado: ", caminho_arquivo)
+var enviando_foto: bool = false
 
-	# Carrega a imagem direto do caminho selecionado
-	var imagem = Image.load_from_file(caminho_arquivo)
 
-	if imagem != null:
-		print("Imagem carregada com sucesso! Tamanho: ", imagem.get_size())
-		var textura = ImageTexture.create_from_image(imagem)
-		foto_perfil.texture = textura
+func _on_seletor_arquivo_file_selected(caminho_arquivo: String) -> void:
+	if enviando_foto:
+		return
 
-		# Salva localmente para persistir
-		imagem.save_png("user://avatar_usuario.png")
+	enviando_foto = true
+
+	# A função abre a imagem, converte para PNG e envia ao backend.
+	var salvou: bool = await Api.enviar_foto(caminho_arquivo)
+
+	if salvou:
+		print("Foto salva na API!")
+
+		# Atualiza a tela com a imagem que ficou salva no banco.
+		await carregar_foto_perfil()
 	else:
-		print("ERRO: Não foi possível ler a imagem nesse caminho.")
+		push_warning("Não foi possível salvar a foto.")
+
+	enviando_foto = false
+
+
+# Busca a foto no backend e coloca no TextureRect.
+func carregar_foto_perfil() -> void:
+	var textura: ImageTexture = await Api.buscar_foto()
+
+	if textura != null:
+		foto_perfil.texture = textura
+	else:
+		# Mantém a imagem atual ou o avatar padrão.
+		print("Foto indisponível; mantendo o avatar atual.")
