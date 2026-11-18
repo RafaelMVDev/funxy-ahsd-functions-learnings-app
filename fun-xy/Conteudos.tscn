@@ -1,48 +1,28 @@
 [gd_scene format=3 uid="uid://bymjjidtlhkre"]
 
-[ext_resource type="PackedScene" path="res://ui/rodape.tscn" id="UI_footer"]
-
-[ext_resource type="Theme" path="res://ui/funxy_theme.tres" id="UI_theme"]
-
-[ext_resource type="Texture2D" path="res://ui/home.svg" id="UI_home"]
-
-[ext_resource type="Texture2D" path="res://ui/book.svg" id="UI_book"]
-
-[ext_resource type="Texture2D" path="res://ui/rank.svg" id="UI_rank"]
-
-[ext_resource type="Texture2D" path="res://ui/profile.svg" id="UI_profile"]
-
-[ext_resource type="Texture2D" path="res://ui/settings.svg" id="UI_settings"]
-
 [ext_resource type="Script" uid="uid://dl1jjmtgcykrv" path="res://cenas_Luis/conteudos.gd" id="1_iy87b"]
-[ext_resource type="Texture2D" path="res://ui/coin.svg" id="1_njqnh"]
+[ext_resource type="Texture2D" uid="uid://d2dasmhpc7ix7" path="res://ui/coin.svg" id="1_njqnh"]
 [ext_resource type="Script" uid="uid://cg5m2d5hlqg1w" path="res://cabecalho.gd" id="2_00c4k"]
-[ext_resource type="Texture2D" path="res://ui/xp.svg" id="2_j1thl"]
-[ext_resource type="Texture2D" path="res://ui/flame.svg" id="3_7qexj"]
+[ext_resource type="Texture2D" uid="uid://bxpds5wfqdbiq" path="res://ui/xp.svg" id="2_j1thl"]
+[ext_resource type="Texture2D" uid="uid://dlvswhp55y87h" path="res://ui/flame.svg" id="3_7qexj"]
 [ext_resource type="Texture2D" uid="uid://b43e5bwgpci0g" path="res://images/fundo unidade.png" id="4_7qexj"]
 [ext_resource type="Texture2D" uid="uid://b1lfwd14lktk4" path="res://images/Unidade1.png" id="5_pks1p"]
 [ext_resource type="Texture2D" uid="uid://cths44wl67h0p" path="res://images/Unidade 2.png" id="6_pks1p"]
-[ext_resource type="Texture2D" path="res://ui/rank.svg" id="6_ybqmn"]
-[ext_resource type="Texture2D" uid="uid://322eclljkepr" path="res://images/icones_luis/Perfil.png" id="7_wb6y3"]
-[ext_resource type="Texture2D" uid="uid://bysqk0ebc2cjr" path="res://images/icones_luis/Config.png" id="8_11lrj"]
-[ext_resource type="Texture2D" uid="uid://be6slbqck10bi" path="res://images/icones/home_page_icon.png" id="8_g8b14"]
-[ext_resource type="Texture2D" uid="uid://cjctleudmdo6h" path="res://images/livro branco.png" id="9_00c4k"]
+[ext_resource type="Script" uid="uid://buvjucuvsnyuo" path="res://material_leitura.gd" id="7_o6pyc"]
+[ext_resource type="PackedScene" uid="uid://clpnciyc7rvci" path="res://ui/rodape.tscn" id="UI_footer"]
+[ext_resource type="Theme" uid="uid://sf5kdvqdkowx" path="res://ui/funxy_theme.tres" id="UI_theme"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
 bg_color = Color(0.96078, 0.96863, 0.98431, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8b14"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-anti_aliasing_size = 4.643
+bg_color = Color(1, 1, 1, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
+anti_aliasing_size = 4.643
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00c4k"]
-bg_color = Color(0.92157, 0.94902, 1.0, 1)
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
+bg_color = Color(0.92157, 0.94902, 1, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_left = 100
 corner_radius_top_right = 100
@@ -50,35 +30,23 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1u0y"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
+bg_color = Color(1, 1, 1, 1)
 border_width_top = 1
 border_width_bottom = 1
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33x8s"]
-bg_color = Color(0.79608965, 0.87572545, 0.99725264, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6pyc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s0fj"]
-bg_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7783"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixrit"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t4ox"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
+bg_color = Color(0.4392157, 0.654902, 0.99215686, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_bottom = 1
@@ -87,7 +55,7 @@ corner_radius_top_left = 14
 corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gngh"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
+bg_color = Color(0.4392157, 0.654902, 0.99215686, 1)
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
@@ -95,25 +63,13 @@ border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7783"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4dqy"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbpwf"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rdld"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxoc6"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58m4b"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stimt"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnhu6"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yn4om"]
 
 [node name="Control" type="Control" unique_id=2124759028]
 layout_mode = 3
@@ -122,8 +78,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_iy87b")
 theme = ExtResource("UI_theme")
+script = ExtResource("1_iy87b")
 
 [node name="Panel" type="Panel" parent="." unique_id=984020679]
 layout_mode = 1
@@ -140,12 +96,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_right = 0.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
-offset_bottom = -80.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=642773054]
 layout_mode = 2
@@ -165,6 +119,7 @@ theme_override_constants/separation = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer" unique_id=1121213598]
 layout_mode = 2
+theme_override_constants/separation = -27
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer" unique_id=1984529444]
 layout_mode = 2
@@ -182,12 +137,12 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=1918483518]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("1_njqnh")
 expand_mode = 1
 stretch_mode = 5
-custom_minimum_size = Vector2(24, 24)
-size_flags_vertical = 4
 
 [node name="MoedasLabel" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=588585802]
 unique_name_in_owner = true
@@ -196,13 +151,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
+theme_override_font_sizes/font_size = 14
 text = "2000222222222"
 horizontal_alignment = 1
 autowrap_mode = 1
 clip_text = true
 text_overrun_behavior = 6
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
-theme_override_font_sizes/font_size = 14
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer" unique_id=2092868646]
 layout_mode = 2
@@ -222,12 +177,12 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/HBoxContainer2" unique_id=459759949]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("2_j1thl")
 expand_mode = 1
 stretch_mode = 5
-custom_minimum_size = Vector2(24, 24)
-size_flags_vertical = 4
 
 [node name="XpLabel" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/HBoxContainer2" unique_id=242595159]
 unique_name_in_owner = true
@@ -236,13 +191,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
+theme_override_font_sizes/font_size = 14
 text = "210100110101"
 horizontal_alignment = 1
 autowrap_mode = 1
 clip_text = true
 text_overrun_behavior = 4
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
-theme_override_font_sizes/font_size = 14
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer" unique_id=161980607]
 layout_mode = 2
@@ -262,12 +217,12 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="TextureRect3" type="TextureRect" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer3" unique_id=1388691326]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("3_7qexj")
 expand_mode = 1
 stretch_mode = 5
-custom_minimum_size = Vector2(24, 24)
-size_flags_vertical = 4
 
 [node name="StreakLabel" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer3" unique_id=1711716536]
 unique_name_in_owner = true
@@ -276,13 +231,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
+theme_override_font_sizes/font_size = 14
 text = "22222222222222"
 horizontal_alignment = 1
 autowrap_mode = 1
 clip_text = true
 text_overrun_behavior = 4
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
-theme_override_font_sizes/font_size = 14
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer" unique_id=232712145]
 layout_mode = 2
@@ -320,12 +275,12 @@ theme_override_font_sizes/font_size = 15
 text = "0%"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=132228309]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 13
 show_percentage = false
-custom_minimum_size = Vector2(0, 10)
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1479577055]
 layout_mode = 2
@@ -385,35 +340,57 @@ theme_override_constants/separation = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer" unique_id=1157230825]
 layout_mode = 2
-theme_override_constants/separation = 27
 size_flags_horizontal = 3
+theme_override_constants/separation = 27
 
-[node name="Unidade 1" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=253153401]
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=789645435]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6pyc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g7783")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ixrit")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6t4ox")
+script = ExtResource("7_o6pyc")
+id_trilha_leitura = 1
+cena_atual = "res://Conteudos.tscn"
 
-[node name="Unidade1" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1" unique_id=2111984935]
+[node name="Unidade 1" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button" unique_id=253153401]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -45.5
+offset_right = 165.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unidade1" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1" unique_id=2111984935]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1" unique_id=1044338334]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1/Unidade1" unique_id=1044338334]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1/PanelContainer" unique_id=396188101]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1/Unidade1/PanelContainer" unique_id=396188101]
 layout_mode = 2
 theme_override_constants/separation = -12
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1/PanelContainer/VBoxContainer" unique_id=1440322371]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1/Unidade1/PanelContainer/VBoxContainer" unique_id=1440322371]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 5
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1/PanelContainer/VBoxContainer/MarginContainer" unique_id=1384062938]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1/Unidade1/PanelContainer/VBoxContainer/MarginContainer" unique_id=1384062938]
 layout_mode = 2
 texture = ExtResource("4_7qexj")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=229829561]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1/Unidade1/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=229829561]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -422,59 +399,81 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "UNIDADE 1"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1/PanelContainer/VBoxContainer" unique_id=1881967589]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1/Unidade1/PanelContainer/VBoxContainer" unique_id=1881967589]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=670875796]
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=670875796]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 text = "Material de Leitura
 Função Afim"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1" unique_id=2048350161]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1/Unidade1" unique_id=2048350161]
 clip_children = 2
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gngh")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 1/Unidade1/PanelContainer2" unique_id=1488280430]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button/Unidade 1/Unidade1/PanelContainer2" unique_id=1488280430]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("5_pks1p")
 expand_mode = 3
 
-[node name="Unidade 2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1839039624]
+[node name="Button2" type="Button" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1957514414]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4dqy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1rdld")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_58m4b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yn4om")
+script = ExtResource("7_o6pyc")
+id_trilha_leitura = 2
+cena_atual = "res://Conteudos.tscn"
 
-[node name="Unidade2" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2" unique_id=1371340833]
+[node name="Unidade 2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2" unique_id=1839039624]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -45.0
+offset_right = 165.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unidade2" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2" unique_id=1371340833]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2" unique_id=541440608]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2/Unidade2" unique_id=541440608]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2/PanelContainer" unique_id=1804955800]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2/Unidade2/PanelContainer" unique_id=1804955800]
 layout_mode = 2
 theme_override_constants/separation = -12
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2/PanelContainer/VBoxContainer" unique_id=1977495407]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2/Unidade2/PanelContainer/VBoxContainer" unique_id=1977495407]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 5
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2/PanelContainer/VBoxContainer/MarginContainer" unique_id=2147152169]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2/Unidade2/PanelContainer/VBoxContainer/MarginContainer" unique_id=2147152169]
 layout_mode = 2
 texture = ExtResource("4_7qexj")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=1898788662]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2/Unidade2/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=1898788662]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -483,59 +482,81 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "UNIDADE 2"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2/PanelContainer/VBoxContainer" unique_id=398766884]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2/Unidade2/PanelContainer/VBoxContainer" unique_id=398766884]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 4
 
-[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2/PanelContainer/VBoxContainer/MarginContainer2" unique_id=235608509]
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2/Unidade2/PanelContainer/VBoxContainer/MarginContainer2" unique_id=235608509]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 text = "Material de Leitura
 Função Quadrática"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2" unique_id=905775331]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2/Unidade2" unique_id=905775331]
 clip_children = 2
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gngh")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 2/Unidade2/PanelContainer2" unique_id=1120503143]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button2/Unidade 2/Unidade2/PanelContainer2" unique_id=1120503143]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("6_pks1p")
 expand_mode = 3
 
-[node name="Unidade 3" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=879265630]
+[node name="Button3" type="Button" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=569693275]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4dqy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1rdld")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_58m4b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yn4om")
+script = ExtResource("7_o6pyc")
+id_trilha_leitura = 3
+cena_atual = "res://Conteudos.tscn"
 
-[node name="Unidade3" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3" unique_id=927721597]
+[node name="Unidade 3" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3" unique_id=879265630]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -45.0
+offset_right = 165.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unidade3" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3" unique_id=927721597]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3" unique_id=1695495766]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3/Unidade3" unique_id=1695495766]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3/PanelContainer" unique_id=2008775321]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3/Unidade3/PanelContainer" unique_id=2008775321]
 layout_mode = 2
 theme_override_constants/separation = -12
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3/PanelContainer/VBoxContainer" unique_id=1579347810]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3/Unidade3/PanelContainer/VBoxContainer" unique_id=1579347810]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 5
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3/PanelContainer/VBoxContainer/MarginContainer" unique_id=333165440]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3/Unidade3/PanelContainer/VBoxContainer/MarginContainer" unique_id=333165440]
 layout_mode = 2
 texture = ExtResource("4_7qexj")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=903907152]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3/Unidade3/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=903907152]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -544,59 +565,82 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "UNIDADE 3"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3/PanelContainer/VBoxContainer" unique_id=477952423]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3/Unidade3/PanelContainer/VBoxContainer" unique_id=477952423]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 4
 
-[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3/PanelContainer/VBoxContainer/MarginContainer2" unique_id=159184367]
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3/Unidade3/PanelContainer/VBoxContainer/MarginContainer2" unique_id=159184367]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 text = "Material de Leitura
 Funçãos Exponencial"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3" unique_id=965201678]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3/Unidade3" unique_id=965201678]
 clip_children = 2
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gngh")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 3/Unidade3/PanelContainer2" unique_id=1971952773]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button3/Unidade 3/Unidade3/PanelContainer2" unique_id=1971952773]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("5_pks1p")
 expand_mode = 3
 
-[node name="Unidade 4" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=528901337]
+[node name="Button4" type="Button" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=2014540111]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4dqy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1rdld")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_58m4b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yn4om")
+script = ExtResource("7_o6pyc")
+id_trilha_leitura = 4
+cena_atual = "res://Conteudos.tscn"
 
-[node name="Unidade3" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4" unique_id=567973774]
+[node name="Unidade 4" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4" unique_id=528901337]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -45.0
+offset_right = 165.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unidade3" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4" unique_id=567973774]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3" unique_id=1544232211]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4/Unidade3" unique_id=1544232211]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer" unique_id=1565801498]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4/Unidade3/PanelContainer" unique_id=1565801498]
 layout_mode = 2
 theme_override_constants/separation = -12
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer" unique_id=1353673791]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4/Unidade3/PanelContainer/VBoxContainer" unique_id=1353673791]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 5
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer/MarginContainer" unique_id=139635299]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4/Unidade3/PanelContainer/VBoxContainer/MarginContainer" unique_id=139635299]
 layout_mode = 2
 texture = ExtResource("4_7qexj")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=611169464]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4/Unidade3/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=611169464]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -605,59 +649,82 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "UNIDADE 4"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer" unique_id=1009683045]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4/Unidade3/PanelContainer/VBoxContainer" unique_id=1009683045]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 4
 
-[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer/VBoxContainer/MarginContainer2" unique_id=230009021]
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4/Unidade3/PanelContainer/VBoxContainer/MarginContainer2" unique_id=230009021]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 text = "Material de Leitura
 Função Logaritmica"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3" unique_id=1577410930]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4/Unidade3" unique_id=1577410930]
 clip_children = 2
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gngh")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 4/Unidade3/PanelContainer2" unique_id=702765448]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button4/Unidade 4/Unidade3/PanelContainer2" unique_id=702765448]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("5_pks1p")
 expand_mode = 3
 
-[node name="Unidade 5" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1113589217]
+[node name="Button5" type="Button" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=664850459]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4dqy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1rdld")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_58m4b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yn4om")
+script = ExtResource("7_o6pyc")
+id_trilha_leitura = 5
+cena_atual = "res://Conteudos.tscn"
 
-[node name="Unidade3" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5" unique_id=1832970099]
+[node name="Unidade 5" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5" unique_id=1113589217]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -45.0
+offset_right = 165.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unidade3" type="BoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5" unique_id=1832970099]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3" unique_id=1608312964]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5/Unidade3" unique_id=1608312964]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer" unique_id=1421207721]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5/Unidade3/PanelContainer" unique_id=1421207721]
 layout_mode = 2
 theme_override_constants/separation = -12
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer" unique_id=1736200682]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5/Unidade3/PanelContainer/VBoxContainer" unique_id=1736200682]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 5
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer/MarginContainer" unique_id=690210393]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5/Unidade3/PanelContainer/VBoxContainer/MarginContainer" unique_id=690210393]
 layout_mode = 2
 texture = ExtResource("4_7qexj")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=1951478504]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5/Unidade3/PanelContainer/VBoxContainer/MarginContainer/TextureRect" unique_id=1951478504]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -666,38 +733,38 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "UNIDADE 5"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer" unique_id=188350384]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5/Unidade3/PanelContainer/VBoxContainer" unique_id=188350384]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 4
 
-[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer/VBoxContainer/MarginContainer2" unique_id=2037112703]
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5/Unidade3/PanelContainer/VBoxContainer/MarginContainer2" unique_id=2037112703]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 text = "Material de Leitura
 Função Modular"
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3" unique_id=619109998]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5/Unidade3" unique_id=619109998]
 clip_children = 2
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gngh")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Unidade 5/Unidade3/PanelContainer2" unique_id=875128185]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/Button5/Unidade 5/Unidade3/PanelContainer2" unique_id=875128185]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("5_pks1p")
 expand_mode = 3
 
-[node name="Rodape" parent="." instance=ExtResource("UI_footer")]
+[node name="Rodape" parent="." unique_id=31620940 instance=ExtResource("UI_footer")]
 layout_mode = 1
 aba_ativa = 1
 
-[connection signal="trilhas_pressed" from="Rodape" to="." method="_on_button_home_pressed"]
-[connection signal="ranking_pressed" from="Rodape" to="." method="_on_texture_button_pressed_ranking"]
-[connection signal="perfil_pressed" from="Rodape" to="." method="_on_button_perfil_pressed"]
 [connection signal="ajustes_pressed" from="Rodape" to="." method="_on_texture_button_configuracoes_pressed"]
+[connection signal="perfil_pressed" from="Rodape" to="." method="_on_button_perfil_pressed"]
+[connection signal="ranking_pressed" from="Rodape" to="." method="_on_texture_button_pressed_ranking"]
+[connection signal="trilhas_pressed" from="Rodape" to="." method="_on_button_home_pressed"]

@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://huqpa513dg0o" path="res://BotaoFase.gd" id="8_8w561"]
 [ext_resource type="Texture2D" uid="uid://c58gmj2sbk20e" path="res://fundo_seta.png" id="8_jgkfa"]
 [ext_resource type="Texture2D" uid="uid://cjctleudmdo6h" path="res://images/livro branco.png" id="9_jmjnk"]
-[ext_resource type="Script" uid="uid://buvjucuvsnyuo" path="res://material_leitura.gd" id="11_abqas"]
 [ext_resource type="PackedScene" uid="uid://clpnciyc7rvci" path="res://ui/rodape.tscn" id="UI_footer"]
 [ext_resource type="Theme" uid="uid://sf5kdvqdkowx" path="res://ui/funxy_theme.tres" id="UI_theme"]
 
@@ -69,10 +68,14 @@ corner_radius_top_left = 14
 corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abqas"]
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.4392157, 0.654902, 0.99215686, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
+expand_margin_right = 12.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rb775"]
 content_margin_top = 30.0
@@ -137,6 +140,48 @@ corner_radius_top_right = 45
 corner_radius_bottom_right = 45
 corner_radius_bottom_left = 45
 
+[sub_resource type="GDScript" id="GDScript_fbg2b"]
+script/source = "extends Button
+
+@export var id_trilha_leitura: int
+@export var cena_atual: String
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	var id_atv = DadosJogo.buscar_id_leitura(id_trilha_leitura)
+	for trilha in Sessao.player_trilhas:
+		if trilha[\"trilhaId\"] == id_trilha_leitura:
+			for atividade in trilha[\"atividades\"]:
+				if atividade[\"tipo\"] == \"leitura\":
+					aplicar_estilo_concluido()
+		else:
+			pass
+			
+	pass # Replace with function body.
+
+func aplicar_estilo_concluido() -> void:
+	var estilo_botao = StyleBoxFlat.new()
+	estilo_botao.set_border_width_all(4)
+	estilo_botao.set_corner_radius_all(45)
+	estilo_botao.border_color = Color(1.0, 1.0, 1.0, 1.0) 
+	estilo_botao.bg_color = Color(\"418af9\") 
+	add_theme_stylebox_override(\"normal\", estilo_botao)
+	
+	var estilo_hover = estilo_botao.duplicate()
+	estilo_hover.set_border_width_all(6)
+	add_theme_stylebox_override(\"hover\", estilo_hover)
+	
+
+func _pressed() -> void:
+	DadosGlobais.trilha_leitura_atual = id_trilha_leitura
+	DadosGlobais.ultima_cena = cena_atual
+	SceneTransition.change_scene(\"res://materiais_leitura_interface.tscn\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="Trilha" type="Control" unique_id=212311294]
 layout_mode = 3
 anchors_preset = 15
@@ -190,6 +235,7 @@ theme_override_constants/separation = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer1/VBoxContainer" unique_id=619974347]
 layout_mode = 2
+theme_override_constants/separation = -27
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer1/VBoxContainer/HBoxContainer" unique_id=1667169091]
 layout_mode = 2
@@ -548,11 +594,12 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("11_abqas")
+script = SubResource("GDScript_fbg2b")
 id_trilha_leitura = 1
 cena_atual = "res://Trilha.tscn"
 
 [node name="Unidade2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=714555870]
+visible = false
 custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
@@ -598,7 +645,7 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "UNIDADE 2"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade2/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=446803171]
@@ -726,11 +773,12 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("11_abqas")
+script = SubResource("GDScript_fbg2b")
 id_trilha_leitura = 2
 cena_atual = "res://Trilha.tscn"
 
 [node name="Unidade3" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=1315660818]
+visible = false
 custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
@@ -776,7 +824,7 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "UNIDADE 3"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=508844986]
@@ -787,7 +835,7 @@ theme_override_constants/margin_bottom = 15
 [node name="Label2" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=854042907]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
-text = "Função Quadrática"
+text = "Função Exponencial"
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1" unique_id=1894647057]
 clip_children = 2
@@ -904,11 +952,12 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("11_abqas")
+script = SubResource("GDScript_fbg2b")
 id_trilha_leitura = 3
 cena_atual = "res://Trilha.tscn"
 
 [node name="Unidade4" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=2074198505]
+visible = false
 custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
@@ -954,7 +1003,7 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "UNIDADE 4"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=1992353084]
@@ -965,7 +1014,7 @@ theme_override_constants/margin_bottom = 15
 [node name="Label2" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=671120592]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
-text = "Função Exponencial"
+text = "Função Logaritmica"
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1" unique_id=501273137]
 clip_children = 2
@@ -1082,11 +1131,12 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("11_abqas")
+script = SubResource("GDScript_fbg2b")
 id_trilha_leitura = 4
 cena_atual = "res://Trilha.tscn"
 
 [node name="Unidade5" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=699340242]
+visible = false
 custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
@@ -1132,7 +1182,7 @@ offset_left = -77.0
 offset_right = 41.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "UNIDADE 5"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer" unique_id=197531533]
@@ -1143,7 +1193,7 @@ theme_override_constants/margin_bottom = 15
 [node name="Label2" type="Label" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer/VBoxContainer/MarginContainer2" unique_id=1925387644]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
-text = "Função Logarítmica "
+text = "Função Modular"
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1" unique_id=1670026933]
 clip_children = 2
@@ -1260,7 +1310,7 @@ keep_pressed_outside = true
 icon = ExtResource("9_jmjnk")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("11_abqas")
+script = SubResource("GDScript_fbg2b")
 id_trilha_leitura = 5
 cena_atual = "res://Trilha.tscn"
 
