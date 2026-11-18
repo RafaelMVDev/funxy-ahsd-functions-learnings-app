@@ -66,15 +66,15 @@ func carregar_fase(colisoes_dados: Array):
 		colisor.position = Vector2(pixel_x, pixel_y)
 
 		if dados.tipo == "inicio":
-			visual.color = Color("FFE52B")
+			visual.color = Color("ffcb09ff")
 			colisor.add_to_group("inicio")
 
 		elif dados.tipo == "fim":
-			visual.color = Color("32E875")
+			visual.color = Color("27a754ff")
 			colisor.add_to_group("fim")
 
 		else:
-			visual.color = Color("f8001dff") 
+			visual.color = Color("ff6c9dff") 
 			colisor.add_to_group("obstaculos")
 
 		colisor.add_child(visual)
@@ -243,8 +243,6 @@ func calcular_pontos_funcao(expressao_str: String, x_min: float, x_max: float, p
 		if pixel_y >= topo_y and pixel_y <= limite_y:
 			pontos.append(ponto)
 	return pontos
-
-	
 
 func verificar_cruzamento(novos_pontos: Array[Vector2]) -> bool:
 	if jogo.linhas_desenhadas.is_empty():

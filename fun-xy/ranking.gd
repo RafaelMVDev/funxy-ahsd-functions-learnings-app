@@ -19,6 +19,8 @@ func _ready() -> void:
 	for usuario in usuarios:
 		if usuario["usuarioId"] == Sessao.player["id"]:
 			posicao_player = usuario["posicao"]
+			
+	DadosGlobais.user_rank = posicao_player
 	
 	label_posicao_atual.text = str(int(posicao_player))+"º"
 	

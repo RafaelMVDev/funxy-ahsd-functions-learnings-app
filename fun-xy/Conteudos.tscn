@@ -16,6 +16,16 @@
 bg_color = Color(0.96078, 0.96863, 0.98431, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
+[sub_resource type="Gradient" id="Gradient_o6pyc"]
+colors = PackedColorArray(0.8383659, 0.91962564, 0.99999946, 1, 0.89, 0.94, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g8b14"]
+gradient = SubResource("Gradient_o6pyc")
+width = 360
+height = 640
+fill_from = Vector2(0, 0.0042735045)
+fill_to = Vector2(1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8b14"]
 bg_color = Color(0.4392157, 0.65882355, 0.99215686, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
@@ -82,6 +92,7 @@ theme = ExtResource("UI_theme")
 script = ExtResource("1_iy87b")
 
 [node name="Panel" type="Panel" parent="." unique_id=984020679]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,13 +101,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p3kxb")
 
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1390344665]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_g8b14")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=604849490]
 propagate_maximum_size = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -80.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
@@ -322,7 +342,7 @@ theme_override_font_sizes/font_size = 13
 show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=817560763]
-custom_minimum_size = Vector2(0, 132)
+custom_minimum_size = Vector2(0, 500)
 custom_maximum_size = Vector2(-1, 300)
 layout_mode = 2
 size_flags_vertical = 3

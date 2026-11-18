@@ -7,9 +7,9 @@ extends Node2D
 var tamanho_tela: Vector2
 var ponto_central: Vector2
 
-@export var cor_grade: Color = Color(1.0, 1.0, 1.0, 0.4)
+@export var cor_grade: Color = Color.BLACK
 @export var cor_eixos: Color = Color("0f3f73")      
-@export var cor_numeros: Color = Color.WHITE
+@export var cor_numeros: Color = Color.BLACK
 
 func _ready() -> void:
 	var pai = get_parent()
