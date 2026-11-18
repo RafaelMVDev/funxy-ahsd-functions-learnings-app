@@ -57,8 +57,8 @@ func aplicar_estilo_incompleto() -> void:
 	var estilo_botao = StyleBoxFlat.new()
 	estilo_botao.set_border_width_all(4)
 	estilo_botao.set_corner_radius_all(45)
-	estilo_botao.border_color = Color(1.0, 1.0, 1.0, 1.0) 
-	estilo_botao.bg_color = Color("98551cff") 
+	estilo_botao.border_color = Color("95551cff") 
+	estilo_botao.bg_color = Color("e4551cff") 
 	add_theme_stylebox_override("normal", estilo_botao)
 	
 	var estilo_hover = estilo_botao.duplicate()
@@ -70,7 +70,7 @@ func aplicar_estilo_concluido() -> void:
 	var estilo_botao = StyleBoxFlat.new()
 	estilo_botao.set_border_width_all(4)
 	estilo_botao.set_corner_radius_all(45)
-	estilo_botao.border_color = Color(1.0, 1.0, 1.0, 1.0) 
+	estilo_botao.border_color = Color("074336ff") 
 	estilo_botao.bg_color = Color("16836c") 
 	add_theme_stylebox_override("normal", estilo_botao)
 	

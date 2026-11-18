@@ -17,7 +17,7 @@ bg_color = Color(0.96078, 0.96863, 0.98431, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8b14"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.4392157, 0.65882355, 0.99215686, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 anti_aliasing_size = 4.643
 

@@ -6,11 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://bxpds5wfqdbiq" path="res://ui/xp.svg" id="3_abqas"]
 [ext_resource type="Texture2D" uid="uid://dlvswhp55y87h" path="res://ui/flame.svg" id="4_sdg80"]
 [ext_resource type="Texture2D" uid="uid://b43e5bwgpci0g" path="res://images/fundo unidade.png" id="5_wei45"]
-[ext_resource type="Texture2D" uid="uid://b1lfwd14lktk4" path="res://images/Unidade1.png" id="6_kg341"]
 [ext_resource type="Texture2D" uid="uid://bpm0r0h6w7e7h" path="res://images/linha.png" id="7_j18ad"]
 [ext_resource type="Script" uid="uid://huqpa513dg0o" path="res://BotaoFase.gd" id="8_8w561"]
 [ext_resource type="Texture2D" uid="uid://c58gmj2sbk20e" path="res://fundo_seta.png" id="8_jgkfa"]
 [ext_resource type="Texture2D" uid="uid://cjctleudmdo6h" path="res://images/livro branco.png" id="9_jmjnk"]
+[ext_resource type="Texture2D" uid="uid://db2b2kuhjojtv" path="res://images/icones_azul_escuro/grafico-quadratica.png" id="12_abqas"]
+[ext_resource type="Texture2D" uid="uid://l4npuqc5qko5" path="res://images/icones_azul_escuro/grafico-exponencial.png" id="13_sdg80"]
+[ext_resource type="Texture2D" uid="uid://bv8qsavkdx5jj" path="res://images/icones_azul_escuro/grafico-logaritmica.png" id="14_wei45"]
+[ext_resource type="Texture2D" uid="uid://b6r0ogvjfs5eb" path="res://images/icones_azul_escuro/grafico-modular.png" id="15_kg341"]
 [ext_resource type="PackedScene" uid="uid://clpnciyc7rvci" path="res://ui/rodape.tscn" id="UI_footer"]
 [ext_resource type="Theme" uid="uid://sf5kdvqdkowx" path="res://ui/funxy_theme.tres" id="UI_theme"]
 
@@ -83,9 +86,6 @@ content_margin_right = 2.0
 content_margin_bottom = 2.0
 bg_color = Color(0.4392157, 0.654902, 0.99215686, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-expand_margin_right = 12.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rb775"]
 content_margin_top = 30.0
@@ -116,11 +116,11 @@ corner_radius_bottom_left = 45
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx75j"]
 bg_color = Color(0.25490198, 0.5411765, 0.9764706, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.25490198, 0.31764707, 0.98039216, 1)
 corner_radius_top_left = 45
 corner_radius_top_right = 45
 corner_radius_bottom_right = 45
@@ -173,8 +173,8 @@ func aplicar_estilo_concluido() -> void:
 	var estilo_botao = StyleBoxFlat.new()
 	estilo_botao.set_border_width_all(4)
 	estilo_botao.set_corner_radius_all(45)
-	estilo_botao.border_color = Color(1.0, 1.0, 1.0, 1.0) 
-	estilo_botao.bg_color = Color(\"418af9\") 
+	estilo_botao.border_color = Color(\"074336ff\") 
+	estilo_botao.bg_color = Color(\"16836c\") 
 	add_theme_stylebox_override(\"normal\", estilo_botao)
 	
 	var estilo_hover = estilo_botao.duplicate()
@@ -236,15 +236,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -80.0
+offset_left = -4.0
+offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="PanelContainer1" type="PanelContainer" parent="VBoxContainer" unique_id=649402582]
-custom_minimum_size = Vector2(0, 80)
-clip_contents = true
+custom_minimum_size = Vector2(360, 80)
+propagate_maximum_size = false
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sdg80")
 script = ExtResource("2_abqas")
@@ -439,7 +441,6 @@ size_flags_vertical = 3
 theme_override_constants/separation = 24
 
 [node name="Unidade1" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer" unique_id=933817915]
-visible = false
 custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixrit")
@@ -691,9 +692,10 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_abqas")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade2/VBoxContainer/MarginContainer/Unidade1/PanelContainer2" unique_id=859142830]
+custom_maximum_size = Vector2(156, -1)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("6_kg341")
+texture = ExtResource("12_abqas")
 expand_mode = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade2/VBoxContainer" unique_id=536926804]
@@ -869,9 +871,10 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_abqas")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer/MarginContainer/Unidade1/PanelContainer2" unique_id=1276188762]
+custom_maximum_size = Vector2(156, -1)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("6_kg341")
+texture = ExtResource("13_sdg80")
 expand_mode = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade3/VBoxContainer" unique_id=542962704]
@@ -1047,9 +1050,10 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_abqas")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer/MarginContainer/Unidade1/PanelContainer2" unique_id=1199977961]
+custom_maximum_size = Vector2(156, -1)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("6_kg341")
+texture = ExtResource("14_wei45")
 expand_mode = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade4/VBoxContainer" unique_id=404422439]
@@ -1225,9 +1229,10 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_abqas")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer/MarginContainer/Unidade1/PanelContainer2" unique_id=593231884]
+custom_maximum_size = Vector2(156, -1)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("6_kg341")
+texture = ExtResource("15_kg341")
 expand_mode = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainerTrilhas/ScrollContainer/VBoxContainer/Unidade5/VBoxContainer" unique_id=584954068]
