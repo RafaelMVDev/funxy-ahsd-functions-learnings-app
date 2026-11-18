@@ -14,11 +14,18 @@ func _ready() -> void:
 		player_imagem.texture = Sessao.player_foto
 	texto_nome.text = Sessao.player["nome"]
 	texto_xp.text = "XP: " + str(int(Sessao.player["xp"]))
-	texto_sequencia.text ="SEQUÊNCIA: " + str(int(Sessao.player["sequencia"]))
+	texto_sequencia.text ="SEQUÊNCIA: " + str(1)
 	texto_moedas.text = "MOEDAS: " + str(int(Sessao.player["moedas"]))
+
+	var usuarios = DadosJogo.ranking_xp
+	var posicao_player
+	for usuario in usuarios:
+		if usuario["usuarioId"] == Sessao.player["id"]:
+			posicao_player = usuario["posicao"]
+	
+	DadosGlobais.user_rank = posicao_player
+	
 	player_rank.text = str(DadosGlobais.user_rank) + "º"
-
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
