@@ -569,7 +569,8 @@ Cadastrar"
 unique_name_in_owner = true
 
 [node name="RegisterPanel" type="PanelContainer" parent="SlideWindow" unique_id=442854161]
-custom_maximum_size = Vector2(250, 400)
+custom_minimum_size = Vector2(250, 450)
+custom_maximum_size = Vector2(250, 450)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -580,7 +581,7 @@ grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdspj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlideWindow/RegisterPanel" unique_id=843933400]
-custom_minimum_size = Vector2(240, 450)
+custom_minimum_size = Vector2(240, 500)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 16
@@ -759,6 +760,7 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="SlideWindow/RegisterPanel/VBoxContainer" unique_id=1792484718]
 layout_mode = 2
+theme_override_constants/separation = 4
 
 [node name="Button" type="Button" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer4" unique_id=784536909]
 custom_minimum_size = Vector2(0, 45)
