@@ -4,8 +4,8 @@ extends Control
 @onready var label_xp_atual = %LabelXpUserAtual
 @onready var label_posicao_atual = %LabelPosicaoUserAtual
 @onready var rank = %Rank
-@onready var painel_player = %ContainerPlayer
-
+@onready var painel_player = $PanelContainer2/HBoxContainer/ContainerPlayer
+@onready var foto_ranking = $PanelContainer2/HBoxContainer/ContainerPlayer/FotoRanking
 var posicao_player
 
 func _ready() -> void:
@@ -15,11 +15,14 @@ func _ready() -> void:
 		label_xp_atual.text = "0xp"
 	else:
 		label_xp_atual.text = str(int(Sessao.player["xp"])) + "xp"
+	DadosJogo.carregar_ranking()
 	var usuarios = DadosJogo.ranking_xp
 	for usuario in usuarios:
 		if usuario["usuarioId"] == Sessao.player["id"]:
 			posicao_player = usuario["posicao"]
-			
+	
+	if Sessao.player_foto:
+		foto_ranking.texture = Sessao.player_foto
 	DadosGlobais.user_rank = posicao_player
 	
 	label_posicao_atual.text = str(int(posicao_player))+"º"
@@ -74,7 +77,14 @@ func gerar_ranking(lista_usuarios: Array, vbox_pai: VBoxContainer):
 		panel_user.add_child(hbox)
 		
 		var panel_foto = PanelContainer.new()
-		panel_foto.custom_minimum_size = Vector2(45, 45)
+		panel_foto.custom_minimum_size = Vector2(50, 50)
+
+		# Usa o desenho arredondado do painel como máscara para os filhos.
+		panel_foto.clip_children = CanvasItem.CLIP_CHILDREN_AND_DRAW
+
+		# Remove margens internas para a foto preencher o painel.
+		
+		panel_foto.propagate_maximum_size = true
 		# O tamanho vem do conteúdo e do alinhamento, sem depender de um limite máximo.
 		panel_foto.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		panel_foto.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -88,15 +98,20 @@ func gerar_ranking(lista_usuarios: Array, vbox_pai: VBoxContainer):
 			style_foto.bg_color = Color("e9bb97ff")
 		else:
 			style_foto.bg_color = Color(0.8, 0.8, 0.8) # Cinza claro
-		style_foto.corner_radius_top_left = 100
-		style_foto.corner_radius_top_right = 100
-		style_foto.corner_radius_bottom_left = 100
-		style_foto.corner_radius_bottom_right = 100
+		style_foto.content_margin_left = 2
+		style_foto.content_margin_right = 2
+		style_foto.content_margin_top = 2
+		style_foto.content_margin_bottom = 2
+		style_foto.set_corner_radius_all(25)
 		panel_foto.add_theme_stylebox_override("panel", style_foto)
+		panel_foto.clip_children = CanvasItem.CLIP_CHILDREN_AND_DRAW
+		panel_foto.propagate_maximum_size = true
 		hbox.add_child(panel_foto)
 		
 		var foto = TextureRect.new()
-		foto.custom_minimum_size = Vector2(40, 40)
+		foto.custom_minimum_size = Vector2(50,50)
+		foto.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		foto.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		var id_jogador_str = str(int(jogador.usuarioId))
 		print("rodando!")
 		var foto_bytes = DadosJogo.ranking_fotos.get(id_jogador_str,false)
@@ -111,9 +126,8 @@ func gerar_ranking(lista_usuarios: Array, vbox_pai: VBoxContainer):
 			foto.texture = load("res://ui/avatar.svg")
 	
 		foto.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		foto.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		foto.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		foto.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		#foto.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		#foto.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		panel_foto.add_child(foto)
 		
 		

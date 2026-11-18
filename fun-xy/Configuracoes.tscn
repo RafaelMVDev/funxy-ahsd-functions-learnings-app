@@ -75,6 +75,23 @@ corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_di2w4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0d87y"]
+bg_color = Color(0.9647059, 0.972549, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.86275, 0.89412, 0.93725, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+corner_detail = 12
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn38w"]
 content_margin_left = 20.0
 content_margin_top = 20.0
@@ -270,8 +287,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_vd5tl")
 
 [node name="FotoPerfil" type="TextureRect" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/Panel/PanelFOTO" unique_id=252770242]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(90, 90)
-custom_maximum_size = Vector2(90, 90)
+custom_minimum_size = Vector2(80, 80)
+custom_maximum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -297,7 +314,7 @@ access = 2
 filters = PackedStringArray("*.png, *.jpg, *.jpeg ; Imagens")
 use_native_dialog = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer" unique_id=1061354469]
+[node name="NomeUsuario" type="RichTextLabel" parent="ConfigScroll/Corpo/PanelContainer2/HBoxContainer" unique_id=1061354469]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -338,6 +355,48 @@ grow_vertical = 2
 texture = ExtResource("4_pjwo2")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="EdicaoNome" type="PanelContainer" parent="ConfigScroll/Corpo" unique_id=1681931409]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0d87y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfigScroll/Corpo/EdicaoNome" unique_id=1961387540]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="EditarNome" type="Label" parent="ConfigScroll/Corpo/EdicaoNome/VBoxContainer" unique_id=547005480]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Editar nome"
+
+[node name="InputNome" type="LineEdit" parent="ConfigScroll/Corpo/EdicaoNome/VBoxContainer" unique_id=827737980]
+custom_minimum_size = Vector2(300, 10)
+custom_maximum_size = Vector2(300, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MensagemNome" type="Label" parent="ConfigScroll/Corpo/EdicaoNome/VBoxContainer" unique_id=1272702673]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfigScroll/Corpo/EdicaoNome/VBoxContainer" unique_id=57336275]
+custom_minimum_size = Vector2(-1, 25)
+custom_maximum_size = Vector2(-1, 25)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="SalvarNome" type="Button" parent="ConfigScroll/Corpo/EdicaoNome/VBoxContainer/HBoxContainer" unique_id=120073699]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Salvar"
+
+[node name="CancelarNome" type="Button" parent="ConfigScroll/Corpo/EdicaoNome/VBoxContainer/HBoxContainer" unique_id=410422653]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Cancelar"
 
 [node name="PanelCONFIGS" type="PanelContainer" parent="ConfigScroll/Corpo" unique_id=131494903]
 layout_mode = 2
@@ -656,6 +715,7 @@ aba_ativa = 4
 
 [connection signal="pressed" from="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/Panel/PanelFOTO/ButtonTrocarFoto" to="." method="_on_button_trocar_foto_pressed"]
 [connection signal="file_selected" from="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/Panel/PanelFOTO/SeletorArquivo" to="." method="_on_seletor_arquivo_file_selected"]
+[connection signal="pressed" from="ConfigScroll/Corpo/PanelContainer2/HBoxContainer/ButtonEditarPerfil" to="." method="_on_button_editar_perfil_pressed"]
 [connection signal="toggled" from="ConfigScroll/Corpo/PanelCONFIGS/VBoxContainer/SomAudio/PanelContainer/BotaoSom" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="ConfigScroll/Corpo/PanelCONFIGS/VBoxContainer/Deslogar/Button" to="." method="_on_button_deslogar_pressed"]
 [connection signal="conteudos_pressed" from="Rodape" to="." method="_on_button_pressed_conteudo"]

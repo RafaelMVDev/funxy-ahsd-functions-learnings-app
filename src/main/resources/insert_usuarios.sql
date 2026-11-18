@@ -50,5 +50,39 @@ VALUES
     (1, REPEAT('a', 64), CURRENT_DATE-2, CURRENT_DATE+28,
      CURRENT_DATE-1, 'Android de teste');
 */
+
+INSERT INTO Usuario (email, senha_hash, nome, sequencia, xp, moedas)
+VALUES
+    ('leo@funxy.example',
+     '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
+     'Franca Funxy', 5, 115, 38),
+
+    ('ana@funxy.example',
+     '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
+     'Heloisa Quadrática', 4, 105, 35),
+
+    ('pedro@funxy.example',
+     '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
+     'Moreira Exponencial', 3, 90, 30),
+
+    ('julia@funxy.example',
+     '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
+     'Luis Modular', 6, 80, 28),
+
+    ('lucas@funxy.example',
+     '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
+     'Regadas Afim', 2, 65, 22),
+
+    ('bia@funxy.example',
+     '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
+     'Bia Logarítmica', 2, 45, 15),
+
+    ('gabriel@funxy.example',
+     '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
+     'Gabriel dos Gráficos', 1, 20, 8),
+
+    ('sofia@funxy.example',
+     '$2b$12$Va5njyTIULxWmVorOekPzev8ZSPYj89Ar7s7yYvF0EIi6ccVsgp7S',
+     'Sofia Funxy', 0, 0, 0);
 COMMIT;
 SET AUTOCOMMIT TRUE;

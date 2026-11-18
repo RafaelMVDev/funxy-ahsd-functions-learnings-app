@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bl8gu8rd3i3ge"]
 
 [ext_resource type="Script" uid="uid://dus8bymjucqsi" path="res://perfil.gd" id="1_2yoj7"]
-[ext_resource type="Texture2D" uid="uid://cucra5k332xu7" path="res://ui/avatar.svg" id="1_042gs"]
 [ext_resource type="Texture2D" uid="uid://bxpds5wfqdbiq" path="res://ui/xp.svg" id="2_ldqir"]
 [ext_resource type="Texture2D" uid="uid://d2dasmhpc7ix7" path="res://ui/coin.svg" id="3_3p8ts"]
+[ext_resource type="Texture2D" uid="uid://cms5c7fosgihf" path="res://images/icones_azul_escuro/icon_perfil_azul_escuro.svg" id="3_25uxj"]
 [ext_resource type="Texture2D" uid="uid://dlvswhp55y87h" path="res://ui/flame.svg" id="4_ekicr"]
 [ext_resource type="Texture2D" uid="uid://bmi042v86hxg8" path="res://ui/trophy.svg" id="5_3p8ts"]
 [ext_resource type="Texture2D" uid="uid://blj36h3b1jp6f" path="res://images/explorador.svg" id="6_ekicr"]
@@ -23,13 +23,12 @@ bg_color = Color(1, 1, 1, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_042gs"]
-bg_color = Color(0.92157, 0.94902, 1, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw5hu"]
+bg_color = Color(0.49692518, 0.9815586, 0, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_meqgr"]
 content_margin_left = 20.0
@@ -120,20 +119,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="PanelFOTO" type="PanelContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=516630475]
+[node name="PanelFOTO" type="PanelContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1212198867]
+clip_children = 1
 custom_minimum_size = Vector2(75, 75)
 custom_maximum_size = Vector2(75, 75)
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_042gs")
+theme_override_styles/panel = SubResource("StyleBoxFlat_aw5hu")
 
-[node name="FotoPerfil" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PanelFOTO" unique_id=2092509718]
+[node name="FotoPerfil" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PanelFOTO" unique_id=495543092]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+custom_maximum_size = Vector2(80, 80)
 layout_mode = 2
-texture = ExtResource("1_042gs")
-expand_mode = 3
-stretch_mode = 5
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_25uxj")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="NomeUsuario" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2062737948]
 layout_mode = 2

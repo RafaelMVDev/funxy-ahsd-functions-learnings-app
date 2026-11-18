@@ -153,7 +153,7 @@ func _on_login_response(resultado: Dictionary) -> void:
 	print(DadosJogo.itens)
 	
 	# Pega o ranking atual e coloca na var global
-	await DadosJogo.carregar_ranking()
+	await DadosJogo.carregar_ranking(true)
 	await Sessao.buscar_foto()
 	print(DadosJogo.ranking_xp)
 	# Os dados pessoais e o catálogo estão disponíveis nos globais.

@@ -50,7 +50,7 @@ func carregar_catalogo(jogo: Dictionary) -> bool:
 func buscar_atividade(atividade_id: int) -> Dictionary:
 	return atividades_por_id.get(atividade_id, {})
 
-func carregar_ranking() -> bool:
+func carregar_ranking(buscar_fotos:bool = false) -> bool:
 	var resposta: Dictionary = await Api.requisitar(
 		HTTPClient.METHOD_GET,
 		"/jogo/ranking"
@@ -74,7 +74,7 @@ func carregar_ranking() -> bool:
 	for player_dado in ranking_xp:
 		ids_ranking.append(int(player_dado["usuarioId"]))
 	print(ids_ranking)
-	if ids_ranking.size() > 0:
+	if ids_ranking.size() > 0 and buscar_fotos:
 		buscar_fotos_lote(ids_ranking)
 	return true
 	
