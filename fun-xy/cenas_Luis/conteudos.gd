@@ -6,6 +6,7 @@ extends Control
 @onready var barra_leitura: ProgressBar = %ProgressBarMateriais
 
 func _ready() -> void:
+	barra_progresso_visual()
 	pass
 	
 func barra_progresso_visual() -> void:
@@ -23,7 +24,7 @@ func barra_progresso_visual() -> void:
 	var porcentagem_leitura: float = (float(total_concluidas_leitura) / float(total_atividades_leitura)) * 100.0
 	porcentagem_leitura = snapped(porcentagem_leitura, 0.01)
 	
-	label_leitura.text = snapped(porcentagem_leitura, 0.01)
+	label_leitura.text = str(porcentagem_leitura) + "%"
 	barra_leitura.value = porcentagem_leitura
 	
 
