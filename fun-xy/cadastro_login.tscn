@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b7nkt5xi63bu3" path="res://images/icones/raios.svg" id="5_w8uqo"]
 [ext_resource type="Texture2D" uid="uid://by7m3q8crwwf7" path="res://images/icon.png" id="7_ev5v7"]
 [ext_resource type="Texture2D" uid="uid://vdi4xinugtmf" path="res://images/icones_azul_escuro/funxy_Logo_v1.svg" id="7_osbjj"]
-[ext_resource type="Texture2D" uid="uid://bsdsctjaf032x" path="res://images/icones_azul_escuro/funxy_logo_v2.svg" id="8_6q3as"]
+[ext_resource type="Texture2D" uid="uid://ckbegxy3s6paj" path="res://images/icon_final.svg" id="8_osbjj"]
 [ext_resource type="Texture2D" uid="uid://bi3q0qtsb18lu" path="res://images/icones/email.svg" id="8_rt37s"]
 [ext_resource type="Texture2D" uid="uid://6gnxrxo1sjdo" path="res://images/icones/cadeado.svg" id="9_1uprd"]
 [ext_resource type="Texture2D" uid="uid://bk2s4bgpgclo4" path="res://images/olho-fechado.svg" id="10_wpagr"]
@@ -362,7 +362,7 @@ offset_bottom = 72.119995
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-texture = ExtResource("8_6q3as")
+texture = ExtResource("8_osbjj")
 expand_mode = 1
 
 [node name="SlideWindow" type="Control" parent="." unique_id=959562078]
@@ -402,7 +402,7 @@ theme_override_constants/separation = 1
 [node name="Label" type="Label" parent="SlideWindow/LoginPanel/VBoxContainer2/VBoxContainer5" unique_id=1735852144]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
-theme_override_font_sizes/font_size = 29
+theme_override_font_sizes/font_size = 25
 text = "Login"
 horizontal_alignment = 1
 
@@ -592,7 +592,7 @@ theme_override_constants/separation = 1
 [node name="Label" type="Label" parent="SlideWindow/RegisterPanel/VBoxContainer/VBoxContainer5" unique_id=1572987225]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
-theme_override_font_sizes/font_size = 29
+theme_override_font_sizes/font_size = 25
 text = "Cadastro"
 horizontal_alignment = 1
 
