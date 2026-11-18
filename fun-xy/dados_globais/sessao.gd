@@ -101,6 +101,7 @@ var player: Dictionary = {
 	
 }
 
+var player_foto := ""
 var player_configuracao: Dictionary = {
 	
 }

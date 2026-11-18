@@ -94,7 +94,7 @@ func gerar_ranking(lista_usuarios: Array, vbox_pai: VBoxContainer):
 		
 		var foto = TextureRect.new()
 		foto.custom_minimum_size = Vector2(40, 40)
-		foto.texture = load("res://ui/avatar.svg")
+		foto.texture = Sessao.player_foto or load("res://ui/avatar.svg")
 		foto.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		foto.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		foto.size_flags_horizontal = Control.SIZE_SHRINK_CENTER

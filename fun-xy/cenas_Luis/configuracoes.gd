@@ -28,7 +28,8 @@ func _ready() -> void:
 	if FileAccess.file_exists("user://avatar_usuario.png"):
 		var imagem = Image.load_from_file("user://avatar_usuario.png")
 		foto_perfil.texture = ImageTexture.create_from_image(imagem)
-	await carregar_foto_perfil()
+	if Sessao.foto_perfil:
+		foto_perfil.texture = Sessao.foto_perfil
 	var master_bus_index = AudioServer.get_bus_index("Master")
 	var is_muted = AudioServer.is_bus_mute(master_bus_index)
 	AudioServer.set_bus_mute(master_bus_index, is_muted)
@@ -100,7 +101,7 @@ func _on_seletor_arquivo_file_selected(caminho_arquivo: String) -> void:
 		print("Foto salva na API!")
 
 		# Atualiza a tela com a imagem que ficou salva no banco.
-		await carregar_foto_perfil()
+		await buscar_foto_perfil()
 	else:
 		push_warning("Não foi possível salvar a foto.")
 
@@ -108,9 +109,9 @@ func _on_seletor_arquivo_file_selected(caminho_arquivo: String) -> void:
 
 
 # Busca a foto no backend e coloca no TextureRect.
-func carregar_foto_perfil() -> void:
+func buscar_foto_perfil() -> void:
 	var textura: ImageTexture = await Api.buscar_foto()
-
+	Sessao.player_foto = textura
 	if textura != null:
 		foto_perfil.texture = textura
 	else:

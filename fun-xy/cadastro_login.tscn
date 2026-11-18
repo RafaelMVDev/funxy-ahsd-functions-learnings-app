@@ -5,19 +5,20 @@
 [ext_resource type="Texture2D" uid="uid://cvd2d26fhgg48" path="res://images/icones/grade.svg" id="3_osbjj"]
 [ext_resource type="Texture2D" uid="uid://dkiw2jjdrpgqv" path="res://img_fundo.png" id="4_6q3as"]
 [ext_resource type="Texture2D" uid="uid://b7nkt5xi63bu3" path="res://images/icones/raios.svg" id="5_w8uqo"]
-[ext_resource type="Texture2D" uid="uid://bespmumjlln1" path="res://images/icones/logo_fun-removebg-preview.png" id="6_dk6ul"]
 [ext_resource type="Texture2D" uid="uid://by7m3q8crwwf7" path="res://images/icon.png" id="7_ev5v7"]
+[ext_resource type="Texture2D" uid="uid://vdi4xinugtmf" path="res://images/icones_azul_escuro/funxy_Logo_v1.svg" id="7_osbjj"]
+[ext_resource type="Texture2D" uid="uid://bsdsctjaf032x" path="res://images/icones_azul_escuro/funxy_logo_v2.svg" id="8_6q3as"]
 [ext_resource type="Texture2D" uid="uid://bi3q0qtsb18lu" path="res://images/icones/email.svg" id="8_rt37s"]
 [ext_resource type="Texture2D" uid="uid://6gnxrxo1sjdo" path="res://images/icones/cadeado.svg" id="9_1uprd"]
 [ext_resource type="Texture2D" uid="uid://bk2s4bgpgclo4" path="res://images/olho-fechado.svg" id="10_wpagr"]
 [ext_resource type="Texture2D" uid="uid://c2rti82ym2qb5" path="res://images/icones/usuario.svg" id="11_nwe6x"]
 [ext_resource type="Theme" uid="uid://sf5kdvqdkowx" path="res://ui/funxy_theme.tres" id="UI_theme"]
 
-[sub_resource type="Gradient" id="Gradient_880ua"]
+[sub_resource type="Gradient" id="Gradient_w8uqo"]
 colors = PackedColorArray(0.8383659, 0.91962564, 0.99999946, 1, 0.89, 0.94, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_727ai"]
-gradient = SubResource("Gradient_880ua")
+gradient = SubResource("Gradient_w8uqo")
 width = 360
 height = 640
 fill_from = Vector2(0, 0.0042735045)
@@ -329,21 +330,40 @@ texture = ExtResource("5_w8uqo")
 expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="TextureRect" unique_id=1254913984]
-custom_minimum_size = Vector2(90, 90)
+visible = false
+custom_minimum_size = Vector2(200, 180)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.216
 anchor_right = 0.5
 anchor_bottom = 0.216
-offset_left = -45.0
-offset_top = -52.240005
-offset_right = 45.0
-offset_bottom = 37.759995
+offset_left = -134.0
+offset_top = -120.240005
+offset_right = 133.5
+offset_bottom = 59.759995
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-texture = ExtResource("6_dk6ul")
+texture = ExtResource("7_osbjj")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="TextureRect" unique_id=723580505]
+custom_minimum_size = Vector2(200, 180)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.216
+anchor_right = 0.5
+anchor_bottom = 0.216
+offset_left = -141.0
+offset_top = -89.240005
+offset_right = 126.5
+offset_bottom = 90.759995
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_6q3as")
 expand_mode = 1
 
 [node name="SlideWindow" type="Control" parent="." unique_id=959562078]

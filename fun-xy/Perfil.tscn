@@ -1,34 +1,17 @@
 [gd_scene format=3 uid="uid://bl8gu8rd3i3ge"]
 
-[ext_resource type="PackedScene" path="res://ui/rodape.tscn" id="UI_footer"]
-
-[ext_resource type="Theme" path="res://ui/funxy_theme.tres" id="UI_theme"]
-
-[ext_resource type="Texture2D" path="res://ui/home.svg" id="UI_home"]
-
-[ext_resource type="Texture2D" path="res://ui/book.svg" id="UI_book"]
-
-[ext_resource type="Texture2D" path="res://ui/trophy.svg" id="UI_rank"]
-
-[ext_resource type="Texture2D" path="res://ui/profile.svg" id="UI_profile"]
-
-[ext_resource type="Texture2D" path="res://ui/settings.svg" id="UI_settings"]
-
 [ext_resource type="Script" uid="uid://dus8bymjucqsi" path="res://perfil.gd" id="1_2yoj7"]
-[ext_resource type="Texture2D" path="res://ui/avatar.svg" id="1_042gs"]
-[ext_resource type="Texture2D" uid="uid://dbyitmdjtbsf3" path="res://images/livro preto.png" id="2_042gs"]
-[ext_resource type="Texture2D" uid="uid://be6slbqck10bi" path="res://images/icones/home_page_icon.png" id="2_b0g2v"]
-[ext_resource type="Texture2D" path="res://ui/xp.svg" id="2_ldqir"]
-[ext_resource type="Texture2D" path="res://ui/coin.svg" id="3_3p8ts"]
-[ext_resource type="Texture2D" path="res://ui/trophy.svg" id="3_b0g2v"]
-[ext_resource type="Texture2D" uid="uid://dnoiu0y31eul8" path="res://images/icones_luis/PerfilBranco.png" id="4_187f0"]
-[ext_resource type="Texture2D" path="res://ui/flame.svg" id="4_ekicr"]
-[ext_resource type="Texture2D" path="res://ui/trophy.svg" id="5_3p8ts"]
-[ext_resource type="Texture2D" uid="uid://bysqk0ebc2cjr" path="res://images/icones_luis/Config.png" id="5_ldqir"]
+[ext_resource type="Texture2D" uid="uid://cucra5k332xu7" path="res://ui/avatar.svg" id="1_042gs"]
+[ext_resource type="Texture2D" uid="uid://bxpds5wfqdbiq" path="res://ui/xp.svg" id="2_ldqir"]
+[ext_resource type="Texture2D" uid="uid://d2dasmhpc7ix7" path="res://ui/coin.svg" id="3_3p8ts"]
+[ext_resource type="Texture2D" uid="uid://dlvswhp55y87h" path="res://ui/flame.svg" id="4_ekicr"]
+[ext_resource type="Texture2D" uid="uid://bmi042v86hxg8" path="res://ui/trophy.svg" id="5_3p8ts"]
 [ext_resource type="Texture2D" uid="uid://blj36h3b1jp6f" path="res://images/explorador.svg" id="6_ekicr"]
 [ext_resource type="Texture2D" uid="uid://ciw3kiha1c4ag" path="res://images/persistente.svg" id="7_64dp6"]
 [ext_resource type="Texture2D" uid="uid://bhgjjwd71132g" path="res://images/primeiros_passos.svg" id="8_2yoj7"]
 [ext_resource type="Texture2D" uid="uid://dnhsl3igg2nup" path="res://images/em_sequencia.svg" id="9_meqgr"]
+[ext_resource type="PackedScene" uid="uid://clpnciyc7rvci" path="res://ui/rodape.tscn" id="UI_footer"]
+[ext_resource type="Theme" uid="uid://sf5kdvqdkowx" path="res://ui/funxy_theme.tres" id="UI_theme"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p8ts"]
 bg_color = Color(0.96078, 0.96863, 0.98431, 1)
@@ -37,13 +20,11 @@ border_color = Color(0.86275, 0.89412, 0.93725, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_187f0"]
 content_margin_left = 5.0
 bg_color = Color(1, 1, 1, 1)
-border_width_top = 0
-border_width_bottom = 0
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_042gs"]
-bg_color = Color(0.92157, 0.94902, 1.0, 1)
+bg_color = Color(0.92157, 0.94902, 1, 1)
 border_color = Color(0.86275, 0.89412, 0.93725, 1)
 corner_radius_top_left = 14
 corner_radius_top_right = 14
@@ -55,7 +36,7 @@ content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
-bg_color = Color(1.0, 1.0, 1.0, 1)
+bg_color = Color(1, 1, 1, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -86,26 +67,6 @@ corner_radius_top_right = 14
 corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5p8xb"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdoop"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7f26"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cph1j"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yoj7"]
-bg_color = Color(1.0, 1.0, 1.0, 1)
-border_color = Color(0.86275, 0.89412, 0.93725, 1)
-
 [node name="Control" type="Control" unique_id=2084769994]
 layout_mode = 3
 anchors_preset = 15
@@ -113,8 +74,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2yoj7")
 theme = ExtResource("UI_theme")
+script = ExtResource("1_2yoj7")
 
 [node name="Panel" type="Panel" parent="." unique_id=1958484112]
 layout_mode = 1
@@ -135,8 +96,6 @@ offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
-offset_left = 0.0
-offset_right = 0.0
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=711880785]
 custom_minimum_size = Vector2(0, 150)
@@ -154,16 +113,17 @@ theme_override_constants/separation = 5
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2107741571]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/font_size = 20
 text = "PERFIL"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="PanelFOTO" type="PanelContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=516630475]
 custom_minimum_size = Vector2(75, 75)
 custom_maximum_size = Vector2(75, 75)
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -177,11 +137,11 @@ stretch_mode = 5
 
 [node name="NomeUsuario" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2062737948]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/font_size = 20
 text = "Nome_Usuario"
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Label3" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=63728189]
 layout_mode = 2
@@ -193,13 +153,12 @@ vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=158614086]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
-size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer" unique_id=314728659]
-custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -229,10 +188,10 @@ theme_override_constants/separation = 12
 texture_filter = 4
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("2_ldqir")
 expand_mode = 1
 stretch_mode = 5
-size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Experiência/HBoxContainer" unique_id=1749765988]
 layout_mode = 2
@@ -241,9 +200,9 @@ theme_override_constants/separation = 1
 [node name="ExperienciaText" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Experiência/HBoxContainer/VBoxContainer" unique_id=1180464723]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 text = "EXPERIÊNCIA: 202020202202020020"
 text_overrun_behavior = 3
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Experiência/HBoxContainer/VBoxContainer" unique_id=405313072]
 layout_mode = 2
@@ -272,10 +231,10 @@ theme_override_constants/separation = 12
 texture_filter = 4
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("3_3p8ts")
 expand_mode = 1
 stretch_mode = 5
-size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Moedas/HBoxContainer" unique_id=894323377]
 layout_mode = 2
@@ -285,9 +244,9 @@ theme_override_constants/separation = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 text = "MOEDAS: 232323232323232323"
 text_overrun_behavior = 3
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Moedas/HBoxContainer/VBoxContainer" unique_id=779643257]
 layout_mode = 2
@@ -316,10 +275,10 @@ theme_override_constants/separation = 12
 texture_filter = 4
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("4_ekicr")
 expand_mode = 1
 stretch_mode = 5
-size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Sequência/HBoxContainer" unique_id=1418608625]
 layout_mode = 2
@@ -328,9 +287,9 @@ theme_override_constants/separation = 1
 [node name="SequenciaText" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Sequência/HBoxContainer/VBoxContainer" unique_id=1591592911]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 text = "DIAS: 21323132102323232"
 text_overrun_behavior = 3
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/DadosPerfil/VBoxContainer/Sequência/HBoxContainer/VBoxContainer" unique_id=103019006]
 layout_mode = 2
@@ -362,8 +321,8 @@ texture = ExtResource("5_3p8ts")
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Ranking/HBoxContainer" unique_id=516485465]
 layout_mode = 2
 size_flags_horizontal = 6
-text = "Posição no Ranking"
 theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
+text = "Posição no Ranking"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Ranking/HBoxContainer" unique_id=934233513]
 layout_mode = 2
@@ -373,20 +332,20 @@ theme_override_constants/margin_right = 10
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 text = "138º"
 text_overrun_behavior = 3
 uppercase = true
-theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=657015823]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 16.63
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 14
 bbcode_enabled = true
 text = "[b]MEDALHAS[/b]"
-theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="Conquistas" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2041064899]
 custom_minimum_size = Vector2(0, 110)
@@ -420,13 +379,13 @@ custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 16.63
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 8
 bbcode_enabled = true
 text = "[b] EXPLORADOR [/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer" unique_id=663264161]
 layout_mode = 2
@@ -451,13 +410,13 @@ custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 16.63
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 8
 bbcode_enabled = true
 text = "[b] PERSISTENTE [/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer" unique_id=2101595977]
 layout_mode = 2
@@ -482,13 +441,13 @@ custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 16.63
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 8
 bbcode_enabled = true
 text = "[b] ESTREIA [/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Conquistas/HBoxContainer" unique_id=1164623783]
 layout_mode = 2
@@ -513,19 +472,19 @@ custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 16.63
+theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 8
 bbcode_enabled = true
 text = "[b] CONSTÂNCIA [/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 
-[node name="Rodape" parent="." instance=ExtResource("UI_footer")]
+[node name="Rodape" parent="." unique_id=1234390366 instance=ExtResource("UI_footer")]
 layout_mode = 1
 aba_ativa = 3
 
-[connection signal="trilhas_pressed" from="Rodape" to="." method="_on_button_home_pressed"]
+[connection signal="ajustes_pressed" from="Rodape" to="." method="_on_button_pressed_configuracao"]
 [connection signal="conteudos_pressed" from="Rodape" to="." method="_on_button_pressed_conteudos"]
 [connection signal="ranking_pressed" from="Rodape" to="." method="_on_button_pressed_ranking"]
-[connection signal="ajustes_pressed" from="Rodape" to="." method="_on_button_pressed_configuracao"]
+[connection signal="trilhas_pressed" from="Rodape" to="." method="_on_button_home_pressed"]
