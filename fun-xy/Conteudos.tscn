@@ -268,13 +268,15 @@ text = "Progresso do Jogo"
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1205045965]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=859636785]
+[node name="LabelProgressoJogo" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=859636785]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/font_size = 15
 text = "0%"
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=132228309]
+[node name="ProgressBarJogosBarJogo" type="ProgressBar" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=132228309]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -303,13 +305,15 @@ text = "Progresso dos Materiais"
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=552610420]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=327043744]
+[node name="LabelProgressoAtv" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=327043744]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/font_size = 15
 text = "0%"
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1109145634]
+[node name="ProgressBarMateriais" type="ProgressBar" parent="VBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1109145634]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3
