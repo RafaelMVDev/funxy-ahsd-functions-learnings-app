@@ -139,7 +139,10 @@ func gerar_ranking(lista_usuarios: Array, vbox_pai: VBoxContainer):
 		hbox.add_child(vbox_textos)
 		
 		var label_nome = Label.new()
-		label_nome.text = str(jogador["nome"])
+		if jogador["nome"] == "Lia Funxy":
+			label_nome.text = "LeviAlves"
+		else:
+			label_nome.text = str(jogador["nome"])
 		label_nome.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		label_nome.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		

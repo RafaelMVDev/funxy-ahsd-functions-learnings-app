@@ -377,7 +377,7 @@ theme_override_constants/separation = 5
 
 [node name="Mensagem" type="Label" parent="TecladoMatematico/VisoresTeclado" unique_id=776241644]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.67044103, 0.7924031, 0.97157437, 1)
+theme_override_colors/font_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TecladoMatematico/VisoresTeclado" unique_id=2023383540]
@@ -433,6 +433,7 @@ offset_top = -11.5
 offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ixrit")
 theme_override_styles/hover = SubResource("StyleBoxFlat_d7ek1")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_jj7yg")
@@ -476,6 +477,7 @@ offset_top = -10.5
 offset_bottom = 12.5
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ixrit")
 theme_override_styles/hover = SubResource("StyleBoxFlat_d7ek1")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_jj7yg")
