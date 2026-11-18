@@ -329,6 +329,7 @@ layout_mode = 2
 theme_override_constants/margin_right = 10
 
 [node name="RankingPosText" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Ranking/HBoxContainer/MarginContainer2" unique_id=1059753106]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -346,6 +347,7 @@ theme_override_colors/default_color = Color(0.12549, 0.19216, 0.29412, 1)
 theme_override_font_sizes/bold_font_size = 14
 bbcode_enabled = true
 text = "[b]MEDALHAS[/b]"
+scroll_active = false
 
 [node name="Conquistas" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2041064899]
 custom_minimum_size = Vector2(0, 110)

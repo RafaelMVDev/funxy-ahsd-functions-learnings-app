@@ -6,6 +6,7 @@ extends Control
 @onready var texto_pos_ranking = $VBoxContainer/ScrollContainer/VBoxContainer/Ranking
 @onready var texto_moedas = %MoedasText
 @onready var player_imagem = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PanelFOTO/FotoPerfil
+@onready var player_rank = %RankingPosText
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -15,7 +16,9 @@ func _ready() -> void:
 	texto_xp.text = "XP: " + str(int(Sessao.player["xp"]))
 	texto_sequencia.text ="SEQUÊNCIA: " + str(int(Sessao.player["sequencia"]))
 	texto_moedas.text = "MOEDAS: " + str(int(Sessao.player["moedas"]))
-	pass # Replace with function body.
+	player_rank.text = str(DadosGlobais.user_rank) + "º"
+
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

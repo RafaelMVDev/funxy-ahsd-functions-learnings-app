@@ -51,11 +51,11 @@ func _estilo_visor(node: LineEdit, estilo: String):
 	var estilo_modificado = stylebox_visor.duplicate()
 	
 	if estilo == "normal":
-		estilo_modificado.border_color = Color("#0f3f73")
-		estilo_modificado.bg_color = Color("2c66b7")
+		estilo_modificado.border_color = Color("#8cb1f2")
+		estilo_modificado.bg_color = Color("ebf4fd")
 	else:
-		estilo_modificado.border_color = Color("05203fff") 
-		estilo_modificado.bg_color = Color("0d3766ff")
+		estilo_modificado.border_color = Color("4e80dc") 
+		estilo_modificado.bg_color = Color("8cb1f2")
 	node.add_theme_stylebox_override("normal", estilo_modificado)
 
 func _on_botao_pressionado(botao_clicado: Button) -> void:

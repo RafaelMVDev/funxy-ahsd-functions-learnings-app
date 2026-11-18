@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://cs2681bhq6icd" path="res://funcoes_listadas.gd" id="7_d7ek1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o30a"]
-bg_color = Color(0, 0.06293178, 0.17789346, 1)
+bg_color = Color(0.8862745, 0.9372549, 0.99215686, 1)
 
 [sub_resource type="Gradient" id="Gradient_d7ek1"]
 offsets = PackedFloat32Array(1)
@@ -23,14 +23,14 @@ gradient = SubResource("Gradient_d7ek1")
 fill_to = Vector2(0.62941176, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58m4b"]
-bg_color = Color(0.05882353, 0.24705882, 0.4509804, 1)
+bg_color = Color(0.54901963, 0.69411767, 0.9490196, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7kqr"]
-bg_color = Color(0.17254902, 0.4, 0.7176471, 1)
+bg_color = Color(0.92156863, 0.95686275, 0.99215686, 1)
 border_color = Color(0.05882353, 0.24705882, 0.4509804, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -38,11 +38,11 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t4ox"]
-bg_color = Color(0.17254902, 0.4, 0.7176471, 1)
+bg_color = Color(0.92156863, 0.95686275, 0.99215686, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_bottom = 2
-border_color = Color(0.05882353, 0.24705882, 0.4509804, 1)
+border_color = Color(0.54901963, 0.69411767, 0.9490196, 1)
 corner_radius_top_left = 8
 corner_radius_bottom_left = 8
 
@@ -51,11 +51,11 @@ bg_color = Color(0.20784314, 0.22352941, 0.28627452, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q688"]
 content_margin_left = 5.0
-bg_color = Color(0.17254902, 0.4, 0.7176471, 1)
+bg_color = Color(0.92156863, 0.95686275, 0.99215686, 1)
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.05882353, 0.24705882, 0.4509804, 1)
+border_color = Color(0.54901963, 0.69411767, 0.9490196, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
@@ -75,88 +75,99 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rdld"]
 content_margin_left = 4.0
-bg_color = Color(0.17306828, 0.39850727, 0.71686554, 1)
+bg_color = Color(0.92156863, 0.95686275, 0.99215686, 1)
 border_width_top = 2
 border_width_bottom = 2
-border_color = Color(0.059008904, 0.24511093, 0.44937658, 1)
+border_color = Color(0.54901963, 0.69411767, 0.9490196, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fd60"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vvew"]
-bg_color = Color(0.17254902, 0.4, 0.7176471, 1)
+bg_color = Color(0.92156863, 0.95686275, 0.99215686, 1)
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.101960786, 0.3019608, 0.54509807, 1)
+border_color = Color(0.54901963, 0.69411767, 0.9490196, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4sgy"]
-bg_color = Color(0.66174877, 0.36554307, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.34901962, 0.5372549, 0.89411765, 1)
 border_color = Color(0.05882353, 0.24705882, 0.4509804, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjtnt"]
+bg_color = Color(0.3529412, 0.5411765, 0.8980392, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0n4v5"]
-bg_color = Color(0.5251013, 0.5251013, 0.5251012, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
+bg_color = Color(0.1559749, 0.31517586, 0.62642527, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fd60"]
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.34901962, 0.5372549, 0.89411765, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3kxb"]
-bg_color = Color(0.6627451, 0.3647059, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.3529412, 0.5411765, 0.8980392, 1)
 border_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6pyc"]
+bg_color = Color(0.27058825, 0.45882353, 0.8392157, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8s6yw"]
-bg_color = Color(0.5254902, 0.5254902, 0.5254902, 1)
+bg_color = Color(0.15686275, 0.3137255, 0.627451, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_doie8"]
-bg_color = Color(0.08627451, 0.2901961, 0.5686275, 1)
+bg_color = Color(0.8235294, 0.89411765, 0.99607843, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.05704777, 0.18169764, 0.32564673, 1)
+border_color = Color(0.6627451, 0.78039217, 0.972549, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j1h7"]
-bg_color = Color(0.02745098, 0.105882354, 0.21960784, 1)
+bg_color = Color(0.8235294, 0.89411765, 0.99607843, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.38945517, 0.6206359, 0.9554017, 1)
+border_color = Color(0.6627451, 0.78039217, 0.972549, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_re1yy"]
-bg_color = Color(0.17284942, 0.44159648, 0.81331635, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.5772196, 0.7465361, 0.9908989, 1)
 border_color = Color(0.17254902, 0.44313726, 0.8117647, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -164,11 +175,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yn4om"]
-bg_color = Color(1.8049031e-06, 0.42696506, 0.24463075, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.27058825, 0.45882353, 0.8392157, 1)
 border_color = Color(3.3691526e-07, 0.20840439, 0.10875469, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -176,30 +183,27 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kt402"]
-bg_color = Color(0, 0.20784314, 0.10980392, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1.8410012e-06, 0.3831587, 0.217397, 1)
+bg_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
+border_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2uhnc"]
-bg_color = Color(2.8397144e-06, 0.5802876, 0.33758464, 1)
+bg_color = Color(0.46666667, 0.6313726, 0.9411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycd0d"]
-bg_color = Color(0.8094182, 0.31580675, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
 border_color = Color(0.4680794, 0.17090893, 4.813075e-08, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -207,30 +211,31 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhsu4"]
-bg_color = Color(0.6558397, 0.25199953, 0, 1)
+bg_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.80784315, 0.31764707, 0, 1)
+border_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5l5e"]
-bg_color = Color(0.9999998, 0.42339158, 0.107507385, 1)
+bg_color = Color(0.46666667, 0.6313726, 0.9411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xa50t"]
-bg_color = Color(0.7587854, 0, 0.07271848, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
 border_color = Color(0.4287268, 0, 0.022545526, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -238,20 +243,20 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh7eb"]
-bg_color = Color(0.46666667, 0, 0.02745098, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.75686276, 0, 0.07058824, 1)
+bg_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
+border_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvwsp"]
-bg_color = Color(1, 0.08235294, 0.13333334, 1)
-border_color = Color(0.75686276, 0, 0.07058824, 1)
+bg_color = Color(0.46666667, 0.6313726, 0.9411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.23137255, 0.41960785, 0.8039216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -398,6 +403,7 @@ theme_override_constants/separation = 0
 [node name="Label" type="Label" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1653839562]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_6t4ox")
 theme_override_styles/focus = SubResource("StyleBoxFlat_d4dqy")
 text = " f(x) ="
@@ -408,6 +414,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_4q688")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x4sgy")
 placeholder_text = " "
@@ -440,6 +447,7 @@ theme_override_constants/separation = 0
 [node name="Label" type="Label" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=592203760]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_6t4ox")
 theme_override_styles/focus = SubResource("StyleBoxFlat_d4dqy")
 text = " D(f) = {x∈ℝ |"
@@ -450,6 +458,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_1rdld")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0fd60")
 
@@ -477,6 +486,7 @@ text = "✔ "
 [node name="Label3" type="Label" parent="TecladoMatematico/VisoresTeclado/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=194271767]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.05490196, 0.18039216, 0.3254902, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_2vvew")
 text = " } "
 
@@ -489,6 +499,7 @@ custom_minimum_size = Vector2(40, 32)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4sgy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tjtnt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0n4v5")
 theme_override_styles/focus = SubResource("StyleBoxFlat_0fd60")
 text = "f(x)"
@@ -499,6 +510,7 @@ custom_minimum_size = Vector2(40, 32)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_p3kxb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6pyc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8s6yw")
 text = "➜]"
 
@@ -519,6 +531,7 @@ alignment = 1
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha1" unique_id=2063497014]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -529,6 +542,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha1" unique_id=1762070723]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -539,6 +553,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha1" unique_id=846185289]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -549,6 +564,7 @@ expand_icon = true
 [node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha1" unique_id=248771800]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -559,6 +575,7 @@ expand_icon = true
 [node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha1" unique_id=255169536]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -582,6 +599,7 @@ alignment = 1
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha5" unique_id=93775429]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -592,6 +610,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha5" unique_id=994256429]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -602,6 +621,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha5" unique_id=1739025656]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -612,6 +632,7 @@ expand_icon = true
 [node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha5" unique_id=433686436]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -622,6 +643,7 @@ expand_icon = true
 [node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha5" unique_id=1550826032]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -632,6 +654,7 @@ expand_icon = true
 [node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha5" unique_id=684788024]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -647,6 +670,7 @@ alignment = 1
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha6" unique_id=462211174]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -657,6 +681,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha6" unique_id=1582027989]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -667,6 +692,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha6" unique_id=2025099869]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -677,6 +703,7 @@ expand_icon = true
 [node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha6" unique_id=584848384]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -687,6 +714,7 @@ expand_icon = true
 [node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha6" unique_id=1280097359]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -697,6 +725,7 @@ expand_icon = true
 [node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha6" unique_id=2074448594]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -720,6 +749,7 @@ text = "↩"
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha7" unique_id=835890475]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -730,6 +760,7 @@ expand_icon = true
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha7" unique_id=163095530]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -740,6 +771,7 @@ expand_icon = true
 [node name="Button7" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer1/Linha7" unique_id=2141550873]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -785,6 +817,7 @@ alignment = 1
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha1" unique_id=1042960280]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -795,6 +828,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha1" unique_id=60674158]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -805,6 +839,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha1" unique_id=395421215]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -815,6 +850,7 @@ expand_icon = true
 [node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha1" unique_id=1139419567]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -825,6 +861,7 @@ expand_icon = true
 [node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha1" unique_id=1859288800]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -848,6 +885,7 @@ alignment = 1
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha5" unique_id=2012023829]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -858,6 +896,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha5" unique_id=256978649]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -868,6 +907,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha5" unique_id=894884283]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -878,6 +918,7 @@ expand_icon = true
 [node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha5" unique_id=1017870789]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -888,6 +929,7 @@ expand_icon = true
 [node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha5" unique_id=1430619829]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -898,6 +940,7 @@ expand_icon = true
 [node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha5" unique_id=2106563724]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -913,6 +956,7 @@ alignment = 1
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha6" unique_id=1949917460]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -923,6 +967,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha6" unique_id=1728386730]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -933,6 +978,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha6" unique_id=218202948]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -943,6 +989,7 @@ expand_icon = true
 [node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha6" unique_id=1842616870]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -953,6 +1000,7 @@ expand_icon = true
 [node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha6" unique_id=216718547]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -963,6 +1011,7 @@ expand_icon = true
 [node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha6" unique_id=449860353]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -986,6 +1035,7 @@ text = "↩"
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha7" unique_id=239737324]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -996,6 +1046,7 @@ expand_icon = true
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha7" unique_id=1054804173]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1006,6 +1057,7 @@ expand_icon = true
 [node name="Button7" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerFuncao/VBoxContainer2/Linha7" unique_id=1429446822]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1053,6 +1105,7 @@ alignment = 1
 [node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=967134865]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1063,6 +1116,7 @@ expand_icon = true
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=310994833]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1073,6 +1127,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=1651684011]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1083,6 +1138,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha1" unique_id=112119860]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1106,6 +1162,7 @@ alignment = 1
 [node name="Button3" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha5" unique_id=324874908]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1116,6 +1173,7 @@ expand_icon = true
 [node name="Button" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha5" unique_id=1395088007]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1126,6 +1184,7 @@ expand_icon = true
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha5" unique_id=1922576787]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1136,6 +1195,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha5" unique_id=1319280917]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1146,6 +1206,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha5" unique_id=272466035]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1161,6 +1222,7 @@ alignment = 1
 [node name="Button2" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha6" unique_id=1887011879]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1171,6 +1233,7 @@ expand_icon = true
 [node name="Button4" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha6" unique_id=503372640]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1181,6 +1244,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha6" unique_id=1118585266]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1191,6 +1255,7 @@ expand_icon = true
 [node name="Button7" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha6" unique_id=188154046]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1201,6 +1266,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha6" unique_id=105355563]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
@@ -1224,6 +1290,7 @@ text = "↩"
 [node name="Button5" type="Button" parent="TecladoMatematico/VisoresTeclado/VBoxContainerDominio/Linha7" unique_id=2109791049]
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.26666668, 0.52156866, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_doie8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2j1h7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_re1yy")
